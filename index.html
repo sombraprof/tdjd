@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tecnologia e Desenvolvimento de Jogos Digitais - UniChristus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-slate-50">
+    <div class="flex min-h-screen">
+      
+      <!-- Sidebar -->
+      <aside
+        class="w-64 bg-slate-800 text-slate-100 p-6 fixed h-full hidden lg:block"
+      >
+        <h2 class="text-xl font-bold mb-2 mono">TJDJ</h2>
+        <p class="text-sm text-slate-400 mb-8">ADS & SI | UniChristus</p>
+        <nav>
+          <ul id="sidebar-links" class="space-y-4"></ul>
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1 lg:ml-64 p-6 md:p-10">
+
+        <!-- Cards Aulas -->
+        <section id="home" class="min-h-screen flex flex-col justify-center">
+          <header>
+            <h1 class="text-5xl font-bold text-slate-900 leading-tight">
+              Tecnologia e Desenvolvimento de Jogos Digitais
+            </h1>
+            <p class="text-xl text-slate-600 mt-4">Prof. Tiago Sombra</p>
+          </header>
+          <div
+            id="cards-container"
+            class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          ></div>
+        </section>
+
+        <!-- Cards Exercicios -->
+        <section id="listas" class="mt-12">
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">
+            Listas de Exercícios
+          </h2>
+          <div
+            id="listas-container"
+            class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          ></div>
+        </section>
+
+        <!-- Conteúdo dinâmico Aulas / Exercicios -->
+        <div id="conteudo" class="mt-12"></div>
+      </main>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

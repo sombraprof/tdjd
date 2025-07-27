@@ -1,0 +1,9 @@
+[
+  {
+    "id": "aula1",
+    "titulo": "Aula 1: Definição e Tipos de Sistemas",
+    "descricao": "Introdução à disciplina, apresentação do plano de ensino e conceitos fundamentais da Teoria Geral de Sistemas: definição de sistema, contexto histórico e classificação dos principais tipos.",
+    "arquivo": "aula1.html",
+    "ativo": true
+  }
+]

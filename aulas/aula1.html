@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TGS - Aula 1: Definição e Tipos de Sistemas (Versão Final)</title>
+    <meta
+      name="description"
+      content="Aula 1 da disciplina Teoria Geral de Sistemas - Introdução ao conceito, tipos, história e aplicação da TGS em Sistemas de Informação."
+    />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Typography Plugin -->
+    <script src="https://cdn.tailwindcss.com/3.4.1?plugins=typography"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Estilo base para a fonte Inter */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc; /* bg-slate-50 */
+      }
+      /* Estilo para destacar os callouts */
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+      .callout-info {
+        background-color: #f0f9ff; /* bg-sky-50 */
+        border-color: #7dd3fc; /* border-sky-300 */
+        color: #0c4a6e; /* text-sky-800 */
+      }
+      .callout-practice {
+        background-color: #f0fdf4; /* bg-emerald-50 */
+        border-color: #6ee7b7; /* border-emerald-300 */
+        color: #065f46; /* text-emerald-800 */
+      }
+      .callout-challenge {
+        background-color: #fff1f2; /* bg-rose-50 */
+        border-color: #fda4af; /* border-rose-300 */
+        color: #9f1239; /* text-rose-800 */
+      }
+      /* Estilo para a linha do tempo */
+      .timeline-item {
+        position: relative;
+        padding-bottom: 2.5rem;
+        padding-left: 2.5rem;
+        border-left: 2px solid #e2e8f0; /* border-slate-200 */
+      }
+      .timeline-item:last-child {
+        border-left: 2px solid transparent;
+      }
+      .timeline-icon {
+        position: absolute;
+        left: -0.8rem;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9999px;
+        background-color: #fff;
+        border: 2px solid #e2e8f0;
+      }
+      /* Estilo para o quiz */
+      details > summary {
+        cursor: pointer;
+        font-weight: 600;
+        padding: 0.75rem;
+        background-color: #f1f5f9;
+        border-radius: 0.375rem;
+        transition: background-color 0.2s;
+      }
+      details > summary:hover {
+        background-color: #e2e8f0;
+      }
+      details[open] > summary {
+        background-color: #e2e8f0;
+      }
+      .quiz-answer {
+        padding: 1rem;
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-top: none;
+        border-radius: 0 0 0.375rem 0.375rem;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800">
+    <!-- Cabeçalho da Aula -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold text-sky-800">
+          Teoria Geral de Sistemas (TGS)
+        </h1>
+        <p class="text-xl text-slate-600 mt-2">
+          Aula 1: Unidade I – Definição e Tipos de Sistemas
+        </p>
+      </div>
+    </header>
+
+    <!-- Corpo Principal da Aula -->
+    <main class="container mx-auto px-6 py-10">
+      <!-- Seção: Plano da Aula -->
+      <section
+        id="plano-aula"
+        aria-label="Plano da Aula"
+        class="mb-12 bg-sky-50 border border-sky-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2 class="text-3xl font-bold text-sky-700 mb-6 text-center">
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm col-span-1 md:col-span-2 lg:col-span-3"
+          >
+            <h3 class="font-semibold text-lg text-sky-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>UNIDADE E CONTEÚDO
+            </h3>
+            <p class="font-bold text-slate-700">
+              Unidade I – Definição e Tipos de Sistemas
+            </p>
+            <p class="text-slate-600 mt-1">
+              Apresentação da disciplina. Introdução à Teoria Geral de Sistemas:
+              contexto histórico, conceito de sistema, visão geral dos tipos.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-sky-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600">
+              Apresentar os objetivos, estrutura e critérios da disciplina,
+              introduzir os fundamentos do pensamento sistêmico e o conceito de
+              sistema aplicado às organizações.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-sky-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600">
+              Aula expositiva dialogada com dinâmicas de sondagem inicial e
+              metodologias ativas (discussão em grupo e quiz).
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-sky-800 mb-2">
+              <i class="fa-solid fa-desktop mr-2"></i>RECURSOS
+            </h3>
+            <p class="text-slate-600">
+              Slides, quadro, texto de apoio, diagramas visuais e vídeo
+              complementar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pergunta Norteadora -->
+      <section
+        id="pergunta-norteadora"
+        aria-label="Pergunta Norteadora"
+        class="mb-12 callout callout-info"
+      >
+        <h3 class="font-bold text-lg mb-2">
+          <i class="fa-solid fa-question-circle mr-2"></i>Pergunta Norteadora
+        </h3>
+        <p>
+          Antes de começarmos, pense um pouco: você consegue listar 5 sistemas
+          diferentes que usou hoje, antes mesmo de chegar a esta aula? O que
+          eles têm em comum?
+        </p>
+      </section>
+
+      <!-- Seção: Contexto Inicial -->
+      <section
+        id="contexto"
+        aria-label="Contexto Inicial"
+        class="mb-12 bg-white p-8 rounded-lg shadow prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2 class="text-3xl font-semibold text-slate-800 mb-4">
+          🌍 Contexto Inicial: O Mundo como um Sistema
+        </h2>
+        <p>
+          Vivemos imersos em sistemas. Do ecossistema que nos cerca ao
+          aplicativo em nosso smartphone, tudo pode ser visto como um conjunto
+          de partes interconectadas. Mas como essa ideia surgiu e por que ela é
+          tão crucial hoje, especialmente na tecnologia?
+        </p>
+        <blockquote
+          class="text-xl italic text-slate-600 border-l-4 border-sky-300 pl-4"
+        >
+          "A realidade, ou ao menos a parte dela que nos interessa, é
+          constituída por sistemas. A Teoria Geral de Sistemas é a exploração
+          científica do 'todo' e da 'totalidade'."
+          <footer class="text-base not-italic text-slate-500 mt-2">
+            — Adaptado de Ludwig von Bertalanffy
+          </footer>
+        </blockquote>
+        <p>
+          A Teoria Geral de Sistemas (TGS) nos oferece uma lente poderosa para
+          entender a complexidade. Ela propõe uma mudança de foco: em vez de
+          analisar as partes isoladamente, devemos compreender as
+          <strong>relações</strong> e as <strong>interconexões</strong> que
+          formam o todo. Este é o cerne do
+          <strong>pensamento sistêmico</strong>, uma habilidade essencial para
+          qualquer profissional de Sistemas de Informação.
+        </p>
+      </section>
+
+      <!-- Seção: Linha do Tempo -->
+      <section
+        id="historia"
+        aria-label="Evolução do Pensamento Sistêmico"
+        class="mb-12"
+      >
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-8"
+        >
+          ⏳ Evolução do Pensamento Sistêmico
+        </h2>
+        <div class="container mx-auto">
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-seedling text-emerald-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              1940-1960: As Origens na Biologia
+            </h3>
+            <p class="text-slate-600 mt-1">
+              Ludwig von Bertalanffy critica a visão mecanicista e propõe que
+              organismos vivos são "sistemas abertos", em constante troca com o
+              ambiente. Nasce a TGS.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-building text-sky-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              1960-1970: Expansão para a Administração
+            </h3>
+            <p class="text-slate-600 mt-1">
+              As teorias organizacionais adotam a TGS. Empresas passam a ser
+              vistas como sistemas sociotécnicos, com subsistemas
+              (departamentos) que interagem para atingir objetivos.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-computer text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              1980-1990: Fundamento para Sistemas de Informação
+            </h3>
+            <p class="text-slate-600 mt-1">
+              A TGS torna-se a base para a análise e o projeto de sistemas.
+              Conceitos como "entrada-processamento-saída" e "feedback" são
+              formalizados em metodologias de desenvolvimento.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-brain text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              2000-Hoje: Relevância na TI Moderna e IA
+            </h3>
+            <p class="text-slate-600 mt-1">
+              Essencial para entender arquiteturas complexas (microserviços), a
+              integração via APIs, a Internet das Coisas (IoT) e sistemas de
+              Inteligência Artificial, que são sistemas adaptativos complexos
+              por natureza.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diagrama Detalhado do Sistema -->
+      <section
+        id="diagrama-detalhado"
+        aria-label="Diagrama Detalhado de um Sistema"
+        class="my-12 p-6 bg-white rounded-lg shadow text-center"
+      >
+        <h2 class="text-2xl font-semibold text-slate-800 mb-4">
+          Anatomia de um Sistema
+        </h2>
+        <div class="flex justify-center">
+          <svg
+            width="100%"
+            height="auto"
+            viewBox="0 0 800 400"
+            aria-labelledby="diagram-title"
+            role="img"
+          >
+            <title id="diagram-title">Diagrama de um sistema aberto</title>
+            <desc>
+              Ilustração mostrando o ambiente externo, a fronteira do sistema, e
+              dentro do sistema os componentes de entrada, processamento e
+              saída, com um laço de feedback da saída para a entrada.
+            </desc>
+            <rect
+              x="1"
+              y="1"
+              width="798"
+              height="398"
+              fill="#f0f9ff"
+              stroke="#bae6fd"
+              stroke-width="2"
+              rx="15"
+            />
+            <text
+              x="400"
+              y="30"
+              font-family="Inter, sans-serif"
+              font-size="24"
+              fill="#0c4a6e"
+              text-anchor="middle"
+              font-weight="bold"
+            >
+              AMBIENTE EXTERNO
+            </text>
+            <rect
+              x="100"
+              y="60"
+              width="600"
+              height="280"
+              fill="#fff"
+              stroke="#94a3b8"
+              stroke-width="2"
+              stroke-dasharray="8 4"
+              rx="10"
+            />
+            <text
+              x="400"
+              y="90"
+              font-family="Inter, sans-serif"
+              font-size="18"
+              fill="#475569"
+              text-anchor="middle"
+            >
+              Fronteira do Sistema
+            </text>
+
+            <g id="entrada">
+              <rect
+                x="150"
+                y="150"
+                width="120"
+                height="100"
+                fill="#e0f2fe"
+                rx="8"
+              />
+              <text
+                x="210"
+                y="200"
+                font-family="Inter, sans-serif"
+                font-size="20"
+                fill="#0c4a6e"
+                text-anchor="middle"
+              >
+                Entrada
+              </text>
+            </g>
+            <g id="processamento">
+              <rect
+                x="340"
+                y="150"
+                width="120"
+                height="100"
+                fill="#f1f5f9"
+                rx="8"
+              />
+              <text
+                x="400"
+                y="200"
+                font-family="Inter, sans-serif"
+                font-size="20"
+                fill="#1e293b"
+                text-anchor="middle"
+              >
+                Processo
+              </text>
+            </g>
+            <g id="saida">
+              <rect
+                x="530"
+                y="150"
+                width="120"
+                height="100"
+                fill="#dcfce7"
+                rx="8"
+              />
+              <text
+                x="590"
+                y="200"
+                font-family="Inter, sans-serif"
+                font-size="20"
+                fill="#166534"
+                text-anchor="middle"
+              >
+                Saída
+              </text>
+            </g>
+
+            <path
+              d="M 270 200 H 340"
+              stroke="#64748b"
+              stroke-width="3"
+              fill="none"
+              marker-end="url(#arrow)"
+            />
+            <path
+              d="M 460 200 H 530"
+              stroke="#64748b"
+              stroke-width="3"
+              fill="none"
+              marker-end="url(#arrow)"
+            />
+
+            <path
+              d="M 590 250 Q 590 320, 400 320 Q 210 320, 210 250"
+              stroke="#f97316"
+              stroke-width="3"
+              stroke-dasharray="5 5"
+              fill="none"
+              marker-end="url(#arrow-orange)"
+            />
+            <text
+              x="400"
+              y="340"
+              font-family="Inter, sans-serif"
+              font-size="16"
+              fill="#f97316"
+              text-anchor="middle"
+              font-weight="semibold"
+            >
+              Feedback (Retroalimentação)
+            </text>
+
+            <defs>
+              <marker
+                id="arrow"
+                viewBox="0 0 10 10"
+                refX="5"
+                refY="5"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+              </marker>
+              <marker
+                id="arrow-orange"
+                viewBox="0 0 10 10"
+                refX="5"
+                refY="5"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#f97316" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Seção: Conceitos-Chave Interativos -->
+      <section id="conceitos" aria-label="Conceitos-Chave" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-8"
+        >
+          🔑 Conceitos-Chave Interativos
+        </h2>
+        <p class="text-lg text-slate-600 mb-6">
+          Um sistema é um conjunto de componentes interdependentes que trabalham
+          juntos para um objetivo comum. Passe o mouse sobre os cartões para
+          explorar seus elementos essenciais.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
+          >
+            <div class="flex items-center mb-3">
+              <i
+                class="fa-solid fa-arrow-down-short-wide text-2xl text-sky-600 mr-4"
+              ></i>
+              <h3 class="text-xl font-bold text-slate-700">
+                Entradas (Inputs)
+              </h3>
+            </div>
+            <p class="text-slate-600">
+              Recursos que o sistema consome do ambiente para operar. Ex: Dados,
+              energia, materiais, cliques.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
+          >
+            <div class="flex items-center mb-3">
+              <i class="fa-solid fa-gears text-2xl text-slate-600 mr-4"></i>
+              <h3 class="text-xl font-bold text-slate-700">Processamento</h3>
+            </div>
+            <p class="text-slate-600">
+              A transformação das entradas em saídas. É o "cérebro" do sistema.
+              Ex: Cálculos, validações, algoritmos.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
+          >
+            <div class="flex items-center mb-3">
+              <i
+                class="fa-solid fa-arrow-up-right-from-square text-2xl text-emerald-600 mr-4"
+              ></i>
+              <h3 class="text-xl font-bold text-slate-700">Saídas (Outputs)</h3>
+            </div>
+            <p class="text-slate-600">
+              O resultado do processamento, entregue ao ambiente. Ex:
+              Relatórios, produtos, notificações.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
+          >
+            <div class="flex items-center mb-3">
+              <i class="fa-solid fa-retweet text-2xl text-orange-600 mr-4"></i>
+              <h3 class="text-xl font-bold text-slate-700">Feedback</h3>
+            </div>
+            <p class="text-slate-600">
+              Informação sobre as saídas que retorna ao sistema para ajustar seu
+              comportamento. Ex: Logs de erro, avaliações.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
+          >
+            <div class="flex items-center mb-3">
+              <i class="fa-solid fa-globe text-2xl text-blue-600 mr-4"></i>
+              <h3 class="text-xl font-bold text-slate-700">Ambiente</h3>
+            </div>
+            <p class="text-slate-600">
+              O contexto externo que influencia e é influenciado pelo sistema.
+              Ex: Usuários, mercado, outros sistemas.
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
+          >
+            <div class="flex items-center mb-3">
+              <i
+                class="fa-solid fa-draw-polygon text-2xl text-purple-600 mr-4"
+              ></i>
+              <h3 class="text-xl font-bold text-slate-700">Fronteira</h3>
+            </div>
+            <p class="text-slate-600">
+              A linha (muitas vezes conceitual) que separa o sistema de seu
+              ambiente. Define o escopo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pausa para Reflexão -->
+      <section
+        id="micro-atividade"
+        aria-label="Microatividade Prática"
+        class="my-12 callout callout-practice"
+      >
+        <h3 class="font-bold text-lg mb-2">
+          <i class="fa-solid fa-pause-circle mr-2"></i>Pausa para Reflexão:
+          Mapeando seu Dia
+        </h3>
+        <p>
+          Pense rápido: qual foi o primeiro sistema tecnológico que você usou
+          hoje? (Ex: despertador do celular, cafeteira, Waze, Spotify...). Tente
+          mapear mentalmente: <br /><strong>1. Entrada:</strong> Qual foi o seu
+          comando? (Ex: Apertar o botão "soneca"). <br /><strong
+            >2. Processamento:</strong
+          >
+          O que o sistema fez? (Ex: Adiou o alarme por 10 minutos).
+          <br /><strong>3. Saída:</strong> Qual foi o resultado? (Ex: O alarme
+          tocou novamente depois de 10 minutos). <br />Essa simples análise é o
+          primeiro passo do pensamento sistêmico!
+        </p>
+      </section>
+
+      <!-- Metodologia Ativa -->
+      <section
+        id="metodologia-ativa"
+        aria-label="Metodologia Ativa"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2 class="text-2xl font-semibold text-slate-800 mb-4">
+          <i class="fa-solid fa-users mr-2 text-sky-600"></i>Discussão em Grupo:
+          Gamificando o Conhecimento
+        </h2>
+        <div class="prose prose-slate max-w-none lg:prose-lg">
+          <p>Agora, vamos aplicar! Em grupos de 3 a 4 pessoas:</p>
+          <ol>
+            <li>
+              Cada grupo deve listar 5 sistemas diferentes que utilizam no dia a
+              dia da faculdade.
+            </li>
+            <li>
+              Para cada sistema, classifiquem-no usando as categorias da tabela
+              que vimos (Aberto/Fechado, Dinâmico/Estável, etc.).
+            </li>
+            <li>
+              Preparem-se para compartilhar um exemplo com a turma, justificando
+              a classificação.
+            </li>
+          </ol>
+          <p>
+            O objetivo é ver como os mesmos conceitos se aplicam a diferentes
+            contextos e gerar debate sobre as classificações.
+          </p>
+        </div>
+      </section>
+
+      <!-- Seção: TGS e Sistemas de Informação -->
+      <section
+        id="tgs-si"
+        aria-label="Conexão entre TGS e Sistemas de Informação"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-6"
+        >
+          🔗 A Ponte entre TGS e Sistemas de Informação
+        </h2>
+        <p>
+          A Teoria Geral de Sistemas não é apenas uma abstração filosófica; ela
+          é o alicerce sobre o qual construímos e entendemos a tecnologia
+          moderna. Sem a TGS, conceitos que usamos todos os dias seriam muito
+          mais difíceis de modelar.
+        </p>
+        <blockquote>
+          "Um sistema de informação é um conjunto de componentes
+          inter-relacionados que coletam, processam, armazenam e distribuem
+          informações para apoiar a tomada de decisão, a coordenação e o
+          controle em uma organização."
+          <footer class="text-base not-italic text-slate-500 mt-2">
+            — Adaptado de Stair & Reynolds, "Princípios de Sistemas de
+            Informação"
+          </footer>
+        </blockquote>
+        <h4>Arquitetura de Software</h4>
+        <p>
+          Quando um arquiteto de software decide entre uma
+          <strong>arquitetura monolítica</strong> (um grande sistema único e
+          coeso) e uma de <strong>microserviços</strong> (múltiplos pequenos
+          sistemas independentes que se comunicam), ele está, na essência,
+          definindo as <strong>fronteiras</strong>, os
+          <strong>componentes</strong> e as
+          <strong>relações de interdependência</strong> do sistema, conceitos
+          puros da TGS.
+        </p>
+        <h4>Sistemas Integrados (ERPs) e APIs</h4>
+        <p>
+          Um sistema ERP (como o SAP ou TOTVS) é um exemplo clássico de um
+          sistema complexo composto por subsistemas (financeiro, RH, estoque). A
+          TGS nos ajuda a entender como a integração desses subsistemas cria um
+          todo que é maior que a soma das partes. Da mesma forma, quando um
+          aplicativo como o iFood (sistema) se conecta à API do Google Maps
+          (ambiente) para obter rotas, ele está realizando uma troca de
+          <strong>entradas e saídas</strong> através de sua fronteira, operando
+          como um <strong>sistema aberto</strong>.
+        </p>
+        <h4>Engenharia de Software e Gestão de Projetos</h4>
+        <p>
+          A TGS também fundamenta a gestão. Metodologias ágeis como
+          <strong>Scrum</strong> ou <strong>Kanban</strong> são, em si, sistemas
+          de trabalho. O backlog é a <strong>entrada</strong>, as sprints são o
+          <strong>processamento</strong>, o incremento de software é a
+          <strong>saída</strong>, e as retrospectivas são o
+          <strong>feedback</strong> que ajusta o sistema para o próximo ciclo.
+          Entender o fluxo de trabalho como um sistema ajuda a identificar
+          gargalos e otimizar a entrega de valor.
+        </p>
+      </section>
+
+      <!-- Seção: Classificação Detalhada dos Sistemas -->
+      <section
+        id="classificacao"
+        aria-label="Classificação Detalhada de Sistemas"
+        class="mb-12"
+      >
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-8"
+        >
+          📊 Classificação Detalhada dos Sistemas
+        </h2>
+        <div class="overflow-x-auto bg-white p-6 rounded-lg shadow">
+          <table class="min-w-full text-left text-sm font-light">
+            <thead class="border-b font-medium bg-slate-100">
+              <tr>
+                <th scope="col" class="px-6 py-4">Categoria</th>
+                <th scope="col" class="px-6 py-4">Tipo 1</th>
+                <th scope="col" class="px-6 py-4">Exemplo</th>
+                <th scope="col" class="px-6 py-4">Tipo 2</th>
+                <th scope="col" class="px-6 py-4">Exemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="px-6 py-4 font-semibold">Interação</td>
+                <td class="px-6 py-4">Aberto</td>
+                <td class="px-6 py-4">Uma rede social, uma empresa</td>
+                <td class="px-6 py-4">Fechado</td>
+                <td class="px-6 py-4">Um relógio, um sistema de vácuo</td>
+              </tr>
+              <tr class="border-b bg-slate-50">
+                <td class="px-6 py-4 font-semibold">Comportamento</td>
+                <td class="px-6 py-4">Dinâmico</td>
+                <td class="px-6 py-4">Mercado de criptomoedas</td>
+                <td class="px-6 py-4">Estável</td>
+                <td class="px-6 py-4">As regras do xadrez</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-6 py-4 font-semibold">Origem</td>
+                <td class="px-6 py-4">Natural</td>
+                <td class="px-6 py-4">Sistema solar, ecossistema</td>
+                <td class="px-6 py-4">Artificial</td>
+                <td class="px-6 py-4">Software, carro, prédio</td>
+              </tr>
+              <tr class="border-b bg-slate-50">
+                <td class="px-6 py-4 font-semibold">Complexidade</td>
+                <td class="px-6 py-4">Simples</td>
+                <td class="px-6 py-4">Uma calculadora de app</td>
+                <td class="px-6 py-4">Complexo</td>
+                <td class="px-6 py-4">Sistema de controle de tráfego aéreo</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-6 py-4 font-semibold">Causalidade</td>
+                <td class="px-6 py-4">Linear</td>
+                <td class="px-6 py-4">Linha de montagem industrial</td>
+                <td class="px-6 py-4">Não-Linear</td>
+                <td class="px-6 py-4">O clima, uma conversa humana</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Seção: Exemplos Práticos Ampliada -->
+      <section
+        id="exemplos"
+        aria-label="Exemplos Práticos do Cotidiano"
+        class="mb-12 not-prose"
+      >
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-6"
+        >
+          💡 Exemplos Práticos do Cotidiano
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h4 class="text-xl font-semibold mb-3">
+              <i class="fa-brands fa-whatsapp text-green-500 mr-2"></i>WhatsApp
+            </h4>
+            <ul class="list-disc list-inside space-y-2">
+              <li>
+                <strong>Tipo:</strong> Aberto, Dinâmico, Artificial, Complexo.
+              </li>
+              <li>
+                <strong>Entrada:</strong> Mensagem digitada, upload de foto.
+              </li>
+              <li>
+                <strong>Processamento:</strong> Criptografia, envio pelos
+                servidores.
+              </li>
+              <li>
+                <strong>Saída:</strong> Notificação no celular do destinatário.
+              </li>
+              <li>
+                <strong>Feedback:</strong> Tiques azuis de confirmação de
+                leitura.
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h4 class="text-xl font-semibold mb-3">
+              <i class="fa-solid fa-piggy-bank text-blue-500 mr-2"></i>Internet
+              Banking
+            </h4>
+            <ul class="list-disc list-inside space-y-2">
+              <li>
+                <strong>Tipo:</strong> Aberto, Estável, Artificial, Complexo.
+              </li>
+              <li><strong>Entrada:</strong> Login, senha, valor do PIX.</li>
+              <li>
+                <strong>Processamento:</strong> Validação de segurança, débito
+                na conta.
+              </li>
+              <li>
+                <strong>Saída:</strong> Comprovante da transação, extrato
+                atualizado.
+              </li>
+              <li>
+                <strong>Feedback:</strong> Mensagem de "Transação concluída com
+                sucesso".
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h4 class="text-xl font-semibold mb-3">
+              <i class="fa-solid fa-graduation-cap text-purple-500 mr-2"></i
+              >Sistema Acadêmico
+            </h4>
+            <ul class="list-disc list-inside space-y-2">
+              <li>
+                <strong>Tipo:</strong> Aberto, Estável, Artificial, Complexo.
+              </li>
+              <li>
+                <strong>Entrada:</strong> Lançamento de notas pelo professor.
+              </li>
+              <li>
+                <strong>Processamento:</strong> Cálculo automático da média
+                final.
+              </li>
+              <li><strong>Saída:</strong> Boletim disponível para o aluno.</li>
+              <li>
+                <strong>Feedback:</strong> Alerta de pendência de documentos.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção: Tarefa (TED) -->
+      <section
+        id="tarefa"
+        aria-label="Tarefa da Aula"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED)
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow not-prose">
+          <p class="text-lg leading-relaxed mb-4">
+            Para consolidar o conhecimento, você tem duas tarefas:
+          </p>
+          <ol class="list-decimal list-inside space-y-4">
+            <li>
+              <strong>Reflexão no Fórum (Obrigatório):</strong> Realize a
+              leitura comentada do capítulo introdutório de
+              <strong>Stair et al. (2021)</strong> e poste no fórum sua resposta
+              para a questão:
+              <blockquote
+                class="bg-slate-100 p-4 rounded-md text-lg italic border-l-4 border-slate-300 my-2"
+              >
+                "Qual sistema você observa no seu cotidiano e como ele se ajusta
+                ao ambiente?"
+              </blockquote>
+              Ao final, inclua um comentário de até 2 linhas sobre como o
+              pensamento sistêmico pode ser útil na sua formação em Sistemas de
+              Informação.
+            </li>
+            <li>
+              <strong>Diagrama Prático (Recomendado):</strong> Escolha um
+              sistema simples do seu dia a dia (ex: fazer café, pedir um Uber,
+              usar o micro-ondas) e crie um mini-diagrama. Identifique
+              visualmente suas
+              <strong>entradas, processos, saídas e feedback</strong>. Pode ser
+              feito no papel ou em uma ferramenta como o
+              <a
+                href="https://draw.io"
+                target="_blank"
+                class="text-sky-600 hover:underline"
+                >draw.io</a
+              >. Guarde para referência futura.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Mini-Quiz de Autoavaliação -->
+      <section id="quiz" aria-label="Quiz de Autoavaliação" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-6"
+        >
+          🧐 Mini-Quiz de Autoavaliação
+        </h2>
+        <div class="space-y-4">
+          <details>
+            <summary>
+              1. A capacidade de um sistema se autoajustar com base em
+              informações sobre seu próprio desempenho é chamada de...
+            </summary>
+            <div class="quiz-answer">
+              <p>
+                <strong>Resposta:</strong> Feedback (ou Retroalimentação). É o
+                mecanismo que permite a um sistema aprender e se adaptar.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              2. Um sistema de ERP, que foca em processos internos padronizados,
+              é predominantemente classificado como...
+            </summary>
+            <div class="quiz-answer">
+              <p>
+                <strong>Resposta:</strong> Estável e relativamente Fechado. Ele
+                busca consistência e controle, com interações bem definidas com
+                o ambiente externo.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              3. A Teoria Geral de Sistemas foi inicialmente proposta por um
+              estudioso de qual área?
+            </summary>
+            <div class="quiz-answer">
+              <p>
+                <strong>Resposta:</strong> Biologia. Ludwig von Bertalanffy usou
+                o estudo de organismos vivos como base para a TGS.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Seção: Bibliografia -->
+      <section
+        id="bibliografia"
+        aria-label="Bibliografia e Leitura Complementar"
+        class="prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-sky-500 pb-2 mb-4"
+        >
+          📚 Bibliografia e Leitura Complementar
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 not-prose">
+          <p>
+            <strong>STAIR, Ralph M.; REYNOLDS, George W.</strong>
+            <em>Princípios de sistemas de informação.</em> 14. ed. São Paulo:
+            Cengage Learning, 2021.
+          </p>
+          <p>
+            <strong>MEIRELES, Manuel; SORDI, J. O. de.</strong>
+            <em>Administração de sistemas de informação.</em> 2. ed. São Paulo:
+            Atlas, 2019.
+          </p>
+          <p>
+            <strong>BERTALANFFY, Ludwig von.</strong>
+            <em>Teoria geral dos sistemas.</em> Petrópolis: Vozes, 2008.
+            (Leitura clássica para aprofundamento)
+          </p>
+          <hr class="my-4" />
+          <p>
+            <strong>Leitura Complementar Online:</strong>
+            <a
+              href="https://www.significados.com.br/teoria-geral-dos-sistemas/"
+              target="_blank"
+              class="text-sky-600 hover:underline"
+              >O que é a Teoria dos Sistemas? - Significados.com.br</a
+            >
+          </p>
+          <p>
+            <strong>Vídeo Sugerido:</strong>
+            <a
+              href="https://www.youtube.com/watch?v=TnYjJl5PHHw"
+              target="_blank"
+              class="text-sky-600 font-semibold hover:underline"
+              >📺 Vídeo: Entenda o que é um sistema (Explicado em 5 minutos)</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-4 text-center">
+        <p>&copy; 2025 - Disciplina de Teoria Geral de Sistemas</p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para o curso de Sistemas de Informação.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

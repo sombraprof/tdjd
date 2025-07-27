@@ -1,0 +1,37 @@
+{
+  "id": "lista1",
+  "titulo": "Lista de Exercícios 01: Definição e Tipos de Sistemas",
+  "descricao": "Exercícios introdutórios para fixar os conceitos fundamentais da Teoria Geral de Sistemas: definição, classificação e aplicação prática em Sistemas de Informação.",
+  "questoes": [
+    {
+      "id": 1,
+      "enunciado": "Explique com suas palavras o que é um sistema e dê dois exemplos do seu cotidiano, classificando-os como abertos ou fechados.",
+      "dica": "Pense em elementos que recebem entradas e produzem saídas. Sistemas abertos trocam informações com o ambiente, enquanto os fechados são mais isolados.",
+      "solucao": "Resposta aberta. Exemplo: 'Uma empresa é um sistema aberto, pois interage com clientes e fornecedores. Um relógio mecânico é um sistema fechado, pois funciona isolado após dar corda.'"
+    },
+    {
+      "id": 2,
+      "enunciado": "Liste três sistemas naturais e três sistemas artificiais que você conhece. Explique uma diferença fundamental entre eles.",
+      "dica": "Sistemas naturais ocorrem na natureza (ex.: ecossistemas). Sistemas artificiais são criados pelo ser humano (ex.: aplicativos, carros).",
+      "solucao": "Resposta aberta. Exemplo: 'Naturais: sistema solar, floresta, ciclo da água. Artificiais: computador, internet, metrô. Diferença: os naturais surgem sem intervenção humana, os artificiais são projetados e construídos.'"
+    },
+    {
+      "id": 3,
+      "enunciado": "Considere uma cafeteria como sistema. Identifique suas entradas, processamento, saídas e feedback.",
+      "dica": "Entradas: recursos e pedidos. Processamento: preparo das bebidas. Saídas: cafés entregues. Feedback: avaliações de clientes.",
+      "solucao": "Resposta aberta. Exemplo: 'Entradas: ingredientes e pedidos. Processamento: preparo do café. Saídas: café servido. Feedback: comentários dos clientes para melhorar o atendimento.'"
+    },
+    {
+      "id": 4,
+      "enunciado": "Classifique os seguintes sistemas como abertos ou fechados e justifique: a) um aplicativo de mensagens, b) uma ampulheta, c) um ecossistema de mangue.",
+      "dica": "Lembre que sistemas abertos trocam informações/matéria/energia com o ambiente.",
+      "solucao": "a) Aberto – troca mensagens e dados com outros dispositivos. b) Fechado – funciona isoladamente. c) Aberto – interage com o ambiente e depende de trocas constantes de energia e matéria."
+    },
+    {
+      "id": 5,
+      "enunciado": "Relacione a Teoria Geral de Sistemas com Sistemas de Informação, explicando por que o pensamento sistêmico é importante para desenvolvedores.",
+      "dica": "Sistemas de Informação são compostos por entradas, processamento, saídas e feedback, exatamente como os conceitos da TGS.",
+      "solucao": "Resposta aberta. Exemplo: 'A TGS ajuda a entender que um sistema de informação é mais do que software, envolve processos, pessoas e dados. O pensamento sistêmico permite projetar soluções considerando interdependências e feedbacks.'"
+    }
+  ]
+}
