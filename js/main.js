@@ -49,6 +49,7 @@ function loadAula(file) {
       conteudo.innerHTML = html;
       initAccordions();
       initCopyButtons();
+      initLaboratorioGeneros();
       window.scrollTo({ top: conteudo.offsetTop - 20, behavior: "smooth" });
     })
     .catch((err) => console.error("Erro ao carregar aula:", err));
@@ -209,6 +210,42 @@ function initCopyButtons() {
         });
     });
   }
+}
+
+function initLaboratorioGeneros() {
+  const draggables = document.querySelectorAll(".draggable");
+  const dropzones = document.querySelectorAll(".dropzone");
+  const verificarBtn = document.getElementById("verificar");
+  const resultado = document.getElementById("resultado");
+
+  if (draggables.length === 0 || dropzones.length === 0 || !verificarBtn) {
+    console.warn("Laboratório de Gêneros não encontrado nesta página.");
+    return;
+  }
+
+  let dragged = null;
+
+  draggables.forEach((el) => {
+    el.addEventListener("dragstart", () => (dragged = el));
+    el.addEventListener("dragend", () => (dragged = null));
+  });
+
+  dropzones.forEach((zone) => {
+    zone.addEventListener("dragover", (e) => e.preventDefault());
+    zone.addEventListener("drop", () => {
+      if (dragged) zone.appendChild(dragged);
+    });
+  });
+
+  verificarBtn.addEventListener("click", () => {
+    let acertos = 0;
+    dropzones.forEach((zone) => {
+      zone.querySelectorAll(".draggable").forEach((el) => {
+        if (el.dataset.gen === zone.dataset.accept) acertos++;
+      });
+    });
+    resultado.textContent = `Você acertou ${acertos} de ${draggables.length}!`;
+  });
 }
 
 // Quando o DOM estiver pronto, carrega aulas

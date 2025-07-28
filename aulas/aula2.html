@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Metadados Essenciais -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 2: Gêneros e Tipos de Gameplay</title>
+    <meta
+      name="description"
+      content="Aula 2 da disciplina de Tecnologia e Desenvolvimento de Jogos Digitais. Um mergulho nos principais gêneros, mecânicas e formas de jogar."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 2: Gêneros e Tipos de Gameplay"
+    />
+    <meta
+      property="og:description"
+      content="Um mergulho nos principais gêneros, mecânicas e formas de jogar."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/4338ca/ffffff?text=TDJD\nAula+2"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 2: Gêneros e Tipos de Gameplay"
+    />
+    <meta
+      property="twitter:description"
+      content="Um mergulho nos principais gêneros, mecânicas e formas de jogar."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/4338ca/ffffff?text=TDJD\nAula+2"
+    />
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Typography Plugin -->
+    <script src="https://cdn.tailwindcss.com/3.4.1?plugins=typography"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        /* bg-slate-50 */
+        padding-top: 60px;
+        /* Espaço para o menu fixo */
+      }
+
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+
+      .callout-info {
+        background-color: #f0f9ff;
+        /* bg-sky-50 */
+        border-color: #7dd3fc;
+        /* border-sky-300 */
+        color: #0c4a6e;
+        /* text-sky-800 */
+      }
+
+      .callout-practice {
+        background-color: #f0fdf4;
+        /* bg-emerald-50 */
+        border-color: #6ee7b7;
+        /* border-emerald-300 */
+        color: #065f46;
+        /* text-emerald-800 */
+      }
+
+      details > summary {
+        cursor: pointer;
+        font-weight: 600;
+        padding: 0.75rem 1.25rem;
+        background-color: #f1f5f9;
+        border-radius: 0.375rem;
+        transition: background-color 0.2s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      details > summary:hover {
+        background-color: #e2e8f0;
+      }
+
+      details[open] > summary {
+        background-color: #e2e8f0;
+      }
+
+      .quiz-answer {
+        padding: 1rem 1.25rem;
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-top: none;
+        border-radius: 0 0 0.375rem 0.375rem;
+      }
+
+      .summary-arrow {
+        transition: transform 0.3s;
+      }
+
+      details[open] .summary-arrow {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Menu de Navegação Fixo -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-indigo-700">TDJD - Aula 2</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-indigo-600"
+              >Plano</a
+            >
+            <a href="#glossario" class="text-slate-600 hover:text-indigo-600"
+              >Glossário</a
+            >
+            <a href="#contexto" class="text-slate-600 hover:text-indigo-600"
+              >Contexto</a
+            >
+            <a
+              href="#generos-hibridos"
+              class="text-slate-600 hover:text-indigo-600"
+              >Híbridos</a
+            >
+            <a
+              href="#historia-generos"
+              class="text-slate-600 hover:text-indigo-600"
+              >História</a
+            >
+            <a
+              href="#analise-de-generos"
+              class="text-slate-600 hover:text-indigo-600"
+              >Gêneros</a
+            >
+            <a href="#mercado" class="text-slate-600 hover:text-indigo-600"
+              >Mercado</a
+            >
+            <a
+              href="#fisica-interacao"
+              class="text-slate-600 hover:text-indigo-600"
+              >Física</a
+            >
+            <a href="#quiz" class="text-slate-600 hover:text-indigo-600"
+              >Quiz</a
+            >
+            <a href="#tarefa" class="text-slate-600 hover:text-indigo-600"
+              >TED</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Cabeçalho da Aula -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold text-indigo-800">
+          Gêneros e Tipos de Gameplay
+        </h1>
+        <p class="text-xl text-slate-600 mt-2">
+          Aula 2: Unidade I – Introdução ao Desenvolvimento de Jogos Digitais
+        </p>
+      </div>
+    </header>
+
+    <!-- Corpo Principal da Aula -->
+    <main class="container mx-auto px-6 py-10">
+      <!-- Seção: Plano da Aula -->
+      <section
+        id="plano-aula"
+        aria-labelledby="plano-aula-heading"
+        class="mb-12 bg-indigo-50 border border-indigo-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-indigo-700 mb-6 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm col-span-1 md:col-span-2 lg:col-span-3"
+          >
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>UNIDADE E CONTEÚDO
+            </h3>
+            <p class="font-bold text-slate-700">
+              Unidade I – Introdução ao Desenvolvimento de Jogos Digitais
+            </p>
+            <p class="text-slate-600 mt-1">
+              Introdução aos gêneros de jogos digitais. Tipos de gameplay
+              (singleplayer, multiplayer, coop, competitivo). Discussão sobre o
+              que define um gênero.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600">
+              Identificar e classificar os principais gêneros de jogos,
+              reconhecendo suas características e mecânicas associadas.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600">
+              Aula expositiva interativa com análise coletiva de trailers de
+              diferentes gêneros (aprendizagem baseada em exemplos visuais).
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-desktop mr-2"></i>RECURSOS
+            </h3>
+            <p class="text-slate-600">
+              Slides, vídeos de gameplay (YouTube) e painel digital para
+              anotações colaborativas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pergunta Norteadora -->
+      <section
+        id="pergunta-norteadora"
+        aria-labelledby="pergunta-norteadora-heading"
+        class="mb-12 callout callout-info"
+      >
+        <h2 id="pergunta-norteadora-heading" class="font-bold text-lg mb-2">
+          <i class="fa-solid fa-magnifying-glass mr-2"></i>Pergunta Norteadora
+        </h2>
+        <p>
+          O que faz um jogo ser de "Ação" e não de "Aventura"? E o que
+          diferencia um "RPG" de um "Jogo de Estratégia"? Quais são os
+          ingredientes que definem um gênero de jogo?
+        </p>
+      </section>
+
+      <!-- Seção: Glossário de Termos -->
+      <section
+        id="glossario"
+        aria-labelledby="glossario-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          id="glossario-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          📖 Glossário de Termos
+        </h2>
+        <dl class="space-y-6">
+          <div>
+            <dt class="font-bold text-indigo-700">Core Loop</dt>
+            <dd class="text-slate-700">
+              O ciclo principal de ações que o jogador repete no jogo (ex:
+              coletar → evoluir → enfrentar desafios).
+              <span class="block text-sm text-slate-500 mt-1"
+                >🎮 <strong>Exemplo:</strong> Em <em>Stardew Valley</em>,
+                plantar → colher → vender → melhorar a fazenda.</span
+              >
+            </dd>
+          </div>
+          <div>
+            <dt class="font-bold text-indigo-700">Gameplay Emergente</dt>
+            <dd class="text-slate-700">
+              Quando as interações dos sistemas criam experiências únicas que
+              não foram rigidamente pré-programadas.
+              <span class="block text-sm text-slate-500 mt-1"
+                >🎮 <strong>Exemplo:</strong> Em <em>Minecraft</em>, jogadores
+                criam máquinas de redstone que os desenvolvedores não
+                planejaram.</span
+              >
+            </dd>
+          </div>
+          <div>
+            <dt class="font-bold text-indigo-700">Gameplay Dirigido</dt>
+            <dd class="text-slate-700">
+              Experiência mais linear e controlada pelo desenvolvedor, com foco
+              narrativo e progressão definida.
+              <span class="block text-sm text-slate-500 mt-1"
+                >🎮 <strong>Exemplo:</strong> <em>The Last of Us</em> guia o
+                jogador por uma história cinematográfica com eventos
+                fixos.</span
+              >
+            </dd>
+          </div>
+          <div>
+            <dt class="font-bold text-indigo-700">Sandbox</dt>
+            <dd class="text-slate-700">
+              Jogos que oferecem liberdade para criar e experimentar sem
+              objetivos rígidos.
+              <span class="block text-sm text-slate-500 mt-1"
+                >🎮 <strong>Exemplo:</strong>
+                <em>Grand Theft Auto V</em> permite explorar e interagir com o
+                mundo aberto sem seguir uma missão principal.</span
+              >
+            </dd>
+          </div>
+          <div>
+            <dt class="font-bold text-indigo-700">Ludonarrativa</dt>
+            <dd class="text-slate-700">
+              A forma como a narrativa e as mecânicas do jogo se complementam
+              (ou entram em conflito).
+              <span class="block text-sm text-slate-500 mt-1"
+                >🎮 <strong>Exemplo:</strong> Em <em>Spec Ops: The Line</em>, a
+                jogabilidade de tiro entra em contraste com a mensagem
+                anti-guerra da história.</span
+              >
+            </dd>
+          </div>
+        </dl>
+
+        <p class="text-slate-600 italic mt-6">
+          💡 Agora que conhecemos os principais termos, vamos entender como eles
+          se aplicam na definição dos gêneros e na experiência de jogo.
+        </p>
+      </section>
+
+      <p class="text-slate-600 italic mt-4 mb-6">
+        💡 Agora que conhecemos os principais termos, vamos entender como eles
+        se aplicam na definição dos gêneros e na experiência de jogo.
+      </p>
+
+      <!-- Seção: Contexto Inicial -->
+      <section
+        id="contexto"
+        aria-labelledby="contexto-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          id="contexto-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          Decodificando os Gêneros: Mais que Rótulos
+        </h2>
+        <p>
+          Gêneros de jogos funcionam como <strong>linguagens de design</strong>.
+          Eles comunicam ao jogador o que esperar de uma experiência e fornecem
+          aos desenvolvedores uma estrutura de referência para criar mecânicas e
+          narrativas. Porém, gêneros não são caixas rígidas: são
+          <strong>paletas de mecânicas</strong>
+          que podem ser combinadas de inúmeras formas.
+        </p>
+        <p>
+          Em termos de design, cada gênero se define pela repetição de um
+          <strong>core loop</strong> e por um conjunto de regras matemáticas e
+          físicas. Um FPS depende de vetores, trajetória de projéteis e
+          transformações matriciais; um RPG usa sistemas estatísticos para
+          progressão; um jogo de estratégia se baseia em otimização de recursos
+          e lógica combinatória.
+        </p>
+
+        <blockquote
+          class="text-xl italic text-slate-600 border-l-4 border-indigo-300 pl-4"
+        >
+          "Um gênero não é uma prisão, mas um ponto de partida. Os melhores
+          jogos entendem as regras do seu gênero para, então, quebrá-las de
+          forma inteligente."
+        </blockquote>
+
+        <p>
+          Essa aula explora os gêneros não apenas como rótulos comerciais, mas
+          como
+          <strong>modelos matemáticos e sistemas de interação</strong>. Ao
+          entender essas estruturas, você poderá criar experiências únicas, seja
+          seguindo convenções ou criando híbridos inovadores.
+        </p>
+
+        <!-- Mini-Diagrama de Interseção de Gêneros -->
+        <div class="mt-8 bg-indigo-50 p-6 rounded-xl shadow not-prose">
+          <h3 class="text-xl font-semibold text-indigo-800 mb-4">
+            🔗 Como os Gêneros se Cruzam
+          </h3>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <div
+              class="px-4 py-2 bg-indigo-200 text-indigo-900 rounded-full font-semibold"
+            >
+              RPG
+            </div>
+            <div
+              class="px-4 py-2 bg-green-200 text-green-900 rounded-full font-semibold"
+            >
+              Ação
+            </div>
+            <div
+              class="px-4 py-2 bg-blue-200 text-blue-900 rounded-full font-semibold"
+            >
+              Estratégia
+            </div>
+            <div
+              class="px-4 py-2 bg-orange-200 text-orange-900 rounded-full font-semibold"
+            >
+              FPS
+            </div>
+          </div>
+          <p class="text-slate-700 text-sm mt-4 text-center">
+            ➡️ Quando dois gêneros se encontram, surgem híbridos:
+            <strong>Action RPG</strong>, <strong>FPS Tático</strong>,
+            <strong>RTS com Progressão de Personagem</strong>. Entender essas
+            interseções é essencial para inovar.
+          </p>
+        </div>
+      </section>
+
+      <p class="text-slate-600 italic mt-4 mb-6">
+        ➡️ Compreendendo a base de classificação, é hora de ver como os gêneros
+        evoluíram e se misturam, criando novas tendências.
+      </p>
+
+      <!-- Seção: Gêneros Híbridos e Tendências -->
+      <section
+        id="generos-hibridos"
+        aria-labelledby="generos-hibridos-heading"
+        class="mb-12 bg-indigo-50 border border-indigo-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="generos-hibridos-heading"
+          class="text-3xl font-semibold text-indigo-800 mb-4"
+        >
+          🌐 Gêneros Híbridos e Tendências Atuais
+        </h2>
+        <p class="text-slate-700 mb-4">
+          A indústria de jogos está em constante evolução. Cada vez mais, vemos
+          títulos que combinam elementos de múltiplos gêneros, criando
+          experiências únicas e inovadoras.
+        </p>
+        <ul class="list-disc list-inside text-slate-700 space-y-2">
+          <li>
+            <strong>Roguelike + Metroidvania:</strong> jogos como
+            <em>Dead Cells</em> misturam exploração não-linear com progressão
+            roguelike.
+          </li>
+          <li>
+            <strong>RPG + FPS:</strong> <em>Destiny 2</em> e
+            <em>Borderlands</em> unem tiro em primeira pessoa com evolução de
+            personagem e loot.
+          </li>
+          <li>
+            <strong>Survival + Crafting:</strong> <em>Valheim</em> e
+            <em>Ark</em> combinam sobrevivência com construção e progressão
+            sandbox.
+          </li>
+          <li>
+            <strong>Battle Royale + Construção:</strong>
+            <em>Fortnite</em> adicionou mecânicas de criação ao gênero
+            competitivo de última sobrevivência.
+          </li>
+        </ul>
+        <div class="mt-6 bg-white p-4 rounded-lg shadow-sm">
+          <p class="text-slate-600 italic">
+            💡 <strong>Reflexão:</strong> Como a mistura de gêneros pode tornar
+            um jogo mais atraente? Existe um limite para a hibridização antes de
+            confundir o jogador?
+          </p>
+        </div>
+      </section>
+
+      <!-- Seção: História dos Gêneros de Jogos -->
+      <section
+        id="historia-generos"
+        aria-labelledby="historia-generos-heading"
+        class="mb-12 bg-white p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="historia-generos-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          📜 História dos Gêneros de Jogos
+        </h2>
+        <p class="text-slate-700 mb-6">
+          A evolução dos gêneros está diretamente ligada ao avanço tecnológico e
+          às mudanças no perfil dos jogadores. Cada década trouxe novas
+          experiências e consolidou estilos de jogo que hoje consideramos
+          clássicos.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg shadow-sm"
+          >
+            <h3 class="font-bold text-indigo-700 mb-2">🎮 Anos 70</h3>
+            <p class="text-slate-600 text-sm">
+              Nasce o gênero Arcade com títulos como <em>Pong</em> e
+              <em>Space Invaders</em>. O foco era em pontuação e repetição.
+            </p>
+          </div>
+          <div
+            class="bg-emerald-50 border border-emerald-200 p-4 rounded-lg shadow-sm"
+          >
+            <h3 class="font-bold text-emerald-700 mb-2">🕹️ Anos 80</h3>
+            <p class="text-slate-600 text-sm">
+              Plataformas e aventuras ganham força com
+              <em>Super Mario Bros.</em> e <em>The Legend of Zelda</em>.
+            </p>
+          </div>
+          <div
+            class="bg-amber-50 border border-amber-200 p-4 rounded-lg shadow-sm"
+          >
+            <h3 class="font-bold text-amber-700 mb-2">💾 Anos 90</h3>
+            <p class="text-slate-600 text-sm">
+              Explosão dos FPS (<em>DOOM</em>, <em>Quake</em>) e popularização
+              dos RPGs japoneses (<em>Final Fantasy</em>).
+            </p>
+          </div>
+          <div
+            class="bg-rose-50 border border-rose-200 p-4 rounded-lg shadow-sm"
+          >
+            <h3 class="font-bold text-rose-700 mb-2">🌐 Anos 2000+</h3>
+            <p class="text-slate-600 text-sm">
+              Crescem MMOs (<em>World of Warcraft</em>), MOBAs e gêneros
+              híbridos. Surgem experiências online massivas e jogos como
+              serviço.
+            </p>
+          </div>
+        </div>
+        <div class="mt-6 bg-slate-100 border-l-4 border-indigo-400 p-4 rounded">
+          <p class="italic text-slate-700">
+            💡 <strong>Atividade:</strong> Escolha um gênero e descubra seu
+            primeiro jogo de sucesso. O que o tornou inovador para a época?
+          </p>
+        </div>
+      </section>
+
+      <!-- Seção: Oficina de Gêneros -->
+      <section
+        id="oficina-generos"
+        aria-labelledby="oficina-heading"
+        class="mb-12 bg-emerald-50 border border-emerald-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="oficina-heading"
+          class="text-3xl font-semibold text-emerald-800 mb-4"
+        >
+          🎮 Oficina de Gêneros
+        </h2>
+        <p class="text-slate-700 mb-6">
+          Nesta atividade, você vai colocar o conhecimento em prática
+          identificando gêneros e mecânicas em exemplos reais. O objetivo é
+          <strong>treinar seu olhar de game designer</strong> para reconhecer
+          padrões e entender como matemática e física sustentam as experiências.
+        </p>
+
+        <!-- Passos da Oficina -->
+        <ol class="list-decimal list-inside space-y-4 text-slate-700">
+          <li>
+            <strong>Assista os trechos de gameplay abaixo:</strong> Analise pelo
+            menos 2 minutos de cada vídeo.
+          </li>
+          <li>
+            <strong>Identifique o gênero principal</strong> e, se houver, os
+            gêneros secundários.
+          </li>
+          <li>
+            <strong>Liste 2 ou 3 mecânicas fundamentais</strong> e explique
+            quais conceitos físicos ou matemáticos estão por trás (ex: vetores
+            de movimento, IA baseada em grafos, colisões elásticas).
+          </li>
+          <li>
+            <strong>Publique no Fórum:</strong> Poste suas respostas com imagens
+            ou trechos de vídeo que sustentem sua análise.
+          </li>
+        </ol>
+
+        <!-- Galeria de Vídeos Curtos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-slate-800 mb-2">
+              🔫 FPS Tático – Valorant
+            </h3>
+            <div class="aspect-video">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/IhhjcB2ZjIM"
+                title="Valorant Gameplay"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-slate-800 mb-2">
+              🛡️ RPG de Ação – Elden Ring
+            </h3>
+            <div class="aspect-video">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/E3Huy2cdih0"
+                title="Elden Ring Gameplay"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-slate-800 mb-2">
+              🏗️ Estratégia/Construção – Cities: Skylines
+            </h3>
+            <div class="aspect-video">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/Iu8YwpngbzE"
+                title="Cities Skylines Gameplay"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-slate-800 mb-2">
+              🕹️ Plataforma Criativa – Super Mario Maker 2
+            </h3>
+            <div class="aspect-video">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/ISWqMgouaxs"
+                title="Super Mario Maker 2 Gameplay"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 bg-emerald-100 p-4 rounded-lg">
+          <p class="italic text-slate-700">
+            💡 <strong>Dica:</strong> Concentre-se em
+            <u>como as regras do jogo criam a experiência</u> e não apenas no
+            tema. Um RPG pode ter tiro em primeira pessoa, e um FPS pode ter
+            progressão de personagem — o que importa é o
+            <strong>core loop</strong> e as mecânicas centrais.
+          </p>
+        </div>
+      </section>
+
+      <p class="text-slate-600 italic mt-4 mb-6">
+        📌 Agora que vimos a evolução histórica, vamos analisar exemplos reais
+        de gêneros em ação com vídeos e mecânicas-chave.
+      </p>
+
+      <!-- Seção: Análise de Gêneros com Vídeos -->
+      <section
+        id="analise-de-generos"
+        aria-labelledby="analise-heading"
+        class="mb-12"
+      >
+        <h2
+          id="analise-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-8"
+        >
+          🎬 Análise de Gêneros em Ação
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- RPG -->
+          <div class="bg-white p-6 rounded-lg shadow flex flex-col">
+            <h3
+              class="text-2xl font-semibold text-slate-800 mb-4 flex items-center"
+            >
+              <i class="fa-solid fa-dragon text-red-600 mr-3"></i>RPG
+              (Role-Playing Game)
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/1T22wNvoNiU"
+                title="Baldur's Gate 3 Trailer"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <p class="text-slate-600 mt-3 mb-6">
+              <strong>Baldur's Gate 3</strong> é um RPG baseado em Dungeons &
+              Dragons, com ênfase em narrativa ramificada e liberdade de
+              escolha. Ele exemplifica o gênero com progressão profunda de
+              personagem, combate tático e decisões que moldam o mundo.
+            </p>
+            <h4 class="font-semibold text-lg text-indigo-700 mb-2">
+              Mecânicas Fundamentais:
+            </h4>
+            <ul class="list-disc list-inside space-y-2 text-slate-700">
+              <li>
+                <strong>Sistemas de Atributos:</strong> Progressão de personagem
+                (XP, stats, skills).
+              </li>
+              <li>
+                <strong>Lógica de Decisão:</strong> Diálogos com escolhas que
+                impactam a narrativa (árvores de decisão).
+              </li>
+              <li>
+                <strong>Vetores e Transformações:</strong> Usados para
+                movimento, posicionamento e targeting em combate.
+              </li>
+            </ul>
+            <!-- Mecânicas-Chave -->
+            <div
+              class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg mt-4"
+            >
+              <h4 class="font-semibold text-indigo-700 mb-2">
+                🔑 Mecânicas-Chave de RPG
+              </h4>
+              <ul
+                class="list-disc list-inside text-slate-700 text-sm space-y-1"
+              >
+                <li>Progressão de atributos e evolução de personagem.</li>
+                <li>Sistema de quests principais e secundárias.</li>
+                <li>Customização de personagens e equipamentos.</li>
+                <li>Decisões narrativas que alteram o mundo do jogo.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Ação / Aventura -->
+          <div class="bg-white p-6 rounded-lg shadow flex flex-col">
+            <h3
+              class="text-2xl font-semibold text-slate-800 mb-4 flex items-center"
+            >
+              <i class="fa-solid fa-hat-wizard text-green-600 mr-3"></i>Ação /
+              Aventura
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/uHGShqcAHlQ"
+                title="Zelda: Tears of the Kingdom Trailer"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <p class="text-slate-600 mt-3 mb-6">
+              <strong>The Legend of Zelda: Tears of the Kingdom</strong> combina
+              exploração em mundo aberto, física avançada para puzzles e combate
+              dinâmico. É um marco em Ação/Aventura por permitir resolver
+              desafios de múltiplas formas usando sistemas interconectados.
+            </p>
+            <h4 class="font-semibold text-lg text-indigo-700 mb-2">
+              Mecânicas Fundamentais:
+            </h4>
+            <ul class="list-disc list-inside space-y-2 text-slate-700">
+              <li>
+                <strong>Física de Movimento:</strong> Leis da dinâmica para
+                pulos, escaladas e nado.
+              </li>
+              <li>
+                <strong>Detecção de Colisão:</strong> Uso de polígonos para
+                interações com o cenário e inimigos.
+              </li>
+              <li>
+                <strong>Resolução de Puzzles:</strong> Lógica espacial e
+                interações baseadas em física.
+              </li>
+            </ul>
+            <!-- Mecânicas-Chave -->
+            <div
+              class="bg-green-50 border border-green-200 p-4 rounded-lg mt-4"
+            >
+              <h4 class="font-semibold text-green-700 mb-2">
+                🔑 Mecânicas-Chave de Ação/Aventura
+              </h4>
+              <ul
+                class="list-disc list-inside text-slate-700 text-sm space-y-1"
+              >
+                <li>Exploração não-linear e backtracking.</li>
+                <li>Combate em tempo real com combos ou armas variadas.</li>
+                <li>Puzzles ambientais que exigem lógica espacial.</li>
+                <li>Aquisição de habilidades que desbloqueiam novas áreas.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Estratégia -->
+          <div class="bg-white p-6 rounded-lg shadow flex flex-col">
+            <h3
+              class="text-2xl font-semibold text-slate-800 mb-4 flex items-center"
+            >
+              <i class="fa-solid fa-chess-board text-blue-600 mr-3"></i
+              >Estratégia (RTS/TBS)
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/5TnynE3PuDE"
+                title="Age of Empires IV Trailer"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+
+            <p class="text-slate-600 mt-3 mb-6">
+              <strong>Age of Empires IV</strong> representa o gênero RTS com
+              ênfase em gerenciamento de recursos, construção de civilizações e
+              táticas em tempo real. O jogo mostra como planejamento e execução
+              estratégica definem a experiência.
+            </p>
+            <h4 class="font-semibold text-lg text-indigo-700 mb-2">
+              Mecânicas Fundamentais:
+            </h4>
+            <ul class="list-disc list-inside space-y-2 text-slate-700">
+              <li>
+                <strong>Coordenadas e Distâncias:</strong> Uso de grades para
+                posicionamento e cálculo de movimento.
+              </li>
+              <li>
+                <strong>Gerenciamento de Recursos:</strong> Algoritmos para
+                coleta, gasto e otimização de recursos.
+              </li>
+              <li>
+                <strong>IA e Pathfinding:</strong> Algoritmos para tomada de
+                decisão e navegação de unidades.
+              </li>
+            </ul>
+            <!-- Mecânicas-Chave -->
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg mt-4">
+              <h4 class="font-semibold text-blue-700 mb-2">
+                🔑 Mecânicas-Chave de Estratégia
+              </h4>
+              <ul
+                class="list-disc list-inside text-slate-700 text-sm space-y-1"
+              >
+                <li>Gerenciamento de recursos limitados.</li>
+                <li>Construção de base e hierarquia de unidades.</li>
+                <li>Fog of War (área visível e oculta).</li>
+                <li>
+                  Planejamento a curto e longo prazo (tática vs estratégia).
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FPS (First-Person Shooter) -->
+          <div class="bg-white p-6 rounded-lg shadow flex flex-col">
+            <h3
+              class="text-2xl font-semibold text-slate-800 mb-4 flex items-center"
+            >
+              <i class="fa-solid fa-crosshairs text-orange-600 mr-3"></i>FPS
+              (Tiro em Primeira Pessoa)
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/qgvV4GE8vVA"
+                title="DOOM Eternal Trailer"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <p class="text-slate-600 mt-3 mb-6">
+              <strong>DOOM Eternal</strong> é um FPS rápido e visceral que
+              destaca movimentação constante, física de projéteis e combate
+              fluido. Ele reforça o gênero com ritmo intenso e mecânicas
+              precisas de tiro em primeira pessoa.
+            </p>
+            <h4 class="font-semibold text-lg text-indigo-700 mb-2">
+              Mecânicas Fundamentais:
+            </h4>
+            <ul class="list-disc list-inside space-y-2 text-slate-700">
+              <li>
+                <strong>Física de Projéteis:</strong> Cálculo de trajetória
+                balística para armas.
+              </li>
+              <li>
+                <strong>Raycasting:</strong> Técnica de detecção instantânea
+                para tiros (hitscan).
+              </li>
+              <li>
+                <strong>Transformações Matriciais:</strong> Movimento de câmera
+                e mira.
+              </li>
+            </ul>
+            <!-- Mecânicas-Chave -->
+            <div
+              class="bg-orange-50 border border-orange-200 p-4 rounded-lg mt-4"
+            >
+              <h4 class="font-semibold text-orange-700 mb-2">
+                🔑 Mecânicas-Chave de FPS
+              </h4>
+              <ul
+                class="list-disc list-inside text-slate-700 text-sm space-y-1"
+              >
+                <li>Sistema de armas com diferentes alcances e cadências.</li>
+                <li>Gestão de munição e pontos de cobertura.</li>
+                <li>Mapas com rotas alternativas e pontos de controle.</li>
+                <li>Feedback imediato (som, animação, HUD responsivo).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção: Conexão com o Mercado de Jogos -->
+      <section
+        id="mercado"
+        aria-labelledby="mercado-heading"
+        class="mb-12 bg-amber-50 border border-amber-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="mercado-heading"
+          class="text-3xl font-semibold text-amber-800 mb-4"
+        >
+          💼 Conexão com o Mercado de Jogos
+        </h2>
+        <p class="text-slate-700 mb-4">
+          Os gêneros de jogos não são apenas categorias criativas – eles
+          impactam diretamente o
+          <strong>design, marketing e monetização</strong> de um título.
+          Compreender as tendências atuais ajuda desenvolvedores a criar
+          experiências alinhadas às expectativas do público e às demandas da
+          indústria.
+        </p>
+        <ul class="list-disc list-inside text-slate-700 space-y-2">
+          <li>
+            <strong>Free-to-Play e Multiplayer:</strong> Jogos competitivos e
+            cooperativos são base para modelos de monetização com temporadas e
+            microtransações.
+          </li>
+          <li>
+            <strong>Indies e Gêneros Híbridos:</strong> Pequenos estúdios inovam
+            misturando gêneros clássicos para criar experiências únicas.
+          </li>
+          <li>
+            <strong>Mercado Mobile:</strong> Foco em mecânicas simples e loop de
+            gameplay curto para capturar jogadores casuais.
+          </li>
+          <li>
+            <strong>AAA e Narrativa:</strong> Ação/Aventura e RPGs narrativos
+            dominam a indústria de consoles e PC premium.
+          </li>
+        </ul>
+        <div class="mt-6 bg-white p-4 rounded-lg shadow-sm">
+          <p class="text-slate-600 italic">
+            💡 <strong>Reflexão:</strong> Qual gênero você acha que terá mais
+            relevância nos próximos anos? O que o mercado brasileiro pode
+            oferecer de diferencial nesses segmentos?
+          </p>
+        </div>
+      </section>
+
+      <!-- Seção: Física da Interação -->
+      <section
+        id="fisica-interacao"
+        aria-labelledby="fisica-heading"
+        class="mb-12"
+      >
+        <h2
+          id="fisica-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-8"
+        >
+          ⚛️ A Física da Interação: Tipos de Gameplay
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-bold text-slate-700 mb-3">
+              <i class="fa-solid fa-user text-sky-600 mr-2"></i>Singleplayer
+              (Jogador vs Ambiente)
+            </h3>
+            <p class="text-slate-600">
+              A experiência é focada na jornada de um jogador contra desafios
+              criados pelo jogo (IA, puzzles, plataformas). A física governa a
+              interação do jogador com um mundo previsível, onde as regras são
+              constantes.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li class="flex items-start">
+                <i class="fa-solid fa-check-circle text-green-500 mt-1 mr-2"></i
+                ><span
+                  ><strong>Colisão:</strong> Geralmente inelástica. O jogador
+                  colide com uma parede e para (conservação de momento, mas
+                  perda de energia cinética).</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fa-solid fa-check-circle text-green-500 mt-1 mr-2"></i
+                ><span
+                  ><strong>Forças:</strong> Gravidade, forças de impulso (pulo),
+                  atrito são constantes e fundamentais para o level
+                  design.</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-bold text-slate-700 mb-3">
+              <i class="fa-solid fa-users text-purple-600 mr-2"></i>Multiplayer
+              (Jogador vs Jogador)
+            </h3>
+            <p class="text-slate-600">
+              A experiência é dinâmica e imprevisível, pois envolve a interação
+              entre múltiplos agentes humanos. A física precisa ser robusta e
+              sincronizada para garantir justiça e consistência para todos.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li class="flex items-start">
+                <i class="fa-solid fa-check-circle text-green-500 mt-1 mr-2"></i
+                ><span
+                  ><strong>Colisão:</strong> Pode ser elástica (dois jogadores
+                  se empurram e se repelem, conservando momento e energia) ou
+                  inelástica (um ataque que causa dano e "absorve" a energia do
+                  movimento).</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fa-solid fa-check-circle text-green-500 mt-1 mr-2"></i
+                ><span
+                  ><strong>Momento Linear:</strong> A conservação do momento é
+                  crucial para que interações como "empurrões" ou o impacto de
+                  projéteis em outros jogadores pareçam realistas e
+                  justas.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção: Laboratório Interativo -->
+      <section
+        id="laboratorio"
+        aria-labelledby="lab-heading"
+        class="mb-12 bg-emerald-50 border border-emerald-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="lab-heading"
+          class="text-3xl font-semibold text-emerald-800 mb-4"
+        >
+          🧪 Laboratório de Gêneros
+        </h2>
+        <p class="text-slate-700 mb-6">
+          Arraste os jogos para os gêneros que você acha corretos. Depois clique
+          em <strong>Verificar</strong> para conferir.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Área de Jogos -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-indigo-700 mb-3">🎮 Jogos</h3>
+            <div id="jogos" class="flex flex-wrap gap-2">
+              <div
+                class="draggable bg-indigo-100 text-indigo-800 px-3 py-1 rounded cursor-move"
+                draggable="true"
+                data-gen="rpg"
+              >
+                The Witcher 3
+              </div>
+              <div
+                class="draggable bg-indigo-100 text-indigo-800 px-3 py-1 rounded cursor-move"
+                draggable="true"
+                data-gen="fps"
+              >
+                DOOM Eternal
+              </div>
+              <div
+                class="draggable bg-indigo-100 text-indigo-800 px-3 py-1 rounded cursor-move"
+                draggable="true"
+                data-gen="estrategia"
+              >
+                Age of Empires IV
+              </div>
+              <div
+                class="draggable bg-indigo-100 text-indigo-800 px-3 py-1 rounded cursor-move"
+                draggable="true"
+                data-gen="acao"
+              >
+                Zelda: Tears of the Kingdom
+              </div>
+            </div>
+          </div>
+
+          <!-- Áreas de Drop -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h3 class="font-semibold text-indigo-700 mb-3">🏷️ Gêneros</h3>
+            <div
+              class="dropzone bg-slate-100 p-3 rounded mb-3"
+              data-accept="rpg"
+            >
+              RPG
+            </div>
+            <div
+              class="dropzone bg-slate-100 p-3 rounded mb-3"
+              data-accept="fps"
+            >
+              FPS
+            </div>
+            <div
+              class="dropzone bg-slate-100 p-3 rounded mb-3"
+              data-accept="estrategia"
+            >
+              Estratégia
+            </div>
+            <div class="dropzone bg-slate-100 p-3 rounded" data-accept="acao">
+              Ação/Aventura
+            </div>
+          </div>
+        </div>
+
+        <button
+          id="verificar"
+          class="mt-6 bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700"
+        >
+          Verificar
+        </button>
+        <p id="resultado" class="mt-4 font-semibold text-slate-800"></p>
+      </section>
+
+      <!-- Seção: Quiz -->
+      <section id="quiz" aria-labelledby="quiz-heading" class="mb-12">
+        <h2
+          id="quiz-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-8"
+        >
+          🧐 Teste seu Conhecimento
+        </h2>
+        <div class="space-y-4">
+          <details>
+            <summary>
+              1. A necessidade de calcular a trajetória de uma flecha em um jogo
+              de fantasia se baseia em qual conceito da física?
+              <span class="summary-arrow">▼</span>
+            </summary>
+            <div class="quiz-answer">
+              <p>
+                <strong>Resposta:</strong> Lançamento oblíquo de projéteis,
+                considerando a velocidade inicial, o ângulo e a força da
+                gravidade.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              2. "It Takes Two" é um jogo que só pode ser jogado por duas
+              pessoas juntas. Qual o seu tipo de gameplay principal?
+              <span class="summary-arrow">▼</span>
+            </summary>
+            <div class="quiz-answer">
+              <p>
+                <strong>Resposta:</strong> Multiplayer Cooperativo (Co-op). A
+                experiência é inteiramente construída em torno da colaboração.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              3. Em um jogo de luta, quando um personagem acerta um soco em
+              outro, qual princípio garante que ambos sintam o impacto?
+              <span class="summary-arrow">▼</span>
+            </summary>
+            <div class="quiz-answer">
+              <p>
+                <strong>Resposta:</strong> A Terceira Lei de Newton (Ação e
+                Reação). A força que o punho aplica no oponente é igual em
+                módulo à força que o oponente aplica de volta no punho.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Seção: Tarefa (TED) -->
+      <section
+        id="tarefa"
+        aria-labelledby="tarefa-heading"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): Analisando seu Jogo Favorito
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow not-prose">
+          <p class="text-lg leading-relaxed mb-4">
+            Para a próxima aula, vamos aplicar os conceitos que vimos hoje.
+          </p>
+          <ol class="list-decimal list-inside space-y-4">
+            <li>
+              <strong>Análise no Fórum:</strong> Escolha um jogo que você gosta
+              e joga (ou jogou) bastante. Crie uma postagem no fórum do Moodle
+              respondendo:
+              <blockquote
+                class="bg-slate-100 p-4 rounded-md text-lg italic border-l-4 border-slate-300 my-2"
+              >
+                "Qual é o gênero principal do seu jogo? E quais outros gêneros
+                secundários você consegue identificar nele? Justifique sua
+                classificação apontando 2 ou 3 mecânicas principais (físicas ou
+                matemáticas) que o definem."
+              </blockquote>
+            </li>
+            <li>
+              <strong>Identifique o Gameplay:</strong> Na mesma postagem,
+              classifique o tipo de gameplay predominante (Singleplayer,
+              Competitivo, Cooperativo, etc.) e explique como ele contribui para
+              a experiência.
+            </li>
+          </ol>
+          <div
+            class="mt-6 bg-indigo-50 border border-indigo-200 p-4 rounded-lg"
+          >
+            <p class="text-sm text-indigo-800">
+              💡 <strong>Exemplo de Postagem:</strong> "Meu jogo é
+              <strong>Rocket League</strong>. O gênero principal é
+              <strong>Esporte/Ação</strong>. As mecânicas fundamentais são a
+              <strong>física de colisões</strong> (elásticas entre carros e
+              bola) e a
+              <strong>dinâmica de movimento translacional</strong> para os
+              saltos e voos. O gameplay é totalmente
+              <strong>Multiplayer Competitivo</strong>, onde a previsibilidade
+              da física permite jogadas de alta habilidade."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção: Bibliografia -->
+      <section
+        id="bibliografia"
+        aria-labelledby="bibliografia-heading"
+        class="prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-4"
+        >
+          📚 Bibliografia de Apoio
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 not-prose">
+          <p>
+            <strong>MARTINHO, Carlos; SANTOS, Pedro; PRADA, Rui.</strong>
+            <em>Design e desenvolvimento de jogos.</em> Lisboa: FCA, 2014.
+          </p>
+          <p>
+            <strong>MASTROCOLA, Vicente Martin.</strong>
+            <em>Game design: modelos de negócio e processos criativos.</em> São
+            Paulo: Cengage Learning, 2015.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-4 text-center">
+        <p>&copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais</p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

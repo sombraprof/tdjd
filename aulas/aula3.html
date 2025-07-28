@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 3: Estudos de Caso, Análise Crítica e Inovações</title>
+    <meta
+      name="description"
+      content="Unidade I – Introdução ao Desenvolvimento de Jogos Digitais. Aula 3 completa com análise aprofundada de jogos Indie e AAA, mecânicas, público-alvo e tendências da indústria."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Game Design, Jogos Indie, Jogos AAA, Unity, Desenvolvimento de Jogos, Análise de Mecânicas"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 3: Estudos de Caso, Análise Crítica e Inovações"
+    />
+    <meta
+      property="og:description"
+      content="Análise aprofundada de jogos Indie e AAA, mecânicas, público-alvo e tendências da indústria."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/4338ca/ffffff?text=TDJD\nAula+3"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 3: Estudos de Caso, Análise Crítica e Inovações"
+    />
+    <meta
+      property="twitter:description"
+      content="Análise aprofundada de jogos Indie e AAA, mecânicas, público-alvo e tendências da indústria."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/4338ca/ffffff?text=TDJD\nAula+3"
+    />
+
+    <!-- CDN Links -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.1?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        /* bg-slate-50 */
+        padding-top: 60px;
+        /* Space for fixed navbar */
+      }
+
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+
+      .callout-info {
+        background-color: #f0f9ff;
+        /* bg-sky-50 */
+        border-color: #7dd3fc;
+        /* border-sky-300 */
+        color: #0c4a6e;
+        /* text-sky-800 */
+      }
+
+      .callout-practice {
+        background-color: #f0fdf4;
+        /* bg-emerald-50 */
+        border-color: #6ee7b7;
+        /* border-emerald-300 */
+        color: #065f46;
+        /* text-emerald-800 */
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Fixed Navigation Menu -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-indigo-700">TDJD - Aula 3</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-indigo-600"
+              >Plano</a
+            >
+            <a
+              href="#estudos-de-caso"
+              class="text-slate-600 hover:text-indigo-600"
+              >Estudos de Caso</a
+            >
+            <a
+              href="#analise-critica"
+              class="text-slate-600 hover:text-indigo-600"
+              >Análise Crítica</a
+            >
+            <a href="#tendencias" class="text-slate-600 hover:text-indigo-600"
+              >Tendências</a
+            >
+            <a href="#tarefa" class="text-slate-600 hover:text-indigo-600"
+              >TED</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-indigo-900 to-purple-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Estudos de Caso: Indie vs. AAA
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Aula 3: Unidade I – Introdução ao Desenvolvimento de Jogos Digitais
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Section: Lesson Plan -->
+      <section
+        id="plano-aula"
+        aria-labelledby="plano-aula-heading"
+        class="mb-12 bg-indigo-50 border border-indigo-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-indigo-700 mb-2 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <p class="text-center text-slate-600 mb-6">
+          Esta aula aprofunda a análise crítica de jogos digitais como sistemas
+          complexos, reforçando a competência de conceber, avaliar e projetar
+          experiências lúdicas. O objetivo é capacitar o discente a reconhecer
+          padrões de design, públicos-alvo e metodologias de produção,
+          integrando teoria e prática no contexto do mercado de jogos.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>UNIDADE E CONTEÚDO
+            </h3>
+            <p class="font-bold text-slate-700">
+              Unidade I – Introdução ao Desenvolvimento de Jogos Digitais
+            </p>
+            <p class="text-slate-600 mt-1 text-sm">
+              Estudos de caso (Indie/AAA), análise de mecânicas, público-alvo e
+              tendências.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Compreender as diferenças de escopo, mecânica e narrativa entre
+              jogos Indie e AAA, analisando criticamente seu impacto cultural e
+              tecnológico.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Estudo de caso, análise comparativa, discussão guiada e
+              Aprendizagem Baseada em Problemas (ABP).
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-desktop mr-2"></i>RECURSOS
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Slides, vídeos de gameplay, Padlet/Miro, fórum do Moodle.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-clock mr-2"></i>C.H.
+            </h3>
+            <p class="text-slate-600 text-sm">2 horas/aula.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-tasks mr-2"></i>TED
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Pesquisa comparativa: análise de dois jogos escolhidos pelo aluno,
+              com publicação no fórum.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-6 rounded-lg shadow-sm col-span-1 md:col-span-2"
+          >
+            <h3 class="font-semibold text-lg text-indigo-800 mb-2">
+              <i class="fa-solid fa-graduation-cap mr-2"></i>COMPETÊNCIAS
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Análise crítica, síntese de informações, integração
+              teoria-prática, leitura de mercado, repertório cultural e
+              tecnológico.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Historical Context -->
+      <section
+        id="contexto-historico"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg bg-white p-8 rounded-lg shadow"
+      >
+        <h2 class="text-3xl font-semibold text-slate-800 mb-4">
+          A Ascensão Indie e a Consolidação AAA
+        </h2>
+        <p>
+          As últimas duas décadas transformaram radicalmente a indústria de
+          jogos. O equilíbrio entre <strong>escala AAA</strong> e
+          <strong>inovação Indie</strong> moldou não apenas a economia do setor,
+          mas também a cultura gamer global.
+        </p>
+
+        <!-- Linha do tempo -->
+        <div class="mt-6 relative border-l-2 border-indigo-300 pl-6 space-y-6">
+          <div>
+            <h4 class="font-bold text-indigo-700">Anos 2000</h4>
+            <p class="text-sm">
+              Predomínio dos jogos AAA com orçamentos milionários. Publishers
+              definem tendências, e o acesso ao mercado é restrito a grandes
+              estúdios.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-indigo-700">2008–2010</h4>
+            <p class="text-sm">
+              Plataformas digitais como Steam e App Store democratizam a
+              distribuição. Motores como <strong>Unity</strong> e
+              <strong>Unreal</strong> tornam-se acessíveis, abrindo caminho para
+              o <strong>movimento Indie</strong>.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-indigo-700">2012–2015</h4>
+            <p class="text-sm">
+              Crowdfunding (Kickstarter) e comunidades online impulsionam
+              projetos independentes. Jogos como <em>Undertale</em> e
+              <em>Shovel Knight</em> mostram a força dos indies.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-indigo-700">2016–2020</h4>
+            <p class="text-sm">
+              Consolidação dos AAA como experiências cinematográficas (<em
+                >The Last of Us Part II</em
+              >) enquanto indies exploram narrativas autorais (<em>Celeste</em>,
+              <em>Hollow Knight</em>).
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-indigo-700">2020+</h4>
+            <p class="text-sm">
+              Cloud Gaming, IA gerativa e marketplaces globais ampliam ainda
+              mais o espaço para produções de todos os portes. A coexistência
+              Indie/AAA se torna mais integrada.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout-info mt-6">
+          <p>
+            <strong>Insight:</strong> A evolução tecnológica e os modelos de
+            distribuição foram catalisadores da ascensão Indie. Já os AAA
+            sustentaram a indústria com investimentos em larga escala e
+            marketing global.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: O que são Jogos Indie e AAA -->
+      <section
+        id="conceitos-indie-aaa"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg bg-white p-8 rounded-lg shadow"
+      >
+        <h2 class="text-3xl font-semibold text-slate-800 mb-4">
+          O que são Jogos Indie e AAA?
+        </h2>
+        <p>
+          A indústria de jogos digitais possui dois polos que representam
+          modelos de produção distintos: os
+          <strong>Jogos Indie</strong> (independentes) e os
+          <strong>Jogos AAA</strong> (grandes produções). Ambos são essenciais
+          para o ecossistema, equilibrando inovação e sustentabilidade.
+        </p>
+
+        <!-- Jogos Indie -->
+        <h3 class="text-2xl font-semibold mt-4 mb-2">
+          Jogos Indie (Independent Games)
+        </h3>
+        <div class="flex items-center space-x-4 mb-2">
+          <img
+            src="https://placehold.co/80x80/1e293b/ffffff?text=Indie"
+            alt="Indie"
+            class="rounded shadow"
+          />
+          <p class="flex-1">
+            Desenvolvidos por equipes pequenas ou indivíduos, com orçamentos
+            reduzidos e grande liberdade criativa. O foco está em
+            <strong>inovação mecânica</strong> e
+            <strong>autoria pessoal</strong>. Exemplos: <em>Hollow Knight</em>,
+            <em>Celeste</em>, <em>Undertale</em>.
+          </p>
+        </div>
+
+        <!-- Jogos AAA -->
+        <h3 class="text-2xl font-semibold mt-4 mb-2">Jogos AAA (Triple-A)</h3>
+        <div class="flex items-center space-x-4 mb-2">
+          <img
+            src="https://placehold.co/80x80/4f46e5/ffffff?text=AAA"
+            alt="AAA"
+            class="rounded shadow"
+          />
+          <p class="flex-1">
+            Produzidos por grandes estúdios com centenas de profissionais e
+            orçamentos multimilionários. Priorizam
+            <strong>alta qualidade audiovisual</strong> e
+            <strong>apelo de mercado massivo</strong>. Exemplos:
+            <em>The Last of Us Part II</em>, <em>Elden Ring</em>,
+            <em>Assassin's Creed</em>.
+          </p>
+        </div>
+
+        <!-- Tabela Comparativa -->
+        <div class="mt-6 overflow-x-auto bg-slate-50 p-4 rounded-lg shadow-sm">
+          <table class="min-w-full text-left text-sm">
+            <thead class="border-b font-medium bg-slate-100">
+              <tr>
+                <th class="px-4 py-2">Aspecto</th>
+                <th class="px-4 py-2">Jogos Indie</th>
+                <th class="px-4 py-2">Jogos AAA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="px-4 py-2 font-semibold">Equipe</td>
+                <td class="px-4 py-2">1 a ~50 pessoas</td>
+                <td class="px-4 py-2">Centenas ou mais</td>
+              </tr>
+              <tr class="border-b bg-slate-50">
+                <td class="px-4 py-2 font-semibold">Orçamento</td>
+                <td class="px-4 py-2">Baixo (milhares a poucos milhões)</td>
+                <td class="px-4 py-2">Alto (dezenas a centenas de milhões)</td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-2 font-semibold">Foco</td>
+                <td class="px-4 py-2">Inovação, mecânica central polida</td>
+                <td class="px-4 py-2">
+                  Escala, polimento audiovisual, marketing
+                </td>
+              </tr>
+              <tr class="bg-slate-50">
+                <td class="px-4 py-2 font-semibold">Público</td>
+                <td class="px-4 py-2">Nichado, experimental</td>
+                <td class="px-4 py-2">Massivo, mainstream</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info mt-6">
+          <p>
+            <strong>Resumo:</strong> Indies trazem liberdade e inovação; AAAs
+            oferecem escala e estabilidade de mercado. O desenvolvedor ideal
+            entende como absorver o melhor dos dois mundos para criar
+            experiências significativas.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Pipeline de Produção Indie vs AAA -->
+      <section
+        id="pipeline-producao"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg bg-white p-8 rounded-lg shadow"
+      >
+        <h2 class="text-3xl font-semibold text-slate-800 mb-4">
+          Pipeline de Produção Indie vs AAA
+        </h2>
+        <p>
+          O pipeline de desenvolvimento define como uma equipe transforma ideias
+          em um produto final. A estrutura e o ritmo diferem radicalmente entre
+          jogos <strong>Indie</strong> e <strong>AAA</strong>, impactando
+          orçamento, prazo e design.
+        </p>
+
+        <!-- Pipeline Indie -->
+        <h3 class="text-2xl font-semibold mt-4 mb-2">Pipeline Indie</h3>
+        <div class="bg-slate-50 p-4 rounded-lg shadow-sm mb-4">
+          <ol class="list-decimal pl-6">
+            <li>
+              <strong>Conceito:</strong> Ideias rápidas, prototipagem leve.
+            </li>
+            <li>
+              <strong>Protótipo Jogável:</strong> Iterações curtas e feedback
+              constante.
+            </li>
+            <li>
+              <strong>Produção:</strong> Equipe reduzida, funções acumuladas.
+            </li>
+            <li>
+              <strong>Teste e Ajuste:</strong> Testes com comunidade e
+              refinamento.
+            </li>
+            <li>
+              <strong>Lançamento:</strong> Publicação digital (Steam, Itch.io,
+              etc.).
+            </li>
+          </ol>
+        </div>
+
+        <!-- Pipeline AAA -->
+        <h3 class="text-2xl font-semibold mt-4 mb-2">Pipeline AAA</h3>
+        <div class="bg-slate-50 p-4 rounded-lg shadow-sm">
+          <ol class="list-decimal pl-6">
+            <li>
+              <strong>Pré-produção:</strong> Design Doc, protótipo de conceito,
+              alinhamento executivo.
+            </li>
+            <li>
+              <strong>Produção:</strong> Equipes especializadas, milestones
+              rígidas.
+            </li>
+            <li>
+              <strong>QA Massivo:</strong> Equipes de testes dedicadas e
+              polimento audiovisual.
+            </li>
+            <li>
+              <strong>Marketing Paralelo:</strong> Hype building e campanhas de
+              mídia.
+            </li>
+            <li>
+              <strong>Lançamento:</strong> Publicação multiplataforma com
+              suporte pós-release.
+            </li>
+          </ol>
+        </div>
+
+        <!-- Fluxogramas visuais -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 not-prose">
+          <div class="bg-white border border-emerald-300 p-4 rounded-lg shadow">
+            <h4 class="font-semibold text-emerald-700 mb-2">Fluxo Indie</h4>
+            <img
+              src="https://placehold.co/600x200/10b981/ffffff?text=Ideia+→+Protótipo+→+Iteração+→+Lançamento"
+              alt="Fluxograma Indie"
+              class="rounded"
+            />
+          </div>
+          <div class="bg-white border border-indigo-300 p-4 rounded-lg shadow">
+            <h4 class="font-semibold text-indigo-700 mb-2">Fluxo AAA</h4>
+            <img
+              src="https://placehold.co/600x200/6366f1/ffffff?text=Pré-Produção+→+Produção+→+QA+→+Marketing+→+Lançamento"
+              alt="Fluxograma AAA"
+              class="rounded"
+            />
+          </div>
+        </div>
+
+        <!-- Callout Insight -->
+        <div class="callout callout-info mt-6">
+          <p>
+            <strong>Insight:</strong> Um bom desenvolvedor entende que o
+            pipeline define mais do que etapas técnicas: ele influencia o
+            próprio design do jogo. Projetos híbridos podem combinar a agilidade
+            Indie com o polimento AAA, adaptando processos para equipes médias.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Impacto Cultural dos Jogos -->
+      <section
+        id="impacto-cultural"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg bg-white p-8 rounded-lg shadow"
+      >
+        <h2 class="text-3xl font-semibold text-slate-800 mb-4">
+          Impacto Cultural dos Jogos
+        </h2>
+        <p>
+          Jogos digitais vão muito além do entretenimento. Eles são expressões
+          culturais que refletem valores, narrativas e contextos sociais. Tanto
+          <strong>Indies</strong> quanto <strong>AAAs</strong> moldam a forma
+          como percebemos histórias, tecnologia e até identidade coletiva.
+        </p>
+
+        <!-- Jogos Indie -->
+        <h3 class="text-2xl font-semibold mt-4 mb-2">Jogos Indie</h3>
+        <p>
+          Costumam explorar narrativas pessoais e temas sociais. Exemplos:
+          <em>Papers, Please</em> (migração e política), <em>Celeste</em> (saúde
+          mental), <em>Hades</em> (mitologia reimaginada). São reflexos de
+          autoria individual e diversidade cultural.
+        </p>
+
+        <!-- Jogos AAA -->
+        <h3 class="text-2xl font-semibold mt-4 mb-2">Jogos AAA</h3>
+        <p>
+          Grandes produções moldam tendências globais e se tornam marcos
+          culturais. Exemplos: <em>The Last of Us</em> (narrativa
+          cinematográfica e inclusão), <em>Assassin’s Creed</em> (representação
+          histórica), <em>Elden Ring</em> (imersão em mitologias fictícias).
+        </p>
+
+        <!-- Mobile e Cultura Pop -->
+        <h3 class="text-2xl font-semibold mt-4 mb-2">
+          Jogos Mobile e Cultura Pop
+        </h3>
+        <p>
+          Jogos como <em>Pokémon GO</em> e <em>Free Fire</em> mostram como o
+          mobile influencia comportamentos sociais, cria comunidades e até
+          movimenta economias locais.
+        </p>
+
+        <!-- Sub-seção: Jogos como Patrimônio Cultural -->
+        <div class="bg-slate-50 p-4 rounded-lg shadow-sm mt-6">
+          <h4 class="font-semibold text-indigo-700 mb-2">
+            🎨 Games como Patrimônio Cultural
+          </h4>
+          <p>
+            Em 2022, a UNESCO reconheceu os jogos digitais como expressão
+            cultural significativa. Arquivamento, preservação e estudos
+            acadêmicos são essenciais para garantir que essa arte interativa
+            faça parte da memória coletiva.
+          </p>
+        </div>
+
+        <!-- Imagem ilustrativa -->
+        <div class="mt-6 not-prose">
+          <img
+            src="https://placehold.co/1000x400/0f172a/ffffff?text=Jogos+como+Cultura+Global"
+            alt="Ilustração de impacto cultural dos jogos"
+            class="rounded-lg shadow"
+          />
+        </div>
+
+        <!-- Callout Reflexão -->
+        <div class="callout callout-practice mt-6">
+          <p>
+            <strong>Reflexão:</strong>
+            Qual jogo mais impactou sua visão de mundo? Ele trouxe uma
+            narrativa, mecânica ou estética que mudou a forma como você entende
+            cultura e sociedade?
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Exercício de Design -->
+      <section
+        id="exercicio-design"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg bg-white p-8 rounded-lg shadow"
+      >
+        <h2 class="text-3xl font-semibold text-slate-800 mb-4">
+          Exercício de Design
+        </h2>
+        <p>
+          O objetivo desta atividade é criar um
+          <strong>conceito de jogo híbrido</strong> que combine elementos de um
+          projeto <strong>Indie</strong> (inovação, autoria) com características
+          de um <strong>AAA</strong> (polimento, escala). Isso reforça a
+          compreensão de pipelines, mecânicas centrais e alinhamento com
+          público-alvo.
+        </p>
+
+        <!-- Passo a passo -->
+        <ol class="list-decimal pl-6 mt-4 space-y-2">
+          <li>
+            Defina o <strong>gênero principal</strong> e uma mecânica central
+            inovadora (core loop).
+          </li>
+          <li>
+            Escolha um <strong>tema narrativo</strong> e defina o público-alvo
+            (casual, hardcore, etc.).
+          </li>
+          <li>
+            Liste 3 elementos que dariam “escala AAA” ao projeto (ex: gráficos,
+            dublagem, marketing).
+          </li>
+          <li>
+            Escreva em 3 a 4 frases como seu jogo se diferencia no mercado.
+          </li>
+        </ol>
+
+        <!-- Exemplo de Resposta -->
+        <div class="bg-slate-50 p-4 rounded-lg shadow-sm mt-6">
+          <h4 class="font-semibold text-indigo-700 mb-2">
+            📌 Exemplo de Resposta:
+          </h4>
+          <p>
+            <strong>Gênero:</strong> Plataforma narrativa com elementos de
+            puzzle.
+          </p>
+          <p>
+            <strong>Mecânica Central:</strong> Manipulação do tempo para
+            resolver desafios e alterar a narrativa.
+          </p>
+          <p>
+            <strong>Tema e Público-Alvo:</strong> Viagem emocional sobre perda e
+            superação. Público: jogadores que buscam experiências imersivas e
+            reflexivas.
+          </p>
+          <p>
+            <strong>Escala AAA:</strong> Dublagem profissional, trilha sonora
+            orquestrada, marketing global.
+          </p>
+        </div>
+
+        <!-- Callout de Dica -->
+        <div class="callout callout-info mt-6">
+          <p>
+            <strong>Dica:</strong> Pense no equilíbrio entre
+            <em>coração Indie</em> (autoria e inovação) e
+            <em>acabamento AAA</em> (polimento, escala). Pergunte-se:
+            <em
+              >“O que torna meu jogo único e como ele se conecta com o
+              público?”</em
+            >
+          </p>
+        </div>
+
+        <!-- Atividade Complementar -->
+        <div
+          class="mt-6 bg-emerald-50 border border-emerald-200 p-4 rounded-lg"
+        >
+          <h4 class="font-semibold text-emerald-700 mb-2">
+            💡 Atividade Complementar:
+          </h4>
+          <p>
+            Desenhe rapidamente (pode ser no papel) a tela inicial e uma tela de
+            gameplay do seu conceito. Não foque em arte, mas na comunicação das
+            mecânicas e interface.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Glossário de Termos -->
+      <section id="glossario" class="mb-12 bg-white p-8 rounded-lg shadow">
+        <h2 class="text-3xl font-semibold text-slate-800 mb-6">
+          📖 Glossário de Termos
+        </h2>
+        <p class="text-slate-600 mb-6">
+          Termos fundamentais para análise e desenvolvimento de jogos digitais.
+          Cada um contém um exemplo prático retirado dos estudos de caso desta
+          aula.
+        </p>
+
+        <!-- Grid de Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card AAA -->
+          <div
+            class="bg-slate-50 border border-slate-200 p-4 rounded-lg shadow-sm"
+          >
+            <h4 class="font-semibold text-indigo-700 mb-1">AAA</h4>
+            <p class="text-sm text-slate-700">
+              Jogos de alto orçamento, grandes equipes e apelo de mercado
+              massivo.
+            </p>
+            <p class="text-xs mt-2 text-slate-500">
+              <strong>Exemplo:</strong> <em>The Last of Us Part II</em>, pela
+              escala de produção e polimento cinematográfico.
+            </p>
+          </div>
+
+          <!-- Card Indie -->
+          <div
+            class="bg-slate-50 border border-slate-200 p-4 rounded-lg shadow-sm"
+          >
+            <h4 class="font-semibold text-indigo-700 mb-1">Indie</h4>
+            <p class="text-sm text-slate-700">
+              Produções independentes com foco em inovação mecânica e autoria
+              criativa.
+            </p>
+            <p class="text-xs mt-2 text-slate-500">
+              <strong>Exemplo:</strong> <em>Celeste</em>, narrativa íntima com
+              mecânicas precisas desenvolvidas por equipe pequena.
+            </p>
+          </div>
+
+          <!-- Card Core Loop -->
+          <div
+            class="bg-slate-50 border border-slate-200 p-4 rounded-lg shadow-sm"
+          >
+            <h4 class="font-semibold text-indigo-700 mb-1">Core Loop</h4>
+            <p class="text-sm text-slate-700">
+              Conjunto de ações centrais que o jogador repete durante o jogo.
+            </p>
+            <p class="text-xs mt-2 text-slate-500">
+              <strong>Exemplo:</strong> Em <em>Hollow Knight</em>: explorar →
+              lutar → evoluir habilidades → explorar mais.
+            </p>
+          </div>
+
+          <!-- Card Game Feel -->
+          <div
+            class="bg-slate-50 border border-slate-200 p-4 rounded-lg shadow-sm"
+          >
+            <h4 class="font-semibold text-indigo-700 mb-1">Game Feel</h4>
+            <p class="text-sm text-slate-700">
+              Sensação tátil e emocional que o jogador tem ao interagir com o
+              jogo.
+            </p>
+            <p class="text-xs mt-2 text-slate-500">
+              <strong>Exemplo:</strong> O peso dos golpes em
+              <em>Elden Ring</em> dá sensação de impacto e desafio.
+            </p>
+          </div>
+
+          <!-- Card ABP -->
+          <div
+            class="bg-slate-50 border border-slate-200 p-4 rounded-lg shadow-sm"
+          >
+            <h4 class="font-semibold text-indigo-700 mb-1">ABP</h4>
+            <p class="text-sm text-slate-700">
+              Aprendizagem Baseada em Problemas: metodologia ativa usada para
+              esta aula.
+            </p>
+            <p class="text-xs mt-2 text-slate-500">
+              <strong>Exemplo:</strong> Analisar diferenças Indie vs AAA e
+              aplicar em projeto autoral.
+            </p>
+          </div>
+
+          <!-- Card Hitbox -->
+          <div
+            class="bg-slate-50 border border-slate-200 p-4 rounded-lg shadow-sm"
+          >
+            <h4 class="font-semibold text-indigo-700 mb-1">Hitbox</h4>
+            <p class="text-sm text-slate-700">
+              Área invisível que define a detecção de colisões e acertos.
+            </p>
+            <p class="text-xs mt-2 text-slate-500">
+              <strong>Exemplo:</strong> Precisão das hitboxes em
+              <em>Celeste</em> e <em>Hollow Knight</em> garante controle exato.
+            </p>
+          </div>
+        </div>
+
+        <!-- Callout final -->
+        <div class="callout callout-info mt-8">
+          <p>
+            <strong>Dica:</strong> Use estes termos ao escrever sua análise ou
+            projeto. Isso demonstra domínio conceitual e conecta teoria à
+            prática.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Case Studies -->
+      <section
+        id="estudos-de-caso"
+        aria-labelledby="estudos-heading"
+        class="mb-12"
+      >
+        <h2
+          id="estudos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-8"
+        >
+          🔬 Estudos de Caso: Indie vs. AAA
+        </h2>
+        <!-- Para o Professor: Use os vídeos para mostrar o "game feel". Peça aos alunos que observem a fluidez da animação, o design de som e o feedback visual. Isso ajuda a conectar a análise teórica com a experiência prática. -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Case Study: Hollow Knight (Indie) -->
+          <article
+            class="bg-white p-6 rounded-lg shadow-lg flex flex-col"
+            aria-labelledby="hollow-knight-heading"
+          >
+            <h3
+              id="hollow-knight-heading"
+              class="text-2xl font-semibold text-slate-800 mb-4"
+            >
+              Indie: Hollow Knight
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/UAO2urG23S4"
+                title="Trailer de Gameplay de Hollow Knight, um jogo Indie do gênero Metroidvania aclamado pela crítica."
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="prose prose-slate max-w-none">
+              <p class="text-sm">
+                Desenvolvido por uma equipe de 3 pessoas (Team Cherry), Hollow
+                Knight é um marco do gênero Metroidvania que combina exploração,
+                combate desafiador e uma narrativa ambiental profunda.
+              </p>
+              <h4>Análise Crítica das Mecânicas</h4>
+              <p>
+                O jogo exemplifica o conceito de que "regras simples podem gerar
+                uma complexidade surpreendente" (Salen & Zimmerman, 2012), onde
+                ações básicas (pular, atacar) criam um combate emergente. A
+                progressão não linear exige que o jogador mapeie mentalmente o
+                mundo, uma abordagem prática de design defendida por Schuytema.
+              </p>
+              <h4>Público-Alvo e Impacto</h4>
+              <p>
+                Destinado a jogadores que apreciam desafio, exploração e
+                narrativas sutis. Seu sucesso comercial provou a viabilidade de
+                projetos indie ambiciosos, influenciando uma onda de jogos do
+                mesmo gênero.
+              </p>
+              <h4>Conexão Físico-Matemática</h4>
+              <div class="callout callout-info mt-4">
+                <p>
+                  <strong>Equação da Física:</strong> O pulo segue a equação do
+                  movimento uniformemente variado: <code>h = v₀² / (2g)</code>,
+                  onde <em>h</em> é a altura máxima, <em>v₀</em> a velocidade
+                  inicial e <em>g</em> a gravidade simulada.
+                </p>
+              </div>
+              <ul class="text-sm">
+                <li>
+                  <strong>Física do Pulo:</strong> Trajetória parabólica
+                  precisa, com altura controlada pelo tempo que o botão é
+                  pressionado.
+                </li>
+                <li>
+                  <strong>IA dos Inimigos:</strong> Padrões de ataque baseados
+                  em máquinas de estados finitos e pathfinding simples.
+                </li>
+                <li>
+                  <strong>Detecção de Colisão:</strong> Hitboxes e hurtboxes
+                  precisos, essenciais para o combate desafiador.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Case Study: The Last of Us Part II (AAA) -->
+          <article
+            class="bg-white p-6 rounded-lg shadow-lg flex flex-col"
+            aria-labelledby="tlou2-heading"
+          >
+            <h3
+              id="tlou2-heading"
+              class="text-2xl font-semibold text-slate-800 mb-4"
+            >
+              AAA: The Last of Us Part II
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/vhII1qlcZ4E"
+                title="Trailer Oficial de The Last of Us Part II - PlayStation"
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="prose prose-slate max-w-none">
+              <p class="text-sm">
+                Produzido pela Naughty Dog, um estúdio com centenas de
+                funcionários, este jogo é um expoente da narrativa
+                cinematográfica em Ação-Aventura, com altíssimo valor de
+                produção.
+              </p>
+              <h4>Análise Crítica das Mecânicas</h4>
+              <p>
+                A experiência é altamente dirigida para criar tensão emocional.
+                As mecânicas de stealth e combate são "regras significativas"
+                que reforçam o tema da sobrevivência brutal. A abordagem de
+                Schuytema (2008) é vista no polimento extremo de cada interação,
+                criando uma experiência fluida e imersiva.
+              </p>
+              <h4>Público-Alvo e Impacto</h4>
+              <p>
+                Focado em um público maduro que busca narrativas complexas e
+                experiências cinematográficas. O jogo gerou extenso debate
+                cultural e estabeleceu novos padrões para animação, atuação e
+                design de som em jogos.
+              </p>
+              <h4>Conexão Físico-Matemática</h4>
+              <div class="callout callout-info mt-4">
+                <p>
+                  <strong>Equação aplicada:</strong> A física de ragdoll usa a
+                  conservação do momento linear: <code>p = m * v</code>, onde
+                  <em>p</em> é o momento, <em>m</em> a massa do corpo e
+                  <em>v</em> a velocidade no instante do impacto.
+                </p>
+                <p>
+                  Essa simulação cria reações realistas a tiros e explosões,
+                  ajustando <em>m</em> e <em>v</em> por tipo de objeto e força
+                  aplicada.
+                </p>
+              </div>
+              <ul class="text-sm">
+                <li>
+                  <strong>IA Comportamental:</strong> Inimigos usam grafos de
+                  navegação complexos para flanquear, se comunicar e reagir ao
+                  ambiente.
+                </li>
+                <li>
+                  <strong>Física de Ragdoll e Impacto:</strong> Simulações
+                  físicas realistas para reações a tiros e explosões, utilizando
+                  conceitos de momento e força.
+                </li>
+                <li>
+                  <strong>Sistema de Animação:</strong> Cinemática inversa e
+                  motion matching para criar movimentos fluidos e contextuais.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Case Study: Celeste (Indie) -->
+          <article
+            class="bg-white p-6 rounded-lg shadow-lg flex flex-col"
+            aria-labelledby="celeste-heading"
+          >
+            <h3
+              id="celeste-heading"
+              class="text-2xl font-semibold text-slate-800 mb-4"
+            >
+              Indie: Celeste
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/70d9irlxiB4"
+                title="Trailer de Gameplay de Celeste, um jogo Indie de plataforma com forte apelo narrativo."
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="prose prose-slate max-w-none">
+              <p class="text-sm">
+                Criado por uma pequena equipe, Celeste é um jogo de plataforma
+                que une mecânicas extremamente precisas a uma narrativa aclamada
+                sobre saúde mental e superação.
+              </p>
+              <h4>Análise Crítica das Mecânicas</h4>
+              <p>
+                O core loop é simples (pulo, escalada, dash), mas o level design
+                explora essas "regras" ao máximo, criando desafios complexos. O
+                jogo demonstra a "abordagem prática" de Schuytema ao ensinar
+                novas interações ao jogador sem tutoriais explícitos, apenas
+                através do design das fases.
+              </p>
+              <h4>Público-Alvo e Impacto</h4>
+              <p>
+                Atrai tanto jogadores hardcore de plataforma quanto aqueles
+                interessados em narrativas emocionantes. Celeste é um exemplo de
+                como a dissonância ludonarrativa pode ser evitada, unindo
+                perfeitamente o desafio do gameplay com a jornada da
+                protagonista.
+              </p>
+              <h4>Conexão Físico-Matemática</h4>
+              <div class="callout callout-info mt-4">
+                <p>
+                  <strong>Equação aplicada:</strong> O dash é um vetor de
+                  velocidade aplicado instantaneamente: <code>v = v₀ * û</code>,
+                  onde <em>v₀</em> é a magnitude fixa da velocidade e
+                  <em>û</em> é um vetor unitário indicando a direção escolhida
+                  pelo jogador.
+                </p>
+                <p>
+                  Isso permite oito direções precisas (N, S, L, O, e diagonais)
+                  com controle matemático sobre a trajetória.
+                </p>
+              </div>
+              <ul class="text-sm">
+                <li>
+                  <strong>Controle de Vetores:</strong> O dash é um vetor de
+                  velocidade aplicado instantaneamente, com direções precisas em
+                  8 eixos.
+                </li>
+                <li>
+                  <strong>Física de Plataforma:</strong> Controle apurado sobre
+                  a gravidade, aceleração e atrito para permitir movimentos de
+                  alta precisão.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Case Study: Elden Ring (AAA) -->
+          <article
+            class="bg-white p-6 rounded-lg shadow-lg flex flex-col"
+            aria-labelledby="elden-ring-heading"
+          >
+            <h3
+              id="elden-ring-heading"
+              class="text-2xl font-semibold text-slate-800 mb-4"
+            >
+              AAA: Elden Ring
+            </h3>
+            <div class="aspect-video mb-4">
+              <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/E3Huy2cdih0"
+                title="Trailer de Gameplay de Elden Ring, um jogo AAA de RPG de Ação em mundo aberto."
+                frameborder="0"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="prose prose-slate max-w-none">
+              <p class="text-sm">
+                Da FromSoftware, Elden Ring transporta a fórmula "Souls" para um
+                vasto mundo aberto, combinando a escala de produção AAA com um
+                design que incentiva a descoberta e a autonomia do jogador.
+              </p>
+              <h4>Análise Crítica das Mecânicas</h4>
+              <p>
+                O jogo cria "gameplay emergente" ao dar ao jogador um conjunto
+                de ferramentas e um mundo cheio de sistemas que interagem de
+                formas não previstas. A dificuldade elevada força o jogador a
+                dominar as "regras" do combate, como timing e gerenciamento de
+                estamina, um pilar do design da série.
+              </p>
+              <h4>Público-Alvo e Impacto</h4>
+              <p>
+                Direcionado a jogadores que buscam desafio e um senso de
+                conquista. Elden Ring redefiniu as expectativas para jogos de
+                mundo aberto, mostrando que é possível ter escala massiva sem
+                sacrificar a densidade de conteúdo e o design intencional.
+              </p>
+              <h4>Conexão Físico-Matemática</h4>
+              <div class="callout callout-info mt-4">
+                <p>
+                  <strong>Equação aplicada:</strong> O peso do equipamento afeta
+                  o movimento usando o momento de inércia:
+                  <code>τ = I * α</code>, onde <em>τ</em> é o torque,
+                  <em>I</em> o momento de inércia (relacionado à massa) e
+                  <em>α</em> a aceleração angular.
+                </p>
+                <p>
+                  Rolamentos mais lentos em personagens pesados são resultado do
+                  aumento de <em>I</em>, criando uma sensação física coerente.
+                </p>
+              </div>
+              <ul class="text-sm">
+                <li>
+                  <strong>Sistema de Colisão (Hitbox):</strong> Detecção de
+                  colisão poligonal extremamente precisa que define o sucesso ou
+                  falha dos ataques.
+                </li>
+                <li>
+                  <strong>Física de Equipamentos:</strong> O peso do equipamento
+                  (massa) afeta diretamente a dinâmica do movimento do
+                  personagem (velocidade de rolamento, consumo de estamina).
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <!-- Comparative Table Block -->
+        <div class="mt-12 overflow-x-auto bg-white p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold text-center text-slate-800 mb-4">
+            Tabela Comparativa: Indie vs. AAA
+          </h4>
+          <table class="min-w-full text-left text-sm">
+            <thead class="border-b font-medium bg-slate-100">
+              <tr>
+                <th scope="col" class="px-4 py-3">Critério</th>
+                <th scope="col" class="px-4 py-3">Jogos Indie</th>
+                <th scope="col" class="px-4 py-3">Jogos AAA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="px-4 py-3 font-semibold">Tamanho da Equipe</td>
+                <td class="px-4 py-3">Pequeno (1 a ~50 pessoas)</td>
+                <td class="px-4 py-3">
+                  Grande (Centenas a milhares de pessoas)
+                </td>
+              </tr>
+              <tr class="border-b bg-slate-50">
+                <td class="px-4 py-3 font-semibold">Orçamento</td>
+                <td class="px-4 py-3">Limitado (milhares a poucos milhões)</td>
+                <td class="px-4 py-3">
+                  Elevado (dezenas a centenas de milhões)
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="px-4 py-3 font-semibold">Escopo de Mecânicas</td>
+                <td class="px-4 py-3">
+                  Focado em 1 ou 2 mecânicas inovadoras e polidas
+                </td>
+                <td class="px-4 py-3">
+                  Múltiplos sistemas complexos e interligados
+                </td>
+              </tr>
+              <tr class="bg-slate-50">
+                <td class="px-4 py-3 font-semibold">Público-Alvo</td>
+                <td class="px-4 py-3">
+                  Nichado, busca por jogadores que apreciam inovação
+                </td>
+                <td class="px-4 py-3">Amplo, busca apelo massivo de mercado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Reflection Block -->
+        <div class="mt-12 callout callout-practice" role="note">
+          <h4 class="font-bold text-lg mb-2">
+            <i class="fa-solid fa-lightbulb mr-2"></i>Reflexão para o
+            Desenvolvedor
+          </h4>
+          <p>
+            Quais elementos e abordagens de design vistos nestes estudos de caso
+            (Indie e AAA) podem ser aplicados ou adaptados para projetos
+            autorais com recursos limitados? O que podemos aprender com o foco
+            em mecânicas polidas dos indies e com a construção de mundo dos
+            AAAs?
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Critical Analysis -->
+      <section
+        id="analise-critica"
+        aria-labelledby="analise-critica-heading"
+        class="mb-12"
+      >
+        <h2
+          id="analise-critica-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-8"
+        >
+          🗣️ Análise Crítica Coletiva
+        </h2>
+
+        <div class="bg-white p-8 rounded-lg shadow space-y-6">
+          <p class="text-slate-700 leading-relaxed">
+            Agora, vamos debater em grupo. A análise crítica é uma das
+            ferramentas mais importantes de um game designer. Não se trata de
+            dizer se um jogo é <em>bom</em> ou <em>ruim</em>, mas de entender
+            <strong>por que</strong> ele funciona (ou não) para seu público.
+          </p>
+
+          <div class="space-y-3">
+            <h4 class="font-semibold text-lg text-indigo-700">
+              Perguntas Norteadoras para Discussão:
+            </h4>
+            <ul class="list-disc pl-6 space-y-2 text-slate-700">
+              <li>
+                O que define o "sucesso" de um jogo indie em comparação com um
+                AAA? São as mesmas métricas?
+              </li>
+              <li>
+                Como o orçamento e o tamanho da equipe impactam as decisões de
+                design e o escopo das mecânicas?
+              </li>
+              <li>
+                Qual conceito físico-matemático (colisão, vetores, IA) mais se
+                repete nos jogos analisados e por quê?
+              </li>
+            </ul>
+          </div>
+
+          <blockquote
+            class="text-xl italic text-slate-600 border-l-4 border-indigo-300 pl-4 leading-relaxed"
+          >
+            "O jogo não está no computador, está na mente do jogador. O trabalho
+            do designer é criar as regras e o contexto que possibilitam essa
+            experiência significativa."
+            <footer class="text-base not-italic text-slate-500 mt-2">
+              — Adaptado de Salen & Zimmerman, "Regras do Jogo"
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="mt-8 callout callout-practice" role="note">
+          <h4 class="font-bold text-lg mb-2">
+            <i class="fa-solid fa-users-rays mr-2"></i>Atividade em Grupo (5
+            min)
+          </h4>
+          <p class="text-slate-700 leading-relaxed">
+            Acessem o link do Padlet/Miro compartilhado. Cada grupo deve postar
+            um "insight" principal da discussão: uma conclusão, uma nova
+            pergunta ou uma observação interessante sobre as diferenças entre o
+            desenvolvimento Indie e AAA.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Trends and Innovations -->
+      <section
+        id="tendencias"
+        aria-labelledby="tendencias-heading"
+        class="mb-12"
+      >
+        <h2
+          id="tendencias-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-8"
+        >
+          🚀 Tendências e Inovações na Indústria
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <!-- Card: Cloud Gaming -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-semibold text-indigo-700 mb-2">
+              <i class="fa-solid fa-cloud mr-2"></i>Cloud Gaming
+            </h4>
+            <p class="text-sm text-slate-600">
+              Serviços como Xbox Cloud Gaming e GeForce NOW, que permitem jogar
+              títulos AAA em qualquer dispositivo via streaming.
+            </p>
+          </div>
+          <!-- Card: Crossplay -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-semibold text-indigo-700 mb-2">
+              <i class="fa-solid fa-people-arrows mr-2"></i>Crossplay
+            </h4>
+            <p class="text-sm text-slate-600">
+              Unificação de ecossistemas, permitindo que jogadores de diferentes
+              plataformas (PC, PlayStation, Xbox) joguem juntos.
+            </p>
+          </div>
+          <!-- Card: GaaS -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-semibold text-indigo-700 mb-2">
+              <i class="fa-solid fa-arrows-spin mr-2"></i>Jogos como Serviço
+              (GaaS)
+            </h4>
+            <p class="text-sm text-slate-600">
+              Modelos de negócio baseados em atualizações contínuas, passes de
+              batalha e conteúdo sazonal para manter os jogadores engajados.
+            </p>
+          </div>
+          <!-- Card: Generative AI -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-semibold text-indigo-700 mb-2">
+              <i class="fa-solid fa-robot mr-2"></i>IA Gerativa em Jogos
+            </h4>
+            <p class="text-sm text-slate-600">
+              Uso de IA para criar diálogos dinâmicos, assets, texturas e até
+              mesmo quests, prometendo revolucionar a criação de conteúdo.
+            </p>
+          </div>
+          <!-- Card: VR/AR -->
+          <div class="bg-white p-4 rounded-lg shadow">
+            <h4 class="font-semibold text-indigo-700 mb-2">
+              <i class="fa-solid fa-vr-cardboard mr-2"></i>VR/AR
+            </h4>
+            <p class="text-sm text-slate-600">
+              Realidade Virtual e Aumentada continuam a evoluir, buscando criar
+              experiências mais imersivas e interativas.
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+          <h4 class="font-semibold text-center text-slate-700 mb-4">
+            Oportunidades no Mercado Brasileiro
+          </h4>
+          <p class="text-slate-600 text-center">
+            O Brasil se destaca no desenvolvimento de jogos indie com identidade
+            cultural própria. O perfil de consumo nacional é forte no mobile e
+            free-to-play. Políticas de incentivo, como a Lei Paulo Gustavo,
+            buscam fomentar ainda mais a produção local.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Task (TED) -->
+      <section
+        id="tarefa"
+        aria-labelledby="tarefa-heading"
+        class="mb-12 prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): Pesquisa de Campo Comparativa
+        </h2>
+        <!-- Para o Professor: Ao avaliar o TED, foque na qualidade da argumentação e na capacidade do aluno de conectar teoria e prática. A identificação correta do gênero é menos importante do que a justificativa apresentada. Dê feedback construtivo sobre a profundidade da análise. -->
+        <div class="bg-white p-8 rounded-lg shadow not-prose">
+          <p class="text-lg leading-relaxed mb-4">
+            Para consolidar a habilidade de análise crítica, a tarefa desta
+            semana é uma pesquisa de campo. O objetivo é aplicar os conceitos
+            vistos em aula a dois jogos de sua escolha.
+          </p>
+          <h4 class="font-semibold text-indigo-800 mt-6 mb-2">
+            Passo a Passo da Atividade:
+          </h4>
+          <ol class="list-decimal list-inside space-y-4">
+            <li>
+              <strong>Escolha dos Jogos:</strong> Selecione dois jogos de
+              gêneros diferentes. Pode ser um que você já jogou ou um que você
+              irá observar através de vídeos de gameplay.
+            </li>
+            <li>
+              <strong>Análise Individual:</strong> Para cada jogo, analise e
+              anote os seguintes pontos:
+              <ul class="list-disc list-inside mt-2 pl-4 text-sm">
+                <li>
+                  <strong>Gênero e Hibridismo:</strong> Qual o gênero principal
+                  e quais elementos de outros gêneros ele incorpora?
+                </li>
+                <li>
+                  <strong>Mecânicas Centrais:</strong> Quais são as 2-3 ações
+                  que formam o core loop do jogo?
+                </li>
+                <li>
+                  <strong>Público-Alvo:</strong> Para quem você acredita que
+                  este jogo foi feito? (Casual, hardcore, família, etc.)
+                </li>
+                <li>
+                  <strong>Conceitos Físico-Matemáticos:</strong> Quais conceitos
+                  de física (colisão, gravidade, momento) ou matemática
+                  (vetores, IA, grafos) você identificou?
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Publicação no Fórum:</strong> Crie uma postagem no Moodle
+              com o título "Análise Comparativa: [Jogo 1] vs. [Jogo 2]". Na
+              postagem, apresente sua análise de forma comparativa, destacando
+              as principais diferenças e semelhanças no design, mecânicas e
+              público-alvo dos dois jogos.
+            </li>
+          </ol>
+          <!-- Evaluation Criteria -->
+          <div
+            class="mt-6 bg-indigo-50 border border-indigo-200 p-4 rounded-lg"
+          >
+            <h4 class="font-semibold text-indigo-800 mb-2">
+              <i class="fa-solid fa-check-double mr-2"></i>Checklist de
+              Avaliação
+            </h4>
+            <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+              <li>A comparação está bem estruturada e clara.</li>
+              <li>
+                Usei corretamente os conceitos de gênero, mecânica e
+                público-alvo.
+              </li>
+              <li>
+                Minha análise conectou as mecânicas com a experiência do
+                jogador.
+              </li>
+              <li>Identifiquei os conceitos de física/matemática aplicados.</li>
+              <li>
+                Citei as fontes (Salen & Zimmerman, 2012; Schuytema, 2008) para
+                fortalecer a argumentação.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Bibliography -->
+      <section
+        id="bibliografia"
+        aria-labelledby="bibliografia-heading"
+        class="prose prose-slate max-w-none lg:prose-lg"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-indigo-500 pb-2 mb-4"
+        >
+          📚 Bibliografia e Referências
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 not-prose">
+          <p>
+            FULLERTON, Tracy. <strong>Game Design Workshop:</strong> A
+            Playcentric Approach to Creating Innovative Games. 4th ed. CRC
+            Press, 2018.
+          </p>
+          <p>
+            SALEN, Katie; ZIMMERMAN, Eric.
+            <strong>Regras do jogo:</strong> fundamentos do design de jogos. v.
+            1. São Paulo: Blucher, 2012.
+          </p>
+          <p>
+            SCHUYTEMA, Paul. <strong>Design de games:</strong> uma abordagem
+            prática. São Paulo: Cengage Learning, 2008.
+          </p>
+          <div class="mt-6 callout callout-info" role="note">
+            <p class="font-bold">
+              A base teórica fornecida por estes autores é o alicerce para uma
+              prática de desenvolvimento consciente e intencional. A leitura é
+              fundamental para aprofundar os conceitos discutidos.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <a
+            href="https://eadsp.unichristus.edu.br/"
+            class="text-indigo-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a
+            href="/politica_uso/"
+            class="text-indigo-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

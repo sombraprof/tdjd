@@ -5,5 +5,19 @@
     "descricao": "Introdução à disciplina, apresentação do plano de ensino e conceitos fundamentais da Teoria Geral de Sistemas: definição de sistema, contexto histórico e classificação dos principais tipos.",
     "arquivo": "aula1.html",
     "ativo": true
+  },
+  {
+    "id": "aula2",
+    "titulo": "Aula 2: Gêneros e Tipos de Gameplay",
+    "descricao": "Exploração dos principais gêneros de jogos digitais e seus tipos de gameplay. Análise de mecânicas e exemplos práticos para identificar padrões de design.",
+    "arquivo": "aula2.html",
+    "ativo": true
+  },
+  {
+    "id": "aula3",
+    "titulo": "Aula 3: Estudos de Caso, Análise Crítica e Inovações",
+    "descricao": "Análise aprofundada de jogos Indie e AAA com estudos de caso. Discussão de mecânicas, público-alvo, impacto cultural e tendências da indústria. Exercício prático de design e pesquisa comparativa (TED).",
+    "arquivo": "aula3.html",
+    "ativo": true
   }
 ]
