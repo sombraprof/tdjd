@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 4: História dos Jogos Digitais, Engines e Mercado</title>
+    <meta
+      name="description"
+      content="Unidade I – Introdução ao Desenvolvimento de Jogos Digitais. Aula 4 sobre a evolução histórica dos jogos, as principais engines do mercado (Unity, Unreal, Godot) e a dinâmica da indústria."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="História dos Jogos, Game Engines, Unity, Unreal Engine, Godot, Mercado de Jogos, Desenvolvimento de Jogos"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 4: História dos Jogos Digitais, Engines e Mercado"
+    />
+    <meta
+      property="og:description"
+      content="Uma jornada pela evolução dos jogos, das ferramentas de criação e das dinâmicas de mercado que moldam a indústria."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/047857/ffffff?text=TDJD\nAula+4"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 4: História dos Jogos Digitais, Engines e Mercado"
+    />
+    <meta
+      property="twitter:description"
+      content="Uma jornada pela evolução dos jogos, das ferramentas de criação e das dinâmicas de mercado que moldam a indústria."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/047857/ffffff?text=TDJD\nAula+4"
+    />
+
+    <!-- CDN Links -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.1?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        /* bg-slate-50 */
+        padding-top: 60px;
+        /* Space for fixed navbar */
+      }
+
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+
+      .callout-info {
+        background-color: #f0f9ff;
+        /* bg-sky-50 */
+        border-color: #7dd3fc;
+        /* border-sky-300 */
+        color: #0c4a6e;
+        /* text-sky-800 */
+      }
+
+      .callout-practice {
+        background-color: #f0fdf4;
+        /* bg-emerald-50 */
+        border-color: #6ee7b7;
+        /* border-emerald-300 */
+        color: #065f46;
+        /* text-emerald-800 */
+      }
+
+      /* Timeline Style */
+      .timeline-item {
+        position: relative;
+        padding-bottom: 2.5rem;
+        padding-left: 2.5rem;
+        border-left: 2px solid #e2e8f0;
+        /* border-slate-200 */
+      }
+
+      .timeline-item:last-child {
+        border-left: 2px solid transparent;
+      }
+
+      .timeline-icon {
+        position: absolute;
+        left: -0.8rem;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 9999px;
+        background-color: #fff;
+        border: 2px solid #e2e8f0;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Fixed Navigation Menu -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-emerald-700">TDJD - Aula 4</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-emerald-600"
+              >Plano</a
+            >
+            <a href="#historia" class="text-slate-600 hover:text-emerald-600"
+              >História</a
+            >
+            <a href="#engines" class="text-slate-600 hover:text-emerald-600"
+              >Engines</a
+            >
+            <a href="#mercado" class="text-slate-600 hover:text-emerald-600"
+              >Mercado</a
+            >
+            <a
+              href="#estudos-de-caso"
+              class="text-slate-600 hover:text-emerald-600"
+              >Casos</a
+            >
+            <a href="#tarefa" class="text-slate-600 hover:text-emerald-600"
+              >TED</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-emerald-800 to-teal-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 4: História, Engines e Mercado
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Unidade I – Introdução ao Desenvolvimento de Jogos Digitais
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Section: Lesson Plan -->
+      <section
+        id="plano-aula"
+        aria-labelledby="plano-aula-heading"
+        class="mb-12 bg-emerald-50 border border-emerald-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-emerald-700 mb-6 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card: Unit and Content -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-emerald-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="font-bold text-slate-700 text-sm">
+              Linha do tempo histórica, panorama das engines e análise de
+              mercado
+            </p>
+            <p class="text-slate-600 mt-1 text-sm">
+              Analisaremos a evolução do hardware/software, o surgimento das
+              engines e como isso moldou os modelos de negócio, com foco também
+              no impacto cultural e na relação entre tecnologia e experiência do
+              jogador.
+            </p>
+          </div>
+          <!-- Card: Objective -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-emerald-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Analisar a evolução histórica dos jogos e das ferramentas de
+              desenvolvimento, conectando-a com as dinâmicas de mercado atuais.
+            </p>
+          </div>
+          <!-- Card: Methodology -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-emerald-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Análise crítica histórica com linha do tempo interativa, estudo de
+              caso e debate em grupo para conectar tecnologia, design e mercado.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Introduction -->
+      <section
+        id="introducao"
+        aria-labelledby="intro-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="intro-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          Do Pong ao Metaverso: Uma Jornada Tecnológica e Cultural
+        </h2>
+        <div class="text-slate-700 leading-relaxed space-y-4">
+          <p>
+            A história dos jogos digitais é uma fascinante crônica da evolução
+            tecnológica e da criatividade humana. O que começou com simples
+            pontos de luz em uma tela se transformou em mundos virtuais
+            complexos que conectam milhões de pessoas. Entender essa trajetória
+            não é apenas uma curiosidade histórica; é fundamental para qualquer
+            desenvolvedor que deseja criar o futuro desta indústria.
+          </p>
+          <!-- AJUSTE: impacto cultural/social -->
+          <p class="text-slate-700">
+            Mais do que tecnologia, a história dos jogos reflete
+            <strong>movimentos culturais e sociais</strong>: do Atari levando o
+            entretenimento eletrônico para as casas na década de 80, ao
+            PlayStation criando uma nova geração de jogadores, até o mobile que
+            democratizou o acesso e mudou a forma como consumimos experiências
+            digitais.
+          </p>
+          <!-- FIM AJUSTE -->
+          <div class="callout callout-info" role="note">
+            <p class="font-bold">Conexão: História + Ferramenta + Mercado</p>
+            <p>
+              Nesta aula, vamos conectar três pilares: como a
+              <strong>evolução do hardware</strong> (História) permitiu o
+              surgimento de
+              <strong>ferramentas mais poderosas</strong> (Engines), que por sua
+              vez moldaram os <strong>modelos de negócio</strong> (Mercado) que
+              conhecemos hoje.
+            </p>
+          </div>
+          <p class="italic text-slate-600">
+            Compreender o passado não é apenas conhecer datas: é entender como
+            as escolhas tecnológicas moldaram gêneros, estilos e modelos de
+            negócio que usamos até hoje.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Interactive Timeline -->
+      <section id="historia" aria-labelledby="historia-heading" class="mb-12">
+        <h2
+          id="historia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-8"
+        >
+          ⏳ Linha do Tempo da Evolução dos Jogos
+        </h2>
+        <div class="container mx-auto">
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i
+                class="fa-solid fa-table-tennis-paddle-ball text-slate-500"
+              ></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              Década de 70: O Big Bang dos Arcades
+            </h3>
+            <p class="text-slate-600 mt-1">
+              <strong>Hardware/Software:</strong> Circuitos lógicos dedicados.
+              <strong>Engines:</strong> Inexistentes; jogos programados
+              diretamente no hardware.
+            </p>
+            <!-- AJUSTE: impacto cultural -->
+            <p class="text-sm text-slate-500 italic">
+              Culturalmente, os arcades criaram os primeiros espaços de
+              socialização em torno dos jogos, formando a base da cultura gamer.
+            </p>
+            <!-- FIM AJUSTE -->
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-ghost text-yellow-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              Década de 80: A Era de Ouro e a Crise
+            </h3>
+            <p class="text-slate-600 mt-1">
+              <strong>Hardware/Software:</strong> Consoles como Atari 2600 e
+              NES. <strong>Engines:</strong> Surgem os primeiros motores
+              proprietários e reutilizáveis dentro dos estúdios (ex: Nintendo,
+              Sega).
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-cube text-blue-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              Década de 90: A Revolução 3D
+            </h3>
+            <p class="text-slate-600 mt-1">
+              <strong>Hardware/Software:</strong> PlayStation, N64 e placas de
+              vídeo para PC. <strong>Engines:</strong> Motores 3D como a id Tech
+              (DOOM) e RenderWare (GTA III) são licenciados para outros
+              estúdios.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-globe text-green-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              Década de 2000: A Conexão Online
+            </h3>
+            <p class="text-slate-600 mt-1">
+              <strong>Hardware/Software:</strong> Banda larga, Xbox Live.
+              <strong>Engines:</strong> Unreal Engine 2 e 3 se tornam padrão
+              para AAA. Source Engine (Half-Life 2) fomenta a cultura de mods.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-mobile-screen-button text-purple-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              Década de 2010: A Explosão Indie e Mobile
+            </h3>
+            <p class="text-slate-600 mt-1">
+              <strong>Hardware/Software:</strong> Smartphones, lojas digitais.
+              <strong>Engines:</strong> Unity democratiza o desenvolvimento,
+              tornando-se a principal ferramenta para indies e mobile. Godot
+              surge como alternativa open-source.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fa-solid fa-infinity text-red-500"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-700">
+              Década de 2020+: GaaS e Novas Realidades
+            </h3>
+            <p class="text-slate-600 mt-1">
+              <strong>Hardware/Software:</strong> Cloud Gaming, óculos de VR/AR.
+              <strong>Engines:</strong> Foco em "Jogos como Serviço" (GaaS) e
+              integração de IA Generativa. A linha entre engine de jogo e
+              ferramenta de criação de conteúdo se torna tênue.
+            </p>
+          </div>
+          <p class="mt-4 text-slate-700 italic">
+            Essa evolução abriu caminho para as engines modernas e para novos
+            modelos de mercado, que veremos na próxima seção.
+          </p>
+        </div>
+      </section>
+
+      <!-- NOVA SEÇÃO: Impacto Cultural e Social -->
+      <section
+        id="impacto"
+        aria-labelledby="impacto-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="impacto-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          🎮 Impacto Cultural e Social dos Jogos
+        </h2>
+        <div class="space-y-4 text-slate-700 leading-relaxed">
+          <p>
+            A evolução dos jogos digitais não apenas acompanhou a tecnologia,
+            mas também
+            <strong>influenciou hábitos, culturas e economias</strong>. Cada
+            avanço técnico criou novas formas de interação social e de expressão
+            artística.
+          </p>
+          <p>
+            Nos anos 80, os <em>arcades</em> se tornaram espaços de convivência
+            e competição, moldando a primeira geração de jogadores. Nos anos 90
+            e 2000, os consoles domésticos trouxeram o entretenimento digital
+            para dentro de casa, impactando a dinâmica familiar e popularizando
+            o jogo como forma de lazer coletiva.
+          </p>
+          <p>
+            Hoje, com o mobile e as plataformas online, os jogos são parte da
+            <strong>cultura pop global</strong>, influenciando música, cinema,
+            educação e até movimentos sociais. A democratização das engines,
+            como Unity e Godot, também abriu espaço para que desenvolvedores
+            independentes criassem experiências mais diversas e representativas.
+          </p>
+          <div class="callout callout-info" role="note">
+            <p class="font-bold">Conexão com a Aula:</p>
+            <p>
+              Este impacto cultural conecta a linha do tempo histórica com o
+              mercado e as engines, mostrando que
+              <strong>tecnologia e sociedade evoluem juntas</strong> no
+              desenvolvimento de jogos.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- FIM NOVA SEÇÃO -->
+
+      <!-- NOVA SEÇÃO: Ferramentas Emergentes e Tendências Futuras -->
+      <section
+        id="tendencias"
+        aria-labelledby="tendencias-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="tendencias-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          🚀 Ferramentas Emergentes e Tendências Futuras
+        </h2>
+        <div class="space-y-4 text-slate-700 leading-relaxed">
+          <p>
+            A indústria de jogos está em constante transformação. Novas
+            ferramentas e tecnologias estão moldando como os jogos são criados,
+            distribuídos e jogados.
+          </p>
+
+          <h3 class="text-xl font-semibold text-emerald-700 mt-4">
+            Integração de IA Generativa
+          </h3>
+          <p>
+            Motores como Unity e Unreal já experimentam IA para gerar cenários,
+            NPCs dinâmicos e até mecânicas adaptativas em tempo real. Isso tende
+            a reduzir custos e acelerar a prototipagem de jogos.
+          </p>
+
+          <h3 class="text-xl font-semibold text-emerald-700 mt-4">
+            Ferramentas Low-Code e No-Code
+          </h3>
+          <p>
+            Plataformas como <strong>Construct</strong> e novas engines low-code
+            permitem que desenvolvedores iniciantes criem jogos funcionais sem
+            programação avançada, ampliando a entrada de novos criadores na
+            indústria.
+          </p>
+
+          <h3 class="text-xl font-semibold text-emerald-700 mt-4">
+            Cloud Gaming e Realidade Estendida (XR)
+          </h3>
+          <p>
+            O avanço de serviços como xCloud, GeForce Now e dispositivos de
+            VR/AR está mudando a experiência de jogo, reduzindo barreiras de
+            hardware e criando novas formas de imersão e interação.
+          </p>
+
+          <div class="callout callout-practice" role="note">
+            <p class="font-bold">Conexão com a Aula:</p>
+            <p>
+              Essa seção expande o conteúdo das engines ao mostrar como as
+              tecnologias atuais e futuras irão impactar o design, o mercado e
+              as competências necessárias para o desenvolvimento de jogos nos
+              próximos anos.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- FIM NOVA SEÇÃO -->
+
+      <!-- NOVA SEÇÃO: Pipeline de Produção em Engines -->
+      <section
+        id="pipeline"
+        aria-labelledby="pipeline-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="pipeline-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          🛠️ Pipeline de Produção em Engines
+        </h2>
+        <div class="space-y-4 text-slate-700 leading-relaxed">
+          <p>
+            O pipeline de produção é a sequência de etapas que transformam uma
+            ideia em um jogo funcional. Cada engine oferece ferramentas para
+            otimizar esse fluxo.
+          </p>
+
+          <ul class="list-disc list-inside ml-4 text-slate-700">
+            <li>
+              <strong>Pré-produção:</strong> conceito, protótipos rápidos,
+              documentação inicial.
+            </li>
+            <li>
+              <strong>Produção:</strong> modelagem, programação, integração de
+              assets e mecânicas.
+            </li>
+            <li>
+              <strong>Testes e Iteração:</strong> debug, balanceamento e
+              feedback contínuo.
+            </li>
+            <li>
+              <strong>Publicação:</strong> build final, otimização e exportação
+              multiplataforma.
+            </li>
+          </ul>
+
+          <div class="callout callout-info" role="note">
+            <p class="font-bold">Dica:</p>
+            <p>
+              Unity e Unreal oferecem pipelines completos, enquanto Godot e
+              Construct são mais leves e indicados para times menores e
+              prototipagem.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- FIM NOVA SEÇÃO -->
+
+      <!-- NOVA SEÇÃO: Modelos de Monetização -->
+      <section
+        id="monetizacao"
+        aria-labelledby="monetizacao-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="monetizacao-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          💰 Modelos de Monetização em Jogos
+        </h2>
+        <div class="space-y-4 text-slate-700 leading-relaxed">
+          <p>
+            Além da parte técnica e criativa, entender como o jogo vai gerar
+            receita é crucial para a sustentabilidade de um projeto.
+          </p>
+
+          <h3 class="text-xl font-semibold text-emerald-700 mt-4">Premium</h3>
+          <p>
+            Venda direta com preço fixo. Exemplo: jogos single-player AAA
+            tradicionais.
+          </p>
+
+          <h3 class="text-xl font-semibold text-emerald-700 mt-4">
+            Free-to-Play + Microtransações
+          </h3>
+          <p>
+            Entrada gratuita com venda de itens, cosméticos ou progressão.
+            Modelo dominante em mobile e alguns MMOs.
+          </p>
+
+          <h3 class="text-xl font-semibold text-emerald-700 mt-4">
+            Assinaturas e GaaS
+          </h3>
+          <p>
+            Conteúdo contínuo via passes de batalha ou serviços como Game Pass e
+            PS Plus.
+          </p>
+
+          <div class="callout callout-practice" role="note">
+            <p class="font-bold">Conexão com o Mercado:</p>
+            <p>
+              O modelo de monetização influencia diretamente o design do jogo,
+              as mecânicas e até o engajamento dos jogadores.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- FIM NOVA SEÇÃO -->
+
+      <!-- NOVA SEÇÃO: Perfis de Jogadores e Mercado -->
+      <section
+        id="perfis-jogadores"
+        aria-labelledby="perfis-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="perfis-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          🎮 Perfis de Jogadores e Segmentação de Mercado
+        </h2>
+        <div class="space-y-4 text-slate-700 leading-relaxed">
+          <p>
+            Compreender quem são os jogadores é tão importante quanto dominar as
+            ferramentas técnicas. O mercado é segmentado por perfil,
+            preferências e hábitos de consumo.
+          </p>
+
+          <ul class="list-disc list-inside ml-4 text-slate-700">
+            <li>
+              <strong>Casual:</strong> busca diversão rápida e acessível
+              (mobile, jogos simples).
+            </li>
+            <li>
+              <strong>Hardcore:</strong> valoriza desafios, complexidade e
+              performance.
+            </li>
+            <li>
+              <strong>Social:</strong> prioriza interação com amigos e
+              comunidade.
+            </li>
+            <li>
+              <strong>Competitivo:</strong> engajado em eSports e ranking.
+            </li>
+          </ul>
+
+          <p>
+            Essa segmentação influencia não apenas o design, mas também o modelo
+            de monetização e as estratégias de marketing.
+          </p>
+
+          <div class="callout callout-info" role="note">
+            <p class="font-bold">Conexão com a Aula:</p>
+            <p>
+              Analisar perfis de jogadores conecta a história e o mercado,
+              permitindo criar experiências mais alinhadas ao público-alvo.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- FIM NOVA SEÇÃO -->
+
+      <!-- Section: Game Engines -->
+      <section id="engines" aria-labelledby="engines-heading" class="mb-12">
+        <h2
+          id="engines-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-cogs mr-2"></i>Panorama das Game Engines
+        </h2>
+        <div class="space-y-4 text-slate-700 leading-relaxed mb-8">
+          <p>
+            Uma game engine é um framework de software que fornece aos
+            desenvolvedores as ferramentas fundamentais para criar um jogo. Como
+            vimos na linha do tempo, a transição de engines proprietárias para
+            ferramentas acessíveis democratizou a criação de jogos e foi o
+            principal catalisador da explosão criativa que vemos hoje.
+          </p>
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <img
+              src="/imagens/aula_4_imagem_2.png"
+              alt="Diagrama mostrando a evolução das engines: de proprietárias para licenciadas e, finalmente, para acessíveis."
+              class="rounded-md w-full"
+            />
+            <p class="text-sm text-slate-600 italic">
+              A imagem ilustra a evolução das engines de jogos: partindo de
+              motores proprietários restritos a grandes estúdios, passando por
+              engines licenciadas como a Unreal Engine 2/3, até chegar ao
+              cenário atual de ferramentas acessíveis como Unity e Godot, que
+              democratizaram o desenvolvimento de jogos.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Unity -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Unity</h3>
+            <p class="text-sm text-slate-600 mb-4">
+              A engine mais popular do mundo, conhecida por sua flexibilidade e
+              forte suporte da comunidade.
+            </p>
+            <p class="text-sm font-semibold text-emerald-700">Pontos Fortes:</p>
+            <ul class="text-sm list-disc list-inside text-slate-600">
+              <li>Multiplataforma (PC, mobile, consoles)</li>
+              <li>Asset Store robusta</li>
+              <li>Ideal para 2D e 3D</li>
+            </ul>
+          </div>
+          <!-- Unreal Engine -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">
+              Unreal Engine
+            </h3>
+            <p class="text-sm text-slate-600 mb-4">
+              Famosa por seu poderio gráfico de ponta e ferramentas visuais
+              (Blueprints).
+            </p>
+            <p class="text-sm font-semibold text-emerald-700">Pontos Fortes:</p>
+            <ul class="text-sm list-disc list-inside text-slate-600">
+              <li>Gráficos fotorrealistas</li>
+              <li>Programação visual com Blueprints</li>
+              <li>Padrão da indústria AAA</li>
+            </ul>
+          </div>
+          <!-- Godot -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Godot</h3>
+            <p class="text-sm text-slate-600 mb-4">
+              Uma alternativa open-source e leve que vem ganhando popularidade.
+            </p>
+            <p class="text-sm font-semibold text-emerald-700">Pontos Fortes:</p>
+            <ul class="text-sm list-disc list-inside text-slate-600">
+              <li>Gratuita e de código aberto</li>
+              <li>Leve e rápida</li>
+              <li>Excelente para jogos 2D</li>
+            </ul>
+          </div>
+          <!-- Construct -->
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Construct</h3>
+            <p class="text-sm text-slate-600 mb-4">
+              Focada no desenvolvimento sem código (no-code) para jogos 2D e
+              baseados em HTML5.
+            </p>
+            <p class="text-sm font-semibold text-emerald-700">Pontos Fortes:</p>
+            <ul class="text-sm list-disc list-inside text-slate-600">
+              <li>Não exige programação</li>
+              <li>Ideal para prototipagem rápida</li>
+              <li>Exportação para web (HTML5)</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-slate-700 mt-6 mb-6">
+          As engines não são apenas ferramentas técnicas: elas definem estilos
+          de design, influenciam gêneros e abrem portas para criadores
+          independentes. A popularização de Unity e Godot democratizou a
+          indústria, enquanto Unreal continua sendo referência para gráficos
+          AAA.
+        </p>
+      </section>
+
+      <!-- Section: Game Market Evolution -->
+      <section id="mercado" aria-labelledby="mercado-heading" class="mb-12">
+        <h2
+          id="mercado-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-chart-line mr-2"></i>A Evolução do Mercado de
+          Jogos
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            Os modelos de negócio na indústria de jogos evoluíram drasticamente,
+            influenciados pela tecnologia de distribuição e pelo comportamento
+            do consumidor.
+          </p>
+          <h4 class="font-semibold text-lg pt-2">
+            1. O Modelo Premium (Décadas de 80-90)
+          </h4>
+          <p>
+            O produto era a caixa. O consumidor pagava um preço cheio por um
+            jogo completo em mídia física (cartucho, CD). O faturamento era
+            concentrado no lançamento.
+          </p>
+          <h4 class="font-semibold text-lg pt-2">
+            2. A Revolução Digital e Free-to-Play (Década de 2000)
+          </h4>
+          <p>
+            A distribuição digital, impulsionada por plataformas como a
+            <strong>Steam</strong> e a <strong>Xbox Live</strong>, reduziu
+            custos e permitiu que jogos fossem vendidos diretamente aos
+            consumidores. No mobile, com a <strong>App Store</strong>, o modelo
+            <em>Free-to-Play</em> com microtransações se tornou dominante.
+          </p>
+          <h4 class="font-semibold text-lg pt-2">
+            3. A Era dos Jogos como Serviço - GaaS (Década de 2010+)
+          </h4>
+          <p>
+            O jogo deixa de ser um produto único para se tornar uma plataforma
+            em constante evolução. O foco é na retenção de jogadores a longo
+            prazo através de passes de batalha, assinaturas e conteúdo sazonal.
+            <em>Fortnite</em> e <em>Destiny 2</em> são exemplos paradigmáticos.
+          </p>
+          <div
+            class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+          >
+            <p>
+              Os modelos de negócio na indústria de jogos evoluíram
+              drasticamente, influenciados pela tecnologia de distribuição, pelo
+              comportamento do consumidor e por novos formatos emergentes.
+            </p>
+            <!-- INSERIDO: subtítulo e gráfico atual -->
+            <h4 class="font-semibold text-lg pt-2">
+              📊 Participação por Segmento em 2024
+            </h4>
+            <div class="pt-4">
+              <img
+                src="/imagens/aula_4_imagen_1.webp"
+                alt="Gráfico repartindo receita global de games por mobile, console e PC em 2024"
+                class="rounded-md w-full"
+              />
+              <!-- Fonte: Newzoo (global games market 2024) e Udonis/Softonic (valores por segmento) -->
+            </div>
+            <p>
+              Em 2024, a receita global do mercado de jogos foi de
+              aproximadamente <strong>US$ 187,7 bi</strong>, crescendo cerca de
+              +2,1% em relação a 2023 <sup>[1]</sup>.
+            </p>
+            <ul class="list-disc list-inside ml-4">
+              <li>
+                <strong>Mobile</strong>: ~49% (~US$ 92,6 bi), crescimento de +3%
+                YoY <sup>[2]</sup>;
+              </li>
+              <li>
+                <strong>Console</strong>: ~27–28% (~US$ 50–51 bi), com queda de
+                ~‑1% a ‑2,5% <sup>[3]</sup>;
+              </li>
+              <li>
+                <strong>PC</strong>: ~23–24% (~US$ 43 bi), com crescimento de
+                aproximadamente +4% <sup>[4]</sup>.
+              </li>
+            </ul>
+            <p>
+              Embora o mobile mantenha a maior fatia do mercado, o segmento de
+              PC cresce mais rapidamente em 2024, refletindo mudanças no
+              comportamento e no ciclo de lançamentos <sup>[5]</sup>.
+            </p>
+
+            <h4 class="font-semibold text-lg pt-2">
+              Tendências e Fatores de Mercado
+            </h4>
+            <p>
+              A desaceleração em consoles está relacionada a poucos lançamentos
+              de impacto em 2024, enquanto o modelo gratuito e mobile continua
+              resiliente. O PC beneficia-se de exclusividades migradas e forte
+              presença digital <sup>[6]</sup>.
+            </p>
+
+            <!-- Referências -->
+            <div class="mt-4 text-sm text-slate-500">
+              <p>[1] Newzoo, Global Games Market Report 2024.</p>
+              <p>[2] Udonis – Mobile Gaming Industry Overview 2024.</p>
+              <p>[3] GamesIndustry.biz – 2024 Market Analysis.</p>
+              <p>[4] Best of Gaming – PC Gaming Trends 2024.</p>
+              <p>[5] Newzoo Insights + Softonic Reports 2024.</p>
+              <p>[6] Reuters – Console Market Performance 2024.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Case Studies -->
+      <section
+        id="estudos-de-caso"
+        aria-labelledby="estudos-caso-heading"
+        class="mb-12"
+      >
+        <h2
+          id="estudos-caso-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-book-journal-whills mr-2"></i>Estudos de Caso
+          Históricos
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- DOOM -->
+          <article
+            class="bg-white p-6 rounded-lg shadow"
+            aria-labelledby="doom-heading"
+          >
+            <h3
+              id="doom-heading"
+              class="text-2xl font-semibold text-red-700 mb-4"
+            >
+              AAA Histórico: DOOM (1993)
+            </h3>
+            <div class="space-y-4 text-slate-700 leading-relaxed">
+              <p class="text-sm">
+                Criado pela id Software, DOOM não foi apenas um jogo, mas uma
+                revolução tecnológica. Popularizou o gênero FPS e o multiplayer
+                online (deathmatch).
+              </p>
+              <h4 class="font-semibold">Análise Crítica</h4>
+              <p class="text-sm">
+                Sua engine, a id Tech 1, era um salto tecnológico que permitia
+                um pseudo-3D rápido e fluido. O level design era labiríntico e
+                incentivava a exploração. O modelo de distribuição
+                <em>shareware</em> (o primeiro episódio era gratuito) foi uma
+                estratégia de marketing genial.
+              </p>
+              <h4 class="font-semibold">Impacto Cultural e Tecnológico</h4>
+              <p class="text-sm">
+                DOOM definiu o FPS por uma década e sua engine foi licenciada
+                para dezenas de outros jogos. A cultura de "mods" (modificações
+                criadas por jogadores) nasceu aqui, mostrando o poder da
+                comunidade na longevidade de um jogo.
+              </p>
+            </div>
+          </article>
+          <!-- Stardew Valley -->
+          <article
+            class="bg-white p-6 rounded-lg shadow"
+            aria-labelledby="stardew-heading"
+          >
+            <h3
+              id="stardew-heading"
+              class="text-2xl font-semibold text-emerald-700 mb-4"
+            >
+              Indie Histórico: Stardew Valley (2016)
+            </h3>
+            <div class="space-y-4 text-slate-700 leading-relaxed">
+              <p class="text-sm">
+                Desenvolvido por uma única pessoa (Eric Barone), é um simulador
+                de fazenda que se tornou um fenômeno global, vendendo mais de 20
+                milhões de cópias.
+              </p>
+              <h4 class="font-semibold">Análise Crítica</h4>
+              <p class="text-sm">
+                Seu sucesso reside no polimento de um core loop viciante
+                (plantar, colher, vender, melhorar) e na profundidade de seus
+                sistemas interligados. É um exemplo de como um projeto autoral
+                pode ressoar com um público massivo ao oferecer uma experiência
+                relaxante e recompensadora.
+              </p>
+              <h4 class="font-semibold">Impacto Cultural e Econômico</h4>
+              <p class="text-sm">
+                Revitalizou o gênero de simulação de fazenda e provou que um
+                único desenvolvedor pode competir com grandes estúdios, graças
+                às ferramentas modernas e à distribuição digital.
+              </p>
+            </div>
+          </article>
+          <div
+            class="mt-6 bg-emerald-50 border border-emerald-200 p-4 rounded-lg text-sm"
+          >
+            <h4 class="font-semibold text-emerald-800 mb-2">
+              Comparativo Indie x AAA
+            </h4>
+            <ul class="list-disc list-inside text-slate-700">
+              <li>
+                <strong>Equipe:</strong> 1 dev (Stardew) vs. equipe grande
+                (DOOM)
+              </li>
+              <li>
+                <strong>Engine:</strong> Customizada leve vs. id Tech 1
+                licenciada
+              </li>
+              <li>
+                <strong>Modelo:</strong> Digital independente vs. Shareware
+                pioneiro
+              </li>
+              <li>
+                <strong>Impacto:</strong> Renovou simulação de fazenda vs.
+                Definiu FPS e cultura de mods
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: TED -->
+      <section id="tarefa" aria-labelledby="tarefa-heading" class="mb-12">
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): Análise Crítica Comparativa
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p class="text-lg">
+            A tarefa é uma pesquisa de campo onde você irá aplicar os conceitos
+            da aula para analisar criticamente dois jogos de gerações
+            diferentes.
+          </p>
+          <h4 class="font-semibold text-emerald-800 mt-6 mb-2">
+            Passo a Passo:
+          </h4>
+          <ol class="list-decimal list-inside space-y-2">
+            <li>
+              <strong>Escolha um jogo de uma era mais antiga</strong> (ex: NES,
+              SNES, PS1) e <strong>um jogo moderno do mesmo gênero</strong>.
+            </li>
+            <li>
+              <strong>Analise e compare os dois</strong>, focando em como as
+              limitações/possibilidades do hardware e da engine de cada época
+              influenciaram o design do jogo.
+            </li>
+            <li>
+              <strong>Publique no Fórum</strong> sua comparação crítica,
+              abordando mecânicas, narrativa e estética.
+            </li>
+            <li>
+              Use imagens, vídeos ou comparativos visuais para ilustrar sua
+              análise e mostrar como tecnologia impacta a experiência do
+              jogador.
+            </li>
+          </ol>
+          <div
+            class="mt-6 bg-emerald-50 border border-emerald-200 p-4 rounded-lg"
+          >
+            <h4 class="font-semibold text-emerald-800 mb-2">
+              <i class="fa-solid fa-check-double mr-2"></i>Checklist de
+              Avaliação
+            </h4>
+            <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+              <li>A comparação está clara e bem argumentada.</li>
+              <li>
+                A análise conecta as características do jogo com a tecnologia da
+                sua época.
+              </li>
+              <li>
+                A capacidade de conectar a evolução tecnológica com a
+                experiência do jogador foi demonstrada.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Bibliography -->
+      <section
+        id="bibliografia"
+        aria-labelledby="bibliografia-heading"
+        class="mb-12"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-4"
+        >
+          📚 Bibliografia e Referências
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            MARTINHO, Carlos; SANTOS, Pedro; PRADA, Rui.
+            <strong>Design e desenvolvimento de jogos.</strong> Lisboa: FCA,
+            2014.
+          </p>
+          <p>
+            MASTROCOLA, Vicente Martin. <strong>Game design:</strong> modelos de
+            negócio e processos criativos. São Paulo: Cengage Learning, 2015.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <a href="#" class="text-emerald-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a href="#" class="text-emerald-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

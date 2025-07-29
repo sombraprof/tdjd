@@ -19,5 +19,12 @@
     "descricao": "Análise aprofundada de jogos Indie e AAA com estudos de caso. Discussão de mecânicas, público-alvo, impacto cultural e tendências da indústria. Exercício prático de design e pesquisa comparativa (TED).",
     "arquivo": "aula3.html",
     "ativo": true
+  },
+  {
+    "id": "aula4",
+    "titulo": "Aula 4: História dos Jogos Digitais, Engines e Mercado",
+    "descricao": "Estudo da evolução histórica dos jogos digitais e das principais engines (Unity, Unreal, Godot, Construct). Análise das dinâmicas de mercado (indie, AAA, mobile e XR) e do impacto cultural e tecnológico na indústria. Inclui linha do tempo interativa e estudos de caso comparativos (AAA vs Indie).",
+    "arquivo": "aula4.html",
+    "ativo": true
   }
 ]
