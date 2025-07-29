@@ -1,7 +1,7 @@
 [
   {
-    "titulo": "Lista de Exercícios 01: Definição e Tipos de Sistemas",
-    "descricao": "Fixe os conceitos fundamentais da Teoria Geral de Sistemas: definição, classificação e aplicação prática em Sistemas de Informação.",
+    "titulo": "Lista de Exercícios 01: Introdução ao Desenvolvimento de Jogos Digitais",
+    "descricao": "Exercícios para fixar os conceitos das Aulas 1, 2 e 3: panorama da indústria de jogos digitais, gêneros e tipos de gameplay, e análise crítica de jogos Indie e AAA.",
     "arquivo": "lista1.json",
     "mostrar_solucoes": false
   }
