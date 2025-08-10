@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 5: Fundamentos da Unity e Prototipagem</title>
+    <meta
+      name="description"
+      content="Unidade II – Fundamentos da Unity. Aula 5 sobre a interface da Unity, configuração do URP e introdução ao novo Input System."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Unity, URP, Universal Render Pipeline, Input System, Desenvolvimento de Jogos, Prototipagem"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 5: Fundamentos da Unity e Prototipagem"
+    />
+    <meta
+      property="og:description"
+      content="Um guia prático para os primeiros passos na Unity Engine, cobrindo a interface, URP e o novo Input System."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/0d9488/ffffff?text=TDJD\nAula+5"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 5: Fundamentos da Unity e Prototipagem"
+    />
+    <meta
+      property="twitter:description"
+      content="Um guia prático para os primeiros passos na Unity Engine, cobrindo a interface, URP e o novo Input System."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/0d9488/ffffff?text=TDJD\nAula+5"
+    />
+
+    <!-- CDN Links -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.1?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        /* bg-slate-50 */
+        padding-top: 60px;
+        /* Space for fixed navbar */
+      }
+
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+
+      .callout-info {
+        background-color: #f0f9ff;
+        /* bg-sky-50 */
+        border-color: #7dd3fc;
+        /* border-sky-300 */
+        color: #0c4a6e;
+        /* text-sky-800 */
+      }
+
+      .callout-practice {
+        background-color: #f0fdf4;
+        /* bg-emerald-50 */
+        border-color: #6ee7b7;
+        /* border-emerald-300 */
+        color: #065f46;
+        /* text-emerald-800 */
+      }
+
+      .callout-warning {
+        background-color: #fffbeb; /* bg-amber-50 */
+        border-color: #fcd34d; /* border-amber-300 */
+        color: #92400e; /* text-amber-800 */
+      }
+
+      .code-block-wrapper {
+        position: relative;
+      }
+
+      .code-block {
+        background-color: #1e293b; /* slate-800 */
+        color: #e2e8f0; /* slate-200 */
+        padding: 1rem;
+        padding-top: 2.5rem; /* Space for the button */
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #1e293b;
+        color: white;
+        padding: 8px;
+        z-index: 100;
+        transition: top 0.3s;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+
+      nav a[aria-current="page"] {
+        color: #0d9488; /* text-teal-600 */
+        font-weight: 700;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Fixed Navigation Menu -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-teal-700">TDJD - Aula 5</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-teal-600"
+              >Plano</a
+            >
+            <a
+              href="#interface-unity"
+              class="text-slate-600 hover:text-teal-600"
+              >Interface</a
+            >
+            <a href="#urp" class="text-slate-600 hover:text-teal-600">URP</a>
+            <a href="#input-system" class="text-slate-600 hover:text-teal-600"
+              >Input System</a
+            >
+            <a href="#tarefa" class="text-slate-600 hover:text-teal-600">TED</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-teal-800 to-cyan-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 5: Fundamentos da Unity e Prototipagem
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Unidade II – Primeiros Passos na Engine
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Section: Lesson Plan -->
+      <section
+        id="plano-aula"
+        aria-labelledby="plano-aula-heading"
+        class="mb-12 bg-teal-50 border border-teal-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-teal-700 mb-6 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card: Unit and Content -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-teal-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="text-slate-600 mt-1 text-sm">
+              Interface da Unity, painéis principais, estrutura de cena,
+              configuração do URP e introdução ao novo Input System.
+            </p>
+          </div>
+          <!-- Card: Objective -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-teal-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Compreender a estrutura da interface da Unity, configurar um
+              projeto com URP e utilizar o Input System para eventos básicos de
+              entrada.
+            </p>
+          </div>
+          <!-- Card: Methodology -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-teal-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Aula prática guiada (hands-on), seguindo o formato de aprendizagem
+              baseada em projetos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Introduction -->
+      <section
+        id="introducao"
+        aria-labelledby="intro-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="intro-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          Da Teoria à Prática: Abrindo a Caixa de Ferramentas
+        </h2>
+        <div class="text-slate-700 leading-relaxed space-y-4">
+          <p>
+            Nas aulas anteriores, exploramos a história e os conceitos de
+            design. Agora, abrimos a "caixa de ferramentas" para construir. A
+            Unity Engine será nosso principal ambiente de criação.
+          </p>
+          <div class="callout callout-info" role="note">
+            <p class="font-bold">Recomendação de Versão</p>
+            <p>
+              Para esta disciplina, recomendamos o uso da versão mais recente
+              <strong>LTS (Long-Term Support)</strong> da Unity ou a
+              <strong>Unity 6</strong>. Utilize o template
+              <strong>3D (URP)</strong> ao criar novos projetos. Consulte os
+              links na seção "Recursos" para download.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Glossary -->
+      <section id="glossario" aria-labelledby="glossario-heading" class="mb-12">
+        <h2
+          id="glossario-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-book-bookmark mr-2"></i>Glossário Essencial da
+          Unity
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-bold text-teal-800">GameObject</h4>
+            <p class="text-sm text-slate-600">
+              Qualquer objeto na sua cena (personagens, luzes, câmeras).
+            </p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-bold text-teal-800">Component</h4>
+            <p class="text-sm text-slate-600">
+              "Blocos de construção" que adicionam funcionalidade a um
+              GameObject (ex: Rigidbody para física, um Script para lógica).
+            </p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-bold text-teal-800">Prefab</h4>
+            <p class="text-sm text-slate-600">
+              Um GameObject pré-configurado e salvo que pode ser reutilizado
+              (ex: um inimigo com todos os seus componentes).
+            </p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-bold text-teal-800">Scene</h4>
+            <p class="text-sm text-slate-600">
+              Um nível ou uma tela do seu jogo. Contém uma coleção de
+              GameObjects.
+            </p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-bold text-teal-800">Asset</h4>
+            <p class="text-sm text-slate-600">
+              Qualquer arquivo usado no projeto (imagens, sons, scripts, modelos
+              3D).
+            </p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow-sm">
+            <h4 class="font-bold text-teal-800">Package</h4>
+            <p class="text-sm text-slate-600">
+              Coleções de funcionalidades da Unity que podem ser adicionadas via
+              Package Manager (ex: Input System, Cinemachine).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Unity Interface -->
+      <section
+        id="interface-unity"
+        aria-labelledby="interface-heading"
+        class="mb-12"
+      >
+        <h2
+          id="interface-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-compass-drafting mr-2"></i>Anatomia da Interface
+          da Unity
+        </h2>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <p class="text-slate-600 mb-6">
+            A interface da Unity é modular e pode ser customizada, mas ela se
+            organiza em torno de algumas janelas (painéis) principais. Entender
+            a função de cada uma é a chave para um fluxo de trabalho eficiente.
+          </p>
+          <!-- Para o Professor: Use esta imagem como um guia visual no projetor. Aponte para cada seção e explique sua função enquanto os alunos acompanham em seus próprios computadores. -->
+          <div class="text-center">
+            <figure class="rounded-md w-full mb-6 bg-slate-50 p-2">
+              <!-- NOTE: Inline SVG is responsive and has accessible labels -->
+              <svg
+                viewBox="0 0 1200 600"
+                role="img"
+                aria-labelledby="unity-diagram-title unity-diagram-desc"
+                class="w-full h-auto"
+              >
+                <title id="unity-diagram-title">
+                  Diagrama da Interface da Unity
+                </title>
+                <desc id="unity-diagram-desc">
+                  Layout com Toolbar, Hierarchy, Scene/Game, Project e
+                  Inspector.
+                </desc>
+
+                <!-- Background -->
+                <rect
+                  x="0"
+                  y="0"
+                  width="1200"
+                  height="600"
+                  rx="8"
+                  fill="#ffffff"
+                />
+
+                <!-- Toolbar -->
+                <rect
+                  x="16"
+                  y="16"
+                  width="1168"
+                  height="48"
+                  rx="6"
+                  fill="#e2e8f0"
+                  stroke="#cbd5e1"
+                />
+                <text
+                  x="32"
+                  y="46"
+                  font-size="18"
+                  font-family="Inter, system-ui, sans-serif"
+                  fill="#0f172a"
+                >
+                  Toolbar
+                </text>
+
+                <!-- Hierarchy (left) -->
+                <rect
+                  x="16"
+                  y="72"
+                  width="220"
+                  height="360"
+                  rx="6"
+                  fill="#f1f5f9"
+                  stroke="#cbd5e1"
+                />
+                <text
+                  x="32"
+                  y="100"
+                  font-size="16"
+                  font-family="Inter, system-ui, sans-serif"
+                  fill="#0f172a"
+                >
+                  Hierarchy
+                </text>
+
+                <!-- Scene/Game (center) -->
+                <rect
+                  x="244"
+                  y="72"
+                  width="712"
+                  height="360"
+                  rx="6"
+                  fill="#f8fafc"
+                  stroke="#cbd5e1"
+                />
+                <!-- Tabs (just a visual cue) -->
+                <rect
+                  x="256"
+                  y="82"
+                  width="100"
+                  height="28"
+                  rx="6"
+                  fill="#e2e8f0"
+                  stroke="#cbd5e1"
+                />
+                <text
+                  x="286"
+                  y="101"
+                  text-anchor="middle"
+                  font-size="14"
+                  font-family="Inter, system-ui, sans-serif"
+                  fill="#0f172a"
+                >
+                  Scene
+                </text>
+                <rect
+                  x="360"
+                  y="82"
+                  width="100"
+                  height="28"
+                  rx="6"
+                  fill="#f1f5f9"
+                  stroke="#cbd5e1"
+                />
+                <text
+                  x="410"
+                  y="101"
+                  text-anchor="middle"
+                  font-size="14"
+                  font-family="Inter, system-ui, sans-serif"
+                  fill="#334155"
+                >
+                  Game
+                </text>
+                <!-- Center label -->
+                <text
+                  x="600"
+                  y="260"
+                  text-anchor="middle"
+                  font-size="18"
+                  font-family="Inter, system-ui, sans-serif"
+                  fill="#0f172a"
+                >
+                  Scene View / Game View
+                </text>
+
+                <!-- Project (bottom center) -->
+                <rect
+                  x="244"
+                  y="440"
+                  width="712"
+                  height="144"
+                  rx="6"
+                  fill="#f1f5f9"
+                  stroke="#cbd5e1"
+                />
+                <text
+                  x="260"
+                  y="468"
+                  font-size="16"
+                  font-family="Inter, system-ui, sans-serif"
+                  fill="#0f172a"
+                >
+                  Project
+                </text>
+
+                <!-- Inspector (right) -->
+                <rect
+                  x="968"
+                  y="72"
+                  width="216"
+                  height="512"
+                  rx="6"
+                  fill="#f1f5f9"
+                  stroke="#cbd5e1"
+                />
+                <text
+                  x="984"
+                  y="100"
+                  font-size="16"
+                  font-family="Inter, system-ui, sans-serif"
+                  fill="#0f172a"
+                >
+                  Inspector
+                </text>
+
+                <!-- Subtle border -->
+                <rect
+                  x="8"
+                  y="8"
+                  width="1184"
+                  height="584"
+                  rx="10"
+                  fill="none"
+                  stroke="#94a3b8"
+                />
+              </svg>
+              <figcaption class="text-sm text-slate-600 mt-2">
+                Visualização esquemática das janelas padrão do Editor da Unity.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-teal-800">1. Scene View</h4>
+              <p class="text-slate-700">
+                Sua "mesa de trabalho" 3D/2D. É aqui que você posiciona, move,
+                rotaciona e escala todos os objetos do seu jogo (GameObjects).
+              </p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-teal-800">2. Game View</h4>
+              <p class="text-slate-700">
+                A visão da câmera do jogador. Mostra como o jogo será visto
+                quando estiver rodando. Use o botão de Play para testar.
+              </p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-teal-800">3. Hierarchy</h4>
+              <p class="text-slate-700">
+                Uma lista de todos os GameObjects presentes na sua cena atual. A
+                organização aqui (objetos "filhos" de outros) afeta o
+                comportamento deles.
+              </p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-lg">
+              <h4 class="font-bold text-teal-800">4. Project Window</h4>
+              <p class="text-slate-700">
+                Seu "explorador de arquivos". Contém todos os assets do seu
+                projeto (modelos 3D, texturas, scripts, sons, etc.), organizados
+                em pastas.
+              </p>
+            </div>
+            <div class="bg-slate-50 p-4 rounded-lg col-span-1 md:col-span-2">
+              <h4 class="font-bold text-teal-800">5. Inspector</h4>
+              <p class="text-slate-700">
+                A janela mais importante. Mostra todas as propriedades e
+                componentes do GameObject selecionado na Hierarchy ou na Scene.
+                É aqui que você ajusta tudo: posição, cor, física, scripts, etc.
+              </p>
+            </div>
+          </div>
+          <div class="callout callout-warning" role="alert">
+            <h4 class="font-bold mb-2">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i>Play Mode vs.
+              Edit Mode
+            </h4>
+            <p class="text-sm">
+              Qualquer alteração feita enquanto o jogo está rodando (<strong
+                >Play Mode</strong
+              >
+              - o editor fica com um tom azulado)
+              <strong>será perdida</strong> ao parar a execução. Sempre faça
+              alterações permanentes no <strong>Edit Mode</strong>.
+            </p>
+          </div>
+          <div class="callout callout-info">
+            <h4 class="font-bold mb-2">
+              <i class="fa-solid fa-keyboard mr-2"></i>Atalhos Essenciais
+            </h4>
+            <p class="text-sm">
+              <strong>Q:</strong> Mão (Pan), <strong>W:</strong> Mover,
+              <strong>E:</strong> Rotacionar, <strong>R:</strong> Escala.
+              <strong>F:</strong> Focar no objeto selecionado.
+              <strong>Alt + Clique Direito:</strong> Zoom.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: URP -->
+      <section id="urp" aria-labelledby="urp-heading" class="mb-12">
+        <h2
+          id="urp-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-lightbulb mr-2"></i>Configurando o Universal
+          Render Pipeline (URP)
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            O URP é o pipeline de renderização moderno da Unity, otimizado para
+            performance e flexibilidade. A configuração correta é crucial.
+          </p>
+          <h4 class="font-semibold text-lg pt-2">
+            Checklist de Configuração do URP:
+          </h4>
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>
+              <strong>Criar com Template:</strong> Sempre inicie projetos com o
+              template <strong>3D (URP)</strong> no Unity Hub.
+            </li>
+            <li>
+              <strong>Verificar Graphics Settings:</strong> Em
+              <code>Edit > Project Settings > Graphics</code>, confirme se um
+              asset "URP-HighFidelity" ou similar está no campo
+              <em>Scriptable Render Pipeline Settings</em>.
+            </li>
+            <li>
+              <strong>Verificar Quality Settings:</strong> Em
+              <code>Edit > Project Settings > Quality</code>, certifique-se de
+              que o mesmo asset URP está atribuído para cada nível de qualidade.
+            </li>
+            <li>
+              <strong>Converter Materiais:</strong> Se você importar assets
+              antigos, eles podem aparecer rosa. Use
+              <code>Window > Rendering > Render Pipeline Converter</code> para
+              atualizá-los para o URP.
+            </li>
+            <li>
+              <strong>Configurações Recomendadas:</strong> Em
+              <code>Project Settings > Player > Other Settings</code>, defina
+              <strong>Color Space</strong> para <strong>Linear</strong> para
+              cores mais realistas.
+            </li>
+          </ol>
+          <h4 class="font-semibold text-lg pt-4">
+            Pós-processamento com Volumes
+          </h4>
+          <p class="text-sm">
+            Efeitos como brilho (Bloom) e escurecimento de bordas (Vignette) são
+            aplicados com Volumes.
+          </p>
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>
+              Crie um GameObject na cena (<code
+                >GameObject > Volume > Global Volume</code
+              >).
+            </li>
+            <li>
+              No Inspector do Volume, crie um novo <strong>Profile</strong>.
+            </li>
+            <li>
+              Clique em <strong>Add Override > Post-processing</strong> e
+              adicione efeitos como <strong>Bloom</strong> e
+              <strong>Vignette</strong>. Marque as caixas para ativá-los e
+              ajuste os valores.
+            </li>
+            <li>
+              Selecione sua <strong>Main Camera</strong> e, no Inspector, ative
+              a opção <strong>Post Processing</strong>.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Section: Input System -->
+      <section id="input-system" aria-labelledby="input-heading" class="mb-12">
+        <h2
+          id="input-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-gamepad mr-2"></i>Introdução ao Novo Input
+          System
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            O novo Input System é uma abordagem robusta para gerenciar entradas
+            de múltiplos dispositivos.
+          </p>
+          <h4 class="font-semibold text-lg pt-2">
+            Checklist de Configuração do Input System:
+          </h4>
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>
+              <strong>Instalar o Pacote:</strong> Via
+              <code>Window > Package Manager</code>, instale o pacote "Input
+              System".
+            </li>
+            <li>
+              <strong>Habilitar Backend:</strong> Em
+              <code>Project Settings > Player > Other Settings</code>, em
+              <strong>Active Input Handling</strong>, selecione
+              <strong>"Input System Package (New)"</strong> ou
+              <strong>"Both"</strong>. O editor irá reiniciar.
+            </li>
+            <li>
+              <strong>Criar Input Actions:</strong> Crie um asset
+              <code>Create > Input Actions</code>. Dentro dele, defina:
+              <ul class="list-disc list-inside ml-4">
+                <li>
+                  <strong>Action Maps:</strong> Contextos de controle (ex:
+                  "Player", "UI", "Vehicle").
+                </li>
+                <li>
+                  <strong>Actions:</strong> Ações semânticas (ex: "Move",
+                  "Jump", "Fire"). Defina o <strong>Action Type</strong> (<em
+                    >Value</em
+                  >
+                  para eixos, <em>Button</em> para cliques).
+                </li>
+                <li>
+                  <strong>Bindings:</strong> As teclas/botões físicos associados
+                  a cada Action. Use <strong>Composite Bindings</strong> para
+                  criar vetores 2D (ex: "Up/Down/Left/Right WASD").
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Gerar Classe C#:</strong> No Inspector do asset de Input
+              Actions, marque "Generate C# Class" e aplique.
+            </li>
+          </ol>
+          <div class="callout callout-practice" role="note">
+            <h4 class="font-bold text-lg mb-2">
+              Exemplo de Código C# com CharacterController
+            </h4>
+            <p class="text-sm mb-4">
+              Este script usa um CharacterController para um movimento mais
+              robusto e baseado em colisão.
+            </p>
+            <div class="code-block-wrapper">
+              <div class="code-block text-sm">
+                <pre><code>
+// NOTE: CharacterController + new Input System 
+// (Actions: Player/Move as 2D Vector Composite)
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(CharacterController))]
+public class PlayerController : MonoBehaviour
+{
+  // Auto-generated C# class from your .inputactions
+    private PlayerControls _controls;     
+    private Vector2 _moveInput;
+    private CharacterController _cc;
+
+    private void Awake() {
+        _cc = GetComponent&lt;CharacterController&gt;();
+        _controls = new PlayerControls();
+    }
+
+    private void OnEnable() {
+        var player = _controls.Player;
+        player.Enable();
+
+        // Subscribe to "Move" action events
+        player.Move.performed += ctx => _moveInput = ctx.ReadValue&lt;Vector2&gt;();
+        player.Move.canceled  += _  => _moveInput = Vector2.zero;
+    }
+
+    private void OnDisable() {
+        // It's fine to disable the whole map; Unity will
+        // release callbacks on domain reloads.
+        _controls.Player.Disable();
+    }
+
+    private void Update() {
+        // Convert 2D input (X,Y) to world movement (X,Z)
+        Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y);
+        _cc.Move(move * 5f * Time.deltaTime);
+    }
+}
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Common Errors -->
+      <section id="erros-comuns" aria-labelledby="erros-heading" class="mb-12">
+        <h2
+          id="erros-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-bug mr-2"></i>Erros Comuns e Soluções
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-teal-800 mb-2">URP</h3>
+            <ul class="text-sm space-y-2 list-disc list-inside">
+              <li>
+                <strong>Materiais Rosas:</strong> Use o Render Pipeline
+                Converter.
+              </li>
+              <li>
+                <strong>Pós-processamento não funciona:</strong> Verifique se o
+                Post Processing está ativo na Câmera e se há um Volume na cena.
+              </li>
+              <li>
+                <strong>Cena escura:</strong> Ajuste a luz direcional, o skybox
+                ou a exposição (Exposure) no Volume.
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-bold text-teal-800 mb-2">Input System</h3>
+            <ul class="text-sm space-y-2 list-disc list-inside">
+              <li>
+                <strong>Input não funciona:</strong> Verifique se o Active Input
+                Handling está como "New" ou "Both".
+              </li>
+              <li>
+                <strong>UI não responde:</strong> Adicione o componente
+                <strong>Input System UI Input Module</strong> ao seu
+                EventSystem.
+              </li>
+              <li>
+                <strong>Ações não salvas:</strong> Sempre clique em "Save Asset"
+                na janela de Input Actions após modificar.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Videos (PT-BR) -->
+      <section
+        id="videos-ptbr"
+        aria-labelledby="videos-ptbr-heading"
+        class="mb-12"
+      >
+        <h2
+          id="videos-ptbr-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-6"
+        >
+          🎬 Vídeos em Português (PT-BR)
+        </h2>
+
+        <!-- NOTE: Simple YouTube cards using thumbnails; opens in a new tab -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Novo Input System (PT-BR) -->
+          <a
+            href="https://www.youtube.com/watch?v=zhi14HpKqnU"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/zhi14HpKqnU/hqdefault.jpg"
+                alt="Como usar o NOVO Input System da Unity (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Novo Input System (introdução)
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Conceitos e configuração do pacote.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Input System - método prático -->
+          <a
+            href="https://www.youtube.com/watch?v=PDPI5SBOzck"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/PDPI5SBOzck/hqdefault.jpg"
+                alt="Input System na Unity | O método que eu uso (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Input System: o método que eu uso
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Fluxo de trabalho com Actions/Bindings.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Multi-Input: teclado, gamepad, mobile -->
+          <a
+            href="https://www.youtube.com/watch?v=qPFhrC5r7ao"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/qPFhrC5r7ao/hqdefault.jpg"
+                alt="Multi-Input na Unity: Mouse, Gamepad e Mobile (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Multi-Input (mouse, gamepad, mobile)
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Mapas e esquemas de controle.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Minicurso FoG - Novo Input System -->
+          <a
+            href="https://www.youtube.com/watch?v=Yc1pcD_Kl3I"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/Yc1pcD_Kl3I/hqdefault.jpg"
+                alt="Minicurso: Novo Input System (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Minicurso: Novo Input System
+                </h3>
+                <p class="text-sm text-slate-600">Aprofundamento prático.</p>
+              </div>
+            </article>
+          </a>
+
+          <!-- URP: atualizar/converter projeto -->
+          <a
+            href="https://www.youtube.com/watch?v=IsewuyLXy2I"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/IsewuyLXy2I/hqdefault.jpg"
+                alt="Atualizar projeto para URP (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  URP: atualizando projeto
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Converter materiais e ajustes.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- URP vs HDRP (conceitos) -->
+          <a
+            href="https://www.youtube.com/watch?v=DTPaZP-rUTo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/DTPaZP-rUTo/hqdefault.jpg"
+                alt="HDRP vs URP: diferenças (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">HDRP vs URP</h3>
+                <p class="text-sm text-slate-600">Quando usar cada pipeline.</p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Movimento com CharacterController -->
+          <a
+            href="https://www.youtube.com/watch?v=eJPD2Os9leI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/eJPD2Os9leI/hqdefault.jpg"
+                alt="Movimentação de Personagem 3D na Unity (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Movimentação 3D (CharacterController)
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Base para o protótipo da aula.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Curso introdutório (PT-BR) -->
+          <a
+            href="https://www.youtube.com/watch?v=7sc72lCpsHs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/7sc72lCpsHs/hqdefault.jpg"
+                alt="Curso de Unity Gratuito | Introdução (PT-BR)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Curso Unity (introdução)
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Base para iniciantes (PT-BR).
+                </p>
+              </div>
+            </article>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section: TED -->
+      <section id="tarefa" aria-labelledby="tarefa-heading" class="mb-12">
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): Meu Primeiro Protótipo
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p class="text-lg">
+            O objetivo é aplicar os conceitos da aula para criar uma cena mínima
+            funcional, garantindo que seu ambiente de desenvolvimento está
+            pronto.
+          </p>
+          <h4 class="font-semibold text-teal-800 mt-6 mb-2">
+            Checklist de Entrega:
+          </h4>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>
+              <strong>Nome do Projeto:</strong>
+              <code>NOME_SOBRENOME_TDJD_AULA5</code>
+            </li>
+            <li>
+              <strong>Estrutura de Pastas:</strong> Crie pastas
+              <code>_Project/Scenes</code>, <code>Scripts</code>,
+              <code>Prefabs</code>.
+            </li>
+            <li>
+              <strong>Entrega:</strong> Poste um vídeo/GIF no Moodle mostrando o
+              jogador se movendo. Anexe o projeto compactado (.zip, máx 50MB).
+            </li>
+          </ul>
+          <div class="mt-6 bg-teal-50 border border-teal-200 p-4 rounded-lg">
+            <h4 class="font-semibold text-teal-800 mb-2">
+              <i class="fa-solid fa-star mr-2"></i>Extensões (Opcional)
+            </h4>
+            <p class="text-sm">
+              Para um desafio extra, tente implementar: um efeito de
+              pós-processamento (Bloom), suporte a gamepad no Input Action, ou
+              uma câmera que segue o jogador.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Resources -->
+      <section id="recursos" aria-labelledby="recursos-heading" class="mb-12">
+        <h2
+          id="recursos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          📚 Recursos Oficiais e Vídeos
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <div>
+            <h4 class="font-bold text-teal-800 mb-2">Instalação e Editor</h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://unity.com/releases/editor/qa/lts-releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Unity — Releases & Support (LTS/Updates)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://unity.com/download/archive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Unity — Download Archive (todas as versões)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://unity.com/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Unity Hub — Instalar versões</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/ShortcutsManager.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Shortcuts Manager (atalhos)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-teal-800 mb-2">URP e Gráficos</h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrading-your-project-to-urp.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Upgrading from Built-In RP to URP</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/srp-batcher.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >SRP Batcher (overview e uso)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/LinearRendering-LinearOrGammaWorkflow.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Color spaces (Linear vs Gamma)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/post-processing-urp.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Volumes e pós-processamento no URP</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://learn.unity.com/project/introduction-to-the-universal-render-pipeline-for-advanced-creators"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Unity Learn — Introduction to URP</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-teal-800 mb-2">Input System</h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.7/manual/Installation.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Installation & Active Input Handling</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.7/manual/QuickStart.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Quick start (Actions e PlayerInput)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.7/manual/Components.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >PlayerInput (manual)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.7/manual/UI.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >InputSystemUIInputModule (UI)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://learn.unity.com/project/using-the-input-system-in-unity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Using the Input System in Unity (curso)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Bibliography -->
+      <section
+        id="bibliografia"
+        aria-labelledby="bibliografia-heading"
+        class="mb-12"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          📚 Bibliografia e Referências
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            ALVES, W. P.
+            <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de
+            Janeiro: Alta Books, 2019.
+          </p>
+          <p>
+            ALVES, George Santiago.
+            <strong>Projeto de jogos 3D: modelagem e programação.</strong> São
+            Paulo: Platos, 2021.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <a
+            href="https://eadsp.unichristus.edu.br/"
+            class="text-indigo-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a
+            href="/politica_uso/"
+            class="text-indigo-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

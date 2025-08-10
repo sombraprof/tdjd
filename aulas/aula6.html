@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 6: Importação de Assets e Organização de Projeto</title>
+    <meta
+      name="description"
+      content="Unidade II – Fundamentos da Unity e Prototipagem. Importação de assets (Asset Store e repositórios externos) e organização de arquivos/pastas/cenas no Unity."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Unity, Asset Store, Organização de Projeto, Git, Versionamento, Desenvolvimento de Jogos"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 6: Importação de Assets e Organização de Projeto"
+    />
+    <meta
+      property="og:description"
+      content="Aprenda a importar assets de diversas fontes e a manter seu projeto Unity organizado e versionado com as melhores práticas."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/0f766e/ffffff?text=TDJD\nAula+6"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 6: Importação de Assets e Organização de Projeto"
+    />
+    <meta
+      property="twitter:description"
+      content="Aprenda a importar assets de diversas fontes e a manter seu projeto Unity organizado e versionado com as melhores práticas."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/0f766e/ffffff?text=TDJD\nAula+6"
+    />
+
+    <!-- CDN Links -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        /* bg-slate-50 */
+        padding-top: 60px;
+        /* Space for fixed navbar */
+      }
+
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+
+      .callout-info {
+        background-color: #f0f9ff;
+        /* bg-sky-50 */
+        border-color: #7dd3fc;
+        /* border-sky-300 */
+        color: #0c4a6e;
+        /* text-sky-800 */
+      }
+
+      .callout-practice {
+        background-color: #f0fdf4;
+        /* bg-emerald-50 */
+        border-color: #6ee7b7;
+        /* border-emerald-300 */
+        color: #065f46;
+        /* text-emerald-800 */
+      }
+
+      .callout-warning {
+        background-color: #fffbeb; /* bg-amber-50 */
+        border-color: #fcd34d; /* border-amber-300 */
+        color: #92400e; /* text-amber-800 */
+      }
+
+      .code-block {
+        background-color: #1e293b; /* slate-800 */
+        color: #e2e8f0; /* slate-200 */
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Fixed Navigation Menu -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-teal-700">TDJD - Aula 6</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-teal-600"
+              >Plano</a
+            >
+            <a
+              href="#importacao-assets"
+              class="text-slate-600 hover:text-teal-600"
+              >Importação</a
+            >
+            <a href="#organizacao" class="text-slate-600 hover:text-teal-600"
+              >Organização</a
+            >
+            <a href="#versionamento" class="text-slate-600 hover:text-teal-600"
+              >Versionamento</a
+            >
+            <a href="#tarefa" class="text-slate-600 hover:text-teal-600">TED</a>
+            <a href="#recursos" class="text-slate-600 hover:text-teal-600"
+              >Recursos</a
+            >
+            <a href="#bibliografia" class="text-slate-600 hover:text-teal-600"
+              >Bibliografia</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-teal-800 to-cyan-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 6: Importação de Assets e Organização de Projeto
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Unidade II – Fundamentos da Unity e Prototipagem
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Section: Lesson Plan -->
+      <section
+        id="plano-aula"
+        aria-labelledby="plano-aula-heading"
+        class="mb-12 bg-teal-50 border border-teal-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-teal-700 mb-6 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card: Unit and Content -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-teal-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="text-slate-600 mt-1 text-sm">
+              Importação de assets via Asset Store e repositórios externos;
+              estruturação e organização de arquivos no projeto Unity.
+            </p>
+          </div>
+          <!-- Card: Objective -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-teal-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Habilitar o aluno a importar e integrar assets no projeto Unity
+              aplicando boas práticas de organização de arquivos, pastas e
+              cenas.
+            </p>
+          </div>
+          <!-- Card: Methodology -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-teal-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Aula prática com resolução de tarefa orientada (aprendizagem
+              baseada em tarefas reais).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Learning Outcomes -->
+      <section
+        id="resultados"
+        aria-labelledby="resultados-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="resultados-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          🎯 Resultados de Aprendizagem (Aula 6)
+        </h2>
+        <p class="text-slate-700 leading-relaxed mb-4">
+          Ao final desta aula, o(a) estudante será capaz de:
+        </p>
+        <ul class="list-disc pl-5 space-y-2 text-slate-700 text-sm">
+          <li>
+            <strong>Importar</strong> pelo menos 3 assets (modelo 3D,
+            textura/material e áudio) via Asset Store ou fonte externa,
+            aplicando as configurações de importação adequadas.
+          </li>
+          <li>
+            <strong>Organizar</strong> a estrutura de pastas do projeto segundo
+            o padrão proposto (<code
+              >_Project/Art, Prefabs, Scenes, Scripts</code
+            >) e separar assets de terceiros em <code>Plugins/</code> quando
+            aplicável.
+          </li>
+          <li>
+            <strong>Configurar compatibilidade</strong> com URP (resolver
+            materiais “rosa” e ajustar escala/colisores de modelos).
+          </li>
+          <li>
+            <strong>Criar</strong> pelo menos 1 <em>Prefab</em> funcional a
+            partir de um modelo importado, com colisor apropriado.
+          </li>
+          <li>
+            <strong>Versionar</strong> o projeto em um repositório Git com
+            <code>.gitignore</code> e Git LFS para binários, registrando ao
+            menos 3 commits com mensagens descritivas.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section: Assessment Rubric -->
+      <section
+        id="rubrica"
+        aria-labelledby="rubrica-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="rubrica-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          ✅ Critérios de Avaliação da TED (Aula 6)
+        </h2>
+
+        <div class="text-slate-700 leading-relaxed text-sm space-y-4">
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              1) Importação & Compatibilidade (25%)
+            </h3>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>
+                <strong>0–10%</strong>: Assets importados com problemas de
+                materiais/escala; ajustes ausentes.
+              </li>
+              <li>
+                <strong>11–20%</strong>: Importação ok; alguns ajustes feitos
+                (ex.: conversão URP), mas ainda há inconsistências.
+              </li>
+              <li>
+                <strong>21–25%</strong>: Importação correta; materiais
+                compatíveis, escala adequada e configurações ajustadas.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              2) Organização de Projeto (25%)
+            </h3>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>
+                <strong>0–10%</strong>: Estrutura de pastas ausente ou confusa;
+                convenções de nomes não seguidas.
+              </li>
+              <li>
+                <strong>11–20%</strong>: Estrutura parcialmente correta;
+                pequenos desvios de padrão.
+              </li>
+              <li>
+                <strong>21–25%</strong>: Estrutura completa conforme proposto;
+                nomes consistentes e separação de terceiros em
+                <code>Plugins/</code>.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              3) Cena Funcional (20%)
+            </h3>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>
+                <strong>0–8%</strong>: Cena incompleta ou não executa como
+                esperado.
+              </li>
+              <li>
+                <strong>9–16%</strong>: Cena simples e funcional; composição
+                básica.
+              </li>
+              <li>
+                <strong>17–20%</strong>: Cena funcional com composição coerente
+                (iluminação básica, posicionamento, uso dos assets).
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              4) Prefab com Colisor (15%)
+            </h3>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>
+                <strong>0–6%</strong>: Prefab ausente ou sem colisor funcional.
+              </li>
+              <li>
+                <strong>7–12%</strong>: Prefab criado; colisor presente mas com
+                ajustes pendentes.
+              </li>
+              <li>
+                <strong>13–15%</strong>: Prefab correto; colisor apropriado e
+                reutilizável.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              5) Versionamento (Git + LFS) (15%)
+            </h3>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>
+                <strong>0–6%</strong>: Repositório ausente ou sem
+                <code>.gitignore</code>/LFS.
+              </li>
+              <li>
+                <strong>7–12%</strong>: Repo criado; <code>.gitignore</code> ok;
+                LFS parcial; commits pouco descritivos.
+              </li>
+              <li>
+                <strong>13–15%</strong>: Repo com <code>.gitignore</code> + LFS
+                corretos e ≥3 commits com mensagens claras.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info mt-6" role="note">
+          <p class="text-sm">
+            <strong>Entrega (conferência formal):</strong> print/vídeo curto
+            mostrando a cena e a estrutura de pastas no Project. Nome do
+            projeto: <code>NOME_SOBRENOME_TDJD_AULA6</code>. Qualquer referência
+            externa deve citar a fonte e licença.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Introduction -->
+      <section
+        id="introducao"
+        aria-labelledby="intro-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="intro-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          Construindo Mundos: A Arte de Montar o Quebra-Cabeça
+        </h2>
+        <div class="text-slate-700 leading-relaxed space-y-4">
+          <p>
+            Na aula anterior, configuramos nosso ambiente de trabalho na Unity.
+            Agora, vamos começar a preenchê-lo. Um jogo é um "quebra-cabeça"
+            montado com diversas peças: modelos 3D, texturas, sons, scripts,
+            etc. Essas peças são os <strong>assets</strong>. Saber como
+            encontrar, importar e, principalmente, organizar esses assets é uma
+            habilidade que acelera drasticamente a prototipagem e evita dores de
+            cabeça no futuro.
+          </p>
+          <div class="callout callout-warning" role="alert">
+            <h4 class="font-bold mb-2">
+              <i class="fa-solid fa-scale-balanced mr-2"></i>Atenção às Licenças
+              de Uso
+            </h4>
+            <p class="text-sm">
+              Nem todo asset encontrado na internet é gratuito para uso em
+              projetos, especialmente comerciais. Sempre verifique a licença
+              (ex: CC0, MIT, Creative Commons). A Unity Asset Store deixa isso
+              claro, mas em repositórios externos, a responsabilidade é sua.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Asset Importation -->
+      <section
+        id="importacao-assets"
+        aria-labelledby="import-heading"
+        class="mb-12"
+      >
+        <h2
+          id="import-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-box-open mr-2"></i>Importação de Assets
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-8">
+          <div>
+            <h3 class="text-2xl font-semibold text-teal-800 mb-4">
+              1. Unity Asset Store (Oficial)
+            </h3>
+            <ol
+              class="list-decimal list-inside space-y-2 text-sm text-slate-600"
+            >
+              <li>
+                Abra a Asset Store via <strong>Window > Asset Store</strong> (ou
+                acesse o site).
+              </li>
+              <li>
+                Pesquise pelo asset desejado (use filtros como "Free Assets").
+              </li>
+              <li>Clique em <strong>"Add to My Assets"</strong>.</li>
+              <li>
+                No Unity, abra <strong>Window > Package Manager</strong>. No
+                topo, selecione <strong>"My Assets"</strong>.
+              </li>
+              <li>
+                Encontre o asset, clique em <strong>"Download"</strong> e depois
+                em <strong>"Import"</strong>.
+              </li>
+              <li>
+                Uma janela mostrará todos os arquivos do pacote. Revise e
+                desmarque o que não for necessário (ex: cenas de demonstração) e
+                clique em <strong>"Import"</strong>.
+              </li>
+            </ol>
+          </div>
+          <div>
+            <h3 class="text-2xl font-semibold text-teal-800 mb-4">
+              2. Repositórios Externos (GitHub, Itch.io)
+            </h3>
+            <p class="text-sm text-slate-600 mb-4">
+              Assets de fora da loja oficial vêm em vários formatos:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
+              <li>
+                <strong>.unitypackage:</strong> Dê um duplo clique no arquivo ou
+                vá em <strong>Assets > Import Package > Custom Package</strong>.
+              </li>
+              <li>
+                <strong>URL de Git:</strong> No Package Manager, clique no ícone
+                <strong>"+" > "Add package from git URL..."</strong> e cole o
+                link.
+              </li>
+              <li>
+                <strong>.zip / Arquivos Soltos:</strong> Descompacte e arraste
+                as pastas (ou arquivos como .fbx, .png, .wav) diretamente para a
+                janela <strong>Project</strong> da Unity.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-2xl font-semibold text-teal-800 mb-4">
+              3. Ajustes de Compatibilidade e Otimização
+            </h3>
+            <p class="text-sm text-slate-600 mb-4">
+              Após importar, quase sempre é necessário fazer ajustes no
+              Inspector:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-sm text-slate-600">
+              <li>
+                <strong>Materiais Rosas (URP):</strong> Use
+                <strong>Window > Rendering > Render Pipeline Converter</strong>
+                para converter os materiais.
+              </li>
+              <li>
+                <strong>Modelos 3D (.fbx):</strong> Verifique o
+                <strong>Scale Factor</strong>, habilite
+                <strong>Generate Colliders</strong> se necessário, e ajuste as
+                configurações de <strong>Normals</strong> e
+                <strong>Rig</strong>.
+              </li>
+              <li>
+                <strong>Texturas (.png):</strong> Altere
+                <strong>Texture Type</strong> (ex: Normal Map),
+                habilite/desabilite <strong>sRGB</strong>, e ajuste
+                <strong>Compression</strong> para otimizar o tamanho.
+              </li>
+              <li>
+                <strong>Áudio (.wav):</strong> Habilite
+                <strong>Force To Mono</strong> para sons 3D, e ajuste
+                <strong>Load Type</strong> e
+                <strong>Compression Format</strong> para otimizar o uso de
+                memória.
+              </li>
+            </ul>
+          </div>
+          <div class="callout callout-practice" role="note">
+            <h4 class="font-bold mb-2">
+              Checklist: Primeiros 5 Minutos Pós-Import
+            </h4>
+            <p class="text-sm">
+              ✅ O asset está na pasta correta? ✅ Os materiais estão
+              funcionando (sem rosa)? ✅ A escala do modelo 3D está correta na
+              cena? ✅ As texturas estão com a configuração adequada (Normal,
+              sRGB)?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Project Organization -->
+      <section id="organizacao" aria-labelledby="org-heading" class="mb-12">
+        <h2
+          id="org-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-folder-tree mr-2"></i>Organização do Projeto
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <p class="text-slate-700 leading-relaxed">
+            Um projeto bem organizado é mais fácil de manter, escalar e
+            trabalhar em equipe. A estrutura de pastas é a espinha dorsal da
+            organização.
+          </p>
+          <h3 class="text-xl font-semibold text-teal-800 pt-4">
+            Padrão de Pastas
+          </h3>
+          <p class="text-sm text-slate-600">
+            Crie uma pasta principal (ex: <strong>_Project</strong> ou
+            <strong>Game</strong>) para separar seus assets dos assets
+            importados.
+          </p>
+          <div class="code-block text-sm">
+            <pre><code>
+Assets/
+  _Project/
+    Art/
+      Models/
+      Textures/
+      Materials/
+      Audio/
+        SFX/
+        Music/
+    Prefabs/
+      Characters/
+      Props/
+    Scenes/
+      Main.unity
+      Sandbox.unity
+    Scripts/
+      Player/
+      Systems/
+      UI/
+  Plugins/  (Para assets de terceiros)
+</code></pre>
+          </div>
+          <h3 class="text-xl font-semibold text-teal-800 pt-4">
+            Convenções de Nomes
+          </h3>
+          <ul class="list-disc list-inside text-sm text-slate-600">
+            <li>
+              <strong>Arquivos e Pastas:</strong> Use
+              <strong>PascalCase</strong> (Ex: <code>PlayerController</code>,
+              <code>Art</code>, <code>Prefabs</code>). Evite espaços e
+              caracteres especiais.
+            </li>
+            <li>
+              <strong>Prefixos/Sufixos:</strong> Ajuda a identificar o tipo de
+              asset rapidamente (Ex: <code>mat_Player</code>,
+              <code>tex_Ground_D</code>, <code>sfx_Jump</code>,
+              <code>Player_Prefab</code>).
+            </li>
+          </ul>
+          <div class="callout callout-info" role="note">
+            <h4 class="font-bold mb-2">Dica de Ouro: Prefabs</h4>
+            <p class="text-sm">
+              Sempre transforme GameObjects complexos em
+              <strong>Prefabs</strong>. Isso permite reutilizá-los facilmente e
+              qualquer mudança no Prefab original atualiza todas as suas
+              instâncias na cena, evitando trabalho repetido e referências
+              quebradas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Version Control -->
+      <section
+        id="versionamento"
+        aria-labelledby="version-heading"
+        class="mb-12"
+      >
+        <h2
+          id="version-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-code-branch mr-2"></i>Versionamento com
+          Git/GitHub
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <p class="text-slate-700 leading-relaxed">
+            Versionar seu projeto é crucial. O Git permite que você salve
+            "fotos" (commits) do seu progresso, reverta mudanças e trabalhe em
+            equipe sem sobrescrever o trabalho dos outros.
+          </p>
+          <h3 class="text-xl font-semibold text-teal-800 pt-4">
+            Configuração Essencial
+          </h3>
+          <p class="text-sm text-slate-600">
+            Dois arquivos são essenciais na raiz do seu projeto Unity para que o
+            Git funcione corretamente:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold text-center mb-2">.gitignore</h4>
+              <div class="code-block text-xs">
+                <pre><code>
+# Unity-specific ignores
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# Visual Studio / Rider files
+.vs/
+*.csproj
+*.sln
+</code></pre>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-center mb-2">
+                .gitattributes (para Git LFS)
+              </h4>
+              <div class="code-block text-xs">
+                <pre><code>
+# Git LFS for large binary files
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="callout callout-warning" role="alert">
+            <h4 class="font-bold mb-2">
+              <i class="fa-solid fa-database mr-2"></i>Use Git LFS!
+            </h4>
+            <p class="text-sm">
+              O Git não é bom com arquivos grandes e binários (modelos,
+              texturas). O <strong>Git LFS (Large File Storage)</strong> é uma
+              extensão que resolve isso. É <strong>essencial</strong> para
+              projetos de jogos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Vídeos recomendados (Aula 6) -->
+      <section
+        id="videos-aula6"
+        aria-labelledby="videos-aula6-heading"
+        class="mb-12"
+      >
+        <h2
+          id="videos-aula6-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-6"
+        >
+          🎬 Vídeos recomendados (Aula 6)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Importar da Asset Store #1 -->
+          <a
+            href="https://www.youtube.com/watch?v=8weyrOxcLOE"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/8weyrOxcLOE/hqdefault.jpg"
+                alt="Como importar da Unity Asset Store (2022+)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Importar da Asset Store (passo a passo)
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Fluxo básico de download e import.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Importar da Asset Store #2 -->
+          <a
+            href="https://www.youtube.com/watch?v=MCxodymLvA8"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/MCxodymLvA8/hqdefault.jpg"
+                alt="Importar e usar assets no Unity (iniciante)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Importando e usando assets
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Visão geral para iniciantes.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Organização de Projeto #1 -->
+          <a
+            href="https://www.youtube.com/watch?v=FcdESnWsoBE"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/FcdESnWsoBE/hqdefault.jpg"
+                alt="Como organizar seu projeto no Unity"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Organização de projeto (9 dicas)
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Pastas, nomeação e boas práticas.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Organização de Projeto #2 -->
+          <a
+            href="https://www.youtube.com/watch?v=nVieP57TD20"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/nVieP57TD20/hqdefault.jpg"
+                alt="5 dicas de organização de projeto"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">5 dicas de organização</h3>
+                <p class="text-sm text-slate-600">
+                  Estrutura e fluxo de trabalho.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Versionamento Git (conceitos e prática) -->
+          <a
+            href="https://www.youtube.com/watch?v=C8Hh1FcCZs8"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/C8Hh1FcCZs8/hqdefault.jpg"
+                alt="Version Control in Unity (Git)"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Git + Unity (conceitos/prática)
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Por que usar e como começar.
+                </p>
+              </div>
+            </article>
+          </a>
+
+          <!-- Importar modelos externos (Sketchfab → Unity) -->
+          <a
+            href="https://www.youtube.com/watch?v=eMbWVflDxw0"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <article>
+              <img
+                src="https://img.youtube.com/vi/eMbWVflDxw0/hqdefault.jpg"
+                alt="Importar modelos do Sketchfab para o Unity"
+                class="w-full h-44 object-cover rounded-t-lg"
+              />
+              <div class="p-4">
+                <h3 class="font-bold text-teal-800">
+                  Modelos externos → Unity
+                </h3>
+                <p class="text-sm text-slate-600">
+                  Fluxo Sketchfab → Unity atualizado.
+                </p>
+              </div>
+            </article>
+          </a>
+        </div>
+      </section>
+
+      <!-- Section: Guided Activity -->
+      <section
+        id="roteiro"
+        aria-labelledby="roteiro-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="roteiro-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          🧭 Roteiro de Atividade Guiada (45–60 min)
+        </h2>
+
+        <p class="text-slate-700 leading-relaxed mb-6">
+          Objetivo: importar assets, ajustar compatibilidade, organizar o
+          projeto e montar uma cena funcional, registrando o progresso com
+          Git/LFS.
+        </p>
+
+        <!-- Pré-requisitos e preparação -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              <i class="fa-solid fa-list-check mr-2"></i>Pré-requisitos
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+              <li>Projeto <strong>URP</strong> aberto (Aula 5).</li>
+              <li>
+                Pacote de assets pré-selecionado <em>(local)</em> disponível ou
+                acesso à Asset Store.
+              </li>
+              <li>Git e Git LFS instalados na máquina.</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              <i class="fa-solid fa-people-arrows mr-2"></i>Dinâmica
+            </h3>
+            <p class="text-sm text-slate-700">
+              Trabalho em duplas com papéis alternados:
+            </p>
+            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+              <li><strong>Driver</strong>: executa as ações.</li>
+              <li>
+                <strong>Navegador</strong>: confere checklist e pergunta “o que
+                verificamos agora?”.
+              </li>
+            </ul>
+            <p class="text-xs text-slate-500 mt-2">
+              Trocar papéis aos 25 minutos.
+            </p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i>Planos B
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+              <li>
+                <strong>Sem internet:</strong> usar pacote local (.zip /
+                .unitypackage).
+              </li>
+              <li>
+                <strong>Máquina lenta:</strong> importar só 1 modelo + 1 textura
+                + 1 áudio.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Linha do tempo -->
+        <div class="space-y-6">
+          <!-- 0-5 -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800">
+              <span class="text-slate-500">0–5 min</span> — Alinhamento &
+              Verificação Rápida
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 mt-2 space-y-1">
+              <li>
+                Abrir o projeto (URP). Confirmar <em>Graphics</em> e
+                <em>Quality</em> com asset URP definido.
+              </li>
+              <li>
+                Garantir que está em <strong>Edit Mode</strong> (não em Play).
+              </li>
+            </ul>
+            <div class="callout callout-info mt-3" role="note">
+              <p class="text-sm">
+                <strong>Checkpoint 1:</strong> Cena aberta e URP ativo (sem
+                erros de pipeline).
+              </p>
+            </div>
+          </div>
+
+          <!-- 5-15 -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800">
+              <span class="text-slate-500">5–15 min</span> — Importação de
+              Assets
+            </h3>
+            <ol class="list-decimal pl-5 text-sm text-slate-700 mt-2 space-y-1">
+              <li>
+                Importar 3 assets: <strong>1 modelo 3D</strong>,
+                <strong>1 textura/material</strong>, <strong>1 áudio</strong>.
+              </li>
+              <li>
+                Ao importar, desmarcar conteúdos não essenciais (ex.: cenas de
+                demo grandes).
+              </li>
+              <li>
+                Se for .zip: arrastar pastas/arquivos para a janela
+                <em>Project</em>.
+              </li>
+            </ol>
+            <div class="callout callout-practice mt-3" role="note">
+              <p class="text-sm">
+                <strong>Checklist:</strong> assets aparecem no <em>Project</em>;
+                nomes legíveis; pastas de terceiros separadas (ex.:
+                <code>Plugins/</code>).
+              </p>
+            </div>
+          </div>
+
+          <!-- 15-25 -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800">
+              <span class="text-slate-500">15–25 min</span> — Compatibilidade &
+              Ajustes
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 mt-2 space-y-1">
+              <li>
+                Materiais “rosa” → usar <em>Render Pipeline Converter</em> para
+                URP.
+              </li>
+              <li>
+                Modelos 3D: checar <strong>Scale Factor</strong>, normais e
+                <em>Generate Colliders</em> (se fizer sentido).
+              </li>
+              <li>
+                Texturas: definir tipo (ex.: <em>Normal map</em>), checar sRGB e
+                compressão.
+              </li>
+              <li>
+                Áudio: <em>Force To Mono</em> (se 3D), ajustar
+                <em>Load Type</em> e compressão.
+              </li>
+            </ul>
+            <div class="callout callout-info mt-3" role="note">
+              <p class="text-sm">
+                <strong>Checkpoint 2:</strong> Sem materiais “rosa”; escala
+                coerente (1u ≈ 1m) e colisor funcionando.
+              </p>
+            </div>
+          </div>
+
+          <!-- 25-35 -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800">
+              <span class="text-slate-500">25–35 min</span> — Organização do
+              Projeto
+            </h3>
+            <p class="text-sm text-slate-700 mt-2">
+              Criar a espinha dorsal do projeto e padronizar nomes.
+            </p>
+            <div class="code-block text-xs mt-3">
+              <pre><code>Assets/
+  _Project/
+    Art/{Models,Textures,Materials,Audio/{SFX,Music}}
+    Prefabs/{Characters,Props}
+    Scenes/{Main.unity,Sandbox.unity}
+    Scripts/{Player,Systems,UI}
+  Plugins/   ← assets de terceiros (sem modificar)</code></pre>
+            </div>
+            <ul class="list-disc pl-5 text-sm text-slate-700 mt-3 space-y-1">
+              <li>
+                Mover o que for “nosso” para <code>_Project/</code>; manter
+                terceiros em <code>Plugins/</code>.
+              </li>
+              <li>
+                Criar um <strong>Prefab</strong> a partir do modelo 3D (com
+                colisor).
+              </li>
+              <li>
+                Aplicar convenções: <em>PascalCase</em> para arquivos/pastas e
+                prefixos quando útil (ex.: <code>mat_</code>, <code>tex_</code>,
+                <code>sfx_</code>).
+              </li>
+            </ul>
+            <div class="callout callout-info mt-3" role="note">
+              <p class="text-sm">
+                <strong>Checkpoint 3:</strong> Estrutura finalizada e Prefab
+                criado em <code>_Project/Prefabs/</code>.
+              </p>
+            </div>
+          </div>
+
+          <!-- 35-45 -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800">
+              <span class="text-slate-500">35–45 min</span> — Montagem da Cena
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 mt-2 space-y-1">
+              <li>Criar/abrir <code>_Project/Scenes/Main.unity</code>.</li>
+              <li>
+                Compor o cenário com o Prefab e outros objetos; ajustar luz
+                direcional/skybox se necessário.
+              </li>
+              <li>
+                Adicionar um <em>AudioSource</em> simples (efeito ou música
+                ambiente).
+              </li>
+              <li>Play test (colisão, escala e áudio).</li>
+            </ul>
+            <div class="callout callout-info mt-3" role="note">
+              <p class="text-sm">
+                <strong>Checkpoint 4:</strong> Cena roda sem erros; composição
+                básica coerente.
+              </p>
+            </div>
+          </div>
+
+          <!-- 45-55 -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800">
+              <span class="text-slate-500">45–55 min</span> — Versionamento (Git
+              + LFS)
+            </h3>
+            <p class="text-sm text-slate-700 mt-2">
+              Inicializar repositório, configurar LFS e fazer commits
+              significativos.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+              <div>
+                <h4 class="font-semibold text-center mb-2">
+                  .gitignore (essencial)
+                </h4>
+                <div class="code-block text-xs">
+                  <pre><code>/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uilds?/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+.vs/
+*.csproj
+*.sln</code></pre>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-center mb-2">
+                  .gitattributes (LFS)
+                </h4>
+                <div class="code-block text-xs">
+                  <pre><code>*.fbx filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="code-block text-xs mt-3">
+              <pre><code># No diretório raiz do projeto Unity
+git init
+git lfs install
+git add .gitattributes .gitignore
+git commit -m "chore: configura Git LFS e .gitignore"
+
+# Adicionar estrutura e assets em etapas para commits descritivos
+git add Assets/_Project
+git commit -m "feat: estrutura básica de pastas e cena Main"
+
+git add Assets/Plugins
+git commit -m "chore: adiciona assets de terceiros em Plugins"
+
+git add .
+git commit -m "feat: prefab com colisor e ajustes de compatibilidade URP"</code></pre>
+            </div>
+            <div class="callout callout-practice mt-3" role="note">
+              <p class="text-sm">
+                <strong>Dica:</strong> Commits pequenos contam a história do
+                projeto e facilitam rollback.
+              </p>
+            </div>
+          </div>
+
+          <!-- 55-60 -->
+          <div class="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 class="font-semibold text-teal-800">
+              <span class="text-slate-500">55–60 min</span> — Exit Ticket
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 mt-2 space-y-1">
+              <li>
+                Tirar um print da janela <em>Project</em> mostrando a estrutura
+                e um print/curto vídeo da cena rodando.
+              </li>
+              <li>
+                Responder rapidamente: “Qual ajuste de importação foi mais
+                necessário hoje e por quê?”
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Extensões e suporte -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="callout callout-info" role="note">
+            <h3 class="font-semibold text-teal-800 mb-2">
+              <i class="fa-solid fa-rocket mr-2"></i>Para quem terminar cedo
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+              <li>
+                Criar um <em>Prefab</em> adicional com <em>LOD Group</em> ou
+                variações de material.
+              </li>
+              <li>
+                Adicionar um <em>Global Volume</em> leve (Bloom/Vignette) e
+                ajustar exposição.
+              </li>
+              <li>
+                Organizar <em>Labels</em> nos assets para facilitar buscas.
+              </li>
+            </ul>
+          </div>
+          <div class="callout callout-warning" role="alert">
+            <h3 class="font-semibold mb-2">
+              <i class="fa-solid fa-life-ring mr-2"></i>Para quem estiver com
+              dificuldades
+            </h3>
+            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+              <li>
+                Usar o pacote local já aprovado (evita incompatibilidades).
+              </li>
+              <li>
+                Importar primeiro <strong>1</strong> modelo +
+                <strong>1</strong> textura + <strong>1</strong> áudio.
+              </li>
+              <li>
+                Pular efeitos e focar apenas na cena funcional e organização.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Notas ao professor -->
+        <div class="mt-6 bg-slate-50 border border-slate-200 rounded-lg p-4">
+          <h3 class="font-semibold text-teal-800 mb-2">
+            <i class="fa-solid fa-chalkboard-user mr-2"></i>Quadro do Professor
+            (condução)
+          </h3>
+          <ul class="list-disc pl-5 text-sm text-slate-700 space-y-1">
+            <li>Use um timer visível para as transições dos blocos.</li>
+            <li>
+              Quando ouvir “deu certo?”, devolva com “o que você verificou no
+              Inspector?” para estimular leitura técnica.
+            </li>
+            <li>
+              Intervenções rápidas: materiais rosas (Converter), escalas
+              absurdas (Scale Factor), áudio mudo (Volume/Spatial Blend).
+            </li>
+            <li>
+              Peça 3 commits mínimos e confira mensagens descritivas (não
+              “update”).
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section: TED -->
+      <section id="tarefa" aria-labelledby="tarefa-heading" class="mb-12">
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): Cena com Assets Importados + Organização
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p class="text-lg">
+            O objetivo é aplicar os conceitos da aula para montar uma cena
+            simples, mas bem organizada.
+          </p>
+          <h4 class="font-semibold text-teal-800 mt-6 mb-2">Passo a Passo:</h4>
+          <ol class="list-decimal list-inside space-y-2">
+            <li>Crie um novo projeto Unity (URP).</li>
+            <li>
+              Importe ao menos 3 assets gratuitos (um modelo 3D, uma
+              textura/material e um áudio) da Asset Store ou de repositórios
+              externos.
+            </li>
+            <li>
+              Aplique a organização de pastas padrão (<code
+                >_Project/Art, Prefabs, Scenes, Scripts</code
+              >).
+            </li>
+            <li>
+              Crie uma cena simples em
+              <code>_Project/Scenes/Main.unity</code> usando os assets
+              importados.
+            </li>
+            <li>
+              <strong>Entrega:</strong> Poste no Moodle um print OU um vídeo
+              curto mostrando a <strong>estrutura de pastas</strong> na janela
+              Project e a <strong>cena funcional</strong>.
+            </li>
+            <li>
+              <strong>Nome do Projeto:</strong>
+              <code>NOME_SOBRENOME_TDJD_AULA6</code>
+            </li>
+          </ol>
+          <div class="mt-6 bg-teal-50 border border-teal-200 p-4 rounded-lg">
+            <h4 class="font-semibold text-teal-800 mb-2">
+              <i class="fa-solid fa-star mr-2"></i>Extensões (Opcional)
+            </h4>
+            <p class="text-sm">
+              Para um desafio extra: crie um Prefab com o modelo 3D e um colisor
+              configurado; corrija a escala de um FBX importado; adicione um
+              efeito de pós-processamento leve à cena.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Resources -->
+      <section id="recursos" aria-labelledby="recursos-heading" class="mb-12">
+        <h2
+          id="recursos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          📚 Recursos Oficiais e Ferramentas
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <div>
+            <h4 class="font-bold text-teal-800 mb-2">Assets e Pacotes</h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://assetstore.unity.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Unity Asset Store</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/upm-ui-git.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Package Manager (Add from git URL)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-teal-800 mb-2">
+              Documentação de Importação
+            </h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/models-importing.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Importando Modelos 3D</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/ImportingTextures.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Importando Texturas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/class-AudioClip.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Importando Áudio</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-teal-800 mb-2">Versionamento</h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://git-lfs.github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >Documentação do Git LFS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/github/gitignore/blob/main/Unity.gitignore"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-teal-600 hover:underline"
+                  >.gitignore Padrão para Unity</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Bibliography -->
+      <section
+        id="bibliografia"
+        aria-labelledby="bibliografia-heading"
+        class="mb-12"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-teal-500 pb-2 mb-4"
+        >
+          📚 Bibliografia
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            ALVES, George Santiago.
+            <strong>Projeto de jogos 3D: modelagem e programação.</strong> São
+            Paulo: Platos, 2021.
+          </p>
+          <p>
+            ALVES, W. P.
+            <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de
+            Janeiro: Alta Books, 2019.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <a href="#" class="text-teal-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a href="#" class="text-teal-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

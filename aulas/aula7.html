@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 7: Prototipagem Rápida e GDD</title>
+    <meta
+      name="description"
+      content="Unidade II – Fundamentos da Unity e Prototipagem. Aula prática sobre ferramentas de prototipagem rápida (ProBuilder) e a criação do Game Design Document (GDD)."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Unity, ProBuilder, GDD, Game Design Document, Prototipagem, Level Design"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 7: Prototipagem Rápida e GDD"
+    />
+    <meta
+      property="og:description"
+      content="Aprenda a criar layouts de níveis com ProBuilder e a estruturar suas ideias de jogo em um Game Design Document."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/6d28d9/ffffff?text=TDJD\nAula+7"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 7: Prototipagem Rápida e GDD"
+    />
+    <meta
+      property="twitter:description"
+      content="Aprenda a criar layouts de níveis com ProBuilder e a estruturar suas ideias de jogo em um Game Design Document."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/6d28d9/ffffff?text=TDJD\nAula+7"
+    />
+
+    <!-- CDN Links -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        /* bg-slate-50 */
+        padding-top: 60px;
+        /* Space for fixed navbar */
+      }
+
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+
+      .callout-info {
+        background-color: #f0f9ff;
+        /* bg-sky-50 */
+        border-color: #7dd3fc;
+        /* border-sky-300 */
+        color: #0c4a6e;
+        /* text-sky-800 */
+      }
+
+      .callout-practice {
+        background-color: #f0fdf4;
+        /* bg-emerald-50 */
+        border-color: #6ee7b7;
+        /* border-emerald-300 */
+        color: #065f46;
+        /* text-emerald-800 */
+      }
+
+      .callout-warning {
+        background-color: #fffbeb; /* bg-amber-50 */
+        border-color: #fcd34d; /* border-amber-300 */
+        color: #92400e; /* text-amber-800 */
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Fixed Navigation Menu -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-violet-700">TDJD - Aula 7</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-violet-600"
+              >Plano</a
+            >
+            <a href="#prototipagem" class="text-slate-600 hover:text-violet-600"
+              >Prototipagem</a
+            >
+            <a href="#probuilder" class="text-slate-600 hover:text-violet-600"
+              >ProBuilder</a
+            >
+            <a href="#playground" class="text-slate-600 hover:text-violet-600"
+              >Playground</a
+            >
+            <a href="#gdd" class="text-slate-600 hover:text-violet-600">GDD</a>
+            <a href="#tarefa" class="text-slate-600 hover:text-violet-600"
+              >TED</a
+            >
+            <a href="#recursos" class="text-slate-600 hover:text-violet-600"
+              >Recursos</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-violet-800 to-indigo-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 7: Prototipagem Rápida e GDD
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Unidade II – Fundamentos da Unity e Prototipagem
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Section: Lesson Plan -->
+      <section
+        id="plano-aula"
+        aria-labelledby="plano-aula-heading"
+        class="mb-12 bg-violet-50 border border-violet-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-violet-700 mb-6 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card: Unit and Content -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-violet-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="text-slate-600 mt-1 text-sm">
+              Ferramentas de prototipagem rápida (ProBuilder), introdução ao
+              Game Design Document (GDD) e criação de blocos de cenário.
+            </p>
+          </div>
+          <!-- Card: Objective -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-violet-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Utilizar ferramentas de prototipagem para criar e testar layouts
+              básicos de níveis e introduzir o conceito e estrutura de um GDD.
+            </p>
+          </div>
+          <!-- Card: Methodology -->
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-violet-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Aula prática com mini-lab (aprendizagem baseada em projeto +
+              aprendizagem baseada em problemas).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Introduction to Prototyping -->
+      <section
+        id="prototipagem"
+        aria-labelledby="prototyping-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="prototyping-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          A Ponte Entre a Ideia e o Jogo: Prototipagem
+        </h2>
+        <div class="text-slate-700 leading-relaxed space-y-4">
+          <p>
+            Até agora, discutimos ideias, gêneros e conceitos. A prototipagem é
+            o processo que transforma essas abstrações em algo tangível e, mais
+            importante, <strong>testável</strong>. O objetivo de um protótipo
+            não é ser bonito, mas sim responder a uma pergunta fundamental:
+            <strong>"A ideia é divertida?"</strong>.
+          </p>
+          <blockquote
+            class="text-lg italic text-slate-600 border-l-4 border-violet-300 pl-4"
+          >
+            "Prototipar é a conversa que você tem com suas ideias."
+            <footer class="text-base not-italic text-slate-500 mt-2">
+              — Adaptado de Schuytema, "Design de games: uma abordagem prática"
+            </footer>
+          </blockquote>
+          <p>
+            Nesta fase, focamos em "blockouts" ou "white-boxing", usando formas
+            geométricas simples para construir o layout do nível, testar a
+            escala, o fluxo de movimento e a diversão do core loop antes de
+            investir tempo em arte detalhada.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: ProBuilder -->
+      <section
+        id="probuilder"
+        aria-labelledby="probuilder-heading"
+        class="mb-12"
+      >
+        <h2
+          id="probuilder-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-cubes mr-2"></i>Prototipagem Rápida com
+          ProBuilder
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-6">
+          <div>
+            <h3 class="text-2xl font-semibold text-violet-800 mb-2">
+              O que é o ProBuilder?
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+              ProBuilder é um pacote da Unity que transforma o editor em uma
+              ferramenta de modelagem 3D simplificada. Ele permite criar, editar
+              e texturizar malhas geométricas diretamente na Scene View,
+              tornando-o perfeito para criar rapidamente os "blocos" do seu
+              nível (blockouts).
+            </p>
+          </div>
+          <div>
+            <h3 class="text-2xl font-semibold text-violet-800 mb-2">
+              Instalação e Configuração
+            </h3>
+            <ol
+              class="list-decimal list-inside space-y-2 text-sm text-slate-600"
+            >
+              <li>
+                Abra o Package Manager via
+                <strong>Window > Package Manager</strong>.
+              </li>
+              <li>
+                No topo, certifique-se de que "Packages: Unity Registry" está
+                selecionado.
+              </li>
+              <li>
+                Na barra de busca, digite "ProBuilder" e clique em
+                <strong>Install</strong>.
+              </li>
+              <li>
+                Após a instalação, a barra de ferramentas do ProBuilder estará
+                disponível em
+                <strong>Tools > ProBuilder > ProBuilder Window</strong>.
+              </li>
+            </ol>
+          </div>
+          <div class="text-center">
+            <img
+              src="https://docs.unity3d.com/Packages/com.unity.probuilder@3.0/manual/images/toolbar_example.png"
+              alt="ProBuilder Toolbar — visão geral dos ícones principais"
+              class="rounded-md w-full my-4"
+              loading="lazy"
+            />
+          </div>
+          <div class="callout callout-practice" role="note">
+            <h4 class="font-bold mb-2">
+              <i class="fa-solid fa-flask-vial mr-2"></i>Mini-Lab: Sua Primeira
+              Sala
+            </h4>
+            <p class="text-sm">
+              Vamos fazer juntos: usando a janela do ProBuilder (<strong
+                >New Shape</strong
+              >), crie um cubo grande para ser o chão. Em seguida, use a
+              ferramenta <strong>Extrude Faces</strong> para "puxar" as paredes
+              para cima a partir das bordas do chão. Por fim, crie um cubo menor
+              para ser uma plataforma.
+            </p>
+          </div>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-2xl font-semibold text-violet-800 mb-4">
+                Vídeo de Apoio: Introdução ao ProBuilder (Unity)
+              </h3>
+              <div class="aspect-video">
+                <iframe
+                  class="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/YsBniZ5ya7k"
+                  title="ProBuilder for grey-boxing in Unity"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-semibold text-violet-800 mb-4">
+                Vídeo 2: ProBuilder Primer (Level Tutorial)
+              </h3>
+              <div class="aspect-video">
+                <iframe
+                  class="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/7RRTnimMZqU"
+                  title="ProBuilder Primer"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-semibold text-violet-800 mb-4">
+                Vídeo 3: ProBuilder - Basics (Passo a passo)
+              </h3>
+              <div class="aspect-video">
+                <iframe
+                  class="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/Brg5_Vj7X_c"
+                  title="How to use ProBuilder - basics"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="playground"
+        aria-labelledby="playground-heading"
+        class="mb-12"
+      >
+        <h2
+          id="playground-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-gamepad mr-2"></i>Prototipagem 2D Rápida com
+          Unity Playground
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            O <strong>Unity Playground</strong> é um “sandbox” educacional
+            (principalmente 2D) com componentes prontos para validar mecânicas
+            simples sem escrever muito código. Ótimo para
+            <em>brainstorm</em> jogável e testes rápidos de regras.
+          </p>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>
+              <strong>Quando usar:</strong> ideias 2D, protótipos de interação,
+              desafios de tempo curto.
+            </li>
+            <li>
+              <strong>Limites:</strong> foco educacional; ao escalar, migre para
+              scripts/arquitetura própria.
+            </li>
+          </ul>
+
+          <div class="callout callout-practice" role="note">
+            <h4 class="font-bold mb-1">
+              <i class="fa-solid fa-flask-vial mr-2"></i>Microdesafio (15’)
+            </h4>
+            <p class="text-sm">
+              Crie uma cena 2D onde o jogador coleta 3 itens para abrir a saída.
+              Registre no GDD: <em>regra de vitória</em> e <em>feedback</em> ao
+              concluir.
+            </p>
+          </div>
+
+          <p class="text-sm">
+            Links úteis:
+            <a
+              class="text-violet-600 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://learn.unity.com/tutorial/playground-get-started"
+              >Unity Learn — Playground</a
+            >
+            ·
+            <a
+              class="text-violet-600 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/Unity-Technologies/UnityPlayground"
+              >Repositório no GitHub</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================================
+     SECTION: GDD  (substituir o bloco atual)
+========================================= -->
+      <section id="gdd" aria-labelledby="gdd-heading" class="mb-12">
+        <h2
+          id="gdd-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-file-lines mr-2"></i>Game Design Document (GDD):
+          do “one-pager” ao documento vivo
+        </h2>
+
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-10 text-slate-700 leading-relaxed"
+        >
+          <!-- 1. Por que documentar -->
+          <section aria-labelledby="gdd-why">
+            <h3
+              id="gdd-why"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              1) Por que documentar?
+            </h3>
+            <p>
+              O GDD alinha visão, reduz retrabalho e registra decisões. Ele não
+              é “burocracia”: é um <em>artefato vivo</em> que guia o time
+              enquanto o protótipo evolui. Em curso, um GDD claro acelera
+              feedback do professor/colegas e encurta o ciclo de iteração.
+            </p>
+            <div class="callout callout-info mt-4" role="note">
+              <p class="font-semibold">Leituras de referência</p>
+              <ul class="list-disc list-inside text-sm">
+                <li>
+                  <a
+                    class="text-violet-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.gamedeveloper.com/design/creating-a-great-design-document"
+                    >Creating a Great Design Document — Game Developer</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="text-violet-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.gdcvault.com/play/1012211/One-Page-Design-"
+                    >One-Page Design Doc — Stone Librande (GDC)</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="text-violet-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://en.wikipedia.org/wiki/MDA_framework"
+                    >MDA Framework (resumo)</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 2. Níveis de detalhe -->
+          <section aria-labelledby="gdd-levels">
+            <h3
+              id="gdd-levels"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              2) Níveis de detalhe (escolha o adequado)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div class="bg-slate-50 p-4 rounded">
+                <h4 class="font-bold text-slate-800 mb-1">One-Pager</h4>
+                <p>
+                  1 página. Excelente para pitch inicial e foco. Inspiração:
+                  <em>One-Page Design Doc</em> (GDC).
+                </p>
+              </div>
+              <div class="bg-slate-50 p-4 rounded">
+                <h4 class="font-bold text-slate-800 mb-1">
+                  Lean GDD (este curso)
+                </h4>
+                <p>
+                  3–6 páginas. Cobrir visão, core loop, regras, níveis, UI
+                  essencial e riscos. Atualiza rápido.
+                </p>
+              </div>
+              <div class="bg-slate-50 p-4 rounded">
+                <h4 class="font-bold text-slate-800 mb-1">GDD Completo</h4>
+                <p>
+                  Documento extenso com sistemas, economia, narrativa, pipelines
+                  e métricas. Útil em produção.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. Estrutura enxuta para o protótipo -->
+          <section aria-labelledby="gdd-lean">
+            <h3
+              id="gdd-lean"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              3) Estrutura enxuta (recomendada para o protótipo)
+            </h3>
+            <ol class="list-decimal list-inside space-y-2 text-sm">
+              <li>
+                <strong>High Concept</strong> (1 frase): “Elevator pitch”.
+              </li>
+              <li>
+                <strong>Público-alvo & Plataforma</strong>: quem joga e onde
+                (PC/mobile/console).
+              </li>
+              <li>
+                <strong>Pilares de Design</strong> (3 palavras/frases): ex.
+                <em>clareza visual</em>, <em>ritmo ágil</em>,
+                <em>descoberta</em>.
+              </li>
+              <li>
+                <strong>Core Loop</strong> (MDA): ações do jogador → dinâmicas
+                geradas → estética/emoções esperadas.
+              </li>
+              <li>
+                <strong>Regras & Mecânicas</strong>: movimentos, interações,
+                vitória/derrota, <em>fail states</em>, física relevante.
+              </li>
+              <li>
+                <strong>Nível/Blockout</strong>: layout inicial (ProBuilder),
+                objetivos, progressão mínima.
+              </li>
+              <li>
+                <strong>UI/UX</strong>: controles, HUD essencial, feedback (som,
+                partículas, mensagens).
+              </li>
+              <li>
+                <strong>Conteúdo & Escopo</strong>: o que entra no protótipo (e
+                o que fica fora agora).
+              </li>
+              <li>
+                <strong>Riscos & Hipóteses</strong>: o que precisa ser provado
+                com o protótipo (diversão, clareza, performance).
+              </li>
+              <li>
+                <strong>Plano de Playtest</strong>: perguntas, métricas e
+                critérios de sucesso.
+              </li>
+            </ol>
+            <p class="text-xs mt-2 text-slate-500">
+              Nota: a ligação entre <em>mecânicas→dinâmicas→estética</em> vem do
+              MDA; use-a para justificar seus pilares e seu loop central.
+            </p>
+          </section>
+
+          <!-- 4. Template copiável (Markdown) -->
+          <section aria-labelledby="gdd-template">
+            <h3
+              id="gdd-template"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              4) Template (copiar/colar em Google Docs ou Markdown)
+            </h3>
+            <div class="code-block text-xs rounded">
+              <pre><code># Título do Jogo (vX.Y)
+**High Concept:** &lt;1 frase&gt;
+**Plataforma/Público:** &lt;alvo, acessibilidade, sessão média&gt;
+
+## Pilares de Design
+- Pilar 1 — por quê?
+- Pilar 2 — por quê?
+- Pilar 3 — por quê?
+
+## Core Loop (MDA)
+- Mecânicas (M): &lt;ações, regras, recursos&gt;
+- Dinâmicas (D): &lt;comportamentos emergentes esperados&gt;
+- Estética (A): &lt;emoções/experiência-alvo&gt;
+
+## Mecânicas & Regras
+- Movimento, interação, combate/puzzle, vitória/derrota, falhas
+
+## Nível/Blockout inicial
+- Objetivo, fluxo, desafios; print do layout (ProBuilder)
+
+## UI/UX & Feedback
+- Controles (teclado/gamepad), HUD/Hints, áudio, efeitos
+
+## Conteúdo & Escopo do Protótipo
+- In/out do corte vertical (vertical slice)
+
+## Riscos & Hipóteses
+- Técnicos, de design ou produção; como validar
+
+## Plano de Playtest
+- Perguntas, tarefas, métricas, critérios de sucesso
+
+## Changelog
+- [data] mudança/resumo das decisões
+</code></pre>
+            </div>
+          </section>
+
+          <!-- 5. Exemplo rápido (preenchido) -->
+          <section aria-labelledby="gdd-example">
+            <h3
+              id="gdd-example"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              5) Exemplo (mini)
+            </h3>
+            <p class="text-sm">
+              <strong>High Concept:</strong> “Plataforma 3D onde o jogador
+              alterna a gravidade para atravessar salas enigmáticas
+              cronometradas.” <strong>Pilares:</strong> clareza, ritmo,
+              descoberta. <strong>Core Loop:</strong> observar → alternar
+              gravidade → reposicionar → avançar.
+              <strong>Objetivo do nível:</strong> ativar 3 chaves e alcançar a
+              saída. <strong>Hipótese:</strong> alternância de gravidade é
+              intuitiva e divertida em 2 min.
+            </p>
+          </section>
+
+          <!-- 6. Checklist de revisão & playtest -->
+          <section aria-labelledby="gdd-check">
+            <h3
+              id="gdd-check"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              6) Checklist de revisão & playtest
+            </h3>
+            <ul class="list-disc list-inside text-sm space-y-1">
+              <li>Pitch cabe em 1 frase e alinha com os 3 pilares.</li>
+              <li>
+                Loop central está claro no GDD e <em>visível</em> no blockout.
+              </li>
+              <li>
+                Objetivo e regras de vitória/derrota escritos sem ambiguidade.
+              </li>
+              <li>Mapa de controles/UI mínimo definido.</li>
+              <li>Riscos listados com plano de validação.</li>
+              <li>
+                Critérios de sucesso do playtest (ex.: “80% concluem em &lt;3
+                min”).
+              </li>
+            </ul>
+          </section>
+
+          <!-- 7. Erros comuns -->
+          <section aria-labelledby="gdd-mistakes">
+            <h3
+              id="gdd-mistakes"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              7) Erros comuns (evite!)
+            </h3>
+            <ul class="list-disc list-inside text-sm space-y-1">
+              <li>
+                <strong>Enciclopédia sem foco</strong>: muita “lore”, pouco loop
+                jogável.
+              </li>
+              <li>
+                <strong>Documento estático</strong>: não registrar decisões/
+                mudanças (use <em>Changelog</em>).
+              </li>
+              <li>
+                <strong>Sem plano de teste</strong>: falta de critérios de
+                sucesso → iteração cega.
+              </li>
+            </ul>
+            <div class="callout callout-practice" role="note">
+              <p class="font-semibold">Dica prática</p>
+              <p class="text-sm">
+                Trate o GDD como sprint notes: atualize após cada aula/lab e
+                anexe prints/GIFs do protótipo.
+              </p>
+            </div>
+          </section>
+
+          <!-- 8. Referências e links úteis (fixos no doc) -->
+          <section aria-labelledby="gdd-refs">
+            <h3
+              id="gdd-refs"
+              class="text-2xl font-semibold text-violet-800 mb-3"
+            >
+              8) Referências & Links úteis
+            </h3>
+            <ul class="list-disc list-inside text-sm">
+              <li>
+                Schuytema, P.
+                <em>Design de games: uma abordagem prática</em> (cap. sobre
+                documentação).
+              </li>
+              <li>
+                Alves, W. P.
+                <em>Unity: design e desenvolvimento de jogos</em> (boas práticas
+                de projeto).
+              </li>
+              <li>
+                <a
+                  class="text-violet-600 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.gamedeveloper.com/design/creating-a-great-design-document"
+                  >Creating a Great Design Document — Game Developer</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-violet-600 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.gdcvault.com/play/1012211/One-Page-Design-"
+                  >One-Page Design Doc — Stone Librande</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-violet-600 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://en.wikipedia.org/wiki/MDA_framework"
+                  >MDA Framework (resumo e referências)</a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <!-- Section: TED -->
+      <section id="tarefa" aria-labelledby="tarefa-heading" class="mb-12">
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): GDD e Cena Prototipada
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p class="text-lg">
+            A tarefa desta semana é dupla: documentar sua ideia inicial e
+            construir a primeira versão jogável dela.
+          </p>
+          <h4 class="font-semibold text-violet-800 mt-6 mb-2">
+            Parte 1: Rascunho do GDD
+          </h4>
+          <p class="text-sm">
+            Preencha o modelo de GDD simplificado com as quatro seções
+            principais: High Concept, Gênero/Público, Mecânica Central e
+            Objetivo.
+          </p>
+          <h4 class="font-semibold text-violet-800 mt-6 mb-2">
+            Parte 2: Cena Prototipada na Unity
+          </h4>
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>Crie um novo projeto Unity (URP).</li>
+            <li>Instale o ProBuilder.</li>
+            <li>
+              Usando o ProBuilder, crie um "blockout" de uma pequena fase ou
+              sala que permita testar sua mecânica central.
+            </li>
+            <li>
+              <strong>Entrega:</strong> Poste no Moodle o link para seu GDD
+              (Google Docs) e um print OU vídeo curto da sua cena prototipada.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Section: Resources -->
+      <section id="recursos" aria-labelledby="recursos-heading" class="mb-12">
+        <h2
+          id="recursos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-4"
+        >
+          📚 Recursos Adicionais
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <div>
+            <h4 class="font-bold text-violet-800 mb-2">
+              ProBuilder e Prototipagem
+            </h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Packages/com.unity.probuilder@5.0/manual/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-violet-600 hover:underline"
+                  >Documentação Oficial do ProBuilder</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=1n4Z5o-Y8sE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-violet-600 hover:underline"
+                  >Vídeo: Level Design Blockout (Brackeys)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-violet-800 mb-2">
+              Game Design Document (GDD)
+            </h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://www.gamedeveloper.com/design/how-to-write-a-game-design-document"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-violet-600 hover:underline"
+                  >Artigo: How to Write a GDD (Game Developer)</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/watch?v=q1i2Y_Q_yYU"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-violet-600 hover:underline"
+                  >Vídeo: O que é um GDD? (GDC)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Bibliography -->
+      <section
+        id="bibliografia"
+        aria-labelledby="bibliografia-heading"
+        class="mb-12"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-4"
+        >
+          📚 Bibliografia
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            SCHUYTEMA, Paul.
+            <strong>Design de games: uma abordagem prática.</strong> São Paulo:
+            Cengage Learning, 2008.
+          </p>
+          <p>
+            ALVES, W. P.
+            <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de
+            Janeiro: Alta Books, 2019.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <a href="#" class="text-violet-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a href="#" class="text-violet-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

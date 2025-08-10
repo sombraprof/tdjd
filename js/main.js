@@ -48,6 +48,8 @@ function loadAula(file) {
       const conteudo = document.getElementById("conteudo");
       conteudo.innerHTML = html;
       initAccordions();
+      // Inject copy buttons for any <pre> inside the loaded aula
+      enhanceCodeBlocks(conteudo);
       initCopyButtons();
       initLaboratorioGeneros();
       window.scrollTo({ top: conteudo.offsetTop - 20, behavior: "smooth" });
@@ -155,6 +157,10 @@ async function loadListaDetalhe(file) {
     });
 
     initAccordions();
+
+    // Inject copy buttons for any <pre> in the list detail (solutions, etc.)
+    enhanceCodeBlocks(section);
+    
     requestAnimationFrame(() => {
       section.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -245,6 +251,108 @@ function initLaboratorioGeneros() {
       });
     });
     resultado.textContent = `Você acertou ${acertos} de ${draggables.length}!`;
+  });
+}
+
+// ===== Copy-to-clipboard (global + works with dynamic content) =====
+
+// Run once on startup
+setupCopyToClipboard();
+
+/**
+ * Global click delegation for any copy button.
+ * Works for dynamically injected content, no re-bind needed.
+ */
+function setupCopyToClipboard() {
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".copy-code-btn, [data-copy-target]");
+    if (!btn) return;
+
+    e.preventDefault();
+
+    // Prefer a selector defined in data attributes:
+    const selector = btn.getAttribute("data-copy-target") || btn.getAttribute("data-copy");
+    let text = "";
+
+    if (selector) {
+      // Try to resolve relative to the nearest wrapper first, then globally.
+      const scope = btn.closest(".code-block-wrapper") || document;
+      const node = scope.querySelector(selector) || document.querySelector(selector);
+      if (node) text = node.innerText || node.textContent || "";
+    }
+
+    // Auto-discover <pre> if no selector was provided or nothing found
+    if (!text) {
+      const scope = btn.closest(".code-block-wrapper") || document;
+      const pre = scope.querySelector("pre");
+      if (pre) text = pre.innerText || pre.textContent || "";
+    }
+
+    if (!text) return;
+
+    // Try modern API first, then fallback
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(() => flashCopied(btn))
+        .catch(() => fallbackCopy(text, btn));
+    } else {
+      fallbackCopy(text, btn);
+    }
+  });
+}
+
+/** Visual feedback "Copiado!" then restore. */
+function flashCopied(btn) {
+  const original = btn.innerHTML;
+  btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Copiado!';
+  setTimeout(() => (btn.innerHTML = original), 2000);
+}
+
+/** Fallback using a temporary textarea (works in iframes/restrições). */
+function fallbackCopy(text, btn) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand("copy");
+  } catch (err) {
+    console.error("Fallback copy failed:", err);
+  }
+  document.body.removeChild(ta);
+  flashCopied(btn);
+}
+
+/**
+ * Inject a copy button for every <pre> block inside "root".
+ * Call this after you inject HTML (loadAula / loadListaDetalhe).
+ */
+function enhanceCodeBlocks(root = document) {
+  // NOTE: We intentionally target <pre> (language-agnostic)
+  root.querySelectorAll("pre").forEach((pre) => {
+    // Ensure a wrapper with relative positioning exists
+    let wrapper = pre.closest(".code-block-wrapper");
+    if (!wrapper) {
+      wrapper = document.createElement("div");
+      wrapper.className = "code-block-wrapper relative";
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+    }
+
+    // Avoid duplicates
+    if (wrapper.querySelector(".copy-code-btn")) return;
+
+    // Create the button
+    const btn = document.createElement("button");
+    btn.type = "button";
+    // Tailwind classes (matching your style)
+    btn.className =
+      "copy-code-btn absolute top-2 right-2 bg-slate-600 hover:bg-slate-500 text-white text-xs font-bold py-1 px-2 rounded-md transition-colors";
+    btn.innerHTML = '<i class="fa-solid fa-copy mr-1"></i> Copiar';
+    wrapper.appendChild(btn);
   });
 }
 

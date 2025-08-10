@@ -2,29 +2,50 @@
   {
     "id": "aula1",
     "titulo": "Aula 1: Definição e Tipos de Sistemas",
-    "descricao": "Introdução à disciplina, apresentação do plano de ensino e conceitos fundamentais da Teoria Geral de Sistemas: definição de sistema, contexto histórico e classificação dos principais tipos.",
+    "descricao": "Introdução à disciplina e à Teoria Geral de Sistemas: definição, contexto histórico e principais classificações.",
     "arquivo": "aula1.html",
     "ativo": true
   },
   {
     "id": "aula2",
     "titulo": "Aula 2: Gêneros e Tipos de Gameplay",
-    "descricao": "Exploração dos principais gêneros de jogos digitais e seus tipos de gameplay. Análise de mecânicas e exemplos práticos para identificar padrões de design.",
+    "descricao": "Panorama dos gêneros de jogos e tipos de gameplay, com análise de mecânicas e padrões de design.",
     "arquivo": "aula2.html",
     "ativo": true
   },
   {
     "id": "aula3",
     "titulo": "Aula 3: Estudos de Caso, Análise Crítica e Inovações",
-    "descricao": "Análise aprofundada de jogos Indie e AAA com estudos de caso. Discussão de mecânicas, público-alvo, impacto cultural e tendências da indústria. Exercício prático de design e pesquisa comparativa (TED).",
+    "descricao": "Comparação de jogos Indie e AAA: mecânicas, público, impacto e tendências; exercício prático de análise.",
     "arquivo": "aula3.html",
     "ativo": true
   },
   {
     "id": "aula4",
     "titulo": "Aula 4: História dos Jogos Digitais, Engines e Mercado",
-    "descricao": "Estudo da evolução histórica dos jogos digitais e das principais engines (Unity, Unreal, Godot, Construct). Análise das dinâmicas de mercado (indie, AAA, mobile e XR) e do impacto cultural e tecnológico na indústria. Inclui linha do tempo interativa e estudos de caso comparativos (AAA vs Indie).",
+    "descricao": "Linha do tempo dos jogos e principais engines (Unity, Unreal, Godot, Construct); visão de mercado (indie, AAA, mobile, XR).",
     "arquivo": "aula4.html",
+    "ativo": true
+  },
+  {
+    "id": "aula5",
+    "titulo": "Aula 5: Fundamentos da Unity e Prototipagem",
+    "descricao": "Editor da Unity (Scene, Game, Hierarchy, Project, Inspector), URP (volumes/pós) e novo Input System; protótipo mínimo com CharacterController.",
+    "arquivo": "aula5.html",
+    "ativo": true
+  },
+  {
+    "id": "aula6",
+    "titulo": "Aula 6: Importação de Assets e Organização de Projeto",
+    "descricao": "Importação de assets (Asset Store e externos) e organização do projeto (pastas, convenções, Prefabs); versionamento com Git e LFS.",
+    "arquivo": "aula6.html",
+    "ativo": true
+  },
+  {
+    "id": "aula7",
+    "titulo": "Aula 7: Prototipagem Rápida e GDD",
+    "descricao": "Prototipagem com ProBuilder e Playground (blockouts e layouts básicos) e introdução ao GDD: estrutura enxuta, pilares e core loop; mini-lab e documentação inicial.",
+    "arquivo": "aula7.html",
     "ativo": true
   }
 ]
