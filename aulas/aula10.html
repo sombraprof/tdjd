@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TDJD - Aula 10: Fundamentos de C# na Unity</title>
+    <meta
+      name="description"
+      content="Unidade III – Programação com C# para Games. Sintaxe, variáveis, controle de fluxo e integração com a Unity (scripts, ciclo de vida, Input, movimento 2D/3D)."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Unity, C#, Programação de Jogos, Scripting, MonoBehaviour, Variáveis, Estruturas de Controle, Input"
+    />
+
+    <!-- OG/Twitter (ajuste a URL pública depois) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://SEU-DOMINIO/aula10.html" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 10: Fundamentos de C# na Unity"
+    />
+    <meta
+      property="og:description"
+      content="Aprenda C# aplicado à Unity: scripts, ciclo de vida, input e movimentação 2D/3D."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/0f766e/ffffff?text=TDJD%20Aula%2010"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: Inter, system-ui, sans-serif;
+        background: #f8fafc;
+        padding-top: 64px;
+      }
+      .callout {
+        border-left-width: 4px;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 0.5rem;
+      }
+      .info {
+        background: #f0f9ff;
+        border-color: #7dd3fc;
+        color: #0c4a6e;
+      }
+      .ok {
+        background: #f0fdf4;
+        border-color: #6ee7b7;
+        color: #065f46;
+      }
+      .warn {
+        background: #fffbeb;
+        border-color: #fcd34d;
+        color: #92400e;
+      }
+      .aspect-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+      }
+      .aspect-video iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      code,
+      pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+      /* Copy button (herdado do Gemini) */
+      .code-block-wrapper {
+        position: relative;
+      }
+      .copy-code-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: #065f46;
+        color: #fff;
+        border: 0;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+      .copy-code-button:hover {
+        background: #064e3b;
+      }
+      /* Tabela suave */
+      table th,
+      table td {
+        vertical-align: top;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- NAV -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed inset-x-0 top-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div
+        class="container mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <span class="text-lg font-bold text-emerald-700">TDJD — Aula 10</span>
+        <div class="hidden md:flex gap-4 text-sm font-semibold">
+          <a href="#plano" class="hover:text-emerald-600">Plano</a>
+          <a href="#intro" class="hover:text-emerald-600">Introdução</a>
+          <a href="#csharp-anatomia" class="hover:text-emerald-600"
+            >C# & Anatomia</a
+          >
+          <a href="#ciclo" class="hover:text-emerald-600">Ciclo de Vida</a>
+          <a href="#variaveis-controle" class="hover:text-emerald-600"
+            >Variáveis & Controle</a
+          >
+          <a href="#lab-mov" class="hover:text-emerald-600">Lab: Movimento</a>
+          <a href="#exercicios" class="hover:text-emerald-600">Exercícios</a>
+          <a href="#debug" class="hover:text-emerald-600">Debug</a>
+          <a href="#ted" class="hover:text-emerald-600">TED</a>
+          <a href="#recursos" class="hover:text-emerald-600">Recursos</a>
+          <a href="#bibliografia" class="hover:text-emerald-600"
+            >Bibliografia</a
+          >
+          <a href="#fusao" class="hover:text-emerald-600">Notas de Fusão</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="bg-slate-900 relative">
+      <div
+        class="h-48 bg-gradient-to-r from-emerald-700 to-cyan-800 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 10: Fundamentos de C# na Unity
+        </h1>
+        <p class="text-slate-300 text-lg mt-1">
+          Unidade III – Programação com C# para Games
+        </p>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- PLANO -->
+      <section
+        id="plano"
+        class="mb-12 bg-emerald-50 border border-emerald-200 p-8 rounded-2xl shadow"
+      >
+        <h2 class="text-3xl font-bold text-emerald-700 mb-6 text-center">
+          Plano da Aula
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="text-sm">
+              Introdução à C# na Unity: sintaxe, variáveis, controle de fluxo,
+              <em>MonoBehaviour</em> e integração com a cena (scripts como
+              componentes).
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-sm">
+              Compreender a estrutura de scripts e escrever código básico que lê
+              entrada (teclado/joystick) e move um objeto na cena.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-sm">
+              Aula prática com desafios graduais, mentoria curta e revisão por
+              pares (ABP – resolução de problemas).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTRO -->
+      <section id="intro" class="mb-12 bg-white p-8 rounded-lg shadow">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          Do bloco ao cérebro: por que C#?
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          Se o GDD é a planta e o ProBuilder é a alvenaria, o
+          <strong>C#</strong> é a “eletricidade” que anima seus GameObjects.
+          Nesta unidade, scripts viram o cérebro da cena: reagem a input, movem,
+          verificam colisões e disparam a lógica do jogo.
+        </p>
+      </section>
+
+      <!-- C# & ANATOMIA -->
+      <section id="csharp-anatomia" class="mb-12">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          C# Essencial & Anatomia de um Script
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Essencial -->
+          <article class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">C# em 5 minutos</h3>
+            <div class="code-block-wrapper">
+              <button
+                class="copy-code-button"
+                onclick="copiarCodigo(this,'csharp-essencial')"
+              >
+                Copiar
+              </button>
+              <pre
+                class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+              ><code id="csharp-essencial">// C# essentials for Unity
+int lives = 3;
+float speed = 6.5f;     // floats use 'f'
+bool isGrounded = false;
+string playerName = "Ayla";
+
+// Arrays & Lists
+int[] checkpoints = {0,1,2};
+using System.Collections.Generic;
+List&lt;string&gt; inventory = new List&lt;string&gt;();
+
+// Method sample
+void Heal(int amount){ /* ... */ }
+              </code></pre>
+            </div>
+          </article>
+
+          <!-- Anatomia -->
+          <article class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">
+              Anatomia de um Script Unity
+            </h3>
+            <div class="code-block-wrapper">
+              <button
+                class="copy-code-button"
+                onclick="copiarCodigo(this,'anatomia-script')"
+              >
+                Copiar
+              </button>
+              <pre
+                class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+              ><code id="anatomia-script">using UnityEngine;
+
+public class MeuPrimeiroScript : MonoBehaviour
+{
+  void Start()
+  {
+    // Runs once when the object is enabled
+  }
+
+  void Update()
+  {
+    // Runs every frame (read input, simple logic)
+  }
+}
+              </code></pre>
+            </div>
+            <ul class="list-disc list-inside text-sm text-slate-600 mt-3">
+              <li>
+                <strong>using UnityEngine;</strong> dá acesso a
+                <code>GameObject</code>, <code>Transform</code> etc.
+              </li>
+              <li>
+                Classe deve bater com o nome do arquivo e herdar de
+                <code>MonoBehaviour</code>.
+              </li>
+              <li>
+                <code>Start()</code> para inicialização;
+                <code>Update()</code> para lógica por frame.
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="callout ok mt-6">
+          <p class="font-semibold">Hello, Console!</p>
+          <pre
+            class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+          ><code>using UnityEngine;
+public class Hello : MonoBehaviour
+{
+  void Start(){ Debug.Log("Hello from Start()!"); }
+}
+          </code></pre>
+        </div>
+      </section>
+
+      <!-- CICLO DE VIDA -->
+      <section id="ciclo" class="mb-12">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          Ciclo de Vida (MonoBehaviour)
+        </h2>
+        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+          <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-800">Awake / Start</h4>
+              <ul class="list-disc list-inside">
+                <li><code>Awake</code>: cache de referências.</li>
+                <li><code>Start</code>: roda após o objeto ser habilitado.</li>
+              </ul>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-800">Update</h4>
+              <p>Ler input e lógica por frame. Evite tarefas pesadas aqui.</p>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+              <h4 class="font-semibold text-emerald-800">FixedUpdate</h4>
+              <p>
+                Física com <code>Rigidbody</code>/<code>Rigidbody2D</code>
+                (passo fixo).
+              </p>
+            </div>
+          </div>
+          <div class="callout warn">
+            <p class="font-semibold">Dica</p>
+            <p class="text-sm">
+              Leia input em <code>Update()</code>; aplique forças/velocidade em
+              <code>FixedUpdate()</code> para consistência.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VARIÁVEIS & CONTROLE -->
+      <section id="variaveis-controle" class="mb-12">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          Variáveis, Tipos & Estruturas de Controle
+        </h2>
+        <div class="bg-white p-6 rounded-lg shadow space-y-6">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-sm">
+              <thead class="bg-emerald-50 text-emerald-800">
+                <tr>
+                  <th class="p-2 font-semibold">Tipo</th>
+                  <th class="p-2 font-semibold">Para que serve</th>
+                  <th class="p-2 font-semibold">Exemplo</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="p-2"><strong>int</strong></td>
+                  <td class="p-2">Inteiros</td>
+                  <td class="p-2"><code>int vida = 100;</code></td>
+                </tr>
+                <tr>
+                  <td class="p-2"><strong>float</strong></td>
+                  <td class="p-2">Decimais (use <code>f</code>)</td>
+                  <td class="p-2"><code>float velocidade = 5.5f;</code></td>
+                </tr>
+                <tr>
+                  <td class="p-2"><strong>bool</strong></td>
+                  <td class="p-2">Verdadeiro/Falso</td>
+                  <td class="p-2"><code>bool temChave = false;</code></td>
+                </tr>
+                <tr>
+                  <td class="p-2"><strong>string</strong></td>
+                  <td class="p-2">Texto</td>
+                  <td class="p-2"><code>string nome = "Herói";</code></td>
+                </tr>
+                <tr>
+                  <td class="p-2"><strong>Vector3</strong></td>
+                  <td class="p-2">Posição/direção 3D</td>
+                  <td class="p-2"><code>new Vector3(0,1,0)</code></td>
+                </tr>
+                <tr>
+                  <td class="p-2"><strong>GameObject</strong></td>
+                  <td class="p-2">Referência a objetos</td>
+                  <td class="p-2"><code>GameObject porta;</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <h4 class="font-semibold mb-1">Public vs. [SerializeField]</h4>
+            <p class="text-sm">
+              Para aparecer no Inspector, use <code>public</code> ou
+              <code>[SerializeField]</code> em variável privada (boa prática
+              para encapsular).
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold text-emerald-800 mb-2">
+                if / else & switch
+              </h3>
+              <pre
+                class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+              ><code>if (vida &lt;= 0){ /* Game Over */ }
+else if (vida &lt; 25){ /* alerta */ }
+
+switch(currentState){
+  case GameState.Menu: /* ... */ break;
+  case GameState.Play: /* ... */ break;
+  default: break;
+}
+              </code></pre>
+            </div>
+            <div>
+              <h3 class="font-semibold text-emerald-800 mb-2">Loops</h3>
+              <pre
+                class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+              ><code>for (int i=0;i&lt;5;i++){ /* ... */ }  // repete 5x
+while(!isGrounded){ /* ... */ break; } // cuidado com loops infinitos
+              </code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAB: MOVIMENTO -->
+      <section id="lab-mov" class="mb-12">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          Laboratório: Movimento por Entrada Horizontal
+        </h2>
+
+        <!-- Opção 0: Transform.Translate (Gemini) -->
+        <article class="bg-white p-6 rounded-lg shadow mb-8">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">
+            Opção 0 — Movimento simples (Transform.Translate)
+          </h3>
+          <p class="text-sm text-slate-600 mb-2">
+            Ideal para começar. Útil em objetos sem física.
+          </p>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this,'mov-simples')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="mov-simples">using UnityEngine;
+
+public class MovimentoSimples : MonoBehaviour
+{
+  public float velocidade = 5f;
+
+  void Update()
+  {
+    float h = Input.GetAxis("Horizontal");      // -1 .. 1
+    Vector3 dir = Vector3.right * h;
+    transform.Translate(dir * velocidade * Time.deltaTime);
+  }
+}
+            </code></pre>
+          </div>
+        </article>
+
+        <!-- Opção A: 2D Rigidbody2D -->
+        <article class="bg-white p-6 rounded-lg shadow mb-8">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">
+            Opção A — 2D (Rigidbody2D)
+          </h3>
+          <ol class="list-decimal list-inside text-sm space-y-1">
+            <li>
+              Adicione <strong>Rigidbody2D</strong> (Dynamic) e um
+              <strong>Collider2D</strong>.
+            </li>
+            <li>Crie <strong>Player2DMove.cs</strong> e anexe ao objeto.</li>
+          </ol>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this,'mov-2d')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="mov-2d">using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class Player2DMove : MonoBehaviour
+{
+  [SerializeField] float speed = 6f;
+  Rigidbody2D rb;
+  float moveX;
+
+  void Awake(){ rb = GetComponent&lt;Rigidbody2D&gt;(); }
+
+  void Update(){ moveX = Input.GetAxisRaw("Horizontal"); } // read input
+
+  void FixedUpdate() // apply physics
+  {
+    Vector2 vel = rb.velocity;
+    vel.x = moveX * speed;
+    rb.velocity = vel;
+  }
+}
+            </code></pre>
+          </div>
+        </article>
+
+        <!-- Opção B: 3D CharacterController -->
+        <article class="bg-white p-6 rounded-lg shadow mb-8">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">
+            Opção B — 3D (CharacterController)
+          </h3>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this,'mov-3d')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="mov-3d">using UnityEngine;
+
+[RequireComponent(typeof(CharacterController))]
+public class Player3DMove : MonoBehaviour
+{
+  [SerializeField] float speed = 6.5f;
+  [SerializeField] float gravity = -9.81f;
+  CharacterController controller;
+  Vector3 velocity;
+  float moveX;
+
+  void Awake(){ controller = GetComponent&lt;CharacterController&gt;(); }
+
+  void Update()
+  {
+    moveX = Input.GetAxisRaw("Horizontal");
+    Vector3 move = new Vector3(moveX, 0f, 0f);
+    controller.Move(move * speed * Time.deltaTime);
+
+    if(controller.isGrounded && velocity.y &lt; 0f) velocity.y = -2f;
+    velocity.y += gravity * Time.deltaTime;
+    controller.Move(velocity * Time.deltaTime);
+  }
+}
+            </code></pre>
+          </div>
+        </article>
+
+        <!-- Bônus: Novo Input System -->
+        <article class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold text-emerald-800 mb-2">
+            Bônus — Novo Input System (ação “move”)
+          </h3>
+          <ol class="list-decimal list-inside text-sm space-y-1">
+            <li>Instale o pacote <strong>Input System</strong> e ative-o.</li>
+            <li>Crie uma ação <code>move</code> (Value/Vector2) e vincule.</li>
+          </ol>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this,'mov-newinput')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900/90 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="mov-newinput">using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(Rigidbody2D))]
+public class Player2D_NewInput : MonoBehaviour
+{
+  [SerializeField] float speed = 6f;
+  [SerializeField] InputAction moveAction; // bind to "move" Vector2
+  Rigidbody2D rb;
+  Vector2 move;
+
+  void Awake(){ rb = GetComponent&lt;Rigidbody2D&gt;(); }
+  void OnEnable(){ moveAction.Enable(); }
+  void OnDisable(){ moveAction.Disable(); }
+
+  void Update(){ move = moveAction.ReadValue&lt;Vector2&gt;(); }
+  void FixedUpdate(){ rb.velocity = new Vector2(move.x * speed, rb.velocity.y); }
+}
+            </code></pre>
+          </div>
+        </article>
+      </section>
+
+      <!-- EXERCÍCIOS -->
+      <section id="exercicios" class="mb-12">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          Exercícios Guiados
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">E1 — Warm-up</h3>
+            <p class="text-sm">
+              Imprima no console o nome do jogador ao iniciar e ao apertar
+              Espaço.
+            </p>
+            <pre
+              class="bg-slate-900/90 text-slate-100 p-3 rounded text-xs overflow-x-auto"
+            ><code>// void Start(){ Debug.Log(playerName); }
+// void Update(){ if(Input.GetKeyDown(KeyCode.Space)) Debug.Log(playerName); }</code></pre>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">E2 — Clamp</h3>
+            <p class="text-sm">Limite X do Player entre -8 e 8.</p>
+            <pre
+              class="bg-slate-900/90 text-slate-100 p-3 rounded text-xs overflow-x-auto"
+            ><code>// transform.position = new Vector3(Mathf.Clamp(x, -8f, 8f), y, z);</code></pre>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="font-semibold text-emerald-800 mb-2">E3 — Gizmo</h3>
+            <p class="text-sm">
+              Desenhe um gizmo sob o Player para visualizar o chão.
+            </p>
+            <pre
+              class="bg-slate-900/90 text-slate-100 p-3 rounded text-xs overflow-x-auto"
+            ><code>void OnDrawGizmosSelected(){
+  Gizmos.color = Color.green;
+  Gizmos.DrawWireCube(transform.position + Vector3.down*0.6f, new Vector3(1.2f,0.2f,0.2f));
+}</code></pre>
+          </div>
+        </div>
+        <div class="callout info mt-6">
+          <p class="font-semibold">Checklist de Boas Práticas</p>
+          <ul class="list-disc list-inside text-sm">
+            <li>
+              Input em <code>Update()</code> • Física em
+              <code>FixedUpdate()</code>.
+            </li>
+            <li>
+              Use <code>[SerializeField]</code> para tunar valores no Inspector.
+            </li>
+            <li>
+              Cacheie componentes em <code>Awake()</code>/<code>Start()</code>.
+            </li>
+            <li>
+              Logue estados com <code>Debug.Log</code> e itere em pequenos
+              passos.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- DEBUG -->
+      <section id="debug" class="mb-12 callout warn">
+        <h2 class="font-bold text-lg mb-2">
+          <i class="fa-solid fa-bug mr-2"></i>Debugging rápido com Console
+        </h2>
+        <p class="text-sm">
+          Use <code>Debug.Log()</code> para inspecionar valores e fluxo. Janela:
+          <em>Window &gt; General &gt; Console</em>. Ex.:
+          <code>Debug.Log("Input: " + h);</code>
+        </p>
+      </section>
+
+      <!-- TED -->
+      <section id="ted" class="mb-12 bg-white p-8 rounded-lg shadow">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          📝 TED — Movimento Horizontal
+        </h2>
+        <p class="mb-3">
+          Crie um script que mova um objeto com base na entrada horizontal e
+          publique no Moodle.
+        </p>
+        <ol class="list-decimal list-inside text-sm space-y-1">
+          <li>
+            Escolha <strong>Opção 0</strong> (simples),
+            <strong>Opção A (2D)</strong>, <strong>Opção B (3D)</strong> ou
+            <strong>Bônus</strong> (Input System).
+          </li>
+          <li>
+            Inclua: nome do script, código principal e explicação (2–4 linhas)
+            de como lê o input e aplica o movimento.
+          </li>
+          <li>
+            ⭐ Extra: vídeo curto (10–20s) mostrando o objeto em movimento.
+          </li>
+        </ol>
+        <div class="mt-4 text-sm text-slate-600">
+          <p>
+            <strong>Rubrica (0–10):</strong> compila (2), lê input corretamente
+            (3), movimento estável (3), clareza do post (2).
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Vídeos recomendados (Aula 10) -->
+      <section
+        id="videos-aula10"
+        aria-labelledby="videos-aula10-heading"
+        class="mb-12"
+      >
+        <h2
+          id="videos-aula10-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-6"
+        >
+          🎬 Vídeos recomendados (Aula 10)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Playlist: Movimento de Objetos no Unity (PT-BR) -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLAPc9hK5YTM_ghrC7HIx6QlsThlCpLJlb"
+                title="Playlist: Movimento de Objetos no Unity (PT-BR)"
+                loading="lazy"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-violet-800">
+                Movimento de Objetos (Unity)
+              </h3>
+              <p class="text-xs text-slate-500">
+                Série em português cobrindo movimento e manipulação de
+                GameObjects.
+              </p>
+            </div>
+          </article>
+
+          <!-- Vídeo: Unity para iniciantes (visão geral + scripts básicos) -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/SmSZ4e6b-sg"
+                title="Unity para iniciantes – O Primeiro Passo (PT-BR)"
+                loading="lazy"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-violet-800">Unity para Iniciantes</h3>
+              <p class="text-xs text-slate-500">
+                Introdução rápida à Unity; ponte para criação de scripts C# no
+                editor.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- RECURSOS -->
+      <section id="recursos" class="mb-12">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          📚 Recursos
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8 bg-white p-6 rounded-lg shadow">
+          <div>
+            <h3 class="font-semibold text-emerald-800 mb-2">
+              Documentação Unity & Cursos
+            </h3>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  class="text-emerald-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html"
+                  >Criando e usando scripts</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-emerald-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.html"
+                  >MonoBehaviour & ciclo de vida</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-emerald-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/ScriptReference/Input.GetAxis.html"
+                  >Input.GetAxis (Manager clássico)</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-emerald-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/ScriptReference/Rigidbody2D.html"
+                  >Rigidbody2D</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-emerald-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/ScriptReference/CharacterController.Move.html"
+                  >CharacterController.Move</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-emerald-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://learn.unity.com/course/create-with-code"
+                  >Unity Learn — Create with Code</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-emerald-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/Packages/com.unity.inputsystem@latest"
+                  >Novo Input System (pacote)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- BIBLIOGRAFIA -->
+      <section id="bibliografia" class="mb-12">
+        <h2
+          class="text-3xl font-semibold border-b-2 border-emerald-500 pb-2 mb-6"
+        >
+          📚 Bibliografia
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            ALVES, W. P.
+            <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de
+            Janeiro: Alta Books, 2019.
+          </p>
+          <p>
+            ALVES, George Santiago.
+            <strong>Projeto de jogos 3D: modelagem e programação.</strong> São
+            Paulo: Platos, 2021.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          © 2025 — Tecnologia e Desenvolvimento de Jogos Digitais • Semestre
+          2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-3">
+          <a href="#" class="text-emerald-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a href="#" class="text-emerald-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+      defer
+    ></script>
+    <script>
+      // Botão "Copiar" (herdado e padronizado)
+      function copiarCodigo(button, elementId) {
+        const codeElement = document.getElementById(elementId);
+        if (!codeElement) return;
+        const codeToCopy = codeElement.innerText;
+        const textarea = document.createElement("textarea");
+        textarea.value = codeToCopy;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          button.innerText = "Copiado!";
+        } catch (err) {
+          button.innerText = "Erro!";
+          console.error("Erro ao copiar", err);
+        }
+        document.body.removeChild(textarea);
+        setTimeout(() => {
+          button.innerText = "Copiar";
+        }, 1600);
+      }
+    </script>
+  </body>
+</html>

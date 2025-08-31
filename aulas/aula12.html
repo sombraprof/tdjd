@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Meta essenciais -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 12: Input System na Unity (C#)</title>
+    <meta
+      name="description"
+      content="Unidade III – Programação com C# para Games. Mapeie ações (teclado/mouse/gamepad), leia entradas via script e conecte Action Maps ao controle do personagem."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Unity, C#, Input System, PlayerInput, Action Map, Teclado, Gamepad, Movimento, Interação"
+    />
+
+    <!-- Open Graph / Twitter (ajuste a URL de publicação) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://SEU-DOMINIO/aula12.html" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 12: Input System na Unity (C#)"
+    />
+    <meta
+      property="og:description"
+      content="Configuração do Input System e leitura de ações do jogador via C# para movimentação e interação."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/0ea5e9/ffffff?text=TDJD%20Aula%2012"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Tailwind / fontes / ícones -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Estilos -->
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          sans-serif;
+        background: #f8fafc;
+        padding-top: 60px;
+      }
+      .callout {
+        border-left-width: 4px;
+        padding: 1.25rem;
+        margin: 1.25rem 0;
+        border-radius: 0.5rem;
+      }
+      .callout-info {
+        background: #ecfeff;
+        border-color: #67e8f9;
+        color: #0e7490;
+      }
+      .callout-practice {
+        background: #ecfdf5;
+        border-color: #6ee7b7;
+        color: #065f46;
+      }
+      .callout-warning {
+        background: #fff7ed;
+        border-color: #fdba74;
+        color: #9a3412;
+      }
+      .aspect-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+      }
+      .aspect-video iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .code-block-wrapper {
+        position: relative;
+      }
+      .copy-code-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: #334155;
+        color: #fff;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+      .copy-code-button:hover {
+        background: #1f2937;
+      }
+      .video-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Navbar -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-cyan-700">TDJD - Aula 12</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="hover:text-cyan-600">Plano</a>
+            <a href="#introducao" class="hover:text-cyan-600">Introdução</a>
+            <a href="#comparativo" class="hover:text-cyan-600">Comparativo</a>
+            <a href="#setup" class="hover:text-cyan-600">Setup</a>
+            <a href="#action-map" class="hover:text-cyan-600">Action Map</a>
+            <a href="#padroes-codigo" class="hover:text-cyan-600">Código</a>
+            <a href="#checklist" class="hover:text-cyan-600">Checklist</a>
+            <a href="#control-schemes" class="hover:text-cyan-600">Esquemas</a>
+            <a href="#rebinding" class="hover:text-cyan-600">Rebinding</a>
+            <a href="#ui-input" class="hover:text-cyan-600">UI</a>
+            <a href="#local-multiplayer" class="hover:text-cyan-600"
+              >Local MP</a
+            >
+            <a href="#videos" class="hover:text-cyan-600">Vídeos</a>
+            <a href="#tarefa" class="hover:text-cyan-600">TED</a>
+            <a href="#recursos" class="hover:text-cyan-600">Recursos</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-cyan-700 to-sky-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 12: Input System na Unity (C#)
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Unidade III – Programação com C# para Games
+        </p>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Plano -->
+      <section
+        id="plano-aula"
+        class="mb-12 bg-cyan-50 border border-cyan-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2 class="text-3xl font-bold text-cyan-700 mb-6 text-center">
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-cyan-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="text-sm text-slate-600">
+              Input System na prática: Action Maps, bindings
+              (teclado/mouse/gamepad), leitura de eventos via C# e vínculo com o
+              personagem.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-cyan-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-sm text-slate-600">
+              Configurar e usar o Input System para capturar ações do jogador e
+              acionar comportamentos de movimento e interação via script.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-cyan-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-sm text-slate-600">
+              Aula prática guiada + pair programming (projeto incremental).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Introdução -->
+      <section id="introducao" class="mb-12 bg-white p-8 rounded-lg shadow">
+        <h2 class="text-3xl font-semibold text-slate-800 mb-4">
+          Por que o Input System?
+        </h2>
+        <p class="text-slate-700 leading-relaxed">
+          O <strong>Input System</strong> unifica teclado, mouse, gamepad e
+          toques em um só fluxo de trabalho. Em vez de ler teclas soltas,
+          definimos <em>Ações</em> (ex.: <code>Move</code>, <code>Jump</code>,
+          <code>Interact</code>) e mapeamos diferentes dispositivos para cada
+          uma. Isso facilita remapeamento, suporte a múltiplos joysticks e
+          testes.
+        </p>
+        <blockquote
+          class="text-lg italic text-slate-600 border-l-4 border-cyan-300 pl-4 mt-4"
+        >
+          “O Input System desacopla a intenção do jogador do hardware,
+          permitindo incluir novos dispositivos sem reescrever a lógica de
+          jogo.”
+        </blockquote>
+      </section>
+
+      <!-- Comparativo (do Gemini, integrado) -->
+      <section id="comparativo" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-right-left mr-2"></i>Input Manager (antigo) ×
+          Input System (novo)
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow overflow-x-auto">
+          <table class="min-w-full text-left text-sm">
+            <thead class="bg-cyan-50 text-cyan-800">
+              <tr>
+                <th class="p-3 font-semibold">Característica</th>
+                <th class="p-3 font-semibold">Input Manager</th>
+                <th class="p-3 font-semibold">Input System</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr>
+                <td class="p-3 font-medium">Abordagem</td>
+                <td class="p-3">Eixos/strings</td>
+                <td class="p-3">Ações/objetos</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Configuração</td>
+                <td class="p-3">Project Settings</td>
+                <td class="p-3">Asset visual (Action Maps)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Dispositivos</td>
+                <td class="p-3">Limitado</td>
+                <td class="p-3">Amplo (gamepads, touch, etc.)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Remapeamento</td>
+                <td class="p-3">Manual e complexo</td>
+                <td class="p-3">Nativo</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Leitura</td>
+                <td class="p-3">Polling no <code>Update</code></td>
+                <td class="p-3">Eventos + polling quando necessário</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Setup (merge dos dois) -->
+      <section id="setup" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-screwdriver-wrench mr-2"></i>Configuração rápida
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <ol class="list-decimal list-inside space-y-2 text-slate-700">
+            <li>Projeto Unity URP aberto.</li>
+            <li>
+              Instale o pacote <strong>Input System</strong> via Package
+              Manager.
+            </li>
+            <li>
+              Ative em
+              <em
+                >Edit &gt; Project Settings &gt; Player &gt; Active Input
+                Handling</em
+              >: <strong>Input System Package (New)</strong> ou
+              <strong>Both</strong>.
+            </li>
+            <li>
+              No <em>Project</em>:
+              <em>Create &gt; Input Actions</em> (<code>PlayerControls</code>).
+            </li>
+            <li>
+              No asset: crie o <strong>Action Map</strong>
+              <code>Player</code> com <code>Move (Vector2)</code>,
+              <code>Jump (Button)</code>, <code>Interact (Button)</code>.
+            </li>
+            <li>
+              Bindings (sugestão): <code>Move</code> → WASD/Setas/Left Stick;
+              <code>Jump</code> → Space + South Button; <code>Interact</code> →
+              E + West Button.
+            </li>
+            <li>
+              Marque
+              <strong>Generate C# Class</strong>
+              (<code>PlayerControls.cs</code>) e clique <em>Save Asset</em>.
+            </li>
+          </ol>
+          <div class="callout callout-info" role="note">
+            <strong>Reinício do editor</strong>: ao alternar o backend de input,
+            o Unity reinicia para aplicar o novo sistema em todo o editor e no
+            runtime.
+          </div>
+          <div class="callout callout-warning" role="note">
+            <strong>Erros comuns</strong>: esquecer de salvar o asset; não
+            habilitar o mapa com <code>Enable()</code>; colisor sem
+            <em>Is Trigger</em> para interações por área.
+          </div>
+        </div>
+      </section>
+
+      <!-- Action Map + Matriz + passos detalhados -->
+      <section id="action-map" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-map mr-2"></i>Mapa de Ações (sugestão)
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-6">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-sm">
+              <thead class="bg-cyan-50 text-cyan-800">
+                <tr>
+                  <th class="p-2 font-semibold">Action</th>
+                  <th class="p-2 font-semibold">Tipo</th>
+                  <th class="p-2 font-semibold">Bindings (Teclado/Mouse)</th>
+                  <th class="p-2 font-semibold">Bindings (Gamepad)</th>
+                  <th class="p-2 font-semibold">Uso no jogo</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="p-2 font-medium">Move</td>
+                  <td class="p-2">Value / Vector2</td>
+                  <td class="p-2">WASD / Setas (2D Vector Composite)</td>
+                  <td class="p-2">Left Stick</td>
+                  <td class="p-2">Direção (X/Z) do personagem</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-medium">Jump</td>
+                  <td class="p-2">Button</td>
+                  <td class="p-2">Espaço</td>
+                  <td class="p-2">South Button (A/✕)</td>
+                  <td class="p-2">Pular</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-medium">Interact</td>
+                  <td class="p-2">Button</td>
+                  <td class="p-2">E</td>
+                  <td class="p-2">West Button (X/□)</td>
+                  <td class="p-2">Ativar/Coletar/Usar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-cyan-800 mb-2">
+              Passos rápidos para o <code>Move</code> (Composite 2D)
+            </h3>
+            <ol
+              class="list-decimal list-inside text-sm text-slate-700 space-y-1"
+            >
+              <li>
+                No Action Map <strong>Player</strong>, crie a Action
+                <code>Move</code> com <em>Action Type: Value</em> e
+                <em>Control Type: Vector2</em>.
+              </li>
+              <li>
+                Adicione um <em>Add 2D Vector Composite</em> e nomeie
+                <code>WASD</code>.
+              </li>
+              <li>
+                Configure: <em>Up=W</em>, <em>Down=S</em>, <em>Left=A</em>,
+                <em>Right=D</em>. Adicione outro composite para setas, se
+                quiser.
+              </li>
+              <li>Adicione binding de <em>Left Stick [Gamepad]</em>.</li>
+              <li>Salve o asset (<em>Save Asset</em>).</li>
+            </ol>
+          </div>
+
+          <div class="callout callout-practice" role="note">
+            <strong>UX de controle</strong>: deixe pulo em Space/South Button e
+            ações frequentes em botões confortáveis; planeje remapeamento
+            depois.
+          </div>
+        </div>
+      </section>
+
+      <section id="control-schemes" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-gamepad mr-2"></i>Control Schemes & Auto-Switch
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700">
+          <p>
+            Separe dispositivos em <strong>Control Schemes</strong> (ex.:
+            <em>Keyboard&Mouse</em> e <em>Gamepad</em>) no asset de
+            <em>Input Actions</em>. O <strong>PlayerInput</strong> pode alternar
+            automaticamente o esquema conforme o último dispositivo usado.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-sm">
+              <thead class="bg-cyan-50 text-cyan-800">
+                <tr>
+                  <th class="p-2 font-semibold">Esquema</th>
+                  <th class="p-2 font-semibold">Dispositivos</th>
+                  <th class="p-2 font-semibold">Uso</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="p-2 font-medium">Keyboard&Mouse</td>
+                  <td class="p-2">Keyboard, Mouse</td>
+                  <td class="p-2">PC/Desktop</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-medium">Gamepad</td>
+                  <td class="p-2">XInput/DualShock/DualSense</td>
+                  <td class="p-2">Console/PC com controle</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-autoswitch')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-autoswitch">using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(PlayerInput))]
+public class SchemeIndicator : MonoBehaviour
+{
+    private PlayerInput pi;
+    void Awake() { pi = GetComponent&lt;PlayerInput&gt;(); }
+    void OnEnable() { pi.onControlsChanged += OnControlsChanged; }
+    void OnDisable() { pi.onControlsChanged -= OnControlsChanged; }
+
+    private void OnControlsChanged(PlayerInput _)
+    {
+        Debug.Log("Esquema ativo: " + pi.currentControlScheme); // "Keyboard&Mouse" ou "Gamepad"
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="rebinding" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-arrows-rotate mr-2"></i>Remapeamento (Rebinding)
+          com persistência
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700">
+          <p>
+            Permita ao jogador alterar bindings em runtime e salvar preferências
+            localmente.
+          </p>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-rebind')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-rebind">using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
+
+public class SimpleRebind : MonoBehaviour
+{
+    public InputActionAsset actions; // arraste o asset (PlayerControls)
+    public string actionPath = "Player/Jump"; // Action que será remapeada
+
+    private InputAction GetAction() => actions.FindAction(actionPath, throwIfNotFound:true);
+
+    void Awake()
+    {
+        // Carrega overrides salvos (se houver)
+        var json = PlayerPrefs.GetString("rebinds", "");
+        if (!string.IsNullOrEmpty(json)) actions.LoadBindingOverridesFromJson(json);
+    }
+
+    public void StartRebind()
+    {
+        var action = GetAction();
+        action.Disable();
+        action.PerformInteractiveRebinding()
+              .WithControlsExcluding("&lt;Mouse&gt;/position")
+              .WithCancelingThrough("&lt;Keyboard&gt;/escape")
+              .OnComplete(op =&gt; { action.Enable(); op.Dispose(); Save(); Debug.Log("Rebind concluído: " + action.bindings[action.GetBindingIndexForControl(action.controls[0])].effectivePath); })
+              .Start();
+    }
+
+    private void Save()
+    {
+        var json = actions.SaveBindingOverridesAsJson();
+        PlayerPrefs.SetString("rebinds", json);
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Padrões de código -->
+      <section id="padroes-codigo" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-code mr-2"></i>Padrões de leitura no C#
+        </h2>
+
+        <!-- Padrão A -->
+        <div class="bg-white p-8 rounded-lg shadow space-y-3 mb-8">
+          <h3 class="text-xl font-semibold text-cyan-800">
+            Padrão A — Classe gerada + <em>polling</em> no Update + eventos
+          </h3>
+          <p class="text-slate-700 text-sm">
+            Usa a classe <code>PlayerControls</code> gerada. Lê
+            <code>Move</code> a cada frame e escuta <code>Jump/Interact</code>.
+          </p>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-a')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-a">using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(Rigidbody))]
+public class PlayerController : MonoBehaviour
+{
+    public float moveSpeed = 5f;
+    public float jumpForce = 5f;
+
+    private Rigidbody rb;
+    private PlayerControls controls;
+    private Vector2 moveInput;
+    private bool jumpQueued;
+
+    void Awake()
+    {
+        rb = GetComponent&lt;Rigidbody&gt;();
+        controls = new PlayerControls();
+    }
+
+    void OnEnable()
+    {
+        controls.Player.Enable();
+        controls.Player.Jump.performed += OnJump;
+        controls.Player.Interact.performed += OnInteract;
+    }
+
+    void OnDisable()
+    {
+        controls.Player.Jump.performed -= OnJump;
+        controls.Player.Interact.performed -= OnInteract;
+        controls.Player.Disable();
+    }
+
+    void Update()
+    {
+        moveInput = controls.Player.Move.ReadValue&lt;Vector2&gt;();
+    }
+
+    void FixedUpdate()
+    {
+        Vector3 v = new Vector3(moveInput.x, 0f, moveInput.y) * moveSpeed;
+        rb.MovePosition(rb.position + v * Time.fixedDeltaTime);
+
+        if (jumpQueued)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpQueued = false;
+        }
+    }
+
+    private void OnJump(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) jumpQueued = true;
+    }
+
+    private void OnInteract(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) Debug.Log("Interagir!");
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Padrão B -->
+        <div class="bg-white p-8 rounded-lg shadow space-y-3 mb-8">
+          <h3 class="text-xl font-semibold text-cyan-800">
+            Padrão B — Componente <code>PlayerInput</code> (Send Messages)
+          </h3>
+          <p class="text-slate-700 text-sm">
+            Adicione <strong>PlayerInput</strong> ao Player, arraste o asset,
+            <em>Default Map: Player</em>, <em>Behavior: Send Messages</em>.
+          </p>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-b')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-b">using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerInputController : MonoBehaviour
+{
+    public float speed = 5f;
+    private Vector2 move;
+
+    public void OnMove(InputValue value) { move = value.Get&lt;Vector2&gt;(); }
+    public void OnJump(InputValue value) { if (value.isPressed) Debug.Log("Pulo!"); }
+    public void OnInteract(InputValue value) { if (value.isPressed) Debug.Log("Interagir!"); }
+
+    void Update()
+    {
+        Vector3 dir = new Vector3(move.x, 0f, move.y);
+        transform.Translate(dir * speed * Time.deltaTime, Space.World);
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Alternativa (do Gemini) -->
+        <div class="bg-white p-8 rounded-lg shadow space-y-3">
+          <h3 class="text-xl font-semibold text-cyan-800">
+            Alternativa — <code>CharacterController</code> com eventos
+            <em>performed/canceled</em>
+          </h3>
+          <p class="text-slate-700 text-sm">
+            Leitura via callbacks e movimentação com
+            <code>CharacterController</code>.
+          </p>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-cc')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-cc">using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(CharacterController))]
+public class CCPlayerController : MonoBehaviour
+{
+    private PlayerControls controls;
+    private CharacterController cc;
+    private Vector2 moveInput;
+    public float speed = 8f;
+
+    void Awake()
+    {
+        cc = GetComponent&lt;CharacterController&gt;();
+        controls = new PlayerControls();
+    }
+
+    void OnEnable()
+    {
+        controls.Player.Enable();
+        controls.Player.Move.performed += OnMovePerformed;
+        controls.Player.Move.canceled += OnMoveCanceled;
+    }
+
+    void OnDisable()
+    {
+        controls.Player.Move.performed -= OnMovePerformed;
+        controls.Player.Move.canceled -= OnMoveCanceled;
+        controls.Player.Disable();
+    }
+
+    private void OnMovePerformed(InputAction.CallbackContext ctx)
+    {
+        moveInput = ctx.ReadValue&lt;Vector2&gt;();
+    }
+
+    private void OnMoveCanceled(InputAction.CallbackContext ctx)
+    {
+        moveInput = Vector2.zero;
+    }
+
+    void Update()
+    {
+        Vector3 dir = new Vector3(moveInput.x, 0f, moveInput.y);
+        cc.Move(dir * speed * Time.deltaTime);
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Checklist & Debug -->
+      <section id="checklist" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-list-check mr-2"></i>Checklist de validação
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <ul class="list-disc list-inside text-sm leading-7 text-slate-700">
+            <li>
+              Pacote instalado e <em>Active Input Handling</em> configurado.
+            </li>
+            <li>
+              Asset <code>PlayerControls</code> salvo (e classe gerada, se usar
+              Padrão A).
+            </li>
+            <li>
+              Bindings de teclado e gamepad testados (<em
+                >Window &gt; Analysis &gt; Input Debugger</em
+              >).
+            </li>
+            <li>
+              <code>Enable()</code> chamado no mapa/ação (Padrão A) ou
+              <code>PlayerInput</code> ativo (Padrão B).
+            </li>
+            <li>
+              Com <code>Rigidbody</code>, mova em <code>FixedUpdate()</code>;
+              com <code>CharacterController</code>, use <code>Update()</code>.
+            </li>
+          </ul>
+          <div class="callout callout-warning" role="note">
+            <strong>Debug</strong>: coloque <code>Debug.Log()</code> nos
+            handlers e confira eventos no <em>Input Debugger</em>.
+          </div>
+        </div>
+      </section>
+
+      <section id="ui-input" class="mb-12" aria-labelledby="ui-input-heading">
+        <h2
+          id="ui-input-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-display mr-2"></i>Navegação de UI (Menus) com o
+          Input System
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-5 text-slate-700">
+          <p>
+            Para navegar menus com teclado/mouse/gamepad, use o
+            <strong>InputSystemUIInputModule</strong> no <em>EventSystem</em> e
+            um <strong>Action Map "UI"</strong>.
+          </p>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-sm">
+              <thead class="bg-cyan-50 text-cyan-800">
+                <tr>
+                  <th class="p-2 font-semibold">Action (UI)</th>
+                  <th class="p-2 font-semibold">Tipo</th>
+                  <th class="p-2 font-semibold">Bindings (Teclado/Mouse)</th>
+                  <th class="p-2 font-semibold">Bindings (Gamepad)</th>
+                  <th class="p-2 font-semibold">Uso</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="p-2 font-medium">Navigate</td>
+                  <td class="p-2">Value / Vector2</td>
+                  <td class="p-2">Setas / WASD</td>
+                  <td class="p-2">Left Stick / D-Pad</td>
+                  <td class="p-2">Mover foco</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-medium">Submit</td>
+                  <td class="p-2">Button</td>
+                  <td class="p-2">Enter / Space</td>
+                  <td class="p-2">South Button (A/✕)</td>
+                  <td class="p-2">Selecionar</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-medium">Cancel</td>
+                  <td class="p-2">Button</td>
+                  <td class="p-2">Esc</td>
+                  <td class="p-2">East Button (B/○)</td>
+                  <td class="p-2">Voltar</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-medium">Point</td>
+                  <td class="p-2">Value / Vector2</td>
+                  <td class="p-2">Mouse Position</td>
+                  <td class="p-2">—</td>
+                  <td class="p-2">Cursor</td>
+                </tr>
+                <tr>
+                  <td class="p-2 font-medium">Click</td>
+                  <td class="p-2">Button</td>
+                  <td class="p-2">Left Mouse Button</td>
+                  <td class="p-2">South Button (A/✕)</td>
+                  <td class="p-2">Clique</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>
+              Crie no asset um <strong>Action Map "UI"</strong> com as actions
+              acima.
+            </li>
+            <li>
+              Na cena, adicione <strong>EventSystem</strong> e troque o
+              componente de entrada para
+              <strong>Input System UI Input Module</strong>.
+            </li>
+            <li>
+              Arraste seu asset de <em>Input Actions</em> para o campo
+              <em>Actions Asset</em> e mapeie
+              <em>Point/Navigate/Submit/Cancel/Click</em>.
+            </li>
+          </ol>
+
+          <p class="text-slate-700">
+            Use a ação <code>Pause</code> para alternar entre o mapa
+            <code>Player</code> (jogo) e <code>UI</code> (menu):
+          </p>
+
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-toggle-ui')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-toggle-ui">using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(PlayerInput))]
+public class ToggleUIActionMap : MonoBehaviour
+{
+    public GameObject pauseMenu; // painel Canvas do menu
+    private PlayerInput pi;
+    private bool paused;
+
+    void Awake() { pi = GetComponent&lt;PlayerInput&gt;(); }
+
+    // Vincule esta função à Action "Pause" (performed)
+    public void OnPause(InputValue v)
+    {
+        if (!v.isPressed) return;
+        paused = !paused;
+        pauseMenu.SetActive(paused);
+        pi.SwitchCurrentActionMap(paused ? "UI" : "Player");
+        Time.timeScale = paused ? 0f : 1f;
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="local-multiplayer"
+        class="mb-12"
+        aria-labelledby="local-mp-heading"
+      >
+        <h2
+          id="local-mp-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-people-group mr-2"></i>Multiplayer Local com
+          PlayerInputManager
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-5 text-slate-700">
+          <p>
+            Permite que jogadores entrem pressionando um botão em controles
+            diferentes. Cada jogador instancia um <em>Player Prefab</em> com
+            <strong>PlayerInput</strong>.
+          </p>
+
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>
+              Crie um <strong>Player Prefab</strong> com
+              <code>PlayerInput</code> configurado (Default Map:
+              <code>Player</code>).
+            </li>
+            <li>
+              Na cena, adicione um objeto vazio com
+              <strong>PlayerInputManager</strong>:
+              <ul class="list-disc list-inside ml-4">
+                <li>
+                  <em>Join Behavior</em>:
+                  <strong>Join Players When Button Is Pressed</strong>
+                </li>
+                <li><em>Player Prefab</em>: seu prefab do jogador</li>
+              </ul>
+            </li>
+            <li>
+              (Opcional) Adicione o script abaixo para definir posição/cor ao
+              entrar.
+            </li>
+          </ol>
+
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-join')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-900 text-slate-100 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-join">using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class LocalMPSetup : MonoBehaviour
+{
+    public Transform[] spawnPoints; // arraste pontos de spawn
+    private int nextIndex = 0;
+
+    void OnEnable()
+    {
+        PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
+    }
+
+    void OnDisable()
+    {
+        PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoined;
+    }
+
+    private void OnPlayerJoined(PlayerInput player)
+    {
+        // posiciona no próximo spawn
+        if (spawnPoints != null && spawnPoints.Length &gt; 0)
+        {
+            var t = spawnPoints[nextIndex % spawnPoints.Length];
+            player.transform.SetPositionAndRotation(t.position, t.rotation);
+            nextIndex++;
+        }
+
+        // exemplo visual por jogador
+        var rend = player.GetComponentInChildren&lt;Renderer&gt;();
+        if (rend != null)
+        {
+            var c = Random.ColorHSV(0f,1f, .7f,1f, .8f,1f);
+            rend.material.color = c;
+        }
+
+        Debug.Log($"Jogador {player.playerIndex} entrou via {player.currentControlScheme}");
+    }
+}</code></pre>
+          </div>
+
+          <p class="text-sm text-slate-600">
+            Cada jogador terá seu próprio <code>PlayerInput</code> e conjunto de
+            ações. Para UI compartilhada, mantenha um único
+            <em>EventSystem</em> com <strong>InputSystemUIInputModule</strong> e
+            esquema ativo alternado automaticamente por dispositivo.
+          </p>
+        </div>
+      </section>
+
+      <!-- Vídeos (seus IDs ajustados) -->
+      <section id="videos" class="mb-12" aria-labelledby="videos-heading">
+        <h2
+          id="videos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-8"
+        >
+          🎬 Vídeos Recomendados
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article
+            class="video-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden"
+          >
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/PDPI5SBOzck"
+                title="Unity Input System — Overview"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-cyan-800">
+                Input System — Visão geral
+              </h3>
+              <p class="text-xs text-slate-500">
+                Ações, bindings e fluxo básico para começar.
+              </p>
+              <a
+                href="https://www.youtube.com/watch?v=PDPI5SBOzck"
+                target="_blank"
+                rel="noopener"
+                class="text-cyan-700 text-xs underline"
+                >Abrir no YouTube</a
+              >
+            </div>
+          </article>
+
+          <article
+            class="video-card bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden"
+          >
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/zhi14HpKqnU"
+                title="PlayerInput e Action Maps"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-cyan-800">
+                PlayerInput + Action Maps na prática
+              </h3>
+              <p class="text-xs text-slate-500">
+                Configurando o componente, eventos e múltiplos dispositivos.
+              </p>
+              <a
+                href="https://www.youtube.com/watch?v=zhi14HpKqnU"
+                target="_blank"
+                rel="noopener"
+                class="text-cyan-700 text-xs underline"
+                >Abrir no YouTube</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- TED -->
+      <section id="tarefa" class="mb-12" aria-labelledby="tarefa-heading">
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED)
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p class="text-lg">
+            Crie um <strong>Action Map</strong> com as ações <code>Andar</code>,
+            <code>Pular</code> e <code>Interagir</code> e integre ao seu script
+            do player.
+          </p>
+          <h4 class="font-semibold text-cyan-800 mt-2 mb-1">
+            Entrega no Moodle:
+          </h4>
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>
+              Print do <em>Input Actions</em> mostrando o Action Map e os
+              bindings.
+            </li>
+            <li>
+              Trecho do código C# (máx. 40 linhas) que lê as ações e
+              move/interage.
+            </li>
+            <li>
+              Informe qual padrão você usou (A — classe gerada / B —
+              PlayerInput) e o porquê.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Recursos (merge) -->
+      <section id="recursos" class="mb-12" aria-labelledby="recursos-heading">
+        <h2
+          id="recursos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-4"
+        >
+          📚 Recursos
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <div>
+            <h4 class="font-bold text-cyan-800 mb-2">Documentação</h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  class="text-cyan-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/Packages/com.unity.inputsystem@latest"
+                  >Manual do Input System (Unity)</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-cyan-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://docs.unity3d.com/Packages/com.unity.inputsystem@latest/manual/PlayerInput.html"
+                  >Componente PlayerInput</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-cyan-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://learn.unity.com/tutorial/using-the-input-system"
+                  >Unity Learn: Using the Input System</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-cyan-700 hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://learn.microsoft.com/pt-br/dotnet/csharp/"
+                  >C# – Documentação (Microsoft)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-cyan-800 mb-2">
+              Leituras complementares
+            </h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                ALVES, W. P. <em>Unity: design e desenvolvimento de jogos</em>.
+                Alta Books, 2019.
+              </li>
+              <li>
+                ALVES, George S.
+                <em>Projeto de jogos 3D: modelagem e programação</em>. Platos,
+                2021.
+              </li>
+              <li>
+                (Material IMD) <em>Entradas do jogador e movimento</em> —
+                apostila do curso.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bibliografia -->
+      <section
+        id="bibliografia"
+        class="mb-12"
+        aria-labelledby="bibliografia-heading"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-cyan-500 pb-2 mb-4"
+        >
+          📚 Bibliografia
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-3 text-slate-700 leading-relaxed"
+        >
+          <p>
+            ALVES, W. P.
+            <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de
+            Janeiro: Alta Books, 2019.
+          </p>
+          <p>
+            ALVES, George Santiago.
+            <strong>Projeto de jogos 3D: modelagem e programação.</strong> São
+            Paulo: Platos, 2021.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <a href="#" class="text-cyan-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a href="#" class="text-cyan-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Util: copiar código -->
+    <script>
+      function copiarCodigo(button, elementId) {
+        const code = document.getElementById(elementId)?.innerText || "";
+        const ta = document.createElement("textarea");
+        ta.value = code;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+          document.execCommand("copy");
+          button.innerText = "Copiado!";
+        } catch {
+          button.innerText = "Erro!";
+        }
+        document.body.removeChild(ta);
+        setTimeout(() => (button.innerText = "Copiar"), 2000);
+      }
+    </script>
+  </body>
+</html>

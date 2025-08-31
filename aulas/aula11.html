@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 11: Métodos, Eventos e Corrotinas em C#</title>
+    <meta
+      name="description"
+      content="Unidade III – Programação com C# para Games. Aprenda a usar métodos, eventos e corrotinas (coroutines) na Unity para criar comportamentos temporizados e sequenciais."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Unity, C#, Coroutines, Corrotinas, Eventos, Métodos, Programação de Jogos, Temporizadores, Delay"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 11: Métodos, Eventos e Corrotinas em C#"
+    />
+    <meta
+      property="og:description"
+      content="Domine a manipulação de tempo e eventos na Unity com corrotinas para criar animações, delays e sequências complexas de gameplay."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/be185d/ffffff?text=TDJD\nAula+11"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="URL_DA_SUA_PAGINA_AQUI" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 11: Métodos, Eventos e Corrotinas em C#"
+    />
+    <meta
+      property="twitter:description"
+      content="Domine a manipulação de tempo e eventos na Unity com corrotinas para criar animações, delays e sequências complexas de gameplay."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/be185d/ffffff?text=TDJD\nAula+11"
+    />
+
+    <!-- CDN Links -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography,aspect-ratio"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        /* bg-slate-50 */
+        padding-top: 60px;
+        /* Space for fixed navbar */
+      }
+
+      .callout {
+        border-left-width: 4px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+      }
+
+      .callout-info {
+        background-color: #f0f9ff;
+        /* bg-sky-50 */
+        border-color: #7dd3fc;
+        /* border-sky-300 */
+        color: #0c4a6e;
+        /* text-sky-800 */
+      }
+
+      .callout-practice {
+        background-color: #f0fdf4;
+        /* bg-emerald-50 */
+        border-color: #6ee7b7;
+        /* border-emerald-300 */
+        color: #065f46;
+        /* text-emerald-800 */
+      }
+
+      .callout-warning {
+        background-color: #fffbeb; /* bg-amber-50 */
+        border-color: #fcd34d; /* border-amber-300 */
+        color: #92400e; /* text-amber-800 */
+      }
+
+      .code-block-wrapper {
+        position: relative;
+      }
+
+      .copy-code-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: #4a5568;
+        color: white;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .copy-code-button:hover {
+        background-color: #2d3748;
+      }
+
+      .aspect-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .aspect-video iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Fixed Navigation Menu -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-pink-700">TDJD - Aula 11</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-pink-600"
+              >Plano</a
+            >
+            <a
+              href="#metodos-eventos"
+              class="text-slate-600 hover:text-pink-600"
+              >Métodos e Eventos</a
+            >
+            <a href="#corrotinas" class="text-slate-600 hover:text-pink-600"
+              >Corrotinas</a
+            >
+            <a href="#estudo-de-caso" class="text-slate-600 hover:text-pink-600"
+              >Estudo de Caso</a
+            >
+            <a href="#tarefa" class="text-slate-600 hover:text-pink-600">TED</a>
+            <a href="#recursos" class="text-slate-600 hover:text-pink-600"
+              >Recursos</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-pink-800 to-rose-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 11: Métodos, Eventos e Corrotinas
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Unidade III – Programação com C# para Games
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Section: Lesson Plan -->
+      <section
+        id="plano-aula"
+        aria-labelledby="plano-aula-heading"
+        class="mb-12 bg-pink-50 border border-pink-200 p-8 rounded-2xl shadow-lg"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-pink-700 mb-6 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-pink-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="text-slate-600 mt-1 text-sm">
+              Organização de código com Métodos. Reação a eventos de física.
+              Manipulação de tempo e sequências com Corrotinas.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-pink-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Implementar métodos e eventos para criar código modular e reativo.
+              Utilizar corrotinas para criar comportamentos temporizados e
+              sequenciais.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-pink-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Aula prática com aplicação incremental de conceitos (Scaffolded
+              Practice), construindo um sistema funcional passo a passo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Introduction -->
+      <section
+        id="introducao"
+        aria-labelledby="intro-heading"
+        class="mb-12 bg-white p-8 rounded-lg shadow"
+      >
+        <h2
+          id="intro-heading"
+          class="text-3xl font-semibold text-slate-800 mb-4"
+        >
+          Orquestrando Ações: O Próximo Nível do Scripting
+        </h2>
+        <div class="text-slate-700 leading-relaxed space-y-4">
+          <p>
+            Na aula anterior, demos os primeiros passos com C#, movendo um
+            objeto com lógica dentro do `Update()`. No entanto, a maioria das
+            ações em um jogo não acontece continuamente. Elas acontecem em
+            resposta a algo (um evento) ou ao longo de um período específico de
+            tempo (uma sequência).
+          </p>
+          <p>
+            Como fazemos para que uma porta se abra <strong>após</strong> o
+            jogador pisar em uma placa de pressão? Como criamos um inimigo que
+            ataca, espera e ataca novamente? A resposta está em organizar nosso
+            código de forma mais inteligente e dominar as ferramentas que a
+            Unity nos oferece para controlar o tempo.
+          </p>
+          <blockquote
+            class="text-lg italic text-slate-600 border-l-4 border-pink-300 pl-4"
+          >
+            "A complexidade de um bom gameplay não vem de um código complicado,
+            mas de regras simples que interagem de maneiras interessantes ao
+            longo do tempo."
+            <footer class="text-base not-italic text-slate-500 mt-2">
+              — Adaptado de Schuytema, P., "Design de games: uma abordagem
+              prática"
+            </footer>
+          </blockquote>
+          <p>
+            Hoje, vamos aprender a criar blocos de código reutilizáveis
+            (métodos), a reagir a eventos do mundo do jogo (como colisões) e a
+            orquestrar ações sequenciais com a poderosa ferramenta das
+            <strong>corrotinas</strong>.
+          </p>
+        </div>
+      </section>
+
+      <section id="ciclo-execucao" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-timeline mr-2"></i>Ciclo de Execução da Unity
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700">
+          <p>
+            <strong
+              >Awake → OnEnable → Start → Update → LateUpdate → OnDisable →
+              OnDestroy</strong
+            >
+            é a ordem típica de eventos chamados pela Unity. Use:
+          </p>
+          <ul class="list-disc list-inside text-sm leading-6">
+            <li>
+              <strong>Awake</strong>: inicialização essencial (referências).
+            </li>
+            <li>
+              <strong>Start</strong>: começa após todos os
+              <em>Awake</em> concluírem.
+            </li>
+            <li>
+              <strong>Update</strong>: lógica por frame (entrada do jogador).
+            </li>
+            <li>
+              <strong>FixedUpdate</strong>: física/forças em <em>Rigidbody</em>.
+            </li>
+            <li>
+              <strong>LateUpdate</strong>: câmera que segue o jogador (roda
+              depois do <em>Update</em>).
+            </li>
+          </ul>
+          <p class="text-xs text-slate-500">
+            Referência: ordem e recomendações de uso na documentação oficial da
+            Unity (execução por evento).
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Methods and Events -->
+      <section
+        id="metodos-eventos"
+        aria-labelledby="methods-events-heading"
+        class="mb-12"
+      >
+        <h2
+          id="methods-events-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-puzzle-piece mr-2"></i>Métodos e Eventos:
+          Organização e Reação
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-6">
+          <div>
+            <h3 class="text-2xl font-semibold text-pink-800 mb-2">
+              1. Métodos: Organizando seu Código
+            </h3>
+            <p class="text-slate-700 leading-relaxed mb-4">
+              Um método (ou função) é um bloco de código nomeado que pode ser
+              chamado de outras partes do seu script. Usá-los torna o código
+              mais limpo, legível e reutilizável.
+            </p>
+            <h4 class="font-semibold text-slate-700">Anatomia de um Método:</h4>
+            <div class="code-block-wrapper my-2">
+              <pre
+                class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm"
+              ><code>// Visibilidade | Tipo de Retorno | Nome (Parâmetros)
+public void MoverJogador(float velocidade) 
+{
+    // Corpo do método
+}</code></pre>
+            </div>
+            <div class="callout callout-practice">
+              <h4 class="font-bold mb-2">
+                Exemplo Prático: Refatorando o `Update`
+              </h4>
+              <p class="text-sm text-slate-600 mb-2">
+                Vamos pegar a lógica de movimento da aula passada e encapsulá-la
+                em um método. Isso torna o `Update` mais limpo e a lógica de
+                movimento reutilizável.
+              </p>
+              <div class="code-block-wrapper">
+                <button
+                  class="copy-code-button"
+                  onclick="copiarCodigo(this, 'codigo-refatorado')"
+                >
+                  Copiar
+                </button>
+                <pre
+                  class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm"
+                ><code id="codigo-refatorado">// Refactored code with a dedicated method
+public class MovimentoRefatorado : MonoBehaviour
+{
+    public float velocidade = 5f;
+
+    void Update()
+    {
+        // Update is now clean and just calls the method
+        ProcessarInput();
+    }
+
+    // A new method to handle movement logic
+    void ProcessarInput()
+    {
+        float movimentoHorizontal = Input.GetAxis("Horizontal");
+        Vector3 direcao = Vector3.right * movimentoHorizontal;
+        transform.Translate(direcao * velocidade * Time.deltaTime);
+    }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold text-pink-800 mb-2">
+              2. Eventos: Reagindo à Física
+            </h3>
+            <p class="text-slate-700 leading-relaxed mb-4">
+              Unity possui métodos de evento que são chamados automaticamente em
+              resposta a acontecimentos, como colisões físicas. Isso nos permite
+              criar reações sem precisar verificar tudo a cada frame no
+              `Update`.
+            </p>
+            <p class="text-slate-700 leading-relaxed mb-4">
+              O conceito é baseado no <strong>Padrão Observer</strong>, onde um
+              objeto (o "Observado", como um colisor) notifica outros objetos
+              (os "Observadores", como seus scripts) quando algo importante
+              acontece.
+            </p>
+            <div class="callout callout-info">
+              <h4 class="font-bold mb-2">
+                Evento de Trigger: `OnTriggerEnter`
+              </h4>
+              <p class="text-sm text-slate-600 mb-2">
+                Este método é chamado quando um GameObject com um Collider
+                (marcado como "Is Trigger") entra em contato com outro Collider.
+                É perfeito para áreas de ativação, como placas de pressão ou
+                portais.
+              </p>
+              <div class="code-block-wrapper">
+                <button
+                  class="copy-code-button"
+                  onclick="copiarCodigo(this, 'codigo-trigger')"
+                >
+                  Copiar
+                </button>
+                <pre
+                  class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm"
+                ><code id="codigo-trigger">// Script to be placed on a trigger zone (e.g., a pressure plate)
+public class PlacaDePressao : MonoBehaviour
+{
+    // This event method is called by Unity automatically
+    private void OnTriggerEnter(Collider other)
+    {
+        // 'other' is the Collider of the object that entered the trigger
+        // We can check its tag to see if it's the player
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("O Jogador pisou na placa!");
+            // Here we would call a method to open a door, for example
+        }
+    }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="eventos-csharp" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-bell mr-2"></i>Eventos: C# (delegate) vs
+          UnityEvent
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700">
+          <p>
+            <strong>C# event/delegate</strong> dá desempenho e segurança de
+            tipo; <strong>UnityEvent</strong> permite conectar callbacks no
+            Inspector (bom para designers).
+          </p>
+
+          <h3 class="text-pink-800 font-semibold">Exemplo (C# event)</h3>
+          <pre
+            class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm overflow-x-auto"
+          ><code>public class Porta : MonoBehaviour
+{
+    public event System.Action AoAbrir;
+
+    public void Abrir()
+    {
+        // ... animação/efeito ...
+        AoAbrir?.Invoke(); // notifica inscritos
+    }
+}
+
+public class HUDPorta : MonoBehaviour
+{
+    public Porta porta;
+    void OnEnable()  => porta.AoAbrir += MostrarMensagem;
+    void OnDisable() => porta.AoAbrir -= MostrarMensagem;
+
+    void MostrarMensagem() => Debug.Log("A porta foi aberta!");
+}</code></pre>
+
+          <h3 class="text-pink-800 font-semibold">Exemplo (UnityEvent)</h3>
+          <pre
+            class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm overflow-x-auto"
+          ><code>using UnityEngine.Events;
+
+public class BotaoInterativo : MonoBehaviour
+{
+    public UnityEvent aoClicar;
+    void OnMouseDown() => aoClicar?.Invoke();
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="fisica-basica" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-shapes mr-2"></i>Trigger vs Collision (3D e 2D)
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-pink-800 font-semibold mb-2">Trigger (sensor)</h3>
+              <p>
+                Marque <em>Is Trigger</em> no Collider. Eventos:
+                <code>OnTriggerEnter/Stay/Exit</code>. Útil para placas de
+                pressão, áreas de dano e portais.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-pink-800 font-semibold mb-2">
+                Collision (contato físico)
+              </h3>
+              <p>
+                Colliders sem <em>Is Trigger</em> geram
+                <code>OnCollisionEnter/Stay/Exit</code>. Há resposta física
+                (empurrões/quicar) quando há <code>Rigidbody</code>.
+              </p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 mt-2">
+            Observação: 2D usa os equivalentes <code>OnTriggerEnter2D</code> /
+            <code>OnCollisionEnter2D</code>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Coroutines -->
+      <section
+        id="corrotinas"
+        aria-labelledby="coroutines-heading"
+        class="mb-12"
+      >
+        <h2
+          id="coroutines-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-hourglass-half mr-2"></i>Corrotinas: Dominando o
+          Tempo
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <p class="text-slate-700 leading-relaxed">
+            O `Update()` é executado em todos os frames, o que é ótimo para
+            ações contínuas. Mas e se quisermos uma sequência como: "piscar a
+            luz, <strong>esperar 1 segundo</strong>, piscar de novo"? Fazer isso
+            no `Update()` é complexo. A solução da Unity para isso são as
+            <strong>Corrotinas</strong>.
+          </p>
+          <p class="text-slate-700 font-semibold">
+            Uma corrotina é como um método que pode ser pausado e retomado. Ela
+            permite escrever lógicas sequenciais de forma limpa e legível.
+          </p>
+
+          <div class="text-center my-6">
+            <!-- SVG: Update() x Corrotinas (responsivo e acessível) -->
+            <figure class="rounded-md w-full bg-white shadow-sm">
+              <svg
+                role="img"
+                aria-labelledby="updvsco-title updvsco-desc"
+                viewBox="0 0 960 320"
+                class="w-full h-auto"
+                style="pointer-events: none"
+              >
+                <title id="updvsco-title">Update() versus Corrotinas</title>
+                <desc id="updvsco-desc">
+                  Comparação visual entre o fluxo contínuo do método Update, que
+                  roda a cada frame, e o fluxo sequencial de uma corrotina com
+                  pausas usando yield/WaitForSeconds.
+                </desc>
+
+                <defs>
+                  <!-- Gradientes de fundo -->
+                  <linearGradient id="gLeft" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#eef2ff" />
+                    <stop offset="100%" stop-color="#ede9fe" />
+                  </linearGradient>
+                  <linearGradient id="gRight" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#fdf2f8" />
+                    <stop offset="100%" stop-color="#ffe4e6" />
+                  </linearGradient>
+
+                  <!-- Setas finas -->
+                  <marker
+                    id="arrowThinPink"
+                    viewBox="0 0 10 10"
+                    markerWidth="8"
+                    markerHeight="8"
+                    refX="9"
+                    refY="5"
+                    orient="auto"
+                  >
+                    <path d="M0,0 10,5 0,10Z" fill="#be185d"></path>
+                  </marker>
+                  <marker
+                    id="arrowThinIndigo"
+                    viewBox="0 0 10 10"
+                    markerWidth="8"
+                    markerHeight="8"
+                    refX="9"
+                    refY="5"
+                    orient="auto"
+                  >
+                    <path d="M0,0 10,5 0,10Z" fill="#4f46e5"></path>
+                  </marker>
+
+                  <style>
+                    .lbl {
+                      font: 700 16px/1.2 system-ui, -apple-system, "Segoe UI",
+                        Roboto, "Inter", sans-serif;
+                    }
+                    .sub {
+                      font: 12px/1.2 system-ui, -apple-system, "Segoe UI",
+                        Roboto, "Inter", sans-serif;
+                      fill: #475569;
+                    }
+                    .mono {
+                      font: 600 13px/1.2 ui-monospace, SFMono-Regular, Menlo,
+                        Monaco, Consolas, "Liberation Mono", monospace;
+                    }
+                    .tick {
+                      stroke: #a5b4fc;
+                      stroke-width: 1;
+                      vector-effect: non-scaling-stroke;
+                    }
+                    .dash {
+                      stroke: #be185d;
+                      stroke-width: 2;
+                      stroke-dasharray: 6 6;
+                      vector-effect: non-scaling-stroke;
+                    }
+                    .rail {
+                      stroke: #0ea5e9;
+                      stroke-width: 2;
+                      vector-effect: non-scaling-stroke;
+                    }
+                    .act {
+                      fill: #c7d2fe;
+                      stroke: #4f46e5;
+                      stroke-width: 2;
+                    }
+                    .step {
+                      fill: #fecdd3;
+                      stroke: #fb7185;
+                      stroke-width: 2;
+                    }
+                  </style>
+                </defs>
+
+                <!-- Painéis -->
+                <rect
+                  x="10"
+                  y="10"
+                  width="460"
+                  height="300"
+                  rx="16"
+                  fill="url(#gLeft)"
+                />
+                <rect
+                  x="490"
+                  y="10"
+                  width="460"
+                  height="300"
+                  rx="16"
+                  fill="url(#gRight)"
+                />
+
+                <!-- Títulos -->
+                <text x="34" y="48" class="lbl" fill="#312e81">
+                  Update() — roda a cada frame
+                </text>
+                <text x="514" y="48" class="lbl" fill="#9d174d">
+                  Corrotina — sequência com pausas
+                </text>
+                <text x="34" y="70" class="sub">
+                  Fluxo contínuo no
+                  <tspan class="mono">Update()</tspan>
+                  ; ideal para leituras de input e movimentos constantes.
+                </text>
+                <text x="514" y="70" class="sub">
+                  Controle de tempo com
+                  <tspan class="mono">IEnumerator</tspan>
+                  ,
+                  <tspan class="mono">yield</tspan>
+                  e
+                  <tspan class="mono">WaitForSeconds</tspan>
+                  .
+                </text>
+
+                <!-- LADO ESQUERDO: Update() -->
+                <!-- trilho principal -->
+                <line x1="40" y1="120" x2="440" y2="120" class="rail" />
+                <!-- ticks de frame -->
+                <g transform="translate(40,120)">
+                  <!-- 16 marcas de frame -->
+                  <g>
+                    <line x1="0" y1="-18" x2="0" y2="18" class="tick" />
+                    <line x1="25" y1="-18" x2="25" y2="18" class="tick" />
+                    <line x1="50" y1="-18" x2="50" y2="18" class="tick" />
+                    <line x1="75" y1="-18" x2="75" y2="18" class="tick" />
+                    <line x1="100" y1="-18" x2="100" y2="18" class="tick" />
+                    <line x1="125" y1="-18" x2="125" y2="18" class="tick" />
+                    <line x1="150" y1="-18" x2="150" y2="18" class="tick" />
+                    <line x1="175" y1="-18" x2="175" y2="18" class="tick" />
+                    <line x1="200" y1="-18" x2="200" y2="18" class="tick" />
+                    <line x1="225" y1="-18" x2="225" y2="18" class="tick" />
+                    <line x1="250" y1="-18" x2="250" y2="18" class="tick" />
+                    <line x1="275" y1="-18" x2="275" y2="18" class="tick" />
+                    <line x1="300" y1="-18" x2="300" y2="18" class="tick" />
+                    <line x1="325" y1="-18" x2="325" y2="18" class="tick" />
+                    <line x1="350" y1="-18" x2="350" y2="18" class="tick" />
+                    <line x1="375" y1="-18" x2="375" y2="18" class="tick" />
+                    <line x1="400" y1="-18" x2="400" y2="18" class="tick" />
+                  </g>
+                </g>
+
+                <!-- blocos repetidos de lógica -->
+                <g>
+                  <rect
+                    x="70"
+                    y="150"
+                    width="90"
+                    height="26"
+                    rx="6"
+                    class="act"
+                  />
+                  <rect
+                    x="190"
+                    y="150"
+                    width="90"
+                    height="26"
+                    rx="6"
+                    class="act"
+                  />
+                  <rect
+                    x="310"
+                    y="150"
+                    width="90"
+                    height="26"
+                    rx="6"
+                    class="act"
+                  />
+                  <text
+                    x="115"
+                    y="168"
+                    text-anchor="middle"
+                    class="mono"
+                    fill="#3730a3"
+                  >
+                    Input
+                  </text>
+                  <text
+                    x="235"
+                    y="168"
+                    text-anchor="middle"
+                    class="mono"
+                    fill="#3730a3"
+                  >
+                    Mover
+                  </text>
+                  <text
+                    x="355"
+                    y="168"
+                    text-anchor="middle"
+                    class="mono"
+                    fill="#3730a3"
+                  >
+                    Checar
+                  </text>
+                </g>
+
+                <text x="40" y="210" class="sub">
+                  Frames (ex.: 60/s) — a mesma lógica roda continuamente.
+                </text>
+                <!-- seta de fluxo -->
+                <line
+                  x1="40"
+                  y1="220"
+                  x2="440"
+                  y2="220"
+                  stroke="#4f46e5"
+                  stroke-width="2"
+                  marker-end="url(#arrowThinIndigo)"
+                  vector-effect="non-scaling-stroke"
+                />
+
+                <!-- LADO DIREITO: Corrotina -->
+                <!-- trilho -->
+                <line
+                  x1="520"
+                  y1="120"
+                  x2="920"
+                  y2="120"
+                  stroke="#fb7185"
+                  stroke-width="2"
+                  vector-effect="non-scaling-stroke"
+                />
+                <text x="520" y="100" class="sub">Início:</text>
+                <text x="905" y="100" text-anchor="end" class="sub">Fim:</text>
+
+                <!-- passos de ação -->
+                <rect
+                  x="540"
+                  y="140"
+                  width="120"
+                  height="28"
+                  rx="6"
+                  class="step"
+                />
+                <text
+                  x="600"
+                  y="158"
+                  text-anchor="middle"
+                  class="mono"
+                  fill="#9f1239"
+                >
+                  Ação 1
+                </text>
+
+                <line x1="660" y1="154" x2="740" y2="154" class="dash" />
+                <text x="700" y="146" text-anchor="middle" class="sub">
+                  WaitForSeconds(1)
+                </text>
+
+                <rect
+                  x="740"
+                  y="140"
+                  width="120"
+                  height="28"
+                  rx="6"
+                  class="step"
+                />
+                <text
+                  x="800"
+                  y="158"
+                  text-anchor="middle"
+                  class="mono"
+                  fill="#9f1239"
+                >
+                  Ação 2
+                </text>
+
+                <line
+                  x1="520"
+                  y1="220"
+                  x2="920"
+                  y2="220"
+                  stroke="#be185d"
+                  stroke-width="2"
+                  marker-end="url(#arrowThinPink)"
+                  vector-effect="non-scaling-stroke"
+                />
+                <text x="520" y="240" class="sub">
+                  <tspan class="mono">StartCoroutine(Sequência())</tspan>
+                  → executa, pausa com
+                  <tspan class="mono">yield</tspan>
+                  , retoma, repete.
+                </text>
+              </svg>
+              <figcaption class="sr-only">
+                À esquerda, Update executa continuamente a cada frame; à
+                direita, corrotina executa ações com pausas entre elas.
+              </figcaption>
+            </figure>
+          </div>
+
+          <h4 class="font-semibold text-pink-800 mt-6 mb-2">
+            Anatomia de uma Corrotina:
+          </h4>
+          <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm">
+            <li>O tipo de retorno deve ser <strong>IEnumerator</strong>.</li>
+            <li>
+              Usa a palavra-chave <strong>yield return</strong> para pausar a
+              execução.
+            </li>
+            <li>É iniciada com o método <strong>StartCoroutine()</strong>.</li>
+          </ul>
+
+          <div class="callout callout-info" role="note">
+            <h4 class="font-bold mb-2">Pausas Comuns com `yield return`:</h4>
+            <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+              <li>
+                <code>yield return null;</code>: Pausa a corrotina e a retoma no
+                próximo frame.
+              </li>
+              <li>
+                <code>yield return new WaitForSeconds(float tempo);</code>:
+                Pausa a corrotina pela quantidade de segundos especificada. Esta
+                é a mais usada para delays.
+              </li>
+            </ul>
+          </div>
+
+          <h4 class="font-semibold text-pink-800 mt-6 mb-2">
+            Exemplo: Luz Piscante
+          </h4>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-corrotina')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm overflow-x-auto"
+            ><code id="codigo-corrotina">// Script that makes a light blink using a coroutine
+using System.Collections;
+using UnityEngine;
+
+public class LuzPiscante : MonoBehaviour
+{
+    public Light minhaLuz;
+
+    void Start()
+    {
+        // Start the coroutine. It will run in the "background".
+        StartCoroutine(CicloDePiscar());
+    }
+
+    IEnumerator CicloDePiscar()
+    {
+        // An infinite loop to keep the blinking going
+        while (true)
+        {
+            // Turn the light on
+            minhaLuz.enabled = true;
+            // Pause the execution for 0.5 seconds
+            yield return new WaitForSeconds(0.5f);
+            // Turn the light off
+            minhaLuz.enabled = false;
+            // Pause the execution for 0.5 seconds
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="corrotinas-avancado" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-clock-rotate-left mr-2"></i>Corrotinas: Tempo e
+          Cancelamento
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700">
+          <h3 class="text-pink-800 font-semibold">
+            Tempo escalado vs não escalado
+          </h3>
+          <ul class="list-disc list-inside text-sm leading-6">
+            <li>
+              <code>WaitForSeconds(x)</code> usa <code>Time.timeScale</code>. Se
+              <code>timeScale=0</code> (pause), a espera “congela”.
+            </li>
+            <li>
+              <code>WaitForSecondsRealtime(x)</code> ignora
+              <code>timeScale</code> (bom para UI/pausa/timeout).
+            </li>
+          </ul>
+          <pre
+            class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm overflow-x-auto"
+          ><code>// Ex.: contagem regressiva que continua mesmo em pause
+IEnumerator Contagem(float secs)
+{
+    yield return new WaitForSecondsRealtime(secs);
+    Debug.Log("Tempo real decorrido mesmo com pause.");
+}</code></pre>
+          <p class="text-xs text-slate-500">
+            Referência: WaitForSecondsRealtime na documentação da Unity.
+          </p>
+
+          <h3 class="text-pink-800 font-semibold mt-4">
+            Cancelar/evitar duplicação
+          </h3>
+          <pre
+            class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm overflow-x-auto"
+          ><code>Coroutine rotina;
+public void AbrirComDelay(float s)
+{
+    if (rotina != null) StopCoroutine(rotina);
+    rotina = StartCoroutine(AbrirDepois(s));
+}
+
+IEnumerator AbrirDepois(float s)
+{
+    yield return new WaitForSeconds(s);
+    // ... abre ...
+    rotina = null;
+}</code></pre>
+
+          <p class="text-xs text-slate-500">
+            Corrotinas iniciadas em um <em>MonoBehaviour</em> são gerenciadas
+            por ele e têm comportamento específico ao habilitar/desabilitar o
+            componente. Veja “Coroutines and disabling” na documentação.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Case Study -->
+      <section
+        id="estudo-de-caso"
+        aria-labelledby="case-study-heading"
+        class="mb-12"
+      >
+        <h2
+          id="case-study-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-door-open mr-2"></i>Estudo de Caso: A Porta com
+          Atraso
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <p class="text-slate-700 leading-relaxed">
+            Vamos unir tudo o que aprendemos para construir o sistema da nossa
+            tarefa: uma placa de pressão que abre uma porta após um pequeno
+            atraso.
+          </p>
+          <h4 class="font-semibold text-pink-800 mt-4 mb-2">
+            Estrutura na Cena:
+          </h4>
+          <ul class="list-disc list-inside text-sm text-slate-600">
+            <li>Um GameObject "Jogador" com a tag "Player" e um Rigidbody.</li>
+            <li>
+              Um GameObject "PlacaDePressao" com um Box Collider marcado como
+              "Is Trigger".
+            </li>
+            <li>Um GameObject "Porta" com um Box Collider.</li>
+          </ul>
+          <h4 class="font-semibold text-pink-800 mt-4 mb-2">
+            Script 1: PlacaDePressao.cs
+          </h4>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-placa')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm"
+            ><code id="codigo-placa">// Attached to the Pressure Plate object
+using UnityEngine;
+
+public class PlacaDePressao : MonoBehaviour
+{
+    // A public reference to the door we want to open
+    public Porta portaParaAbrir;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player detected! Telling the door to open...");
+            // Call the public method on the door script
+            portaParaAbrir.AbrirComAtraso();
+        }
+    }
+}</code></pre>
+          </div>
+          <h4 class="font-semibold text-pink-800 mt-4 mb-2">
+            Script 2: Porta.cs
+          </h4>
+          <div class="code-block-wrapper">
+            <button
+              class="copy-code-button"
+              onclick="copiarCodigo(this, 'codigo-porta')"
+            >
+              Copiar
+            </button>
+            <pre
+              class="bg-slate-800 text-slate-200 p-4 rounded-lg text-sm"
+            ><code id="codigo-porta">// Attached to the Door object
+using System.Collections;
+using UnityEngine;
+
+public class Porta : MonoBehaviour
+{
+    public float atrasoParaAbrir = 2f; // 2 second delay
+
+    // This is a public method that can be called from other scripts
+    public void AbrirComAtraso()
+    {
+        // Start the coroutine that handles the sequence
+        StartCoroutine(SequenciaDeAbertura());
+    }
+
+    private IEnumerator SequenciaDeAbertura()
+    {
+        Debug.Log("Coroutine started. Waiting for delay...");
+        // 1. Wait for the specified delay
+        yield return new WaitForSeconds(atrasoParaAbrir);
+
+        Debug.Log("Delay finished. Opening the door!");
+        // 2. Deactivate the door object to "open" it
+        gameObject.SetActive(false);
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="boas-praticas" class="mb-12">
+        <h2
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-list-check mr-2"></i>Boas Práticas Rápidas
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow text-sm text-slate-700 space-y-2"
+        >
+          <p>
+            ✔️ Use <strong>FixedUpdate</strong> para alterar
+            <code>Rigidbody</code> (forças/velocidades).
+          </p>
+          <p>
+            ✔️ Evite iniciar corrotinas repetidas; guarde a referência e cancele
+            quando preciso.
+          </p>
+          <p>
+            ✔️ Em loops infinitos, sempre tenha um <code>yield</code> (ex.:
+            <code>yield return null;</code>).
+          </p>
+          <p>
+            ✔️ Prefira <code>WaitForSecondsRealtime</code> em contagens/tempo de
+            UI durante pause.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: TED -->
+      <section id="tarefa" aria-labelledby="tarefa-heading" class="mb-12">
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): Simulando um Evento com Delay
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p class="text-lg">
+            Sua tarefa é recriar um sistema similar ao do estudo de caso, mas
+            com uma pequena variação: uma porta que abre com um atraso após o
+            jogador clicar nela.
+          </p>
+          <h4 class="font-semibold text-pink-800 mt-6 mb-2">Passo a Passo:</h4>
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>Crie uma cena com um objeto "Porta".</li>
+            <li>Crie um script `PortaInterativa` e anexe-o à porta.</li>
+            <li>
+              Dentro do script, crie um método `OnMouseDown()`. Este é um evento
+              da Unity chamado quando o usuário clica com o mouse sobre um
+              Collider.
+            </li>
+            <li>
+              No `OnMouseDown()`, chame `StartCoroutine()` para iniciar uma
+              corrotina de abertura.
+            </li>
+            <li>
+              Na corrotina, use `yield return new WaitForSeconds()` para criar
+              um delay de 3 segundos.
+            </li>
+            <li>
+              Após o delay, desative o GameObject da porta para simular sua
+              abertura.
+            </li>
+            <li>
+              <strong>Entrega:</strong> Publique o código completo do seu script
+              `PortaInterativa` no fórum do Moodle e comente em uma ou duas
+              frases como o `StartCoroutine()` foi essencial para criar a
+              sequência com tempo de espera.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Section: Vídeos recomendados (PT-BR) -->
+      <section
+        id="videos-recomendados"
+        aria-labelledby="videos-heading"
+        class="mb-12"
+      >
+        <h2
+          id="videos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-8"
+        >
+          🎬 Vídeos Recomendados (PT-BR)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          <!-- Vídeo 1 -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden self-start"
+          >
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/Ebzo-P5tmtA"
+                title="Corrotinas na Unity — Introdução prática"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-pink-800">
+                Corrotinas na Unity — Introdução prática
+              </h3>
+              <p class="text-xs text-slate-500">
+                Conceitos de <code>IEnumerator</code>, <code>yield</code> e
+                <code>WaitForSeconds</code>.
+              </p>
+            </div>
+          </article>
+
+          <!-- Vídeo 2 -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden self-start"
+          >
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/bdcG-oSEgWI"
+                title="Corrotinas na Unity — Exemplos de uso"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-pink-800">
+                Corrotinas na Unity — Exemplos de uso
+              </h3>
+              <p class="text-xs text-slate-500">
+                Sequências temporizadas com <code>StartCoroutine()</code> e
+                múltiplos <code>yield</code>.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section: Resources -->
+      <section id="recursos" aria-labelledby="recursos-heading" class="mb-12">
+        <h2
+          id="recursos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-4"
+        >
+          📚 Recursos Adicionais
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <div>
+            <h4 class="font-bold text-pink-800 mb-2">Documentação Oficial</h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  href="https://docs.unity3d.com/Manual/Coroutines.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-pink-600 hover:underline"
+                  >Manual da Unity: Corrotinas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnTriggerEnter.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-pink-600 hover:underline"
+                  >Documentação: OnTriggerEnter</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnMouseDown.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-pink-600 hover:underline"
+                  >Documentação: OnMouseDown</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Bibliography -->
+      <section
+        id="bibliografia"
+        aria-labelledby="bibliografia-heading"
+        class="mb-12"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-pink-500 pb-2 mb-4"
+        >
+          📚 Bibliografia
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            ALVES, W. P.
+            <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de
+            Janeiro: Alta Books, 2019.
+          </p>
+          <p>
+            SCHUYTEMA, Paul.
+            <strong>Design de games: uma abordagem prática.</strong> São Paulo:
+            Cengage Learning, 2008.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <a href="#" class="text-pink-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a href="#" class="text-pink-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function copiarCodigo(button, elementId) {
+        const codeElement = document.getElementById(elementId);
+        const codeToCopy = codeElement.innerText;
+
+        const textarea = document.createElement("textarea");
+        textarea.value = codeToCopy;
+        textarea.style.position = "fixed";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          button.innerText = "Copiado!";
+        } catch (err) {
+          button.innerText = "Erro!";
+          console.error("Fallback: Oops, unable to copy", err);
+        }
+        document.body.removeChild(textarea);
+
+        setTimeout(() => {
+          button.innerText = "Copiar";
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

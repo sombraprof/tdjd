@@ -14,41 +14,50 @@
       <aside
         class="w-64 bg-slate-800 text-slate-100 p-6 fixed h-full hidden lg:block"
       >
-        <h2 class="text-xl font-bold mb-2 mono">TJDJ</h2>
+        <h2 class="text-xl font-bold mb-2 mono">Jogos</h2>
         <p class="text-sm text-slate-400 mb-8">ADS & SI | UniChristus</p>
         <nav>
           <ul id="sidebar-links" class="space-y-4"></ul>
         </nav>
       </aside>
 
-      <!-- Main -->
+      <!-- Conteúdo Principal -->
       <main class="flex-1 lg:ml-64 p-6 md:p-10">
-
-        <!-- Cards Aulas -->
-        <section id="home" class="min-h-screen flex flex-col justify-center">
-          <header>
+        <!-- Página Inicial com os Cards -->
+        <section id="home">
+          <header class="mb-10">
             <h1 class="text-5xl font-bold text-slate-900 leading-tight">
               Tecnologia e Desenvolvimento de Jogos Digitais
             </h1>
             <p class="text-xl text-slate-600 mt-4">Prof. Tiago Sombra</p>
           </header>
-          <div
-            id="cards-container"
-            class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          ></div>
-        </section>
 
-        <!-- Cards Exercicios -->
-        <section id="listas" class="mt-12">
-          <h2 class="text-3xl font-bold text-slate-900 mb-6">
-            Listas de Exercícios
-          </h2>
-          <div
-            id="listas-container"
-            class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          ></div>
-        </section>
+          <!-- Bloco Aulas -->
+          <section id="aulas" class="mb-12">
+            <div class="border border-slate-200 rounded-2xl bg-white shadow-sm">
+              <div class="px-6 py-4 border-b border-slate-200 bg-indigo-50 rounded-t-2xl">
+                <h2 class="text-2xl font-semibold text-indigo-800">Aulas</h2>
+              </div>
+              <div
+                id="cards-container"
+                class="p-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              ></div>
+            </div>
+          </section>
 
+          <!-- Bloco Listas de Exercícios -->
+          <section id="listas" class="mb-12">
+            <div class="border border-slate-200 rounded-2xl bg-white shadow-sm">
+              <div class="px-6 py-4 border-b border-slate-200 bg-emerald-50 rounded-t-2xl">
+                <h2 class="text-2xl font-semibold text-emerald-800">Listas de Exercícios</h2>
+              </div>
+              <div
+                id="listas-container"
+                class="p-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              ></div>
+            </div>
+          </section>
+        </section>
         <!-- Conteúdo dinâmico Aulas / Exercicios -->
         <div id="conteudo" class="mt-12"></div>
       </main>

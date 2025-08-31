@@ -1,8 +1,8 @@
 [
   {
     "id": "aula1",
-    "titulo": "Aula 1: Definição e Tipos de Sistemas",
-    "descricao": "Introdução à disciplina e à Teoria Geral de Sistemas: definição, contexto histórico e principais classificações.",
+    "titulo": "Aula 1: Introdução ao Desenvolvimento de Jogos Digitais",
+    "descricao": "Apresentação da disciplina, panorama do mercado, gêneros, plataformas e expectativas do projeto final.",
     "arquivo": "aula1.html",
     "ativo": true
   },
@@ -23,29 +23,64 @@
   {
     "id": "aula4",
     "titulo": "Aula 4: História dos Jogos Digitais, Engines e Mercado",
-    "descricao": "Linha do tempo dos jogos e principais engines (Unity, Unreal, Godot, Construct); visão de mercado (indie, AAA, mobile, XR).",
+    "descricao": "Linha do tempo dos jogos e principais engines (Unity, Unreal, Godot); visão histórica do mercado.",
     "arquivo": "aula4.html",
     "ativo": true
   },
   {
     "id": "aula5",
     "titulo": "Aula 5: Fundamentos da Unity e Prototipagem",
-    "descricao": "Editor da Unity (Scene, Game, Hierarchy, Project, Inspector), URP (volumes/pós) e novo Input System; protótipo mínimo com CharacterController.",
+    "descricao": "Interface da Unity, configuração do URP e introdução ao Input System para criar um protótipo controlável.",
     "arquivo": "aula5.html",
     "ativo": true
   },
   {
     "id": "aula6",
     "titulo": "Aula 6: Importação de Assets e Organização de Projeto",
-    "descricao": "Importação de assets (Asset Store e externos) e organização do projeto (pastas, convenções, Prefabs); versionamento com Git e LFS.",
+    "descricao": "Importação de assets (Asset Store e externos) e organização do projeto (pastas, convenções); introdução ao versionamento com Git/LFS.",
     "arquivo": "aula6.html",
     "ativo": true
   },
   {
     "id": "aula7",
     "titulo": "Aula 7: Prototipagem Rápida e GDD",
-    "descricao": "Prototipagem com ProBuilder e Playground (blockouts e layouts básicos) e introdução ao GDD: estrutura enxuta, pilares e core loop; mini-lab e documentação inicial.",
+    "descricao": "Criação de cenários com ProBuilder e introdução à estrutura do Game Design Document (GDD) para mapear ideias.",
     "arquivo": "aula7.html",
+    "ativo": true
+  },
+  {
+    "id": "aula8",
+    "titulo": "Aula 8: Level Design com ProBuilder",
+    "descricao": "Aprofundamento em Level Design com ProBuilder: criação de estruturas, colisores, navegação e refinamento de layouts.",
+    "arquivo": "aula8.html",
+    "ativo": true
+  },
+  {
+    "id": "aula9",
+    "titulo": "Aula 9: Consolidação de Protótipo e GDD",
+    "descricao": "Integração entre a cena criada, a narrativa e as mecânicas descritas no GDD, com foco em alinhamento técnico e criativo.",
+    "arquivo": "aula9.html",
+    "ativo": true
+  },
+  {
+    "id": "aula10",
+    "titulo": "Aula 10: Introdução à Programação C# na Unity",
+    "descricao": "Início da Unidade III com C#: sintaxe básica, variáveis, estruturas de controle e integração de scripts no editor da Unity.",
+    "arquivo": "aula10.html",
+    "ativo": true
+  },
+  {
+    "id": "aula11",
+    "titulo": "Aula 11: Métodos, Eventos e Corrotinas em C#",
+    "descricao": "Organização de código com métodos, reação a eventos de física (OnTriggerEnter) e manipulação de tempo com Corrotinas.",
+    "arquivo": "aula11.html",
+    "ativo": true
+  },
+  {
+    "id": "aula12",
+    "titulo": "Aula 12: O Novo Input System na Prática",
+    "descricao": "Domine o novo Input System da Unity: configure Action Maps, mapeie controles multiplataforma e integre com C#.",
+    "arquivo": "aula12.html",
     "ativo": true
   }
 ]

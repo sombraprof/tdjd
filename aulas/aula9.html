@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TDJD - Aula 9: Consolidação de Protótipo e GDD</title>
+    <meta
+      name="description"
+      content="Unidade II – Fundamentos da Unity e Prototipagem. Integração de cena, narrativa e mecânica, consolidando o protótipo e o GDD."
+    />
+    <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+    <meta
+      name="keywords"
+      content="Unity, GDD, Game Design Document, Prototipagem, Narrativa, Mecânica de Jogo"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <!-- TODO: replace with your public page URL -->
+    <meta property="og:url" content="https://SEU-DOMINIO/aula9.html" />
+    <meta
+      property="og:title"
+      content="TDJD - Aula 9: Consolidação de Protótipo e GDD"
+    />
+    <meta
+      property="og:description"
+      content="Conecte seu GDD com a cena prototipada na Unity, alinhando visão técnica e criativa."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/166534/ffffff?text=TDJD%20Aula%209"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://SEU-DOMINIO/aula9.html" />
+    <meta
+      property="twitter:title"
+      content="TDJD - Aula 9: Consolidação de Protótipo e GDD"
+    />
+    <meta
+      property="twitter:description"
+      content="Conecte seu GDD com a cena prototipada na Unity, alinhando visão técnica e criativa."
+    />
+    <meta
+      property="twitter:image"
+      content="https://placehold.co/1200x630/166534/ffffff?text=TDJD%20Aula%209"
+    />
+
+    <!-- CDN Links -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Custom Styles -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        padding-top: 60px;
+      }
+      .callout {
+        border-left-width: 4px;
+        padding: 1.25rem;
+        margin: 1.25rem 0;
+        border-radius: 0.5rem;
+      }
+      .callout-info {
+        background-color: #f0f9ff;
+        border-color: #7dd3fc;
+        color: #0c4a6e;
+      }
+      .callout-practice {
+        background-color: #f0fdf4;
+        border-color: #6ee7b7;
+        color: #065f46;
+      }
+      .callout-warning {
+        background-color: #fffbeb;
+        border-color: #fcd34d;
+        color: #92400e;
+      }
+      .aspect-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+      }
+      .aspect-video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-800">
+    <!-- Fixed Navigation Menu -->
+    <nav
+      class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50"
+      role="navigation"
+      aria-label="Navegação Principal"
+    >
+      <div class="container mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <span class="text-lg font-bold text-green-700">TDJD - Aula 9</span>
+          <div class="hidden md:flex space-x-4 text-sm font-semibold">
+            <a href="#plano-aula" class="text-slate-600 hover:text-green-600"
+              >Plano</a
+            >
+            <a href="#integracao" class="text-slate-600 hover:text-green-600"
+              >Integração</a
+            >
+            <a href="#mapa-gdd" class="text-slate-600 hover:text-green-600"
+              >Mapa GDD↔Cena</a
+            >
+            <a
+              href="#estudos-de-caso"
+              class="text-slate-600 hover:text-green-600"
+              >Estudos</a
+            >
+            <a
+              href="#videos-recomendados"
+              class="text-slate-600 hover:text-green-600"
+              >Vídeos</a
+            >
+            <a href="#tarefa" class="text-slate-600 hover:text-green-600"
+              >TED</a
+            >
+            <a href="#recursos" class="text-slate-600 hover:text-green-600"
+              >Recursos</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-slate-800 shadow-md relative">
+      <div
+        class="w-full h-48 bg-gradient-to-r from-green-800 to-emerald-900 opacity-80"
+      ></div>
+      <div
+        class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent"
+      >
+        <h1 class="text-4xl font-bold text-white">
+          Aula 9: Consolidação de Protótipo e GDD
+        </h1>
+        <p class="text-xl text-slate-300 mt-2">
+          Unidade II – Fundamentos da Unity e Prototipagem
+        </p>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="container mx-auto px-6 py-10" role="main">
+      <!-- Section: Plano -->
+      <section
+        id="plano-aula"
+        class="mb-12 bg-green-50 border border-green-200 p-8 rounded-2xl shadow-lg"
+        aria-labelledby="plano-aula-heading"
+      >
+        <h2
+          id="plano-aula-heading"
+          class="text-3xl font-bold text-green-700 mb-6 text-center"
+        >
+          Plano da Aula
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-green-800 mb-2">
+              <i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO
+            </h3>
+            <p class="text-slate-600 mt-1 text-sm">
+              Consolidação da prototipagem e estruturação do GDD. Integração
+              entre cena, narrativa e mecânica. Alinhamento técnico e criativo.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-green-800 mb-2">
+              <i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Consolidar Unity + ProBuilder + GDD, promovendo integração entre
+              estrutura visual (cena) e documentação técnica/criativa.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold text-lg text-green-800 mb-2">
+              <i class="fa-solid fa-gears mr-2"></i>METODOLOGIA
+            </h3>
+            <p class="text-slate-600 text-sm">
+              Aula prática com mentoria e avaliação formativa por pares
+              (aprendizagem baseada em projeto colaborativo).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Integração (Trindade) -->
+      <section
+        id="integracao"
+        class="mb-12"
+        aria-labelledby="integration-heading"
+      >
+        <h2
+          id="integration-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-diagram-project mr-2"></i>A Trindade do Design:
+          Cena, Narrativa e Mecânica
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <p class="text-slate-700">
+            Um jogo coeso surge quando <strong>layout</strong> (level design),
+            <strong>história</strong> e <strong>mecânicas</strong> se reforçam
+            mutuamente. Use o GDD como contrato entre visão e execução.
+          </p>
+          <div class="text-center my-6">
+            <!-- Inline, responsive, accessible SVG diagram -->
+            <figure class="rounded-md w-full bg-white shadow-sm">
+              <svg
+                role="img"
+                aria-labelledby="trindadeTitle trindadeDesc"
+                viewBox="0 0 800 300"
+                class="w-full h-auto"
+                style="pointer-events: none"
+              >
+                <title id="trindadeTitle">
+                  Trindade do Design: Cena, Narrativa e Mecânica
+                </title>
+                <desc id="trindadeDesc">
+                  Diagrama triangular mostrando relações bidirecionais entre
+                  Cena (Level Design), Narrativa (História) e Mecânica
+                  (Gameplay). As setas tocam apenas a borda dos nós.
+                </desc>
+
+                <!-- defs: gradient background + thinner arrow marker -->
+                <!-- EN: Background gradient and smaller/thinner arrowhead -->
+                <defs>
+                  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ecfeff" />
+                    <stop offset="100%" stop-color="#e6fffa" />
+                  </linearGradient>
+
+                  <!-- EN: Thin arrowhead sized to end on node edge -->
+                  <marker
+                    id="arrowThin"
+                    viewBox="0 0 10 10"
+                    markerWidth="8"
+                    markerHeight="8"
+                    refX="9"
+                    refY="5"
+                    orient="auto"
+                  >
+                    <path d="M0,0 L10,5 L0,10 Z" fill="#0f766e"></path>
+                  </marker>
+                </defs>
+
+                <!-- EN: Soft rounded background panel -->
+                <rect
+                  x="0"
+                  y="0"
+                  width="800"
+                  height="300"
+                  rx="16"
+                  fill="url(#bg)"
+                ></rect>
+
+                <!-- EN: Node sizes (for reference in comments)
+           width=300, height=56, rx=28; centers:
+           Narrativa @ (400,70), Cena @ (170,230), Mecânica @ (630,230)
+           Edges: top/bottom = centerY ± 28 ; left/right = centerX ± 150
+      -->
+
+                <!-- Top (Narrativa) -->
+                <g transform="translate(400,70)">
+                  <rect
+                    x="-150"
+                    y="-28"
+                    width="300"
+                    height="56"
+                    rx="28"
+                    fill="#d1fae5"
+                    stroke="#10b981"
+                    stroke-width="2"
+                  ></rect>
+                  <text
+                    x="0"
+                    y="6"
+                    text-anchor="middle"
+                    font-size="18"
+                    font-weight="700"
+                    fill="#065f46"
+                    style="font-family: Inter, system-ui, sans-serif"
+                  >
+                    Narrativa (História)
+                  </text>
+                </g>
+
+                <!-- Bottom-left (Cena / Layout) -->
+                <g transform="translate(170,230)">
+                  <rect
+                    x="-150"
+                    y="-28"
+                    width="300"
+                    height="56"
+                    rx="28"
+                    fill="#e0f2fe"
+                    stroke="#0ea5e9"
+                    stroke-width="2"
+                  ></rect>
+                  <text
+                    x="0"
+                    y="6"
+                    text-anchor="middle"
+                    font-size="18"
+                    font-weight="700"
+                    fill="#0c4a6e"
+                    style="font-family: Inter, system-ui, sans-serif"
+                  >
+                    Cena (Level Design)
+                  </text>
+                </g>
+
+                <!-- Bottom-right (Mecânica / Gameplay) -->
+                <g transform="translate(630,230)">
+                  <rect
+                    x="-150"
+                    y="-28"
+                    width="300"
+                    height="56"
+                    rx="28"
+                    fill="#fef3c7"
+                    stroke="#f59e0b"
+                    stroke-width="2"
+                  ></rect>
+                  <text
+                    x="0"
+                    y="6"
+                    text-anchor="middle"
+                    font-size="18"
+                    font-weight="700"
+                    fill="#92400e"
+                    style="font-family: Inter, system-ui, sans-serif"
+                  >
+                    Mecânica (Gameplay)
+                  </text>
+                </g>
+
+                <!-- EN: Connecting arrows (thinner, curved, ending at node borders) -->
+                <!-- Style shared by all connectors -->
+                <g
+                  stroke="#0f766e"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  fill="none"
+                  marker-end="url(#arrowThin)"
+                  style="vector-effect: non-scaling-stroke"
+                >
+                  <!-- Narrativa (bottom edge @ y=98) -> Mecânica (top edge @ y=202 near x=630) -->
+                  <!-- EN: Curve stays outside labels and ends at top border of the 'Mecânica' capsule -->
+                  <path d="M400,98 C 520,120 585,150 630,202"></path>
+
+                  <!-- Mecânica -> Cena : left border of Mecânica (x=480) to right border of Cena (x=320) -->
+                  <!-- EN: Gentle downward-then-up curve; end exactly on right edge of 'Cena' capsule -->
+                  <path d="M480,230 C 440,252 360,252 320,230"></path>
+
+                  <!-- Cena (top edge @ y=202) -> Narrativa (bottom edge @ y=98) -->
+                  <!-- EN: Upward curve ending at the bottom border of 'Narrativa' capsule -->
+                  <path d="M170,202 C 260,150 320,120 400,98"></path>
+                </g>
+
+                <!-- EN: Edge labels kept outside node interiors -->
+                <g
+                  style="font-family: Inter, system-ui, sans-serif"
+                  font-size="12"
+                  fill="#065f46"
+                >
+                  <text x="560" y="152" text-anchor="middle">orienta</text>
+                  <text x="325" y="262" text-anchor="middle">viabiliza</text>
+                  <text x="305" y="152" text-anchor="middle">significa</text>
+                </g>
+              </svg>
+              <figcaption class="sr-only">
+                Relações bidirecionais entre Cena, Narrativa e Mecânica com
+                setas terminando na borda dos nós.
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- Callout: Integração técnica rápida -->
+          <div class="callout callout-warning" role="note">
+            <h4 class="font-bold mb-2">
+              <i class="fa-solid fa-screwdriver-wrench mr-2"></i>Integração
+              técnica rápida (checar no protótipo)
+            </h4>
+            <ul class="list-disc list-inside text-sm leading-6">
+              <li>
+                <strong>Colisão e Física:</strong> verifique
+                <em>Colliders</em> corretos por objeto e se o
+                <em>Rigidbody</em> do player está configurado para o tipo de
+                movimento. Referência:
+                <a
+                  class="text-green-700 underline"
+                  href="https://docs.unity3d.com/Manual/CollidersOverview.html"
+                  target="_blank"
+                  rel="noopener"
+                  >Colliders</a
+                >
+                e
+                <a
+                  class="text-green-700 underline"
+                  href="https://docs.unity3d.com/ScriptReference/Rigidbody.html"
+                  target="_blank"
+                  rel="noopener"
+                  >Rigidbody</a
+                >.
+              </li>
+              <li>
+                <strong>UI/HUD:</strong> os elementos de feedback (vida,
+                pontuação, objetivo atual) devem refletir as regras descritas no
+                GDD. Referência:
+                <a
+                  class="text-green-700 underline"
+                  href="https://docs.unity3d.com/Manual/UISystem.html"
+                  target="_blank"
+                  rel="noopener"
+                  >UI (uGUI)</a
+                >.
+              </li>
+              <li>
+                <strong>Level → Mecânica:</strong> ramps/plataformas precisam
+                respeitar as métricas do personagem (altura de salto,
+                velocidade, aceleração). Documente essas métricas no GDD.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+     Section: Métricas (place after #integracao)
+     Reason (EN): Make GDD actionable with numbers.
+========================================== -->
+      <section id="metricas" class="mb-12" aria-labelledby="metricas-heading">
+        <h2
+          id="metricas-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-6"
+        >
+          <i class="fa-solid fa-ruler-combined mr-2"></i>Métricas de Personagem
+          e Level (balizas objetivas)
+        </h2>
+
+        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+          <p class="text-slate-700">
+            Trabalhe em escala real (em Unity, 1 unidade geralmente representa
+            ~1 metro) para obter física/iluminação mais previsíveis.
+            <a
+              class="text-green-700 underline"
+              href="https://docs.unity3d.com/2023.2/Documentation/Manual/UnderstandingScaleAndUnits.html"
+              target="_blank"
+              rel="noopener"
+            >
+              Ver diretrizes de escala </a
+            >.
+          </p>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead class="bg-green-50 text-green-800">
+                <tr>
+                  <th class="p-2 font-semibold">Categoria</th>
+                  <th class="p-2 font-semibold">Métrica-alvo (exemplo)</th>
+                  <th class="p-2 font-semibold">Como medir/testar</th>
+                  <th class="p-2 font-semibold">Onde referenciar no GDD</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="p-2">Movimento</td>
+                  <td class="p-2">Velocidade corrida: 5–7 m/s</td>
+                  <td class="p-2">
+                    Cronômetro + distância (marque 10 m na cena)
+                  </td>
+                  <td class="p-2">Mecânicas > Locomoção</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Pulo</td>
+                  <td class="p-2">
+                    Altura: 1.6–2.0 m • Tempo até ápice: ~0.45–0.55 s
+                  </td>
+                  <td class="p-2">
+                    Marque plataformas em incrementos de 0.2 m
+                  </td>
+                  <td class="p-2">Mecânicas > Pulo</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Level</td>
+                  <td class="p-2">
+                    Corredor: ≥2 m largura • Porta: ≥2 m altura
+                  </td>
+                  <td class="p-2">Medir gizmos/reguas em cena</td>
+                  <td class="p-2">Level Design > Métricas de espaço</td>
+                </tr>
+                <tr>
+                  <td class="p-2">HUD</td>
+                  <td class="p-2">Fonte ≥16–18 px @1080p • Contraste AA</td>
+                  <td class="p-2">Captura 1080p e verificação de contraste</td>
+                  <td class="p-2">UI/HUD > Padrões de legibilidade</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-info">
+            <h4 class="font-bold mb-1">
+              <i class="fa-solid fa-flask mr-2"></i>Nota rápida (física do pulo)
+            </h4>
+            <p class="text-sm">
+              Defina as curvas do pulo pela altura/time-to-apex (ex.:
+              <em>v0 = sqrt(2·g·altura)</em>). Teste colisão e física com
+              <strong>Colliders</strong> e
+              <strong>Rigidbody</strong> configurados corretamente, como visto
+              nos PDFs do IMD.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Mapa GDD ↔ Cena -->
+      <section id="mapa-gdd" class="mb-12" aria-labelledby="mapa-heading">
+        <h2
+          id="mapa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-map mr-2"></i>Mapa de rastreabilidade: GDD ↔
+          Cena (Unity)
+        </h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+          <p class="text-slate-700">
+            Use esta matriz para auditar se a cena implementa o que está no
+            documento.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-left text-sm">
+              <thead class="bg-green-50 text-green-800">
+                <tr>
+                  <th class="p-2 font-semibold">Seção do GDD</th>
+                  <th class="p-2 font-semibold">Item-chave</th>
+                  <th class="p-2 font-semibold">Evidência na Cena</th>
+                  <th class="p-2 font-semibold">Observações/Próximos passos</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="p-2">Mecânicas</td>
+                  <td class="p-2">Pulo (altura/tempo)</td>
+                  <td class="p-2">Plataforma X requer pulo duplo?</td>
+                  <td class="p-2">Ajustar gravidade/força do salto</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Narrativa</td>
+                  <td class="p-2">Objetivo da fase</td>
+                  <td class="p-2">HUD mostra objetivo atual</td>
+                  <td class="p-2">Adicionar feedback ao concluir</td>
+                </tr>
+                <tr>
+                  <td class="p-2">Level Design</td>
+                  <td class="p-2">Marcos visuais</td>
+                  <td class="p-2">Landmark visível no spawn</td>
+                  <td class="p-2">Melhorar iluminação direcional</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-practice">
+            <h4 class="font-bold mb-1">
+              <i class="fa-solid fa-list-check mr-2"></i>Checklist de validação
+              (rápida)
+            </h4>
+            <ul class="list-disc list-inside text-sm leading-6">
+              <li>
+                <strong>Clareza de objetivos:</strong> o jogador entende o que
+                fazer nos 10s iniciais?
+              </li>
+              <li>
+                <strong>Escala e métrica:</strong> portas, corredores, rampas e
+                gaps batem com as métricas do personagem?
+              </li>
+              <li>
+                <strong>Performance:</strong> objetos estáticos marcados como
+                <em>Static</em>; colisores simples onde possível.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+     Section: Checklist técnico (after #mapa-gdd)
+     Reason (EN): Make implementation review systematic.
+========================================== -->
+      <section
+        id="checklist-tecnico"
+        class="mb-12"
+        aria-labelledby="checklist-tech-heading"
+      >
+        <h2
+          id="checklist-tech-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-6"
+        >
+          <i class="fa-solid fa-screwdriver-wrench mr-2"></i>Checklist técnico:
+          Colliders, Física e HUD
+        </h2>
+
+        <div class="bg-white p-6 rounded-lg shadow space-y-3">
+          <ul class="list-disc list-inside text-sm leading-6 text-slate-700">
+            <li>
+              <strong>Colliders:</strong> use formas simples (Box/Sphere) para
+              cenário; malhas complexas somente quando necessário. Atente a
+              <em>IsTrigger</em> vs eventos de colisão.
+              <!-- EN: IMD material reinforces collider usage and trigger/collision distinction -->
+            </li>
+            <li>
+              <strong>Rigidbody (player/itens):</strong> defina <em>Mass</em>,
+              <em>Drag</em> e <em>Use Gravity</em> coerentes com as métricas do
+              personagem.
+              <!-- EN: Tie to jump tuning and movement feel -->
+            </li>
+            <li>
+              <strong>HUD:</strong> elementos (vida, objetivos) refletindo
+              regras do GDD; texto legível; feedback em eventos-chave (coleta,
+              dano, checkpoint).
+              <!-- EN: UI should mirror the "rules" declared in GDD -->
+            </li>
+          </ul>
+
+          <div class="callout callout-practice">
+            <h4 class="font-bold mb-1">
+              <i class="fa-solid fa-clipboard-check mr-2"></i>Validar agora
+            </h4>
+            <ol class="list-decimal list-inside text-sm space-y-1">
+              <li>
+                Empurre o player contra quinas/bordas: há <em>snagging</em>?
+                Ajuste colliders/step offset.
+              </li>
+              <li>
+                Suba rampas/escadas: a velocidade se mantém? Reveja
+                física/métricas.
+              </li>
+              <li>
+                Execute um fluxo “10 segundos”: objetivo visível + HUD
+                atualizando.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Estudos de Caso (curto, focado em integração) -->
+      <section
+        id="estudos-de-caso"
+        class="mb-12"
+        aria-labelledby="case-studies-heading"
+      >
+        <h2
+          id="case-studies-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-8"
+        >
+          <i class="fa-solid fa-magnifying-glass-chart mr-2"></i>Estudos de
+          Caso: Integração em Ação
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <article class="bg-white p-6 rounded-lg shadow">
+            <h4 class="font-semibold text-lg text-green-800 mb-2">Journey</h4>
+            <p class="text-sm text-slate-600">
+              Voo limitado (mecânica) + paisagens desérticas (cena) +
+              peregrinação (narrativa) criam progressão emocional clara.
+            </p>
+          </article>
+          <article class="bg-white p-6 rounded-lg shadow">
+            <h4 class="font-semibold text-lg text-green-800 mb-2">Celeste</h4>
+            <p class="text-sm text-slate-600">
+              Dash exigente espelha o tema de superação; a montanha é meta e
+              metáfora.
+            </p>
+          </article>
+          <article class="bg-white p-6 rounded-lg shadow">
+            <h4 class="font-semibold text-lg text-green-800 mb-2">
+              The Last of Us
+            </h4>
+            <p class="text-sm text-slate-600">
+              Recursos escassos justificam tensão; espaços claustrofóbicos
+              reforçam escolhas táticas.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section: Vídeos recomendados (Aula 9) -->
+      <section
+        id="videos-recomendados"
+        class="mb-12"
+        aria-labelledby="videos-heading"
+      >
+        <h2
+          id="videos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-6"
+        >
+          🎬 Vídeos recomendados (PT-BR)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1: GDD (intro) -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <!-- Reason (EN): Introductory GDD overview -->
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/_l1XNQ1ofjU"
+                title="O que é GDD? (Fábrica de Jogos)"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-green-800">
+                GDD: o que é e por que fazer?
+              </h3>
+              <p class="text-xs text-slate-500">
+                Visão prática do documento e seu papel no processo.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 2: GDD (exemplo comentado) -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <!-- Reason (EN): Real GDD example breakdown -->
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/N6M6tJXeS0E"
+                title="Exemplo de GDD comentado (Fábrica de Jogos)"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-green-800">Exemplo comentado de GDD</h3>
+              <p class="text-xs text-slate-500">
+                Análise de um GDD real para guiar sua atualização.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 3: Prototipagem (substitui o vídeo que estava privado) -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <!-- Reason (EN): Replaces the previous private video; broad overview of prototyping types -->
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/rJm1m9f2-GY"
+                title="Tipos de prototipagem para jogos (Fábrica de Jogos)"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-green-800">
+                Tipos de prototipagem (jogos)
+              </h3>
+              <p class="text-xs text-slate-500">
+                Wireframe, mockup, papel, storyboard — quando e como usar.
+              </p>
+            </div>
+          </article>
+
+          <!-- Card 4: Prototipagem em papel (opção complementar prática) -->
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <!-- Reason (EN): Hands-on approach prior to Unity blockout -->
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/aMMSAXXKXMo"
+                title="Prototipagem em papel (Fábrica de Jogos)"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-green-800">Prototipagem em papel</h3>
+              <p class="text-xs text-slate-500">
+                Valide regras e fluxos rapidamente antes de ir para o engine.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="bg-white rounded-lg shadow hover:shadow-lg transition"
+          >
+            <div class="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/aDeTPMx5h1U"
+                title="Como escolher a técnica de prototipagem (Fábrica de Jogos)"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-green-800">
+                Escolha da técnica de prototipagem
+              </h3>
+              <p class="text-xs text-slate-500">
+                Critérios para decidir a técnica e aprovar o game design.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- =========================================
+     Section: NavMesh & Player Flow (before #tarefa)
+     Reason (EN): Make navigation an explicit skill.
+========================================== -->
+      <section
+        id="navmesh-fluxo"
+        class="mb-12"
+        aria-labelledby="navmesh-heading"
+      >
+        <h2
+          id="navmesh-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-6"
+        >
+          <i class="fa-solid fa-route mr-2"></i>Navegação (NavMesh) & Fluxo do
+          Jogador
+        </h2>
+
+        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+          <p class="text-slate-700">
+            Construa o fluxo do jogador apoiando-se em navegação assíncrona
+            (inimigos/NPCs) e legibilidade espacial.
+          </p>
+
+          <ol class="list-decimal list-inside text-sm space-y-2 text-slate-700">
+            <li>
+              <strong>Marque cenário estático</strong> (Static) e gere o
+              <em>NavMesh</em> (pacote NavMesh Components).
+              <!-- EN: Prepares surfaces for bake -->
+            </li>
+            <li>
+              <strong>NavMeshAgent</strong> em NPCs e pontos de interesse para
+              rotas simples (patrulha/fuga).
+              <!-- EN: Simple agent behaviors to test layout -->
+            </li>
+            <li>
+              <strong>Teste gargalos</strong>: corredores estreitos, rampas,
+              plataformas — revise colisores e métricas.
+            </li>
+          </ol>
+
+          <div class="callout callout-info">
+            <h4 class="font-bold mb-1">
+              <i class="fa-solid fa-circle-info mr-2"></i>Docs úteis
+            </h4>
+            <p class="text-sm">
+              <a
+                class="text-green-700 underline"
+                href="https://docs.unity3d.com/Packages/com.unity.ai.navigation@2.0/manual/index.html"
+                target="_blank"
+                rel="noopener"
+              >
+                Unity AI Navigation (NavMesh)
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+     Section: Performance (before #tarefa)
+     Reason (EN): Teach rendering budgets early.
+========================================== -->
+      <section id="performance" class="mb-12" aria-labelledby="perf-heading">
+        <h2
+          id="perf-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-6"
+        >
+          <i class="fa-solid fa-gauge-high mr-2"></i>Performance no Blockout:
+          Static Batching & Occlusion Culling
+        </h2>
+
+        <div class="bg-white p-6 rounded-lg shadow space-y-4">
+          <ul class="list-disc list-inside text-sm leading-6 text-slate-700">
+            <li>
+              <strong>Static Batching:</strong> combine objetos estáticos para
+              reduzir draw calls (custo de memória aumenta).
+              <!-- EN: Trade CPU/GPU vs memory -->
+            </li>
+            <li>
+              <strong>Occlusion Culling:</strong> evita renderizar o que está
+              totalmente oculto (bom para salas/corredores).
+              <!-- EN: Great in room-corridor topologies -->
+            </li>
+            <li>
+              <strong>Colisores simples</strong> e marcar cenário como
+              <em>Static</em> já no blockout.
+            </li>
+          </ul>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <a
+              href="https://docs.unity3d.com/2023.2/Documentation/Manual/static-batching.html"
+              target="_blank"
+              rel="noopener"
+              class="p-3 bg-green-50 rounded border border-green-200 hover:bg-green-100"
+            >
+              Static Batching (Unity Manual)
+            </a>
+            <a
+              href="https://docs.unity3d.com/Manual/OcclusionCulling.html"
+              target="_blank"
+              rel="noopener"
+              class="p-3 bg-green-50 rounded border border-green-200 hover:bg-green-100"
+            >
+              Occlusion Culling (Unity Manual)
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================
+     Section: Accessibility & UX (before #tarefa)
+     Reason (EN): Modern baseline for inclusive design.
+========================================== -->
+      <section id="acessibilidade" class="mb-12" aria-labelledby="a11y-heading">
+        <h2
+          id="a11y-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-6"
+        >
+          <i class="fa-solid fa-universal-access mr-2"></i>Acessibilidade & UX
+          (itens mínimos)
+        </h2>
+
+        <div class="bg-white p-6 rounded-lg shadow space-y-3">
+          <ul class="list-disc list-inside text-sm leading-6 text-slate-700">
+            <li>
+              Texto legível (≥16–18 px @1080p), contraste mínimo AA, evitar
+              “texto em cor pura” sobre fundos vibrantes.
+            </li>
+            <li>
+              Feedback multimodal (visual + áudio + vibração quando aplicável)
+              para eventos críticos.
+            </li>
+            <li>
+              Remapeamento básico de controles e opção de inverter eixo Y (se
+              houver câmera livre).
+            </li>
+          </ul>
+          <p class="text-xs text-slate-500">
+            Consulte
+            <a
+              class="text-green-700 underline"
+              href="https://gameaccessibilityguidelines.com"
+              target="_blank"
+              rel="noopener"
+            >
+              Game Accessibility Guidelines
+            </a>
+            (níveis Beginner/Intermediate) para uma lista objetiva.
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================================
+     Section: MDA + Env. Storytelling (replace/expand #reflexao-critica)
+     Reason (EN): Anchor critical reflection in theory.
+========================================== -->
+      <section
+        id="reflexao-critica"
+        class="mb-12 callout callout-practice"
+        aria-labelledby="mda-heading"
+      >
+        <h2 id="mda-heading" class="font-bold text-lg mb-2">
+          <i class="fa-solid fa-brain mr-2"></i>Reflexão Crítica: MDA +
+          Environmental Storytelling
+        </h2>
+        <p class="text-slate-700 text-sm">
+          Revise o protótipo conectando
+          <strong>Mecânicas→Dinâmicas→Estéticas</strong> (MDA) e o que o
+          ambiente “narra” sem texto.
+        </p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>
+            <strong>Mecânicas</strong> (regras/ações) estão gerando as
+            <strong>dinâmicas</strong> desejadas (ritmo, risco/recompensa)?
+          </li>
+          <li>
+            As <strong>estéticas</strong> (emoções visadas) emergem do
+            espaço/jogabilidade (ex.: tensão em corredores)?
+          </li>
+          <li>
+            Seu cenário “conta” a história por pistas visuais coerentes
+            (composição, iluminação, marcos)?
+          </li>
+        </ul>
+        <p class="text-xs text-slate-500 mt-2">
+          Referência: MDA (Hunicke et al., 2004) e práticas de environmental
+          storytelling.
+        </p>
+      </section>
+
+      <!-- =========================================
+     Section: Peer Rubric (near #tarefa)
+     Reason (EN): Make peer review objective and aligned.
+========================================== -->
+      <section id="rubrica" class="mb-12" aria-labelledby="rubrica-heading">
+        <h2
+          id="rubrica-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-6"
+        >
+          <i class="fa-solid fa-people-arrows mr-2"></i>Rubrica de avaliação por
+          pares (0–10)
+        </h2>
+        <div class="bg-white p-6 rounded-lg shadow overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="bg-green-50 text-green-800">
+              <tr>
+                <th class="p-2">Critério</th>
+                <th class="p-2">0</th>
+                <th class="p-2">1</th>
+                <th class="p-2">2</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr>
+                <td class="p-2">Alinhamento GDD↔Cena</td>
+                <td class="p-2">Desalinhado</td>
+                <td class="p-2">Parcial</td>
+                <td class="p-2">Coerente e completo</td>
+              </tr>
+              <tr>
+                <td class="p-2">Métricas aplicadas</td>
+                <td class="p-2">Ausentes</td>
+                <td class="p-2">Parciais</td>
+                <td class="p-2">Claras e testadas</td>
+              </tr>
+              <tr>
+                <td class="p-2">Fluxo de jogador</td>
+                <td class="p-2">Confuso</td>
+                <td class="p-2">Ok</td>
+                <td class="p-2">Guiado e legível</td>
+              </tr>
+              <tr>
+                <td class="p-2">HUD/Feedback</td>
+                <td class="p-2">Insuficiente</td>
+                <td class="p-2">Básico</td>
+                <td class="p-2">Informativo e consistente</td>
+              </tr>
+              <tr>
+                <td class="p-2">Performance básica</td>
+                <td class="p-2">Problemas</td>
+                <td class="p-2">Aceitável</td>
+                <td class="p-2">Static/OC + colisores simples</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: TED -->
+      <section id="tarefa" class="mb-12" aria-labelledby="tarefa-heading">
+        <h2
+          id="tarefa-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-4"
+        >
+          📝 Tarefa (TED): GDD Atualizado e Feedback Colaborativo
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p class="text-lg">
+            Refine sua documentação com base no protótipo e pratique feedback
+            construtivo.
+          </p>
+          <h4 class="font-semibold text-green-800 mt-6 mb-2">Passo a Passo:</h4>
+          <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>
+              <strong>Atualize seu GDD:</strong> verifique se mecânicas, metas e
+              métricas batem com a cena. Inclua um print atual da cena
+              funcional.
+            </li>
+            <li>
+              <strong>Troque feedback com um colega:</strong> peça avaliação da
+              clareza e da conexão GDD↔Cena. Registre as sugestões-chave.
+            </li>
+            <li>
+              <strong>Publique no Fórum:</strong> poste no Moodle o GDD e um
+              resumo do feedback recebido e as ações que você fará.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Section: Recursos -->
+      <section id="recursos" class="mb-12" aria-labelledby="recursos-heading">
+        <h2
+          id="recursos-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-4"
+        >
+          📚 Recursos Adicionais
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <div>
+            <h4 class="font-bold text-green-800 mb-2">
+              Documentação e Templates
+            </h4>
+            <ul class="text-sm space-y-2">
+              <!-- Unity ProBuilder (oficial) -->
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="https://docs.unity3d.com/Packages/com.unity.probuilder@latest"
+                  target="_blank"
+                  rel="noopener"
+                  >Manual do ProBuilder (Unity)</a
+                >
+              </li>
+              <!-- GDD Templates PT-BR -->
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="https://github.com/allefrodrigo/gdd-template"
+                  target="_blank"
+                  rel="noopener"
+                  >Template de GDD (Markdown, PT-BR)</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="https://www.notion.com/templates/gdd-modelo-game-design-document-pt-br"
+                  target="_blank"
+                  rel="noopener"
+                  >Template de GDD (Notion, PT-BR)</a
+                >
+              </li>
+              <!-- TODO: keep Moodle placeholders that depend on your instance -->
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="#"
+                  title="Substitua pelo link do seu Moodle"
+                  >Modelo de GDD (Moodle)</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="#"
+                  title="Substitua pelo link do seu Moodle"
+                  >Rubrica de Avaliação por Pares (Moodle)</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-green-800 mb-2">
+              Leituras e Referências
+            </h4>
+            <ul class="text-sm space-y-2">
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="https://www.gamedeveloper.com/design/environmental-storytelling-creating-immersive-3d-worlds"
+                  target="_blank"
+                  rel="noopener"
+                  >Environmental Storytelling (Game Developer)</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="https://blog.logrocket.com/design-level-probuilder-unity/"
+                  target="_blank"
+                  rel="noopener"
+                  >Design de nível com ProBuilder (LogRocket)</a
+                >
+              </li>
+              <li>
+                <a
+                  class="text-green-700 hover:underline"
+                  href="https://docs.unity3d.com/Manual/UISystem.html"
+                  target="_blank"
+                  rel="noopener"
+                  >UI/HUD na Unity (Manual)</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Bibliografia -->
+      <section
+        id="bibliografia"
+        class="mb-12"
+        aria-labelledby="bibliografia-heading"
+      >
+        <h2
+          id="bibliografia-heading"
+          class="text-3xl font-semibold text-slate-800 border-b-2 border-green-500 pb-2 mb-4"
+        >
+          📚 Bibliografia
+        </h2>
+        <div
+          class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed"
+        >
+          <p>
+            MASTROCOLA, Vicente Martin.
+            <strong
+              >Game design: modelos de negócio e processos criativos.</strong
+            >
+            São Paulo: Cengage Learning, 2015.
+          </p>
+          <p>
+            ALVES, W. P.
+            <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de
+            Janeiro: Alta Books, 2019.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+      <div class="container mx-auto px-6 py-6 text-center">
+        <p>
+          &copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais |
+          Semestre 2025.2
+        </p>
+        <p class="text-sm text-slate-400">
+          Material desenvolvido para os cursos de ADS e SI da UniChristus.
+        </p>
+        <div class="mt-4">
+          <!-- TODO: replace with real links -->
+          <a href="#" class="text-green-400 hover:underline text-sm"
+            >Acessar Moodle</a
+          >
+          <span class="text-slate-500 mx-2">|</span>
+          <a href="#" class="text-green-400 hover:underline text-sm"
+            >Política de Uso</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
