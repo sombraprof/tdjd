@@ -1,0 +1,800 @@
+<quiz>
+  <!-- CATEGORIA -->
+  <question type="category">
+    <category>
+      <text>$course$/TDJD/2025.2/Unidade III — Programação com C# para Games (Eventos, Corrotinas e Input System)</text>
+    </category>
+  </question>
+  <!-- Q1 — ENADE (Asserção–Razão) — Corrotinas x Update -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q1 — ENADE (A/R): Corrotinas x Update</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> seu time precisa implementar uma sequência “piscar luz → esperar 1s → piscar novamente” sem travar a jogabilidade.</p>
+      <p><strong>I (Asserção).</strong> Corrotinas são indicadas para sequências temporizadas porque permitem pausar e retomar a execução de um método de forma legível.</p>
+      <p><strong>II (Razão).</strong> Isso ocorre porque <code>yield return</code> permite aguardar eventos de tempo (como <code>WaitForSeconds</code>) sem bloquear o jogo, diferentemente de laços ocupados no <code>Update()</code>.</p>
+      <p>Assinale a alternativa correta:</p>
+      <ol type="A">
+        <li>I e II são verdadeiras, e II justifica I.</li>
+        <li>I e II são verdadeiras, mas II não justifica I.</li>
+        <li>I é verdadeira e II é falsa.</li>
+        <li>I é falsa e II é verdadeira.</li>
+        <li>I e II são falsas.</li>
+      </ol>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[Corrotinas modelam sequências temporizadas com <code>yield return</code>, evitando bloquear o ciclo principal do jogo.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = A -->
+    <answer fraction="100">
+      <text>
+        <![CDATA[I e II são verdadeiras, e II justifica I.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: <code>yield</code> permite aguardar sem bloquear; é a base para sequências limpas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[I e II são verdadeiras, mas II não justifica I.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Incorreto: a explicação da II é justamente o motivo de preferir corrotinas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[I é verdadeira e II é falsa.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Incorreto: a razão (II) descreve corretamente o uso de <code>yield</code>.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[I é falsa e II é verdadeira.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Incorreto: I também é verdadeira neste contexto.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[I e II são falsas.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Incorreto: ambas são verdadeiras.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q2 — MCQ — Eventos de Física/Trigger -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q2 — OnTriggerEnter e requisitos para disparo</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> você criou uma área de pressão (Box Collider com <em>Is Trigger</em>) que deve acionar uma animação ao detectar o jogador.</p>
+      <p>O evento <code>OnTriggerEnter(Collider other)</code> <em>não</em> dispara ao atravessar a área. Qual a causa mais provável?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[Pelo menos um dos objetos envolvidos no trigger deve ter <code>Rigidbody</code> habilitado (tipicamente o Player). Verifique também a tag e referências.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = D -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[O Collider do volume precisa ter <em>Is Kinematic</em> marcado.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[“Is Kinematic” é propriedade do <code>Rigidbody</code>, não do Collider.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Triggers funcionam apenas entre objetos com <code>Animator</code>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Não é requisito; o fundamental é Collider/Trigger e <code>Rigidbody</code>.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[É obrigatório usar <code>OnCollisionEnter</code> em vez de <code>OnTriggerEnter</code>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Não: triggers funcionam com <code>OnTrigger*</code> quando configurados corretamente.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[O Player não possui <code>Rigidbody</code>; sem <code>Rigidbody</code> em pelo menos um objeto, o trigger não dispara.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: adicione <code>Rigidbody</code> ao Player (ou ao volume).]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[É necessário desativar a gravidade do projeto para triggers funcionarem.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Sem relação: gravidade global não impede <code>OnTriggerEnter</code>.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q3 — ENADE (Combinação I–IV) — Ciclo de vida + componentes -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q3 — Combinação (I–IV): Start/Update/FixedUpdate/Corrotina</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> em um controller simples, você precisa decidir onde ler input, aplicar forças e rodar uma sequência temporizada.</p>
+      <p>Avalie:</p>
+      <p><strong>I.</strong> <code>Start()</code> — inicializações e <em>subscriptions</em> de eventos.</p>
+      <p><strong>II.</strong> <code>Update()</code> — leitura de entrada e lógica por frame (não física).</p>
+      <p><strong>III.</strong> <code>FixedUpdate()</code> — integração de física (<code>Rigidbody</code>).</p>
+      <p><strong>IV.</strong> Corrotinas — sequências com pausas (<code>yield</code>).</p>
+      <p>Assinale a opção correta:</p>
+      <ol type="A">
+        <li>Apenas I e II</li>
+        <li>Apenas II e III</li>
+        <li>Apenas I, II e III</li>
+        <li>Apenas I, II e IV</li>
+        <li>I, II, III e IV</li>
+      </ol>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[Cada método tem um papel: <code>Start</code> (setup), <code>Update</code> (entrada/por-frame), <code>FixedUpdate</code> (física), corrotinas (sequências temporizadas).]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = E -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[Apenas I e II]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Falta <code>FixedUpdate</code> e corrotinas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Apenas II e III]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Falta <code>Start</code> para inicialização e corrotinas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Apenas I, II e III]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Faltou corrotinas para sequências temporizadas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Apenas I, II e IV]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Faltou <code>FixedUpdate</code> para a física.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[I, II, III e IV]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: os quatro itens estão adequados.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q4 — MCQ — WaitForSeconds x WaitForSecondsRealtime e pausa -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q4 — Tempo escalado x não escalado em corrotinas</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> ao pausar o jogo ( <code>Time.timeScale = 0</code> ), você quer que um alerta visual continue piscando a cada 1 segundo real.</p>
+<pre><code>IEnumerator Piscar()
+{
+    while (true)
+    {
+        alerta.SetActive(!alerta.activeSelf);
+        yield return /* ??? */ (1f);
+    }
+}
+</code></pre>
+      <p>Qual opção <em>garante</em> o comportamento desejado durante a pausa?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[<code>WaitForSecondsRealtime</code> ignora <code>timeScale</code>; já <code>WaitForSeconds</code> pausa junto com o jogo.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = B -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[Usar <code>WaitForSeconds(1f)</code>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Escalado por <code>timeScale</code>; com pausa, não avança.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[Usar <code>WaitForSecondsRealtime(1f)</code>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: continua contando tempo real mesmo com pausa.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Manter <code>WaitForSeconds</code> e definir <code>Time.fixedDeltaTime</code> menor.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Não resolve o congelamento com <code>timeScale = 0</code>.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Criar um <code>while</code> com relógio próprio no <code>Update()</code>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Pior legibilidade e risco de bloqueio/descuido; há solução nativa.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Usar <code>Thread.Sleep(1000)</code> dentro da corrotina.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Congela a thread; não use em gameplay.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q5 — MCQ (Ordem/Associação) — Input System conceitos -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q5 — Ordem correta: Action Map → Action → Binding → PlayerInput → Control Scheme</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> ao configurar controles no novo Input System, você deve encadear corretamente os conceitos.</p>
+      <p>Qual sequência representa uma configuração coerente do fluxo de entrada para o jogador?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[Defina <em>Action Map</em> (ex.: Player) → <em>Actions</em> (Move/Jump) → <em>Bindings</em> (teclas/botões) e consuma via <code>PlayerInput</code>, respeitando <em>Control Schemes</em>.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = C -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[Binding → Action → Action Map → Control Scheme → PlayerInput]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Inversão: primeiro mapa, depois ações e seus bindings.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Control Scheme → PlayerInput → Binding → Action → Action Map]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Ordem confusa; o consumo via PlayerInput vem após definir mapa/ações/bindings.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[Action Map → Action → Binding → PlayerInput → Control Scheme]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: primeiro estrutura (mapa/ações/bindings), depois consumo e esquemas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[PlayerInput → Control Scheme → Action Map → Action → Binding]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[<code>PlayerInput</code> consome definições já criadas no asset.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Action → Binding → PlayerInput → Action Map → Control Scheme]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Falta o mapa antes das ações; ordem inadequada.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q6 — MCQ (Análise de código) — Porta com atraso e múltiplas chamadas -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q6 — Código: múltiplas corrotinas de abertura</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> script de porta com atraso:</p>
+<pre><code>public class Porta : MonoBehaviour
+{
+    public float delay = 2f;
+    public bool aberta;
+
+    public void AbrirComAtraso()
+    {
+        StartCoroutine(Abrir());
+    }
+
+    IEnumerator Abrir()
+    {
+        yield return new WaitForSeconds(delay);
+        aberta = true;
+        gameObject.SetActive(false);
+    }
+}
+</code></pre>
+      <p>Se <code>AbrirComAtraso()</code> for chamado 3 vezes rapidamente, qual o comportamento mais provável <em>sem</em> lógica adicional?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[Cada chamada cria uma nova corrotina; sem <code>StopCoroutine</code>/<em>guard</em>, várias instâncias correm em paralelo.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = E -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[Apenas a primeira chamada é mantida; as demais são ignoradas pela Unity.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Não há deduplicação automática de corrotinas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[As três chamadas se fundem numa única execução com atraso médio.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Não existe “fusão” automática de corrotinas.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Somente a última chamada é executada; as primeiras são abortadas.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Sem controle manual, nenhuma é abortada por padrão.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[As três corrotinas executam em série, uma por vez.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Elas executam em paralelo, não em fila automática.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[Três corrotinas rodam em paralelo; após ~2s, todas tentarão “abrir”/desativar a porta.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: é preciso <em>guard</em> (ex.: <code>if (aberta) return;</code>) ou cancelar corrotinas anteriores.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q7 — MCQ (Comparativo) — Classe gerada vs PlayerInput -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q7 — Classe gerada x PlayerInput (vantagens)</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> dois padrões de uso do Input System:</p>
+      <ul>
+        <li><strong>A)</strong> Classe C# gerada pelo asset (<code>PlayerControls</code>) + subscrição de eventos/leituras no código.</li>
+        <li><strong>B)</strong> Componente <code>PlayerInput</code> (ex.: <em>Send Messages</em>/<em>Invoke Unity Events</em>).</li>
+      </ul>
+      <p>Qual alternativa descreve <em>corretamente</em> uma vantagem típica do padrão A sobre o B?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[A classe gerada oferece tipagem forte e controle total por código; <code>PlayerInput</code> agiliza protótipos e integra com o Inspector.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = C -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[O padrão A dispensa a necessidade de habilitar/desabilitar mapas.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Ambos requerem habilitar o mapa/ações conforme o fluxo.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[O padrão A remove a necessidade de criar o asset de Input Actions.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[O asset ainda é a origem das ações/bindings.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[O padrão A fornece tipagem forte e acesso explícito às ações, facilitando refatoração e testes.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: a classe gerada dá segurança de tipos e controle fino por código.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[O padrão A impede o uso de gamepads múltiplos.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Sem relação: ambos suportam múltiplos dispositivos.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[O padrão A é obrigatório para navegação de UI.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[A navegação de UI depende do <em>UI Input Module</em>, não do padrão A.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q8 — MCQ — Control Schemes e auto-switch -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q8 — Control Schemes e onControlsChanged</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> seu jogo suporta teclado+mouse e gamepad. Você quer alternância automática do esquema ativo e registrar trocas.</p>
+      <p>Qual abordagem é mais adequada?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[Defina <em>Control Schemes</em> no asset e use <code>PlayerInput.onControlsChanged</code> para detectar mudanças e reagir (ex.: atualizar HUD).]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = A -->
+    <answer fraction="100">
+      <text>
+        <![CDATA[Definir Control Schemes no asset e usar <code>PlayerInput.onControlsChanged</code> para reagir às trocas.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: solução nativa para auto-switch e feedback visual.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Usar <code>Time.timeScale</code> para escolher o Control Scheme.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[<code>timeScale</code> controla tempo, não esquema de entrada.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Duplicar o Player para cada dispositivo e ativar/desativar manualmente.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Solução frágil e desnecessária.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Substituir o <code>PlayerInput</code> por leitura direta de teclas no <code>Update()</code>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Perde as vantagens do sistema e a troca automática.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Forçar o esquema via script fixo no <code>Awake()</code> sem detectar mudanças.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Não se adapta ao último dispositivo usado.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q9 — MCQ — UI Navigation com Input System -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q9 — UI: InputSystemUIInputModule e Action Map "UI"</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> seu menu de pausa deve ser navegável por teclado e gamepad enquanto o jogo está pausado.</p>
+      <p>Qual configuração é a mais apropriada?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[Use <em>EventSystem</em> com <strong>InputSystemUIInputModule</strong> e um <strong>Action Map "UI"</strong> mapeado para Navigate/Submit/Cancel.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = E -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[Manter o antigo <em>Standalone Input Module</em> e ler botões manualmente.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Preferível usar o módulo de UI do novo Input System.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Usar apenas o Action Map "Player" para controlar o menu.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Separar mapas "Player" e "UI" evita conflitos de input.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Desativar o <em>EventSystem</em> durante a pausa.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Sem EventSystem, não há navegação de UI.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Implementar navegação por <code>Raycast</code> manual e teclas hardcoded.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Mais trabalho e menos robusto que o módulo nativo.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[Adicionar <em>EventSystem</em> com <strong>InputSystemUIInputModule</strong> e um <strong>Action Map "UI"</strong> (Navigate/Submit/Cancel) ativo ao pausar.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: fluxo padrão para menus com teclado/gamepad.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+  <!-- Q10 — MCQ — Multiplayer local com PlayerInputManager -->
+  <question type="multichoice">
+    <name>
+      <text>U3-Q10 — PlayerInputManager (join em runtime)</text>
+    </name>
+    <questiontext format="html">
+      <text>
+        <![CDATA[
+      <p><strong>Contexto:</strong> um party game local deve permitir que novos jogadores entrem pressionando um botão no próprio controle.</p>
+      <p>Qual configuração é a mais indicada?</p>
+      ]]>
+      </text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>
+        <![CDATA[<code>PlayerInputManager</code> com <em>Join Players When Button Is Pressed</em> instancia um prefab com <code>PlayerInput</code> por jogador.]]>
+      </text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <!-- correta = B -->
+    <answer fraction="0">
+      <text>
+        <![CDATA[Criar quatro Players fixos e alternar visibilidade conforme o controle.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Solução rígida; não escala para joins dinâmicos.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>
+        <![CDATA[Usar <code>PlayerInputManager</code> com <em>Join Players When Button Is Pressed</em> e definir o <em>Player Prefab</em>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Correto: padrão oficial para join dinâmico local.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Instanciar Players manualmente no <code>Update()</code> se qualquer tecla for pressionada.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Frágil e sujeito a falsos positivos; há suporte nativo.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Reutilizar um único <code>PlayerInput</code> e trocar o <em>Control Scheme</em> a cada botão.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Não separa entradas por jogador; conflita controles.]]>
+        </text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>
+        <![CDATA[Usar quatro <code>PlayerInput</code> ativos e dividir a tela, sem <code>PlayerInputManager</code>.]]>
+      </text>
+      <feedback>
+        <text>
+          <![CDATA[Perde o join dinâmico e aloca recursos desnecessários.]]>
+        </text>
+      </feedback>
+    </answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+</quiz>

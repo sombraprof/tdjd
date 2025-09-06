@@ -1,0 +1,258 @@
+<quiz>
+  <!-- CATEGORIA -->
+  <question type="category">
+    <category>
+      <text>$course$/TDJD/2025.2/Unidade II — Fundamentos da Unity e Prototipagem</text>
+    </category>
+  </question>
+
+  <!-- Q1 (Asserção–Razão / GDD como documento vivo) -->
+  <question type="multichoice">
+    <name><text>U2-Q1 — GDD como documento vivo (A/R)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> seu grupo está formalizando um <em>Game Design Document (GDD)</em> para um protótipo de 4 semanas. O time quer saber se deve tratar o GDD como “contrato fechado” ou “documento vivo”.</p>
+      <p><strong>I.</strong> O GDD deve ser mantido como <em>documento vivo</em>, atualizado a cada iteração de protótipo e playtest, para refletir decisões e riscos.</p>
+      <p><strong>II.</strong> Isso se justifica porque o GDD tem a função de <em>sincronizar entendimento</em> entre áreas (design, arte, programação e QA) e registrar mudanças de escopo ao longo do desenvolvimento.</p>
+      <p>Assinale a alternativa correta:</p>
+      <ol type="A">
+        <li>I e II são verdadeiras, e II justifica I.</li>
+        <li>I e II são verdadeiras, mas II não justifica I.</li>
+        <li>I é verdadeira e II é falsa.</li>
+        <li>I é falsa e II é verdadeira.</li>
+        <li>I e II são falsas.</li>
+      </ol>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[A ideia central é tratar o GDD como <em>documento vivo</em> que alinha áreas e evolui com o protótipo.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text><![CDATA[I e II são verdadeiras, e II justifica I.]]></text><feedback><text><![CDATA[Correto: o GDD vivo mantém o alinhamento e registra decisões ao longo das sprints.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[I e II são verdadeiras, mas II não justifica I.]]></text><feedback><text><![CDATA[Incorreto: justamente a função de alinhar e registrar mudanças explica o caráter “vivo”.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[I é verdadeira e II é falsa.]]></text><feedback><text><![CDATA[Incorreto: a afirmação II é verdadeira; o GDD sincroniza áreas e registra mudanças.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[I é falsa e II é verdadeira.]]></text><feedback><text><![CDATA[Incorreto: I também é verdadeira; o GDD deve ser atualizado a cada iteração.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[I e II são falsas.]]></text><feedback><text><![CDATA[Incorreto: ambas são verdadeiras e complementares.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q2 (URP em protótipos) -->
+  <question type="multichoice">
+    <name><text>U2-Q2 — Por que migrar para URP no protótipo?</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> um protótipo em 4 semanas precisa rodar bem em notebooks intermediários. O time avalia migrar para <em>URP (Universal Render Pipeline)</em>.</p>
+      <p>Qual alternativa <em>melhor</em> justifica a adoção de URP para este cenário?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[URP prioriza desempenho e escalabilidade, mantendo materiais/shaders simples e boa compatibilidade.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[“URP substitui o sistema de física e melhora colisões automaticamente.”]]></text><feedback><text><![CDATA[Não: URP é pipeline de render, não altera o sistema de física.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[“URP exige GPUs topo de linha, mas entrega ray tracing por padrão.”]]></text><feedback><text><![CDATA[Não: URP visa hardware amplo; ray tracing nativo é foco de pipelines de alto nível.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[“URP remove a necessidade de LODs e de otimização de texturas.”]]></text><feedback><text><![CDATA[Não: LODs e compressão ainda são práticas recomendadas.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[“URP impede build para plataformas móveis.”]]></text><feedback><text><![CDATA[Não: URP tem boa compatibilidade com mobile.]]></text></feedback></answer>
+    <answer fraction="100"><text><![CDATA[“URP oferece pipeline leve e escalável, facilitando atingir FPS estável em máquinas medianas sem sacrificar compatibilidade.”]]></text><feedback><text><![CDATA[Correto: URP é orientado a desempenho e amplia portabilidade.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q3 (Organização do projeto e pastas) -->
+  <question type="multichoice">
+    <name><text>U2-Q3 — Organização de pastas no Unity</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> seu repositório cresceu desordenado depois de importar vários pacotes. Você vai padronizar a estrutura do diretório <code>Assets/</code>.</p>
+      <p>Qual prática é a <em>mais adequada</em> para manter o projeto sustentável?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Separar conteúdo <em>ThirdParty</em>, manter nomenclatura e agrupar cenas/arte/código ajuda no build, no versionamento e na colaboração.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[Manter tudo no nível raiz de <code>Assets/</code> para facilitar busca por nome.]]></text><feedback><text><![CDATA[Incorreto: isso vira “caixa de sapato” e dificulta manutenção.]]></text></feedback></answer>
+    <answer fraction="100"><text><![CDATA[Criar pastas como <code>Scenes</code>, <code>Scripts</code>, <code>Art</code>, <code>Audio</code> e <code>ThirdParty</code>, mantendo pacotes externos isolados.]]></text><feedback><text><![CDATA[Correto: estrutura previsível e isolamento de terceiros facilitam.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Mesclar assets de terceiros com os próprios para reduzir o número de pastas.]]></text><feedback><text><![CDATA[Incorreto: mistura dificulta atualizações e remoções.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Colocar cenas e scripts dentro de pastas de cada artista, para rastrear autoria.]]></text><feedback><text><![CDATA[Incorreto: organização por autoria não escala e confunde dependências.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Deletar <code>ProjectSettings/</code> do repositório para “limpar” metadados.]]></text><feedback><text><![CDATA[Incorreto: <code>ProjectSettings/</code> é essencial para builds consistentes.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q4 (ProBuilder / Blockout e métricas) -->
+  <question type="multichoice">
+    <name><text>U2-Q4 — Blockout com ProBuilder e métricas de jogador</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> durante o <em>blockout</em> com ProBuilder, o fluxo do nível está confuso: portas estreitas e rampas íngremes afetam a navegação do personagem padrão.</p>
+      <p>Qual atitude é a <em>mais adequada</em> para melhorar a jogabilidade nessa etapa?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[O blockout testa <em>layout</em> com “formas simples + métricas do avatar”. Ajustes geométricos vêm antes de detalhes visuais.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[Aplicar texturas PBR detalhadas para aumentar a legibilidade do caminho.]]></text><feedback><text><![CDATA[Prematuro: textura não resolve problemas de escala/navegação.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Adicionar pós-processamento pesado (bloom/DOF) para guiar o olhar.]]></text><feedback><text><![CDATA[Não prioriza a jogabilidade e ainda pode mascarar problemas.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Importar assets realistas de marketplace para “substituir” o blockout.]]></text><feedback><text><![CDATA[Trocar blockout por arte final reduz a velocidade de iteração.]]></text></feedback></answer>
+    <answer fraction="100"><text><![CDATA[Revisar medidas com base nas métricas do personagem (altura/largura/step) e ajustar portas, rampas e corredores no ProBuilder.]]></text><feedback><text><![CDATA[Correto: métricas do avatar orientam as dimensões do espaço.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Trocar o controller por um “voo livre” para ignorar colisões no teste.]]></text><feedback><text><![CDATA[Isso oculta problemas de navegação real do jogador.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q5 (Importação de assets e “bloat”) -->
+  <question type="multichoice">
+    <name><text>U2-Q5 — Evitando “bloat” ao importar assets</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> ao importar um pacote grande da Asset Store, o build ficou pesado e o tempo de reimport aumentou.</p>
+      <p>Qual prática minimiza esse problema no <em>curto prazo</em>?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Selecione apenas o necessário, isole conteúdo e revise configurações (compressão/LOD), reduzindo tamanho e reimport.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text><![CDATA[Selecionar somente subpastas/arquivos necessários na janela de importação e isolar o pacote em <code>Assets/ThirdParty/</code>.]]></text><feedback><text><![CDATA[Correto: reduz arquivos importados e facilita manutenção.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Importar tudo e depois procurar manualmente o que é usado.]]></text><feedback><text><![CDATA[Ineficiente: aumenta bloat e tempo de reimport.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Desativar o <em>Version Control</em> para acelerar a importação.]]></text><feedback><text><![CDATA[Não resolve bloat e piora a colaboração.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Duplicar o pacote para “backup” dentro de <code>Assets/</code>.]]></text><feedback><text><![CDATA[Piora o bloat e confunde referências.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Remover todas as <em>Materials</em> para reduzir o número de arquivos.]]></text><feedback><text><![CDATA[Quebra aparência e referências sem critério técnico.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q6 (UI/UX no protótipo) -->
+  <question type="multichoice">
+    <name><text>U2-Q6 — Feedback mínimo de UI no protótipo</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> jogadores de teste não entendem como abrir uma porta no protótipo. O time quer inserir feedback rápido de UI/UX <em>sem</em> atrasar a sprint.</p>
+      <p>Qual solução é a <em>mais adequada</em> para esta etapa?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Em protótipo, <em>hints</em> contextuais e feedback sonoro/visual simples (HUD breve, ícones, som) resolvem entendimento sem overdesign.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[Adicionar um tutorial completo em vídeos e múltiplas telas.]]></text><feedback><text><![CDATA[Exagerado para protótipo; lento para iterar.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Garantir que apenas o manual PDF explique a interação.]]></text><feedback><text><![CDATA[Manual externo não resolve feedback em tempo real.]]></text></feedback></answer>
+    <answer fraction="100"><text><![CDATA[Inserir um <em>hint</em> contextual (“Pressione E”) próximo ao objeto e um som/flash ao interagir.]]></text><feedback><text><![CDATA[Correto: feedback mínimo e direto, ótimo para protótipo.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Esconder a porta até que o jogador tente várias teclas.]]></text><feedback><text><![CDATA[Antipadrão de UX; aumenta frustração.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Substituir a porta por cutscene explicativa longa.]]></text><feedback><text><![CDATA[Overhead narrativo sem ganho para a jogabilidade.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q7 (GDD: conteúdo essencial para playtest) -->
+  <question type="multichoice">
+    <name><text>U2-Q7 — GDD: o que não pode faltar para playtest?</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> você vai conduzir um playtest de 20 minutos amanhã. O GDD precisa sustentar o teste.</p>
+      <p>Qual item é <em>essencial</em> para orientar o playtest e as decisões de iteração?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Hipóteses e métricas (objetivos do teste) guiam coleta de dados e a próxima iteração do protótipo.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="100"><text><![CDATA[Hipóteses e métricas claras (ex.: “80% termina o nível em &lt;3 min”).]]></text><feedback><text><![CDATA[Correto: dá foco ao teste e à análise de resultados.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[História completa do mundo com 10 páginas de <em>lore</em>.]]></text><feedback><text><![CDATA[Excesso para protótipo; não guia o playtest.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Lista de softwares usados pelos artistas.]]></text><feedback><text><![CDATA[Logístico, mas não orienta o teste.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Storyboard finalizado de todas as cutscenes.]]></text><feedback><text><![CDATA[Prematuro e não essencial para o playtest de mecânicas.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Catálogo de assets não utilizados.]]></text><feedback><text><![CDATA[Irrelevante para conduzir o teste.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q8 (Vertical slice x core loop) -->
+  <question type="multichoice">
+    <name><text>U2-Q8 — Vertical slice e core loop</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> na reunião de checkpoint, o produtor pediu um <em>vertical slice</em> que represente o jogo.</p>
+      <p>Qual definição está <em>mais alinhada</em> com boas práticas de prototipagem?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[O vertical slice deve demonstrar o <em>core loop</em> jogável com qualidade representativa, em um recorte pequeno porém completo.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[Gravar um trailer com cenas mockadas sem jogabilidade.]]></text><feedback><text><![CDATA[Não garante mecânica funcional.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Listar todas as features planejadas em um documento.]]></text><feedback><text><![CDATA[Documento não é fatia jogável.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Renderizar cenários finais sem interação do jogador.]]></text><feedback><text><![CDATA[Visual sem loop não representa o jogo.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Liberar um build com todos os sistemas, mesmo que quebrados.]]></text><feedback><text><![CDATA[Escopo excessivo e instável.]]></text></feedback></answer>
+    <answer fraction="100"><text><![CDATA[Entregar um recorte pequeno, porém jogável, com o <em>core loop</em> e o nível de qualidade-alvo daquela fatia.]]></text><feedback><text><![CDATA[Correto: foco em qualidade representativa do loop central.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q9 (Código: Trigger e Rigidbody) -->
+  <question type="multichoice">
+    <name><text>U2-Q9 — Código: colisão do protótipo (Trigger)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> para testar uma porta automática no blockout, você criou um <em>trigger</em> simples:</p>
+<pre><code>using UnityEngine;
+
+public class PortaAuto : MonoBehaviour
+{
+    public Animator anim; // referência configurada no Inspector
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) anim.SetTrigger("Abrir");
+    }
+}
+</code></pre>
+      <p>Ao colocar o script em um cubo invisível na porta (Collider com <em>Is Trigger</em> = true), a animação não dispara quando o personagem passa. Qual é a causa <em>mais provável</em>?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Pelo menos um dos objetos envolvidos no trigger precisa ter <code>Rigidbody</code> habilitado (pode ser o “Player”). Também confirme <em>tag</em> e referência do Animator.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[Falta marcar <em>Is Kinematic</em> no Collider da porta.]]></text><feedback><text><![CDATA[Colisores não têm “Is Kinematic”; isso é de Rigidbody.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Triggers exigem que ambos os objetos tenham <code>Animator</code>.]]></text><feedback><text><![CDATA[Não: triggers dependem de Collider/Trigger e, tipicamente, de um Rigidbody.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[É obrigatório usar <code>OnCollisionEnter</code> em vez de <code>OnTriggerEnter</code>.]]></text><feedback><text><![CDATA[Não: triggers funcionam com <code>OnTriggerEnter</code> corretamente configurado.]]></text></feedback></answer>
+    <answer fraction="100"><text><![CDATA[O “Player” não possui <code>Rigidbody</code>; sem um Rigidbody em pelo menos um objeto, o evento de trigger não ocorre.]]></text><feedback><text><![CDATA[Correto: adicione <code>Rigidbody</code> ao jogador (ou ao volume) para que o trigger dispare.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[É necessário usar Raycast para toda detecção de área.]]></text><feedback><text><![CDATA[Raycast não é obrigatório para triggers de área.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q10 (Versionamento: .gitignore para Unity) -->
+  <question type="multichoice">
+    <name><text>U2-Q10 — Versionamento: .gitignore</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+      <p><strong>Contexto:</strong> o time adotou Git para o projeto Unity e precisa de um <code>.gitignore</code> básico.</p>
+      <p>Qual configuração é a <em>mais adequada</em> para repositórios Unity?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[Em Unity, mantemos <code>Assets/</code>, <code>ProjectSettings/</code> e <code>Packages/</code> versionados, ignorando <code>Library/</code>, <code>Temp/</code>, <code>Logs/</code> etc.]]></text>
+    </generalfeedback>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answer fraction="0"><text><![CDATA[Rastrear <code>Library/</code> para evitar reimportações em cada máquina.]]></text><feedback><text><![CDATA[Incorreto: <code>Library/</code> é gerada; versioná-la causa problemas.]]></text></feedback></answer>
+    <answer fraction="100"><text><![CDATA[Versionar <code>Assets/</code>, <code>ProjectSettings/</code>, <code>Packages/</code> e ignorar <code>Library/</code>, <code>Temp/</code>, <code>Logs/</code>.]]></text><feedback><text><![CDATA[Correto: prática padrão para projetos Unity em Git.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Ignorar <code>ProjectSettings/</code> para reduzir conflitos.]]></text><feedback><text><![CDATA[Incorreto: sem <code>ProjectSettings/</code> builds ficam inconsistentes.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Versionar apenas <code>Assets/</code> e ignorar o resto.]]></text><feedback><text><![CDATA[Incompleto e arriscado; configurações e pacotes ficariam fora do controle.]]></text></feedback></answer>
+    <answer fraction="0"><text><![CDATA[Versionar tudo, inclusive <code>Library/</code>, para garantir reprodutibilidade.]]></text><feedback><text><![CDATA[Acrescenta peso e conflitos; não é a prática recomendada.]]></text></feedback></answer>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+</quiz>

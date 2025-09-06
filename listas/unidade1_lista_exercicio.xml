@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+  <!-- CATEGORIA -->
+  <question type="category">
+    <category>
+      <text>$course$/TDJD 2025.2/Unidade I – Fundamentos e Unity</text>
+    </category>
+  </question>
+
+  <!-- Q1: MCQ (ciclo de produção) -->
+  <question type="multichoice">
+    <name><text>U1-Q1 — Ciclo de produção (pré/produção/pós)</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Você foi contratado(a) por um estúdio indie que pretende apresentar um protótipo em 12 semanas. O produtor pede que você valide o <strong>ciclo de produção</strong> para evitar retrabalho.</p>
+<p><strong>Assinale a alternativa</strong> que melhor descreve as atividades típicas de <em>pré-produção</em>, <em>produção</em> e <em>pós-produção</em> em jogos digitais.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>Em jogos, <em>pré-produção</em> consolida visão/GDD e um <em>vertical slice</em> (risco reduzido), <em>produção</em> expande conteúdo e integra continuamente com QA, e <em>pós-produção</em> foca polimento/otimização/empacotamento.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+
+    <answer fraction="0">
+      <text>Pré: arte/áudio finais e marketing; Produção: validação do conceito e GDD; Pós: ajustes de escopo e backlog.</text>
+      <feedback format="html"><text><![CDATA[Inverte etapas: GDD/validação são da pré; arte final normalmente ocorre na produção, não na pré.]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text>Pré: visão/GDD e vertical slice; Produção: criação de conteúdo com integração e QA contínuos; Pós: polimento/otimização e empacotamento.</text>
+      <feedback format="html"><text><![CDATA[Correta: sequenciamento típico que reduz risco antes de escalar conteúdo.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Pré: apenas pitch, sem protótipos; Produção: level design com programação mínima; Pós: testes funcionais e criação do vertical slice.</text>
+      <feedback format="html"><text><![CDATA[O vertical slice é típico da pré; deixar prototipação para o fim aumenta risco.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Pré: estudos e backlog; Produção: polimento/otimização e certificação; Pós: integração de sistemas e QA contínuo.</text>
+      <feedback format="html"><text><![CDATA[Polimento/certificação pertencem à fase final; produção não é majoritariamente “polimento”.]]></text></feedback>
+    </answer>
+  </question>
+
+  <!-- Q2: MCQ (engine/Unity/URP) -->
+  <question type="multichoice">
+    <name><text>U1-Q2 — Por que usar Unity/URP em protótipos?</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Um curso de prototipação rápida usará <strong>Unity + URP</strong> para validar ideias jogáveis em poucas semanas.</p>
+<p><strong>Qual alternativa</strong> apresenta um benefício técnico apropriado para esse cenário?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>Em protótipos, importa reduzir atrito: pipeline pronto (importação de assets), editor visual, render pipeline leve (URP), multiplataforma e comunidade ampla.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCDE</answernumbering>
+
+    <answer fraction="0">
+      <text>URP prioriza ray tracing completo em hardware high-end, idealizando benchmarking gráfico pesado para protótipos.</text>
+      <feedback format="html"><text><![CDATA[URP é leve e escalável; ray tracing completo não é o foco principal.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Unity elimina a necessidade de versionamento de código e gestão de dependências durante a prototipação.</text>
+      <feedback format="html"><text><![CDATA[Versionamento e dependências continuam necessários (Git, UPM etc.).]]></text></feedback>
+    </answer>
+    <answer fraction="100">
+      <text>URP oferece pipeline leve e consistente para diversas plataformas, acelerando iterações visuais sem exigir set-up complexo.</text>
+      <feedback format="html"><text><![CDATA[Correta: URP é pensado para desempenho/portabilidade com set-up simples.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Unity obriga uso exclusivo de C++ nativo, o que acelera a iteração de gameplays.</text>
+      <feedback format="html"><text><![CDATA[Unity é focado em C#; C++ nativo não é a via usual para prototipar gameplay.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>URP impede o uso de shaders personalizados, restringindo alterações visuais profundas.</text>
+      <feedback format="html"><text><![CDATA[URP suporta shaders personalizados (Shader Graph/HLSL).]]></text></feedback>
+    </answer>
+  </question>
+
+  <!-- Q3: Asserção–Razão (MCQ) -->
+  <question type="multichoice">
+    <name><text>U1-Q3 — ENADE (Asserção–Razão) — Engine e abstração</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p><strong>Contexto:</strong> Uma equipe avalia se adota uma engine para acelerar o desenvolvimento multiplataforma.</p>
+<p><strong>I – Asserção:</strong> Engines de jogos aumentam a produtividade ao <em>abstrair</em> dispositivos e sistemas (render, input, áudio, cena).</p>
+<p><strong>II – Razão:</strong> Porque oferecem editor e ciclo de vida padronizados (ex.: <code>Start/Update</code>), reduzindo código “de infraestrutura”.</p>
+<p>Assinale a opção correta:</p>
+<ol type="A">
+<li>I e II são verdadeiras, e II justifica I.</li>
+<li>I e II são verdadeiras, mas II não justifica I.</li>
+<li>I é verdadeira e II é falsa.</li>
+<li>I é falsa e II é verdadeira.</li>
+<li>I e II são falsas.</li>
+</ol>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>Ambas são verdadeiras e relacionadas: a padronização do ciclo de vida/editor sustenta a abstração de sistemas, liberando foco para gameplay.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>false</shuffleanswers>
+    <answernumbering>ABCDE</answernumbering>
+
+    <answer fraction="100"><text>A</text><feedback format="html"><text><![CDATA[Correta: a razão explica o efeito de produtividade da engine.]]></text></feedback></answer>
+    <answer fraction="0"><text>B</text><feedback format="html"><text><![CDATA[Ambas são verdadeiras, e a II é causa plausível para I.]]></text></feedback></answer>
+    <answer fraction="0"><text>C</text><feedback format="html"><text><![CDATA[II não é falsa: padronização/editor realmente reduzem “infraestrutura”.]]></text></feedback></answer>
+    <answer fraction="0"><text>D</text><feedback format="html"><text><![CDATA[I não é falsa; engines trazem abstrações reais de subsistemas.]]></text></feedback></answer>
+    <answer fraction="0"><text>E</text><feedback format="html"><text><![CDATA[Ambas são verdadeiras; não são falsas.]]></text></feedback></answer>
+  </question>
+
+  <!-- Q4: Matching (termos básicos Unity) -->
+  <question type="matching">
+    <name><text>U1-Q4 — Associação: termos básicos da engine</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Associe cada <strong>termo</strong> ao <strong>conceito</strong> correspondente na Unity.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>“Editor” é a interface de criação; “Runtime” é a execução no dispositivo; “Build” é o pacote exportado; “Asset” é um recurso (textura, áudio etc.); “Prefab” guarda um conjunto de componentes/valores para reuso.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+
+    <subquestion format="html"><text>Editor</text><answer><text>Ambiente de criação e configuração do projeto</text></answer></subquestion>
+    <subquestion format="html"><text>Runtime</text><answer><text>Momento de execução do jogo/aplicação</text></answer></subquestion>
+    <subquestion format="html"><text>Build</text><answer><text>Pacote exportado para a plataforma-alvo</text></answer></subquestion>
+    <subquestion format="html"><text>Asset</text><answer><text>Recurso importado (textura, som, modelo etc.)</text></answer></subquestion>
+    <subquestion format="html"><text>Prefab</text><answer><text>Instância reusável de um GameObject configurado</text></answer></subquestion>
+  </question>
+
+  <!-- Q5: Multiselect (vantagens de usar engine) -->
+  <question type="multichoice">
+    <name><text>U1-Q5 — Múltipla seleção: por que usar uma engine?</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Uma equipe pequena precisa validar <em>duas</em> ideias jogáveis em paralelo. <strong>Selecione as duas alternativas corretas</strong> sobre vantagens de adotar uma engine moderna.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>Engines aceleram importação/pipeline e abstraem plataformas/dispositivos. Não eliminam versionamento nem “travam” linguagem única em todos os casos.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>false</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCD</answernumbering>
+
+    <answer fraction="50">
+      <text>Pipeline pronto (importação de assets, cena, prefabs) reduz tempo de entrega.</text>
+      <feedback format="html"><text><![CDATA[Correta: menos “infra” e mais foco em gameplay.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Elimina a necessidade de controle de versão (Git) e gestão de dependências.</text>
+      <feedback format="html"><text><![CDATA[Incorreta: boas práticas de versionamento continuam necessárias.]]></text></feedback>
+    </answer>
+    <answer fraction="50">
+      <text>Abstrai dispositivos e plataformas, permitindo builds multiplataforma com menos retrabalho.</text>
+      <feedback format="html"><text><![CDATA[Correta: um benefício central das engines.]]></text></feedback>
+    </answer>
+    <answer fraction="0">
+      <text>Impõe uso exclusivo de uma linguagem nativa, simplificando qualquer integração externa.</text>
+      <feedback format="html"><text><![CDATA[Incorreta: engines usualmente oferecem extensões/plugs e múltiplas integrações.]]></text></feedback>
+    </answer>
+  </question>
+
+  <!-- Q6: True/False (pilares e objetivos) -->
+  <question type="truefalse">
+    <name><text>U1-Q6 — Verdadeiro/Falso: pilares de jogo e objetivos</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>“Definir <strong>pilares de jogo</strong> logo no início ajuda a orientar decisões de escopo e a priorização de funcionalidades.”</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>Verdadeiro: pilares claros orientam trade-offs e mantêm coesão da experiência.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <answer fraction="100"><text>true</text><feedback format="html"><text><![CDATA[Correto: pilares funcionam como “norte” de design.]]></text></feedback></answer>
+    <answer fraction="0"><text>false</text><feedback format="html"><text><![CDATA[Incorreto: a ausência de pilares aumenta risco de dispersão.]]></text></feedback></answer>
+  </question>
+
+  <!-- Q7: Short Answer (vertical slice) -->
+  <question type="shortanswer">
+    <name><text>U1-Q7 — Resposta curta: o que é “vertical slice”?</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Explique, em uma frase curta, o que é um <strong>vertical slice</strong> no contexto de desenvolvimento de jogos.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>Vertical slice é um <em>recorte jogável</em>, pequeno e representativo, já com <em>qualidade próxima da final</em>, para validar a experiência e riscos.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+    <usecase>0</usecase>
+    <answer fraction="100"><text>recorte jogável com qualidade final</text><feedback format="html"><text><![CDATA[Essência capturada: pequeno, jogável, qualidade próxima da final.]]></text></feedback></answer>
+    <answer fraction="100"><text>parte jogável representativa com qualidade final</text><feedback format="html"><text><![CDATA[Equivalente aceitável.]]></text></feedback></answer>
+    <answer fraction="100"><text>demo jogável representativa com qualidade próxima da final</text><feedback format="html"><text><![CDATA[Equivalente aceitável.]]></text></feedback></answer>
+    <answer fraction="0"><text>protótipo de código descartável sem foco em qualidade</text><feedback format="html"><text><![CDATA[Isso descreve protótipo inicial, não vertical slice.]]></text></feedback></answer>
+  </question>
+
+  <!-- Q8: MCQ (prototipação e Asset Store) -->
+  <question type="multichoice">
+    <name><text>U1-Q8 — Prototipação: uso de recursos prontos</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Um time de 3 pessoas tem 2 semanas para validar um loop de gameplay. Consideram usar assets gratuitos da loja para acelerar.</p>
+<p><strong>Qual decisão é mais adequada</strong> para um protótipo focado em mecânica?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>Em protótipos, reutilizar assets genéricos para validar mecânica é eficiente; riscos ficam em dependência/licenças para o produto final.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCDE</answernumbering>
+
+    <answer fraction="0"><text>Criar todo o conteúdo visual e sonoro do zero para evitar qualquer restrição futura.</text><feedback format="html"><text><![CDATA[Tempo curto; conteúdo próprio pode atrasar a validação da mecânica.]]></text></feedback></answer>
+    <answer fraction="100"><text>Usar assets genéricos/licenciados para focar no loop central e registrar riscos de substituição na documentação.</text><feedback format="html"><text><![CDATA[Correta: acelera a validação e explicita riscos para o produto.]]></text></feedback></answer>
+    <answer fraction="0"><text>Evitar assets externos por completo, pois inviabilizam testes de jogabilidade.</text><feedback format="html"><text><![CDATA[Assets externos não inviabilizam gameplay; podem ajudar.]]></text></feedback></answer>
+    <answer fraction="0"><text>Comprar assets caros e finais para não precisar refatorar no futuro.</text><feedback format="html"><text><![CDATA[Overkill para protótipo; foco é validar ideias, não conteúdo final.]]></text></feedback></answer>
+    <answer fraction="0"><text>Copiar assets de outro jogo sem licença, pois é apenas protótipo interno.</text><feedback format="html"><text><![CDATA[Ética e legalidade importam mesmo em protótipos.]]></text></feedback></answer>
+  </question>
+
+  <!-- Q9: Cloze (lacunas) -->
+  <question type="cloze">
+    <name><text>U1-Q9 — Cloze: conceitos básicos</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Complete as lacunas:</p>
+<p>A interface principal da Unity usada para criar cenas é o {1:SHORTANSWER:%100%Editor#Correto~%0%Runtime#Não é a interface de criação~%0%Build#Não é a interface de criação}.</p>
+<p>O pacote exportado para a plataforma-alvo é o {1:SHORTANSWER:%100%Build#Correto~%0%Editor#Isso é o ambiente de criação~%0%Asset#Recurso individual, não o pacote}.</p>
+<p>Um <em>Prefab</em> é uma {1:SHORTANSWER:%100%instância reusável#Correto~%100%entidade reusável#Correto~%0%compilação final#Isso descreve build} de um GameObject configurado.</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p><strong>Gabarito:</strong> Editor; Build; instância/entidade reusável de um GameObject configurado.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0</penalty>
+  </question>
+
+  <!-- Q10: MCQ (papel do QA inicial) -->
+  <question type="multichoice">
+    <name><text>U1-Q10 — Papel do QA no início do projeto</text></name>
+    <questiontext format="html">
+      <text><![CDATA[
+<p>Durante as primeiras sprints de um jogo indie, a equipe decide incluir QA desde a primeira entrega.</p>
+<p><strong>Qual é a motivação mais adequada</strong> para essa decisão?</p>
+      ]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[
+<p>QA inicial ajuda a captar riscos cedo (usabilidade, regressões, crashes) e manter o ritmo de integração contínua, típico de times enxutos.</p>
+      ]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>ABCDE</answernumbering>
+
+    <answer fraction="0"><text>Garantir que o jogo atinja certificação de plataforma já na primeira semana.</text><feedback format="html"><text><![CDATA[Certificação é etapa final; não é foco nas primeiras sprints.]]></text></feedback></answer>
+    <answer fraction="0"><text>Substituir documentação de design por testes exploratórios.</text><feedback format="html"><text><![CDATA[Testes não substituem documentação essencial de visão/critério.]]></text></feedback></answer>
+    <answer fraction="100"><text>Detectar problemas cedo e apoiar integração contínua, reduzindo custo de mudanças.</text><feedback format="html"><text><![CDATA[Correta: QA inicial antecipa riscos e dá feedback rápido.]]></text></feedback></answer>
+    <answer fraction="0"><text>Eliminar a necessidade de testes automatizados.</text><feedback format="html"><text><![CDATA[QA não elimina testes automatizados; são complementares.]]></text></feedback></answer>
+    <answer fraction="0"><text>Garantir que arte final esteja pronta antes do vertical slice.</text><feedback format="html"><text><![CDATA[Arte final nem sempre é requisito do vertical slice; foco é experiência.]]></text></feedback></answer>
+  </question>
+
+</quiz>

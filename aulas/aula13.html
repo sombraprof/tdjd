@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <!-- Essential Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TDJD - Aula 13: Arquitetura Baseada em Componentes (CBA)</title>
+  <meta name="description"
+    content="Unidade III – Programação com C# para Games. Entenda o paradigma da Arquitetura Baseada em Componentes da Unity para criar scripts modulares, reutilizáveis e organizados." />
+  <meta name="author" content="Prof. Tiago Guimarães Sombra" />
+  <meta name="keywords"
+    content="Unity, C#, Arquitetura de Software, Component-Based Architecture, CBA, GameObjects, Componentes, SOLID" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="URL_DA_SUA_PAGINA_AQUI" />
+  <meta property="og:title" content="TDJD - Aula 13: Arquitetura Baseada em Componentes (CBA)" />
+  <meta property="og:description"
+    content="Aprenda a organizar seus scripts na Unity de forma profissional com o paradigma de Component-Based Architecture." />
+  <meta property="og:image" content="https://placehold.co/1200x630/5b21b6/ffffff?text=TDJD\nAula+13" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="URL_DA_SUA_PAGINA_AQUI" />
+  <meta property="twitter:title" content="TDJD - Aula 13: Arquitetura Baseada em Componentes (CBA)" />
+  <meta property="twitter:description"
+    content="Aprenda a organizar seus scripts na Unity de forma profissional com o paradigma de Component-Based Architecture." />
+  <meta property="twitter:image" content="https://placehold.co/1200x630/5b21b6/ffffff?text=TDJD\nAula+13" />
+
+  <!-- CDN Links -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f8fafc;
+      padding-top: 60px;
+    }
+
+    .callout {
+      border-left-width: 4px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0.5rem;
+    }
+
+    .callout-info {
+      background-color: #f0f9ff;
+      border-color: #7dd3fc;
+      color: #0c4a6e;
+    }
+
+    .callout-practice {
+      background-color: #f0fdf4;
+      border-color: #6ee7b7;
+      color: #065f46;
+    }
+
+    .code-block-wrapper {
+      position: relative;
+    }
+
+    .copy-code-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background-color: #4a5568;
+      color: white;
+      border: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .copy-code-button:hover {
+      background-color: #2d3748;
+    }
+  </style>
+</head>
+
+<body class="text-slate-800">
+  <!-- Fixed Navigation Menu -->
+  <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50" role="navigation"
+    aria-label="Navegação Principal">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center h-16">
+        <span class="text-lg font-bold text-violet-700">TDJD - Aula 13</span>
+        <div class="hidden md:flex space-x-4 text-sm font-semibold">
+          <a href="#plano-aula" class="text-slate-600 hover:text-violet-600">Plano</a>
+          <a href="#paradigma" class="text-slate-600 hover:text-violet-600">Paradigma</a>
+          <a href="#monolito-vs-modular" class="text-slate-600 hover:text-violet-600">Monólito vs Modular</a>
+          <a href="#comunicacao" class="text-slate-600 hover:text-violet-600">Comunicação</a>
+          <a href="#tarefa" class="text-slate-600 hover:text-violet-600">TED</a>
+          <a href="#recursos" class="text-slate-600 hover:text-violet-600">Recursos</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="bg-slate-800 shadow-md relative">
+    <div class="w-full h-48 bg-gradient-to-r from-violet-800 to-purple-900 opacity-80"></div>
+    <div
+      class="container mx-auto px-6 py-8 absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/70 to-transparent">
+      <h1 class="text-4xl font-bold text-white">
+        Aula 13: Arquitetura Baseada em Componentes
+      </h1>
+      <p class="text-xl text-slate-300 mt-2">
+        Unidade III – Programação com C# para Games
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="container mx-auto px-6 py-10" role="main">
+    <!-- Section: Lesson Plan -->
+    <section id="plano-aula" aria-labelledby="plano-aula-heading"
+      class="mb-12 bg-violet-50 border border-violet-200 p-8 rounded-2xl shadow-lg">
+      <h2 id="plano-aula-heading" class="text-3xl font-bold text-violet-700 mb-6 text-center">Plano da Aula</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-lg text-violet-800 mb-2"><i class="fa-solid fa-book-open mr-2"></i>CONTEÚDO</h3>
+          <p class="text-slate-600 mt-1 text-sm">Introdução à Arquitetura Baseada em Componentes (CBA). Organização de scripts e responsabilidades. Relação entre GameObjects, componentes e scripts.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-lg text-violet-800 mb-2"><i class="fa-solid fa-bullseye mr-2"></i>OBJETIVO</h3>
+          <p class="text-slate-600 text-sm">Compreender o paradigma da Unity e aplicar o modelo de CBA para estruturar comportamentos de forma modular e reutilizável.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="font-semibold text-lg text-violet-800 mb-2"><i class="fa-solid fa-vial-circle-check mr-2"></i>METODOLOGIA</h3>
+          <p class="text-slate-600 text-sm">Aula prática com análise e refatoração de scripts, contrastando um exemplo monolítico com uma solução modular (estudo de arquitetura aplicada).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: The Paradigm -->
+    <section id="paradigma" aria-labelledby="paradigm-heading" class="mb-12 bg-white p-8 rounded-lg shadow">
+      <h2 id="paradigm-heading" class="text-3xl font-semibold text-slate-800 mb-4">O Fim do "Faz-Tudo": Por Que Arquitetura Importa?</h2>
+      <div class="text-slate-700 leading-relaxed space-y-4">
+        <p>Até agora, focamos em fazer nossos scripts funcionarem. Hoje, vamos focar em fazê-los funcionarem <strong>bem</strong>. Em desenvolvimento de software, e especialmente em jogos, a complexidade cresce exponencialmente. Uma boa arquitetura não é um luxo, é uma necessidade para que o projeto não se torne impossível de manter.</p>
+        <p>A Unity é construída sobre um poderoso paradigma de design de software: a <strong>Arquitetura Baseada em Componentes (CBA)</strong>. A ideia central é simples e elegante:</p>
+        <blockquote class="text-xl italic text-slate-600 border-l-4 border-violet-300 pl-4">
+          "Prefira <strong>Composição</strong> em vez de <strong>Herança</strong>."
+        </blockquote>
+        <p>Isso significa que, em vez de criar uma classe gigante `Player` que herda de `Character`, que herda de `MovableObject` em uma complexa árvore de herança, nós criamos um `GameObject` vazio e o "montamos" com peças menores e independentes: um componente para movimento, um para vida, um para ataque, e assim por diante.</p>
+        <div class="callout callout-info">
+          <h4 class="font-bold mb-2">Analogia: Montando um Carro</h4>
+          <p class="text-sm">Pense em um carro. Ele não é uma única peça monolítica. Ele é um chassi (o `GameObject`) ao qual você adiciona componentes: um `Motor`, `Rodas`, um `SistemaDeFreio`, etc. Cada componente tem uma única responsabilidade e pode ser trocado ou melhorado sem afetar os outros. A Unity funciona da mesma forma.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Section: Monolith vs. Modular -->
+    <section id="monolito-vs-modular" aria-labelledby="monolith-heading" class="mb-12">
+        <h2 id="monolith-heading" class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-8"><i class="fa-solid fa-right-left mr-2"></i>O Monólito vs. O Modular</h2>
+        <p class="text-slate-600 mb-6">Vamos analisar um problema comum: um script que tenta fazer tudo. Chamamos isso de <strong>Script Monolítico</strong> ou "God Class".</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Monolith Column -->
+            <article class="bg-white p-6 rounded-lg shadow border-t-4 border-red-500">
+                <h3 class="text-2xl font-semibold text-red-700 mb-4">O Anti-Padrão: Script Monolítico</h3>
+                <p class="text-sm text-slate-600 mb-4">Um único script `Player.cs` controla movimento, vida, ataque, som e animação.</p>
+                <div class="code-block-wrapper">
+                    <button class="copy-code-button" onclick="copiarCodigo(this, 'codigo-monolito')">Copiar</button>
+                    <pre class="bg-slate-800 text-slate-200 p-4 rounded-lg text-xs overflow-x-auto"><code id="codigo-monolito">public class Player : MonoBehaviour
+{
+    // Movement variables
+    public float speed;
+    private Vector2 moveInput;
+
+    // Health variables
+    public int maxHealth;
+    private int currentHealth;
+
+    // Attack variables
+    public int attackDamage;
+    public float attackRate;
+
+    void Update()
+    {
+        // Movement logic...
+        HandleMovement();
+        
+        // Attack logic...
+        HandleAttack();
+    }
+    
+    void HandleMovement() { /* ... */ }
+    void HandleAttack() { /* ... */ }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        // Play sound, update UI, check for death...
+    }
+}</code></pre>
+                </div>
+                <h4 class="font-semibold text-red-700 mt-4 mb-2">Problemas:</h4>
+                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                    <li><strong>Difícil de ler e manter:</strong> Centenas de linhas com responsabilidades misturadas.</li>
+                    <li><strong>Não reutilizável:</strong> Como usar a lógica de vida em um inimigo? Copiando e colando?</li>
+                    <li><strong>Propenso a bugs:</strong> Mudar a lógica de ataque pode quebrar o movimento.</li>
+                    <li><strong>Ruim para colaboração:</strong> Dois programadores não podem trabalhar no mesmo arquivo ao mesmo tempo.</li>
+                </ul>
+            </article>
+
+            <!-- Modular Column -->
+            <article class="bg-white p-6 rounded-lg shadow border-t-4 border-green-500">
+                <h3 class="text-2xl font-semibold text-green-700 mb-4">O Padrão Unity: Componentes</h3>
+                <p class="text-sm text-slate-600 mb-4">O mesmo comportamento é dividido em scripts menores e focados.</p>
+                <div class="space-y-2">
+                    <div class="bg-slate-100 p-2 rounded text-xs"><strong>PlayerMovement.cs:</strong> Controla apenas o movimento.</div>
+                    <div class="bg-slate-100 p-2 rounded text-xs"><strong>Health.cs:</strong> Gerencia apenas a vida. Pode ser usado no Player, em inimigos, em caixas destrutíveis...</div>
+                    <div class="bg-slate-100 p-2 rounded text-xs"><strong>Attacker.cs:</strong> Lida apenas com a lógica de ataque.</div>
+                </div>
+                 <h4 class="font-semibold text-green-700 mt-4 mb-2">Vantagens:</h4>
+                <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+                    <li><strong>Princípio da Responsabilidade Única (SOLID):</strong> Cada classe faz uma única coisa.</li>
+                    <li><strong>Reutilizável:</strong> O componente `Health.cs` pode ser anexado a qualquer GameObject.</li>
+                    <li><strong>Fácil de testar e depurar:</strong> Se a vida está com bug, você sabe que o problema está no `Health.cs`.</li>
+                    <li><strong>Flexível:</strong> Quer um inimigo que se move mas não ataca? Anexe apenas `EnemyMovement.cs` e `Health.cs`.</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- Section: Communication -->
+    <section id="comunicacao" aria-labelledby="communication-heading" class="mb-12">
+        <h2 id="communication-heading" class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-8"><i class="fa-solid fa-comments mr-2"></i>Como Componentes Conversam Entre Si?</h2>
+        <div class="bg-white p-8 rounded-lg shadow space-y-4">
+            <p class="text-slate-700 leading-relaxed">Se os scripts são separados, como o componente de ataque sabe que precisa reduzir a vida no componente de vida? Existem várias estratégias de comunicação, cada uma com seus prós e contras.</p>
+            
+            <h3 class="text-xl font-semibold text-violet-800 pt-4">1. `GetComponent<T>()`</h3>
+            <p class="text-sm text-slate-600">A forma mais direta de um componente encontrar outro no mesmo GameObject.</p>
+            <div class="code-block-wrapper">
+                <button class="copy-code-button" onclick="copiarCodigo(this, 'codigo-getcomponent')">Copiar</button>
+                <pre class="bg-slate-800 text-slate-200 p-4 rounded-lg text-xs overflow-x-auto"><code id="codigo-getcomponent">// Em um script 'DamageZone.cs'
+private void OnTriggerEnter(Collider other)
+{
+    // Try to find a Health component on the object we collided with
+    Health targetHealth = other.GetComponent<Health>();
+
+    if (targetHealth != null)
+    {
+        targetHealth.TakeDamage(10);
+    }
+}</code></pre>
+            </div>
+             <div class="callout callout-info text-sm"><strong>Boa Prática:</strong> `GetComponent` pode ser lento. Se você precisa da referência com frequência, chame-o uma vez no método `Awake()` ou `Start()` e armazene o resultado em uma variável (cache).</div>
+
+            <h3 class="text-xl font-semibold text-violet-800 pt-4">2. Referências Diretas com `[SerializeField]`</h3>
+            <p class="text-sm text-slate-600">Exponha uma variável no Inspector e arraste a referência manualmente. É ótimo para conectar objetos diferentes na cena.</p>
+            <div class="code-block-wrapper">
+                <button class="copy-code-button" onclick="copiarCodigo(this, 'codigo-serializefield')">Copiar</button>
+                <pre class="bg-slate-800 text-slate-200 p-4 rounded-lg text-xs overflow-x-auto"><code id="codigo-serializefield">// Em um script 'UIManager.cs'
+public class UIManager : MonoBehaviour
+{
+    [SerializeField] private Health playerHealth; // Drag the Player's Health component here in the Inspector
+    [SerializeField] private Text healthText;
+
+    private void Update()
+    {
+        healthText.text = "HP: " + playerHealth.GetCurrentHealth();
+    }
+}</code></pre>
+            </div>
+             <div class="callout callout-info text-sm"><strong>Vantagem:</strong> Cria um acoplamento fraco. O `UIManager` não precisa saber como encontrar o `playerHealth`, ele apenas recebe a referência.</div>
+
+        </div>
+    </section>
+
+    <!-- Section: TED -->
+    <section id="tarefa" aria-labelledby="tarefa-heading" class="mb-12">
+      <h2 id="tarefa-heading" class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-4">
+        📝 Tarefa (TED): Refatorando um Script Monolítico
+      </h2>
+      <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed">
+        <p class="text-lg">Sua tarefa é pegar um script monolítico que controla uma porta e refatorá-lo, aplicando os princípios da Arquitetura Baseada em Componentes.</p>
+        
+        <h4 class="font-semibold text-violet-800 mt-6 mb-2">O Script "Antes" (Monolítico):</h4>
+        <div class="code-block-wrapper">
+            <button class="copy-code-button" onclick="copiarCodigo(this, 'codigo-ted-antes')">Copiar</button>
+            <pre class="bg-slate-800 text-slate-200 p-4 rounded-lg text-xs overflow-x-auto"><code id="codigo-ted-antes">public class MonolithicDoor : MonoBehaviour
+{
+    public bool isLocked = false;
+    public AudioClip openSound;
+    public AudioClip closeSound;
+    private bool isOpen = false;
+    private AudioSource audioSource;
+    private Animator animator;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+    }
+
+    public void Interact()
+    {
+        if (isLocked) return;
+
+        isOpen = !isOpen;
+        animator.SetBool("IsOpen", isOpen);
+
+        if (isOpen) {
+            audioSource.PlayOneShot(openSound);
+        } else {
+            audioSource.PlayOneShot(closeSound);
+        }
+    }
+}</code></pre>
+        </div>
+        
+        <h4 class="font-semibold text-violet-800 mt-6 mb-2">Sua Missão:</h4>
+        <ol class="list-decimal list-inside space-y-2 text-sm">
+            <li>Crie um projeto Unity simples. Crie um GameObject "Porta".</li>
+            <li>Crie os seguintes scripts, separando as responsabilidades do script acima:
+                <ul class="list-disc list-inside mt-2 pl-4">
+                    <li><code>DoorInteraction.cs</code>: Deve detectar a interação (ex: um método público `Interact()`).</li>
+                    <li><code>DoorAnimator.cs</code>: Deve ser responsável <strong>apenas</strong> por controlar o `Animator`.</li>
+                    <li><code>DoorAudio.cs</code>: Deve ser responsável <strong>apenas</strong> por tocar os sons de abrir e fechar.</li>
+                    <li><code>DoorLockSystem.cs</code>: Deve gerenciar <strong>apenas</strong> o estado de "trancada" (`isLocked`).</li>
+                </ul>
+            </li>
+            <li>Use `GetComponent` dentro dos scripts para que eles se comuniquem (ex: `DoorInteraction` chama métodos em `DoorAnimator` e `DoorAudio`).</li>
+            <li><strong>Entrega:</strong> Poste no Moodle os 4 novos scripts em blocos de código. Abaixo de cada um, escreva uma frase explicando sua única responsabilidade.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Section: Resources -->
+    <section id="recursos" aria-labelledby="recursos-heading" class="mb-12">
+        <h2 id="recursos-heading" class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-4">📚 Recursos Adicionais</h2>
+        <div class="bg-white p-8 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div><h4 class="font-bold text-violet-800 mb-2">Documentação Oficial da Unity</h4><ul class="text-sm space-y-2">
+                <li><a href="https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Creating and Using Scripts</a></li>
+                <li><a href="https://docs.unity3d.com/Manual/ComponentReference.html" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Component Reference</a></li>
+                <li><a href="https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Scripting API: GetComponent</a></li>
+            </ul></div>
+            <div><h4 class="font-bold text-violet-800 mb-2">Artigos e Vídeos</h4><ul class="text-sm space-y-2">
+                <li><a href="https://www.gamedeveloper.com/design/unity-s-component-based-architecture" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Unity's Component-Based Architecture (Game Developer)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=k_i8a-9t_pA" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">SOLID Principles in C# for Unity (Video)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=k_Q_wzz-Q5c" target="_blank" rel="noopener noreferrer" class="text-violet-600 hover:underline">Comunicação entre Scripts na Unity (Fábrica de Jogos - PT-BR)</a></li>
+            </ul></div>
+        </div>
+    </section>
+
+    <!-- Section: Bibliography -->
+    <section id="bibliografia" aria-labelledby="bibliografia-heading" class="mb-12">
+      <h2 id="bibliografia-heading"
+        class="text-3xl font-semibold text-slate-800 border-b-2 border-violet-500 pb-2 mb-4">
+        📚 Bibliografia
+      </h2>
+      <div class="bg-white p-8 rounded-lg shadow space-y-4 text-slate-700 leading-relaxed">
+        <p>ALVES, W. P. <strong>Unity: design e desenvolvimento de jogos.</strong> Rio de Janeiro: Alta Books, 2019.</p>
+        <p>MASTROCOLA, Vicente Martin. <strong>Game design: modelos de negócio e processos criativos.</strong> São Paulo: Cengage Learning, 2015.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-white mt-12" role="contentinfo">
+    <div class="container mx-auto px-6 py-6 text-center">
+      <p>&copy; 2025 - Tecnologia e Desenvolvimento de Jogos Digitais | Semestre 2025.2</p>
+      <p class="text-sm text-slate-400">Material desenvolvido para os cursos de ADS e SI da UniChristus.</p>
+      <div class="mt-4">
+        <a href="#" class="text-violet-400 hover:underline text-sm">Acessar Moodle</a>
+        <span class="text-slate-500 mx-2">|</span>
+        <a href="#" class="text-violet-400 hover:underline text-sm">Política de Uso</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function copiarCodigo(button, elementId) {
+      const codeElement = document.getElementById(elementId);
+      const codeToCopy = codeElement.innerText;
+      
+      // Fallback for environments where clipboard API is restricted
+      const textarea = document.createElement('textarea');
+      textarea.value = codeToCopy;
+      textarea.style.position = 'fixed'; // Prevent scrolling to bottom of page in MS Edge.
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        button.innerText = 'Copiado!';
+      } catch (err) {
+        button.innerText = 'Erro!';
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+      document.body.removeChild(textarea);
+
+      setTimeout(() => {
+        button.innerText = 'Copiar';
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>

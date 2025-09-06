@@ -4,83 +4,448 @@
     "titulo": "Aula 1: Introdução ao Desenvolvimento de Jogos Digitais",
     "descricao": "Apresentação da disciplina, panorama do mercado, gêneros, plataformas e expectativas do projeto final.",
     "arquivo": "aula1.html",
-    "ativo": true
+    "unidade": "Unidade I",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula2",
     "titulo": "Aula 2: Gêneros e Tipos de Gameplay",
     "descricao": "Panorama dos gêneros de jogos e tipos de gameplay, com análise de mecânicas e padrões de design.",
     "arquivo": "aula2.html",
-    "ativo": true
+    "unidade": "Unidade I",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula3",
     "titulo": "Aula 3: Estudos de Caso, Análise Crítica e Inovações",
     "descricao": "Comparação de jogos Indie e AAA: mecânicas, público, impacto e tendências; exercício prático de análise.",
     "arquivo": "aula3.html",
-    "ativo": true
+    "unidade": "Unidade I",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula4",
     "titulo": "Aula 4: História dos Jogos Digitais, Engines e Mercado",
     "descricao": "Linha do tempo dos jogos e principais engines (Unity, Unreal, Godot); visão histórica do mercado.",
     "arquivo": "aula4.html",
-    "ativo": true
+    "unidade": "Unidade I",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
+
   {
     "id": "aula5",
     "titulo": "Aula 5: Fundamentos da Unity e Prototipagem",
     "descricao": "Interface da Unity, configuração do URP e introdução ao Input System para criar um protótipo controlável.",
     "arquivo": "aula5.html",
-    "ativo": true
+    "unidade": "Unidade II",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula6",
     "titulo": "Aula 6: Importação de Assets e Organização de Projeto",
     "descricao": "Importação de assets (Asset Store e externos) e organização do projeto (pastas, convenções); introdução ao versionamento com Git/LFS.",
     "arquivo": "aula6.html",
-    "ativo": true
+    "unidade": "Unidade II",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula7",
     "titulo": "Aula 7: Prototipagem Rápida e GDD",
     "descricao": "Criação de cenários com ProBuilder e introdução à estrutura do Game Design Document (GDD) para mapear ideias.",
     "arquivo": "aula7.html",
-    "ativo": true
+    "unidade": "Unidade II",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula8",
     "titulo": "Aula 8: Level Design com ProBuilder",
     "descricao": "Aprofundamento em Level Design com ProBuilder: criação de estruturas, colisores, navegação e refinamento de layouts.",
     "arquivo": "aula8.html",
-    "ativo": true
+    "unidade": "Unidade II",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula9",
     "titulo": "Aula 9: Consolidação de Protótipo e GDD",
     "descricao": "Integração entre a cena criada, a narrativa e as mecânicas descritas no GDD, com foco em alinhamento técnico e criativo.",
     "arquivo": "aula9.html",
-    "ativo": true
+    "unidade": "Unidade II",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
+
   {
     "id": "aula10",
     "titulo": "Aula 10: Introdução à Programação C# na Unity",
     "descricao": "Início da Unidade III com C#: sintaxe básica, variáveis, estruturas de controle e integração de scripts no editor da Unity.",
     "arquivo": "aula10.html",
-    "ativo": true
+    "unidade": "Unidade III",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula11",
     "titulo": "Aula 11: Métodos, Eventos e Corrotinas em C#",
     "descricao": "Organização de código com métodos, reação a eventos de física (OnTriggerEnter) e manipulação de tempo com Corrotinas.",
     "arquivo": "aula11.html",
-    "ativo": true
+    "unidade": "Unidade III",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
   },
   {
     "id": "aula12",
     "titulo": "Aula 12: O Novo Input System na Prática",
     "descricao": "Domine o novo Input System da Unity: configure Action Maps, mapeie controles multiplataforma e integre com C#.",
     "arquivo": "aula12.html",
-    "ativo": true
+    "unidade": "Unidade III",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula13",
+    "titulo": "Aula 13: Arquitetura por Componentes (CBA) em Unity",
+    "descricao": "Paradigma baseado em componentes: organização de scripts, responsabilidades e composição em GameObjects.",
+    "arquivo": "aula13.html",
+    "unidade": "Unidade III",
+    "ativo": true,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+
+  {
+    "id": "aula14",
+    "titulo": "Aula 14: NP1 – 1ª Avaliação Parcial",
+    "descricao": "Avaliação das Unidades I–III.",
+    "arquivo": "aula14.html",
+    "unidade": "Avaliação",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula15",
+    "titulo": "Aula 15: Análise e Reforço Pós-NP1",
+    "descricao": "Devolutiva, correções comentadas e minidesafios de reforço com base na NP1.",
+    "arquivo": "aula15.html",
+    "unidade": "Unidade III",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+
+  {
+    "id": "aula16",
+    "titulo": "Aula 16: Framework MDA (Mechanics, Dynamics, Aesthetics)",
+    "descricao": "Aplicação prática do MDA para estruturar a experiência do jogador.",
+    "arquivo": "aula16.html",
+    "unidade": "Unidade IV",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula17",
+    "titulo": "Aula 17: Design Inclusivo e Acessibilidade em Jogos",
+    "descricao": "Diretrizes e boas práticas de acessibilidade em jogos digitais.",
+    "arquivo": "aula17.html",
+    "unidade": "Unidade IV",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula18",
+    "titulo": "Aula 18: UX e UI em Jogos",
+    "descricao": "Princípios de navegação, hierarquia visual e feedback do usuário aplicados a jogos.",
+    "arquivo": "aula18.html",
+    "unidade": "Unidade IV",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula19",
+    "titulo": "Aula 19: Feedback e Loop de Gameplay",
+    "descricao": "Ação–recompensa–repetição, engajamento e retenção do jogador.",
+    "arquivo": "aula19.html",
+    "unidade": "Unidade IV",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+
+  {
+    "id": "aula20",
+    "titulo": "Aula 20: Animação com Animator e Timeline",
+    "descricao": "Estados, parâmetros, transições e sequências com Timeline.",
+    "arquivo": "aula20.html",
+    "unidade": "Unidade V",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula21",
+    "titulo": "Aula 21: VFX Graph, Particle System e Pós-processamento",
+    "descricao": "Efeitos visuais e ajustes de estética com URP/Pós-processamento.",
+    "arquivo": "aula21.html",
+    "unidade": "Unidade V",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula22",
+    "titulo": "Aula 22: Design Sonoro e Áudio Adaptativo",
+    "descricao": "Camadas sonoras, triggers e mixer de áudio no Unity.",
+    "arquivo": "aula22.html",
+    "unidade": "Unidade V",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula23",
+    "titulo": "Aula 23: Estética e Estilo Visual em Jogos",
+    "descricao": "Pixel art, low poly, cartoon, realista; direção de arte e consistência.",
+    "arquivo": "aula23.html",
+    "unidade": "Unidade V",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+
+  {
+    "id": "aula24",
+    "titulo": "Aula 24: Fundamentos de Multiplayer (Photon/NGO)",
+    "descricao": "Cliente/servidor, RPCs, sincronização de objetos e conexão mínima.",
+    "arquivo": "aula24.html",
+    "unidade": "Unidade VI",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula25",
+    "titulo": "Aula 25: ScriptableObjects e Addressables",
+    "descricao": "Modularidade de dados e carregamento sob demanda de assets.",
+    "arquivo": "aula25.html",
+    "unidade": "Unidade VI",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula26",
+    "titulo": "Aula 26: Otimização – Pooling, Baking e Profiler",
+    "descricao": "Técnicas de performance e diagnóstico em projetos Unity.",
+    "arquivo": "aula26.html",
+    "unidade": "Unidade VI",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula27",
+    "titulo": "Aula 27: Debug e Análise de Performance (inclui Rede)",
+    "descricao": "Profiler, logs, breakpoints e análise de gargalos de rede.",
+    "arquivo": "aula27.html",
+    "unidade": "Unidade VI",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+
+  {
+    "id": "aula28",
+    "titulo": "Aula 28: Builds e Exportação (Windows/Android/WebGL)",
+    "descricao": "Player settings, compressão e compatibilidade multiplataforma.",
+    "arquivo": "aula28.html",
+    "unidade": "Unidade VII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+    {
+    "id": "aula29",
+    "titulo": "Aula 29: NP2 – 2ª Avaliação Parcial",
+    "descricao": "Avaliação das Unidades IV–VI.",
+    "arquivo": "aula29.html",
+    "unidade": "Avaliação",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula30",
+    "titulo": "Aula 30: Monetização, Live Ops e Marketing",
+    "descricao": "Modelos (ads, IAP, premium) e plano básico de lançamento.",
+    "arquivo": "aula30.html",
+    "unidade": "Unidade VII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula31",
+    "titulo": "Aula 31: Plano de Publicação e Pitch",
+    "descricao": "Estrutura de apresentação: conceito, mecânicas, público, diferenciais e canais.",
+    "arquivo": "aula31.html",
+    "unidade": "Unidade VII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+
+  {
+    "id": "aula32",
+    "titulo": "Aula 32: Apresentação dos Protótipos – Parte 1",
+    "descricao": "Pitch público e avaliação por critérios técnicos e criativos.",
+    "arquivo": "aula32.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula33",
+    "titulo": "Aula 33: Apresentação dos Protótipos – Parte 2",
+    "descricao": "Continuação das apresentações e debate de aprendizados.",
+    "arquivo": "aula33.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula34",
+    "titulo": "Aula 34: Devolutiva Geral do Professor",
+    "descricao": "Destaques, pontos de melhoria e análise pedagógica dos projetos.",
+    "arquivo": "aula34.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula35",
+    "titulo": "Aula 35: Compartilhamento e Feedback Cruzado",
+    "descricao": "Rodada de comentários entre grupos e crítica orientada.",
+    "arquivo": "aula35.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula36",
+    "titulo": "Aula 36: Apresentações Finais – Parte 1",
+    "descricao": "Pitch final com banca e feedback imediato.",
+    "arquivo": "aula36.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula37",
+    "titulo": "Aula 37: Apresentações Finais – Parte 2",
+    "descricao": "Conclusão das apresentações e critérios de avaliação.",
+    "arquivo": "aula37.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula38",
+    "titulo": "Aula 38: Feedback Coletivo e Análise Transversal",
+    "descricao": "Síntese de lições aprendidas e boas práticas.",
+    "arquivo": "aula38.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+  {
+    "id": "aula39",
+    "titulo": "Aula 39: Documentação Final do Projeto",
+    "descricao": "Estrutura mínima, checklist e submissão da documentação.",
+    "arquivo": "aula39.html",
+    "unidade": "Unidade VIII",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
+  },
+
+  {
+    "id": "aula40",
+    "titulo": "Aula 40: NP3 – 3ª Avaliação Parcial",
+    "descricao": "Avaliação das Unidades VI–VIII.",
+    "arquivo": "aula40.html",
+    "unidade": "Avaliação",
+    "ativo": false,
+    "styles": [],
+    "scripts": [],
+    "init": null
   }
 ]
